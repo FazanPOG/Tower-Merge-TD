@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb9c12a8c6c949f7af83a3d238359d0, type: 3}
+  m_Name: vFolders Data
+  m_EditorClassIdentifier: 
+  folderDatas_byGuid:
+    keys:
+    - 509453866ea391b49a7dfad1898de1f1
+    - cc2ecb88114223f46ac42bfd8faf20eb
+    - 14f880edc9720564e9780fdf8951ee14
+    - 272359cb5cb42ea4299d9a0b963beed1
+    - 0ee4d650d8df8684d8b8d2e304e0f188
+    - 80e05003f95e42fb94fe238c7a3195fa
+    - 9ee520aaa6bd43868024d26fe865e6eb
+    - ea60e6d2efd58794abb84edc46e97c8d
+    - de611da444854ca4af7072b83c13eb75
+    - d49088911968c0942b429b159cba4e06
+    values:
+    - colorIndex: 0
+      iconNameOrGuid: SceneAsset Icon
+    - colorIndex: 0
+      iconNameOrGuid: ScriptableObject Icon
+    - colorIndex: 0
+      iconNameOrGuid: Material Icon
+    - colorIndex: 0
+      iconNameOrGuid: Prefab Icon
+    - colorIndex: 0
+      iconNameOrGuid: AnimationClip Icon
+    - colorIndex: 0
+      iconNameOrGuid: cs Script Icon
+    - colorIndex: 0
+      iconNameOrGuid: SceneAsset Icon
+    - colorIndex: 1
+      iconNameOrGuid: 
+    - colorIndex: 6
+      iconNameOrGuid: 
+    - colorIndex: 0
+      iconNameOrGuid: RawImage Icon

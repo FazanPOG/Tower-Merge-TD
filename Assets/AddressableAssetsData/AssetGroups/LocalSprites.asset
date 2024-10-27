@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LocalSprites
+  m_EditorClassIdentifier: 
+  m_GroupName: LocalSprites
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a0602a1023a78c94e9804f4f1b18ed96
+  m_SerializeEntries:
+  - m_GUID: 35516ad9d0c64eb4194c63b5edde93aa
+    m_Address: cross
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd052028626faaf4fa6012240abab217
+    m_Address: checkMark
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 62fc5b7003201824e8c7e3eb62509fde, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1a3d7e9f5e20ca84885e8122cae1d621, type: 2}
+    - {fileID: 11400000, guid: e7b633f4e44007546bcc69713b537a7a, type: 2}
