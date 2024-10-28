@@ -1,24 +1,18 @@
-﻿using System.Linq;
-using ModestTree;
-using TowerMergeTD.Game.State;
-using UnityEngine;
+﻿using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
 {
     public static class MergeHandler
     {
-        private static TowerFactory[] _towerFactories;
+        private static TowerFactory _towerFactory;
 
-        public static void Init(TowerFactory[] towerFactories)
+        public static void Init(TowerFactory towerFactory)
         {
-            _towerFactories = towerFactories;
+            _towerFactory = towerFactory;
         }
         
         public static bool TryMerge(TowerGenerationConfig generation, TowerObject firstMergedTower, TowerObject secondMergedTower)
         {
-            if (_towerFactories.IsEmpty())
-                return false;
-            
             if(generation.IsLastInGeneration(firstMergedTower.Level) || generation.IsLastInGeneration(secondMergedTower.Level))
                 return false;
             
@@ -32,15 +26,8 @@ namespace TowerMergeTD.Game.Gameplay
             firstMergedTower.DestroySelf();
             secondMergedTower.DestroySelf();
             
-            var factory = FindFirstCorrectFactory(generation);
-            //TODO: change parent
-            factory.Create(Camera.main.transform, spawnPosition, firstMergedTower.Level + 1);
+            _towerFactory.Create(generation, spawnPosition, firstMergedTower.Level + 1);
             return true;
-        }
-
-        private static TowerFactory FindFirstCorrectFactory(TowerGenerationConfig generation)
-        {
-            return _towerFactories.First(x => x.Generation.TowersType == generation.TowersType);
         }
     }
 }

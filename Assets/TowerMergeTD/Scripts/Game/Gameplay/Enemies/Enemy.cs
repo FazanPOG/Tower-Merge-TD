@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using R3;
-using TowerMergeTD.Scripts.Game.Gameplay.Configs;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
-        [SerializeField] private EnemyConfig _config;
         [SerializeField] private EnemyView _view;
         
         private readonly ReactiveProperty<float> _health = new ReactiveProperty<float>();
-
-        public void Init(List<Vector3> movePath)
+        public event Action OnDied;
+        
+        public void Init(EnemyConfig config, List<Vector3> movePath)
         {
-            _health.Value = _config.Health;
+            _health.Value = config.Health;
             
             EnemyMovement movement = new EnemyMovement();
-            movement.Move(this, _view.transform, movePath, _config.MoveSpeed);
-            _view.Init(_health, _config.Sprite);
+            movement.Move(this, _view.transform, movePath, config.MoveSpeed);
+            _view.Init(_health, config.Sprite);
         }
 
         public void TakeDamage(float damage)
@@ -30,9 +29,8 @@ namespace TowerMergeTD.Game.Gameplay
             _health.Value -= damage;
 
             if (_health.Value <= 0)
-            {
-                Debug.Log($"Dead: {name}");
-            }
+                OnDied?.Invoke();
         }
+
     }
 }

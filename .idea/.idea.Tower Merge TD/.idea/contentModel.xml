@@ -1478,6 +1478,8 @@
                 </e>
                 <e p="Configs" t="Include">
                   <e p="EnemyConfig.cs" t="Include" />
+                  <e p="GameConfig.cs" t="Include" />
+                  <e p="WaveConfig.cs" t="Include" />
                 </e>
                 <e p="Enemies" t="Include">
                   <e p="Enemy.cs" t="Include" />
@@ -1485,6 +1487,8 @@
                   <e p="EnemyView.cs" t="Include" />
                 </e>
                 <e p="Factories" t="Include">
+                  <e p="EnemyFactory.cs" t="Include" />
+                  <e p="EnemyPool.cs" t="Include" />
                   <e p="TowerFactory.cs" t="Include" />
                 </e>
                 <e p="Player" t="Include">
@@ -1500,6 +1504,12 @@
                   <e p="View" t="Include">
                     <e p="UIGameplayRootView.cs" t="Include" />
                   </e>
+                </e>
+                <e p="Services" t="Include">
+                  <e p="Interfaces" t="Include">
+                    <e p="IWaveSpawnerService.cs" t="Include" />
+                  </e>
+                  <e p="WaveSpawnerService.cs" t="Include" />
                 </e>
                 <e p="Towers" t="Include">
                   <e p="Attackers" t="Include">

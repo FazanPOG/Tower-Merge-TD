@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de010e109f024a7c8e898571e6247ad1, type: 3}
   m_Name: DefaultEnemy
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 10
   _moveSpeed: 1
   _sprite: {fileID: 21300000, guid: 4b3ed378ff904544f8280156e9a4ac26, type: 3}

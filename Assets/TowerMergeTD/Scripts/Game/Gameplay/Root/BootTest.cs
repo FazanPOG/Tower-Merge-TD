@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Game.State;
 using TowerMergeTD.Game.State;
@@ -11,16 +12,21 @@ namespace TowerMergeTD.Game.Gameplay
     public class BootTest : MonoBehaviour
     {
         [SerializeField] private TowerObject _prefab;
+        [SerializeField] private Transform _towerParent;
         [SerializeField] private TowerGenerationConfig _gunTowerGeneration;
         [SerializeField] private TowerGenerationConfig _rocketTowerGeneration;
         [SerializeField] private Tilemap _baseTileMap;
         [SerializeField] private Tilemap _environmentTileMap;
-        [SerializeField] private Enemy _enemy;
+        [SerializeField] private Enemy _enemyPrefab;
+        [SerializeField] private Transform _enemyParent;
+        [SerializeField] private Transform _enemySpawnPosition;
+        [SerializeField] private GameConfig _gameConfig;
         [SerializeField] private TowerObject[] _gunTowers;
         [SerializeField] private TowerObject[] _rocketTowers;
-        [Space(15)] [SerializeField] private Transform[] _pathPoints;
+        [Space(15)] 
+        [SerializeField] private Transform[] _pathPoints;
 
-        private List<TowerFactory> _towerFactories;
+        private EnemyFactory _enemyFactory;
         
         private void Awake()
         {
@@ -35,13 +41,9 @@ namespace TowerMergeTD.Game.Gameplay
             Map environmentMap = new Map(_environmentTileMap);
             
             var container = new DiContainer();
-            _towerFactories = new List<TowerFactory>()
-            {
-                new TowerFactory(container, baseMap, environmentMap, _prefab, _gunTowerGeneration, this),
-                new TowerFactory(container, baseMap, environmentMap, _prefab, _rocketTowerGeneration, this),
-            };
+            var towerFactory = new TowerFactory(container, baseMap, environmentMap, _prefab, _towerParent, this);
 
-            MergeHandler.Init(_towerFactories.ToArray());
+            MergeHandler.Init(towerFactory);
             
             foreach (var tower in _gunTowers)
             {
@@ -78,8 +80,15 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void InitEnemies()
         {
+            DiContainer container = new DiContainer();
+            
+            _enemyFactory = new EnemyFactory(container, _enemyPrefab, _enemyParent);
             List<Vector3> path = _pathPoints.Select(x => x.position).ToList();
-            _enemy?.Init(path);
+            IWaveSpawnerService waveSpawnerService = new WaveSpawnerService(_enemyFactory, _gameConfig.Waves, path, _enemySpawnPosition.transform.position, this);
+
+            waveSpawnerService.SpawnNextWave();
+            waveSpawnerService.OnWaveCompleted += () => { waveSpawnerService.SpawnNextWave(); };
+            waveSpawnerService.OnAllWavesCompleted += () => { Debug.Log("LEVEL COMPLETE!"); };
         }
     }
 }

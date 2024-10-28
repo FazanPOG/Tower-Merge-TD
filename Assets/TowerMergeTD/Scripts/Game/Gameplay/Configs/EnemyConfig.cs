@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace TowerMergeTD.Scripts.Game.Gameplay.Configs
+namespace TowerMergeTD.Game.Gameplay
 {
     [CreateAssetMenu(menuName = "Configs/Enemy", order = 1)]
     public class EnemyConfig : ScriptableObject

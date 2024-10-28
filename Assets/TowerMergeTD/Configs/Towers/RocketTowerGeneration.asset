@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towersType: RocketTower
   _generation:
-  - AttackRange: 4
+  - AttackRange: 2
     AttackCooldown: 3
     Damage: 1
     Level: 1
     Sprite: {fileID: 21300000, guid: d66db88bb7bc1154ea337c654d9ec757, type: 3}
-  - AttackRange: 7
+  - AttackRange: 3
     AttackCooldown: 1
     Damage: 5
     Level: 2
     Sprite: {fileID: 21300000, guid: 08df886ada992c24d8332d38d2dafc5c, type: 3}
-  - AttackRange: 5
+  - AttackRange: 3
     AttackCooldown: 2
     Damage: 3
     Level: 3
