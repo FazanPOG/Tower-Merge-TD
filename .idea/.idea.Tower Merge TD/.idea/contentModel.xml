@@ -1473,7 +1473,6 @@
                   <e p="DragAndDrop.cs" t="Include" />
                   <e p="HealthBarView.cs" t="Include" />
                   <e p="IDamageable.cs" t="Include" />
-                  <e p="IDraggable.cs" t="Include" />
                   <e p="ObjectRotator.cs" t="Include" />
                 </e>
                 <e p="Configs" t="Include">
@@ -1483,6 +1482,7 @@
                 </e>
                 <e p="Enemies" t="Include">
                   <e p="Enemy.cs" t="Include" />
+                  <e p="EnemyFinishTrigger.cs" t="Include" />
                   <e p="EnemyMovement.cs" t="Include" />
                   <e p="EnemyView.cs" t="Include" />
                 </e>
@@ -1548,7 +1548,14 @@
                 <e p="Grid" t="Include">
                   <e p="Grid.cs" t="Include" />
                   <e p="GridTesting.cs" t="Include" />
-                  <e p="Map.cs" t="Include" />
+                  <e p="TilemapCoordinator.cs" t="Include" />
+                  <e p="TileMapType.cs" t="Include" />
+                </e>
+                <e p="Player" t="Include">
+                  <e p="PlayerHealth.cs" t="Include" />
+                  <e p="PlayerHealthProxy.cs" t="Include" />
+                  <e p="PlayerMoney.cs" t="Include" />
+                  <e p="PlayerMoneyProxy.cs" t="Include" />
                 </e>
                 <e p="Providers" t="Include">
                   <e p="IGameStateProvider.cs" t="Include" />
@@ -1561,6 +1568,17 @@
                 <e p="Towers" t="Include">
                   <e p="Tower.cs" t="Include" />
                   <e p="TowerProxy.cs" t="Include" />
+                </e>
+              </e>
+              <e p="UI" t="Include">
+                <e p="Gameplay" t="Include">
+                  <e p="Adapters" t="Include">
+                    <e p="TowerActionsAdapter.cs" t="Include" />
+                  </e>
+                  <e p="Views" t="Include">
+                    <e p="PlayerHealthView.cs" t="Include" />
+                    <e p="TowerActionsView.cs" t="Include" />
+                  </e>
                 </e>
               </e>
             </e>

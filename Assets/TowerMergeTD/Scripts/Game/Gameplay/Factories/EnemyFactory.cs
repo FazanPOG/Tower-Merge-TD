@@ -6,27 +6,26 @@ namespace TowerMergeTD.Game.Gameplay
 {
     public class EnemyFactory
     {
-        private EnemyPool _pool;
+        private readonly DiContainer _diContainer;
+        private readonly Enemy _prefab;
+        private readonly Transform _parent;
 
         public EnemyFactory(DiContainer diContainer, Enemy prefab, Transform parent)
         {
-            _pool = new EnemyPool(diContainer, prefab, parent);
+            _diContainer = diContainer;
+            _prefab = prefab;
+            _parent = parent;
         }
 
         public Enemy Create(EnemyConfig config, List<Vector3> path, Vector2 position)
         {
-            var instance = _pool.Get();
+            var instance = _diContainer.InstantiatePrefabForComponent<Enemy>(_prefab, _parent);
             instance.transform.position = position;
             instance.name = $"{config.name}";
 
             instance.Init(config, path);
             
             return instance;
-        }
-
-        public void Release(Enemy enemy)
-        {
-            _pool.Release(enemy);
         }
     }
 }

@@ -1,70 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Game.State;
+using TowerMergeTD.Game.State;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class DragAndDrop : MonoBehaviour, IDraggable
+    public class DragAndDrop : MonoBehaviour
     {
         private const float DROP_ON_TOWER_DETECTION_RADIUS = 0.5f; 
         
+        private InputHandler _inputHandler;
         private Transform _draggedTransform;
-        private Map _baseMap;
-        private Map _environmentMap;
-        private Tile[] _towerPlaces;
-        private Tile[] _environment;
+        private TilemapCoordinator _tilemapCoordinator;
 
         private Vector2 _previousPosition;
-        private Collider2D[] _colliders;
         private BoxCollider2D _dragCollider;
-        private bool _isDragRequiredCollider;
+        private bool _isDragging;
         
         public event Action OnDroppedOnTileMap;
         public event Action<TowerObject> OnDroppedOnTower;
-        
-        public void Init(Transform draggedTransform, Map baseMap, Map environmentMap, Tile[] towerPlaces, Tile[] environment)
+
+        public void Init(InputHandler inputHandler, Transform draggedTransform, TilemapCoordinator tilemapCoordinator)
         {
+            _inputHandler = inputHandler;
             _draggedTransform = draggedTransform;
-            _baseMap = baseMap;
-            _environmentMap = environmentMap;
-            _towerPlaces = towerPlaces;
-            _environment = environment;
+            _tilemapCoordinator = tilemapCoordinator;
 
-            _colliders = GetComponents<Collider2D>();
             _dragCollider = GetComponent<BoxCollider2D>();
-        }
-        
-        public void StartDrag(Collider2D draggedObject)
-        {
-            _isDragRequiredCollider = _dragCollider == draggedObject;
 
-            _previousPosition = _draggedTransform.position;
+            _inputHandler.OnMouseClickStarted += TryDrag;
+            _inputHandler.OnMouseDrag += DragPerformed;
+            _inputHandler.OnMouseCanceled += Drop;
         }
 
-        public void DragPerformed(Vector3 dragWorldPosition)
+        public void ResetPosition() => _draggedTransform.position = _previousPosition;
+
+        private void TryDrag()
         {
-            if(_isDragRequiredCollider == false) return;
-            
+            bool isClickedDraggableCollider = IsClickedDraggableCollider();
+
+            if (isClickedDraggableCollider)
+            {
+                _isDragging = true;
+                _previousPosition = _draggedTransform.position;
+            }
+        }
+
+        private void DragPerformed()
+        {
+            if(_isDragging == false) return;
+
+            var dragWorldPosition = _inputHandler.GetMouseWorldPosition();
             Vector3 target = new Vector3(dragWorldPosition.x, dragWorldPosition.y, 0f);
             _draggedTransform.position = target;
         }
 
-        public void Drop(Vector3 dropWorldPosition)
+        private void Drop()
         {
-            if(_isDragRequiredCollider == false) return;
+            if(_isDragging == false) return;
             
+            var dropWorldPosition = _inputHandler.GetMouseWorldPosition();
             bool droppedOnTower = HandleDropOnTower(dropWorldPosition);
-            
+
             if (droppedOnTower == false)
                 HandleDropOnTileMap(dropWorldPosition);
+            
+            _isDragging = false;
         }
 
-        public void ResetPosition()
+        private bool IsClickedDraggableCollider()
         {
-            _draggedTransform.position = _previousPosition;
+            Vector3 mouseWorldPosition = _inputHandler.GetMouseWorldPosition();
+            mouseWorldPosition.z = 0;
+
+            Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);
+            if (colliders.Length > 0)
+            {
+                foreach (var collider in colliders)
+                {
+                    if (collider == _dragCollider)
+                        return true;
+                }
+            }
+
+            return false;
         }
 
         private bool HandleDropOnTower(Vector3 dropWorldPosition)
@@ -74,7 +93,7 @@ namespace TowerMergeTD.Game.Gameplay
 
             foreach (var collider in colliders)
             {
-                if(_colliders.Contains(collider)) continue;
+                if(collider.gameObject.GetInstanceID() == gameObject.GetInstanceID()) continue;
 
                 if (collider.gameObject.transform.parent.TryGetComponent(out TowerObject tower) &&
                     checkedTowers.Contains(tower) == false)
@@ -93,13 +112,10 @@ namespace TowerMergeTD.Game.Gameplay
 
             return false;
         }
-        
+
         private void HandleDropOnTileMap(Vector3 dropWorldPosition)
         {
-            TileBase baseMapTile = _baseMap.GetTile(dropWorldPosition);
-            TileBase environmentMapTile = _environmentMap.GetTile(dropWorldPosition);
-            
-            if (CanDrop(baseMapTile, environmentMapTile))
+            if (_tilemapCoordinator.CanPlaceTower(dropWorldPosition))
             {
                 UpdatePosition(dropWorldPosition);
                 OnDroppedOnTileMap?.Invoke();
@@ -112,10 +128,10 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void UpdatePosition(Vector3 dropWorldPosition)
         {
-            var cellCenter = _baseMap.GetCellCenterPosition(dropWorldPosition);
+            var cellCenter = _tilemapCoordinator.GetCellCenterPosition(TilemapType.Base, dropWorldPosition);
             _draggedTransform.position = cellCenter;
         }
-        
+
         private Collider2D[] GetDroppedColliders(Vector3 droppedPosition)
         {
             droppedPosition.z = 0;
@@ -123,10 +139,12 @@ namespace TowerMergeTD.Game.Gameplay
             Collider2D[] colliders = Physics2D.OverlapPointAll(droppedPosition);
             return colliders;
         }
-        
-        private bool CanDrop(TileBase baseMapTile, TileBase environmentMapTile)
+
+        private void OnDisable()
         {
-            return _towerPlaces.Contains(baseMapTile) && _environment.Contains(environmentMapTile) == false;
+            _inputHandler.OnMouseClickStarted -= TryDrag;
+            _inputHandler.OnMouseDrag -= DragPerformed;
+            _inputHandler.OnMouseCanceled -= Drop;
         }
     }
 }

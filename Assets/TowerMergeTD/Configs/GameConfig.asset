@@ -15,4 +15,3 @@ MonoBehaviour:
   _initialHealth: 50
   _waves:
   - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-  - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}

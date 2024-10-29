@@ -1,5 +1,4 @@
-﻿using Game.State;
-using TowerMergeTD.Game.State;
+﻿using TowerMergeTD.Game.State;
 using UnityEngine;
 using Zenject;
 
@@ -11,29 +10,26 @@ namespace TowerMergeTD.Game.Gameplay
         private const string ROCKET_TOWER_TYPE = "RocketTower";
         
         private readonly DiContainer _diContainer;
-        private readonly Map _baseMap;
-        private readonly Map _environmentMap;
         private readonly TowerObject _prefab;
+        private readonly TilemapCoordinator _tilemapCoordinator;
         private readonly Transform _parent;
         private readonly MonoBehaviour _monoBehaviourContext;
 
         public TowerFactory(
             DiContainer diContainer, 
-            Map baseMap, 
-            Map environmentMap, 
-            TowerObject prefab, 
+            TowerObject prefab,
+            TilemapCoordinator tilemapCoordinator,
             Transform parent,
             MonoBehaviour monoBehaviourContext)
         {
             _diContainer = diContainer;
-            _baseMap = baseMap;
-            _environmentMap = environmentMap;
             _prefab = prefab;
+            _tilemapCoordinator = tilemapCoordinator;
             _parent = parent;
             _monoBehaviourContext = monoBehaviourContext;
         }
 
-        public TowerObject Create(TowerGenerationConfig generation, Vector2 spawnPosition, int towerLevel)
+        public TowerObject Create(InputHandler inputHandler, TowerGenerationConfig generation, Vector2 spawnPosition, int towerLevel)
         {
             var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(_prefab, _parent);
             instance.transform.position = spawnPosition;
@@ -41,7 +37,7 @@ namespace TowerMergeTD.Game.Gameplay
             TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
 
             ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
-            instance.Init(generation, proxy, _baseMap, _environmentMap, attacker);
+            instance.Init(inputHandler, generation, proxy, _tilemapCoordinator, attacker);
 
             instance.name = $"{instance.Type} {towerLevel}";
             return instance;
@@ -53,7 +49,7 @@ namespace TowerMergeTD.Game.Gameplay
             {
                 ID = towerObject.GetInstanceID(),
                 Level = towerLevel,
-                Position = _baseMap.GetCellPosition(spawnPosition),
+                Position = _tilemapCoordinator.GetCellPosition(TilemapType.Base, spawnPosition),
                 Type = generation.TowersType
             };
 

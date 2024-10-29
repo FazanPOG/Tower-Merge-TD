@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Game.State;
 using TowerMergeTD.Game.State;
+using TowerMergeTD.Game.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Zenject;
@@ -11,6 +10,7 @@ namespace TowerMergeTD.Game.Gameplay
 {
     public class BootTest : MonoBehaviour
     {
+        [SerializeField] private TileSetConfig _tileSetConfig;
         [SerializeField] private TowerObject _prefab;
         [SerializeField] private Transform _towerParent;
         [SerializeField] private TowerGenerationConfig _gunTowerGeneration;
@@ -25,25 +25,48 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private TowerObject[] _rocketTowers;
         [Space(15)] 
         [SerializeField] private Transform[] _pathPoints;
+        [SerializeField] private EnemyFinishTrigger _enemyFinish;
+        [SerializeField] private PlayerHealthView _playerHealthView;
+        [SerializeField] private TowerActionsView _towerActionsView;
 
+        private TilemapCoordinator _tilemapCoordinator;
+        private InputHandler _inputHandler;
+        private IWaveSpawnerService _waveSpawnerService;
         private EnemyFactory _enemyFactory;
+        private PlayerHealthProxy _playerHealthProxy;
+        private PlayerMoneyProxy _playerMoneyProxy;
         
         private void Awake()
         {
+            _tilemapCoordinator = new TilemapCoordinator(_baseTileMap, _environmentTileMap, _tileSetConfig);
+            
+            InitPlayer();
             InitTowers();
             InitEnemies();
+            InitUI();
+            
+            _waveSpawnerService.SpawnNextWave();
+            _waveSpawnerService.OnWaveCompleted += () => { _waveSpawnerService.SpawnNextWave(); };
+            _waveSpawnerService.OnAllWavesCompleted += () => { Debug.Log("LEVEL COMPLETE!"); };
+        }
+
+        private void InitPlayer()
+        {
+            _inputHandler = new InputHandler();
+
+            PlayerHealth health = new PlayerHealth(_gameConfig.InitialHealth);
+            _playerHealthProxy = new PlayerHealthProxy(health);
+            
+            PlayerMoney playerMoney = new PlayerMoney(_gameConfig.InitialMoney);
+            _playerMoneyProxy = new PlayerMoneyProxy(playerMoney);
         }
 
         private void InitTowers()
         {
-            new InputHandler();
-            Map baseMap = new Map(_baseTileMap);
-            Map environmentMap = new Map(_environmentTileMap);
-            
             var container = new DiContainer();
-            var towerFactory = new TowerFactory(container, baseMap, environmentMap, _prefab, _towerParent, this);
+            var towerFactory = new TowerFactory(container, _prefab, _tilemapCoordinator, _towerParent, this);
 
-            MergeHandler.Init(towerFactory);
+            MergeHandler.Init(towerFactory, _inputHandler);
             
             foreach (var tower in _gunTowers)
             {
@@ -51,14 +74,14 @@ namespace TowerMergeTD.Game.Gameplay
                 {
                     ID = tower.GetInstanceID(),
                     Level = 1,
-                    Position = baseMap.GetCellPosition(tower.transform.position),
+                    Position = _tilemapCoordinator.GetCellPosition(TilemapType.Base, tower.transform.position),
                     Type = _gunTowerGeneration.TowersType
                 };
                 
                 TowerProxy proxy = new TowerProxy(model);
                 ITowerAttacker attacker = new TowerRegularAttacker(tower.CollisionHandler, this);
                 
-                tower.Init(_gunTowerGeneration, proxy, baseMap, environmentMap, attacker);
+                tower.Init(_inputHandler, _gunTowerGeneration, proxy, _tilemapCoordinator, attacker);
             }
             
             foreach (var tower in _rocketTowers)
@@ -67,14 +90,14 @@ namespace TowerMergeTD.Game.Gameplay
                 {
                     ID = tower.GetInstanceID(),
                     Level = 1,
-                    Position = baseMap.GetCellPosition(tower.transform.position),
+                    Position = _tilemapCoordinator.GetCellPosition(TilemapType.Base, tower.transform.position),
                     Type = _rocketTowerGeneration.TowersType
                 };
                 
                 TowerProxy proxy = new TowerProxy(model);
                 ITowerAttacker attacker = new TowerRegularAttacker(tower.CollisionHandler, this);
                 
-                tower.Init(_rocketTowerGeneration, proxy, baseMap, environmentMap, attacker);
+                tower.Init(_inputHandler, _rocketTowerGeneration, proxy, _tilemapCoordinator, attacker);
             }
         }
 
@@ -84,11 +107,16 @@ namespace TowerMergeTD.Game.Gameplay
             
             _enemyFactory = new EnemyFactory(container, _enemyPrefab, _enemyParent);
             List<Vector3> path = _pathPoints.Select(x => x.position).ToList();
-            IWaveSpawnerService waveSpawnerService = new WaveSpawnerService(_enemyFactory, _gameConfig.Waves, path, _enemySpawnPosition.transform.position, this);
+            _waveSpawnerService = new WaveSpawnerService(_enemyFactory, _gameConfig.Waves, path, _enemySpawnPosition.transform.position, this);
+            _enemyFinish.Init(_playerHealthProxy);
+        }
 
-            waveSpawnerService.SpawnNextWave();
-            waveSpawnerService.OnWaveCompleted += () => { waveSpawnerService.SpawnNextWave(); };
-            waveSpawnerService.OnAllWavesCompleted += () => { Debug.Log("LEVEL COMPLETE!"); };
+        private void InitUI()
+        {
+            TowerActionsAdapter actionsAdapter = new TowerActionsAdapter(_towerActionsView, _inputHandler,  _tilemapCoordinator, _playerMoneyProxy);
+            
+            
+            _playerHealthView.Init(_playerHealthProxy);
         }
     }
 }

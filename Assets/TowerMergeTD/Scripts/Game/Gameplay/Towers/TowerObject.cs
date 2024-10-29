@@ -1,5 +1,3 @@
-using System;
-using Game.State;
 using TowerMergeTD.Game.State;
 using UnityEngine;
 
@@ -7,16 +5,15 @@ namespace TowerMergeTD.Game.Gameplay
 {
     public class TowerObject : MonoBehaviour
     {
-        [SerializeField] private TileSetConfig _tileSetConfig;
         [SerializeField] private TowerCollisionHandler _collisionHandler;
         [SerializeField] private TowerObjectView _view;
         [SerializeField, TextArea(0, 10)] private string DEBUG_STRING;
 
         private TowerGenerationConfig _generation;
         private TowerDataProxy _dataProxy;
-        private Map _baseMap;
         private TowerProxy _towerProxy;
-        private IDraggable _draggable;
+        private TilemapCoordinator _tilemapCoordinator;
+        private DragAndDrop _draggable;
         private ITowerAttacker _attacker;
         private ObjectRotator _rotator;
         private Vector3 _rotateTarget;
@@ -41,15 +38,15 @@ namespace TowerMergeTD.Game.Gameplay
                             $"Attack cooldown: {_dataProxy.AttackCooldown} \n";
         }
 
-        public void Init(TowerGenerationConfig generation, TowerProxy proxy, Map baseMap, Map environmentMap, ITowerAttacker attacker)
+        public void Init(InputHandler inputHandler, TowerGenerationConfig generation, TowerProxy proxy, TilemapCoordinator tilemapCoordinator, ITowerAttacker attacker)
         {
             _generation = generation;
             _towerProxy = proxy;
-            _baseMap = baseMap;
+            _tilemapCoordinator = tilemapCoordinator;
             _attacker = attacker;
             
             _draggable = _collisionHandler.gameObject.AddComponent<DragAndDrop>();
-            _draggable.Init(transform, _baseMap, environmentMap, _tileSetConfig.TowerPlaces, _tileSetConfig.EnvironmentTiles);
+            _draggable.Init(inputHandler, transform, _tilemapCoordinator);
 
             _dataProxy = _generation.GetTowerDataProxy(_towerProxy.Level.CurrentValue);
             _attacker.Init(
@@ -88,7 +85,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void UpdateModel()
         {
-            _towerProxy.Position.Value = _baseMap.GetCellPosition(transform.position);
+            _towerProxy.Position.Value = _tilemapCoordinator.GetCellPosition(TilemapType.Base, transform.position);
         }
 
         private void OnDisable()

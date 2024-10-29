@@ -8,6 +8,9 @@ namespace TowerMergeTD.Game.Gameplay
     {
         [BoxGroup("Settings")] [Range(1, 500)]
         [SerializeField] private float _health = 1f;
+        
+        [BoxGroup("Settings")] [Range(1, 25)]
+        [SerializeField] private int _damage = 1;
 
         [BoxGroup("Settings")] [Range(1, 20)]
         [SerializeField] private float _moveSpeed = 1f;
@@ -16,6 +19,7 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private Sprite _sprite;
 
         public float Health => _health;
+        public int Damage => _damage;
 
         public float MoveSpeed => _moveSpeed;
 

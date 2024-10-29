@@ -63,15 +63,12 @@ namespace TowerMergeTD.Game.Gameplay
             }
 
             foreach (var enemy in enemies)
-            {
-                enemy.OnDied += () => { OnEnemyDied(enemy); };
-            }
+                enemy.OnDied += OnEnemyDied;
         }
 
-        private void OnEnemyDied(Enemy enemy)
+        private void OnEnemyDied()
         {
             _enemyDiedCounter++;
-            _enemyFactory.Release(enemy);
 
             if (_enemyDiedCounter == _currentWave.Enemies.Length)
             {
