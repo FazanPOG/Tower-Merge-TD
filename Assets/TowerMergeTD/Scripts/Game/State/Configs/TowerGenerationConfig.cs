@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.State
@@ -7,12 +8,14 @@ namespace TowerMergeTD.Game.State
     [CreateAssetMenu(menuName = "Configs/TowerGenerationConfig", order = 0)]
     public class TowerGenerationConfig : ScriptableObject
     {
-        [SerializeField] private string _towersType;
+        [SerializeField] private TowerType _towersType;
+        [SerializeField] private int _createCost;
         [SerializeField] private TowerData[] _generation;
 
         private Dictionary<TowerData, TowerDataProxy> _dataMap = new Dictionary<TowerData, TowerDataProxy>();
         
-        public string TowersType => _towersType;
+        public TowerType TowersType => _towersType;
+        public int CreateCost => _createCost;
         
         public TowerDataProxy GetTowerDataProxy(int towerLevel)
         {
@@ -33,6 +36,9 @@ namespace TowerMergeTD.Game.State
                 var data = _generation[i - 1];
                 data.Level = i;
                 _dataMap[data] = new TowerDataProxy(data);
+                
+                if (_createCost < 0)
+                    _createCost = 0;
             }
         }
     }

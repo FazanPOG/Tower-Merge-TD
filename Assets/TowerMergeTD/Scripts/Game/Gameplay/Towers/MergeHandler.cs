@@ -7,13 +7,12 @@ namespace TowerMergeTD.Game.Gameplay
         private static TowerFactory _towerFactory;
         private static InputHandler _inputHandler;
 
-        public static void Init(TowerFactory towerFactory, InputHandler inputHandler)
+        public static void Init(TowerFactory towerFactory)
         {
             if(_towerFactory != null || _inputHandler != null)
                 return;
             
             _towerFactory = towerFactory;
-            _inputHandler = inputHandler;
         }
         
         public static bool TryMerge(TowerGenerationConfig generation, TowerObject firstMergedTower, TowerObject secondMergedTower)
@@ -31,7 +30,7 @@ namespace TowerMergeTD.Game.Gameplay
             firstMergedTower.DestroySelf();
             secondMergedTower.DestroySelf();
             
-            _towerFactory.Create(_inputHandler, generation, spawnPosition, firstMergedTower.Level + 1);
+            _towerFactory.Create(generation.TowersType, spawnPosition, firstMergedTower.Level + 1);
             return true;
         }
     }

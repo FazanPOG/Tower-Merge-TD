@@ -1,4 +1,5 @@
 ﻿using R3;
+using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.State
@@ -6,7 +7,7 @@ namespace TowerMergeTD.Game.State
     public class TowerProxy
     {
         public int ID { get; }
-        public string Type { get; }
+        public TowerType Type { get; }
         public ReactiveProperty<Vector2Int> Position { get; }
         public ReactiveProperty<int> Level { get; }
 

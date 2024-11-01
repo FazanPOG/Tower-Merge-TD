@@ -12,13 +12,13 @@ namespace TowerMergeTD.Game.Gameplay
         private TowerGenerationConfig _generation;
         private TowerDataProxy _dataProxy;
         private TowerProxy _towerProxy;
-        private TilemapCoordinator _tilemapCoordinator;
+        private MapCoordinator _mapCoordinator;
         private DragAndDrop _draggable;
         private ITowerAttacker _attacker;
         private ObjectRotator _rotator;
         private Vector3 _rotateTarget;
 
-        public string Type => _generation.TowersType;
+        public TowerType Type => _generation.TowersType;
         public int Level => _towerProxy.Level.Value;
         public TowerCollisionHandler CollisionHandler => _collisionHandler;
 
@@ -38,15 +38,15 @@ namespace TowerMergeTD.Game.Gameplay
                             $"Attack cooldown: {_dataProxy.AttackCooldown} \n";
         }
 
-        public void Init(InputHandler inputHandler, TowerGenerationConfig generation, TowerProxy proxy, TilemapCoordinator tilemapCoordinator, ITowerAttacker attacker)
+        public void Init(InputHandler inputHandler, TowerGenerationConfig generation, TowerProxy proxy, MapCoordinator mapCoordinator, ITowerAttacker attacker)
         {
             _generation = generation;
             _towerProxy = proxy;
-            _tilemapCoordinator = tilemapCoordinator;
+            _mapCoordinator = mapCoordinator;
             _attacker = attacker;
             
             _draggable = _collisionHandler.gameObject.AddComponent<DragAndDrop>();
-            _draggable.Init(inputHandler, transform, _tilemapCoordinator);
+            _draggable.Init(inputHandler, transform, _mapCoordinator);
 
             _dataProxy = _generation.GetTowerDataProxy(_towerProxy.Level.CurrentValue);
             _attacker.Init(
@@ -85,7 +85,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void UpdateModel()
         {
-            _towerProxy.Position.Value = _tilemapCoordinator.GetCellPosition(TilemapType.Base, transform.position);
+            _towerProxy.Position.Value = _mapCoordinator.GetCellPosition(TilemapType.Base, transform.position);
         }
 
         private void OnDisable()

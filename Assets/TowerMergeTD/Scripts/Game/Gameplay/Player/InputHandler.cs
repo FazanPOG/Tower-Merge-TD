@@ -12,6 +12,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private PlayerInputActions _playerInputActions;
         private Vector2 _initialMousePosition;
+        private float _dragDistance;
         private bool _isMousePressed;
 
         public event Action OnMouseClicked;
@@ -49,20 +50,22 @@ namespace TowerMergeTD.Game.Gameplay
         private void DeltaPerformed(InputAction.CallbackContext _)
         {
             Vector2 currentMousePosition = GetMouseWorldPosition();
-            float distance = Vector2.Distance(_initialMousePosition, currentMousePosition);
+            var distance = Vector2.Distance(_initialMousePosition, currentMousePosition);
             
-            if (distance > MOUSE_DRAG_THRESHOLD)
+            if (distance > MOUSE_DRAG_THRESHOLD && _isMousePressed)
             {
-                _isMousePressed = false;
+                _dragDistance = distance;
                 OnMouseDrag?.Invoke();
             }
         }
 
         private void LeftButtonCanceled(InputAction.CallbackContext _)
         {
-            if (_isMousePressed)
+            if (_isMousePressed && _dragDistance < MOUSE_DRAG_THRESHOLD)
                 OnMouseClicked?.Invoke();
-                
+
+            _dragDistance = 0f;
+            _isMousePressed = false;
             OnMouseCanceled?.Invoke();
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.State
@@ -7,7 +8,7 @@ namespace TowerMergeTD.Game.State
     public class Tower
     {
         public int ID;
-        public string Type;
+        public TowerType Type;
         public Vector2Int Position;
         public int Level;
     }

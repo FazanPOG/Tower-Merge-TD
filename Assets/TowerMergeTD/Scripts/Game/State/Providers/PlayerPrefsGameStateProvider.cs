@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using R3;
+using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Scripts.Game.State.Root;
 using UnityEngine;
@@ -60,11 +61,11 @@ namespace TowerMergeTD.Scripts.Game.State
                     {
                         new Tower()
                         {
-                            Type = "GunTower",
+                            Type = TowerType.Gun,
                         },
                         new Tower()
                         {
-                            Type = "LaserTower",
+                            Type = TowerType.Laser,
                         }
                     }
                 };

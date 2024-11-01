@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using R3;
 using TowerMergeTD.Gameplay.Root;
 using TowerMergeTD.MainMenu.Root;
@@ -16,6 +17,7 @@ namespace TowerMergeTD.GameRoot
 
         private MonoBehaviourWrapper _monoBehaviourWrapper;
         private UIRootView _uiRootView;
+        private ProjectConfig _projectConfig;
         private readonly DiContainer _rootContainer = new DiContainer();
         private DiContainer _cashedSceneContainer;
         
@@ -39,11 +41,15 @@ namespace TowerMergeTD.GameRoot
             _uiRootView = Object.Instantiate(prefabUIRootView);
             Object.DontDestroyOnLoad(_uiRootView.gameObject);
 
+            _projectConfig = Resources.Load<ProjectConfig>("ProjectConfig");
+            var prefabReferencesConfig = Resources.Load<PrefabReferencesConfig>("PrefabReferencesConfig");
             var gameStateProvider = new PlayerPrefsGameStateProvider();
 
             _rootContainer.Bind<IGameStateProvider>().To<PlayerPrefsGameStateProvider>().FromInstance(gameStateProvider).AsSingle().NonLazy();
             _rootContainer.Bind<UIRootView>().FromInstance(_uiRootView).AsSingle().NonLazy();
             _rootContainer.Bind<MonoBehaviourWrapper>().FromInstance(_monoBehaviourWrapper).AsSingle().NonLazy();
+            _rootContainer.Bind<ProjectConfig>().FromInstance(_projectConfig).AsSingle().NonLazy();
+            _rootContainer.Bind<PrefabReferencesConfig>().FromInstance(prefabReferencesConfig).AsSingle().NonLazy();
         }
         
         private void StartGame()
@@ -53,7 +59,7 @@ namespace TowerMergeTD.GameRoot
 
             if (sceneName == Scenes.Gameplay)
             {
-                var enterParams = new GameplayEnterParams("test.save", 1); 
+                var enterParams = new GameplayEnterParams(_projectConfig.LevelConfigs.First());
                 _monoBehaviourWrapper.StartCoroutine(LoadAndStartGameplay(enterParams));
                 return;
             }

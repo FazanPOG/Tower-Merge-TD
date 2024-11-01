@@ -9,7 +9,7 @@ namespace TowerMergeTD.Game.State
         public float AttackCooldown { get; }
         
         public float Damage { get; }
-
+        
         public int Level { get; }
 
         public Sprite Sprite { get; }

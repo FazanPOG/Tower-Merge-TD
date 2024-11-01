@@ -15,7 +15,7 @@ namespace TowerMergeTD.Game.State
         
         [BoxGroup("Settings")] [LabelText("Tower Damage")] [Tooltip("Initial tower damage.")]
         public float Damage;
-
+        
         [BoxGroup("Settings")] [LabelText("Tower Level")] [Tooltip("Current level of the tower.")]
         public int Level;
 

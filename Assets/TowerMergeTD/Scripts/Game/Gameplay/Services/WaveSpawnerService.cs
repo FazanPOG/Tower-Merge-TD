@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TowerMergeTD.Utils;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -25,7 +26,7 @@ namespace TowerMergeTD.Game.Gameplay
             WaveConfig[] waves, 
             List<Vector3> path, 
             Vector2 enemySpawnPosition,
-            MonoBehaviour monoBehaviour)
+            MonoBehaviourWrapper monoBehaviour)
         {
             _enemyFactory = enemyFactory;
             _path = path;

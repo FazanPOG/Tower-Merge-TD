@@ -24,6 +24,7 @@ MonoBehaviour:
     - ea60e6d2efd58794abb84edc46e97c8d
     - de611da444854ca4af7072b83c13eb75
     - d49088911968c0942b429b159cba4e06
+    - 7f82eab8a3a43934f90623bf74a51446
     values:
     - colorIndex: 0
       iconNameOrGuid: SceneAsset Icon
@@ -45,3 +46,5 @@ MonoBehaviour:
       iconNameOrGuid: 
     - colorIndex: 0
       iconNameOrGuid: RawImage Icon
+    - colorIndex: 0
+      iconNameOrGuid: ScriptableObject Icon

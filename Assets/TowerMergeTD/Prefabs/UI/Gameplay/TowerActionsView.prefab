@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93dac9f6b4143cf9ee4476d3d066844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _parentCanvas: {fileID: 0}
   _createGunTowerButton: {fileID: 1677787376398269864}
   _createRocketTowerButton: {fileID: 1184274149499871036}
   _sellTowerButton: {fileID: 4936829129319021669}

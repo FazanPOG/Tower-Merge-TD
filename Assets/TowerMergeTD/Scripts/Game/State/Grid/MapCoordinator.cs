@@ -1,20 +1,23 @@
 ﻿using System.Linq;
+using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace TowerMergeTD.Game.State
 {
-    public class TilemapCoordinator
+    public class MapCoordinator
     {
         private readonly Tilemap _baseTilemap;
         private readonly Tilemap _environmentTilemap;
         private readonly TileSetConfig _tileSetConfig;
+        private readonly InputHandler _inputHandler;
 
-        public TilemapCoordinator(Tilemap baseTilemap, Tilemap environmentTilemap, TileSetConfig tileSetConfig)
+        public MapCoordinator(Tilemap baseTilemap, Tilemap environmentTilemap, TileSetConfig tileSetConfig, InputHandler inputHandler)
         {
             _baseTilemap = baseTilemap;
             _environmentTilemap = environmentTilemap;
             _tileSetConfig = tileSetConfig;
+            _inputHandler = inputHandler;
         }
 
         public bool CanPlaceTower(Vector3 worldPosition)
@@ -72,7 +75,33 @@ namespace TowerMergeTD.Game.State
             return new Vector2(cellCenter.x, cellCenter.y);
         }
 
-        public TileBase GetTile(TilemapType tilemapType, Vector3 position)
+        public bool HasTowerInCell(out TowerObject towerObject)
+        {
+            Vector3 mouseWorldPosition = _inputHandler.GetMouseWorldPosition();
+            mouseWorldPosition.z = 0;
+
+            Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);
+            if (colliders.Length > 0)
+            {
+                foreach (var collider in colliders)
+                {
+                    if (collider is BoxCollider2D == false) 
+                        continue;
+                    
+                    if (collider.gameObject.transform.parent.TryGetComponent(out TowerObject tower))
+                    {
+                        towerObject = tower;
+                        return true;
+                    }
+                        
+                }
+            }
+
+            towerObject = null;
+            return false;
+        }
+        
+        private TileBase GetTile(TilemapType tilemapType, Vector3 position)
         {
             Vector3 worldPos = new Vector3(position.x, position.y, 0f);
             Vector3Int tilePos;

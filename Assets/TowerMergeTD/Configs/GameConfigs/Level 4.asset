@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e79943d46b204fba993eb210a1350975, type: 3}
-  m_Name: GameConfig
+  m_Name: Level 4
   m_EditorClassIdentifier: 
   _initialHealth: 50
+  _initialMoney: 500
+  _towerGenerationConfigs:
+  - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
+  - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
   _waves:
   - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}

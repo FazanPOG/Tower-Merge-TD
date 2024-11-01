@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c99b454087a4c6e96bc9de39f6fbc5e, type: 3}
   m_Name: RocketTowerGeneration
   m_EditorClassIdentifier: 
-  _towersType: RocketTower
+  _towersType: 2
+  _createCost: 50
   _generation:
   - AttackRange: 2
     AttackCooldown: 3

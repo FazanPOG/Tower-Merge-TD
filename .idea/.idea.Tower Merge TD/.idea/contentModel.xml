@@ -1477,7 +1477,7 @@
                 </e>
                 <e p="Configs" t="Include">
                   <e p="EnemyConfig.cs" t="Include" />
-                  <e p="GameConfig.cs" t="Include" />
+                  <e p="LevelConfig.cs" t="Include" />
                   <e p="WaveConfig.cs" t="Include" />
                 </e>
                 <e p="Enemies" t="Include">
@@ -1496,7 +1496,6 @@
                   <e p="PlayerInputActions.cs" t="Include" />
                 </e>
                 <e p="Root" t="Include">
-                  <e p="BootTest.cs" t="Include" />
                   <e p="GameplayBinder.cs" t="Include" />
                   <e p="GameplayEnterParams.cs" t="Include" />
                   <e p="GameplayEntryPoint.cs" t="Include" />
@@ -1520,10 +1519,13 @@
                   <e p="TowerCollisionHandler.cs" t="Include" />
                   <e p="TowerObject.cs" t="Include" />
                   <e p="TowerObjectView.cs" t="Include" />
+                  <e p="TowerType.cs" t="Include" />
                 </e>
               </e>
               <e p="GameRoot" t="Include">
                 <e p="GameEntryPoint.cs" t="Include" />
+                <e p="PrefabReferencesConfig.cs" t="Include" />
+                <e p="ProjectConfig.cs" t="Include" />
                 <e p="SceneEnterParams.cs" t="Include" />
                 <e p="Scenes.cs" t="Include" />
                 <e p="UIRootView.cs" t="Include" />
@@ -1548,7 +1550,7 @@
                 <e p="Grid" t="Include">
                   <e p="Grid.cs" t="Include" />
                   <e p="GridTesting.cs" t="Include" />
-                  <e p="TilemapCoordinator.cs" t="Include" />
+                  <e p="MapCoordinator.cs" t="Include" />
                   <e p="TileMapType.cs" t="Include" />
                 </e>
                 <e p="Player" t="Include">
@@ -1577,6 +1579,7 @@
                   </e>
                   <e p="Views" t="Include">
                     <e p="PlayerHealthView.cs" t="Include" />
+                    <e p="PlayerMoneyView.cs" t="Include" />
                     <e p="TowerActionsView.cs" t="Include" />
                   </e>
                 </e>

@@ -1,16 +1,15 @@
-﻿using TowerMergeTD.GameRoot;
+﻿using TowerMergeTD.Game.Gameplay;
+using TowerMergeTD.GameRoot;
 
 namespace TowerMergeTD.Gameplay.Root
 {
     public class GameplayEnterParams : SceneEnterParams
     {
-        public string SaveFileName { get; }
-        public int LevelNumber { get; }
+        public LevelConfig LevelConfig { get; }
         
-        public GameplayEnterParams(string saveFileName, int levelNumber) : base(Scenes.Gameplay)
+        public GameplayEnterParams(LevelConfig levelConfig) : base(Scenes.Gameplay)
         {
-            SaveFileName = saveFileName;
-            LevelNumber = levelNumber;
+            LevelConfig = levelConfig;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TowerMergeTD.Game.Gameplay
         
         private InputHandler _inputHandler;
         private Transform _draggedTransform;
-        private TilemapCoordinator _tilemapCoordinator;
+        private MapCoordinator _mapCoordinator;
 
         private Vector2 _previousPosition;
         private BoxCollider2D _dragCollider;
@@ -20,11 +20,11 @@ namespace TowerMergeTD.Game.Gameplay
         public event Action OnDroppedOnTileMap;
         public event Action<TowerObject> OnDroppedOnTower;
 
-        public void Init(InputHandler inputHandler, Transform draggedTransform, TilemapCoordinator tilemapCoordinator)
+        public void Init(InputHandler inputHandler, Transform draggedTransform, MapCoordinator mapCoordinator)
         {
             _inputHandler = inputHandler;
             _draggedTransform = draggedTransform;
-            _tilemapCoordinator = tilemapCoordinator;
+            _mapCoordinator = mapCoordinator;
 
             _dragCollider = GetComponent<BoxCollider2D>();
 
@@ -115,7 +115,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void HandleDropOnTileMap(Vector3 dropWorldPosition)
         {
-            if (_tilemapCoordinator.CanPlaceTower(dropWorldPosition))
+            if (_mapCoordinator.CanPlaceTower(dropWorldPosition))
             {
                 UpdatePosition(dropWorldPosition);
                 OnDroppedOnTileMap?.Invoke();
@@ -128,7 +128,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void UpdatePosition(Vector3 dropWorldPosition)
         {
-            var cellCenter = _tilemapCoordinator.GetCellCenterPosition(TilemapType.Base, dropWorldPosition);
+            var cellCenter = _mapCoordinator.GetCellCenterPosition(TilemapType.Base, dropWorldPosition);
             _draggedTransform.position = cellCenter;
         }
 
