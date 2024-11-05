@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialHealth: 50
   _initialMoney: 500
+  _tileSetConfig: {fileID: 11400000, guid: cf31c41e8f729004bb1e405f4d42723e, type: 2}
   _towerGenerationConfigs:
   - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
   - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}

@@ -19,18 +19,23 @@ namespace TowerMergeTD.MainMenu.Root
             
             var _uiRoot = mainMenuContainer.Resolve<UIRootView>();
             var uiMainMenuRoot = Instantiate(_uiMainMenuRootPrefab);
-            _uiRoot.AttackSceneUI(uiMainMenuRoot.gameObject);
+            _uiRoot.AttachSceneUI(uiMainMenuRoot.gameObject);
         
-            var exitSceneSignalSubj = new Subject<Unit>();
-            uiMainMenuRoot.Bind(exitSceneSignalSubj);
+            var exitSceneSignal = new ReactiveProperty<int>();
+            uiMainMenuRoot.Bind(exitSceneSignal);
             
             Debug.Log($"MAIN MENU ENTER PARAMS: {mainMenuEnterParams?.Result}");
-            
-            var projectConfig = mainMenuContainer.Resolve<ProjectConfig>();
-            var gameplayEnterParams = new GameplayEnterParams(projectConfig.LevelConfigs.First());
-            _mainMenuExitParams = new MainMenuExitParams(gameplayEnterParams);
-            
-            var exitToGameplaySceneSignal = exitSceneSignalSubj.Select(_ => _mainMenuExitParams);
+
+            exitSceneSignal.Skip(1).Subscribe(levelNumber =>
+            {
+                var projectConfig = mainMenuContainer.Resolve<ProjectConfig>();
+                var level = projectConfig.Levels[levelNumber - 1];
+
+                var gameplayEnterParams = new GameplayEnterParams(level);
+                _mainMenuExitParams = new MainMenuExitParams(gameplayEnterParams);
+            });
+
+            var exitToGameplaySceneSignal = exitSceneSignal.Select(_ => _mainMenuExitParams);
             return exitToGameplaySceneSignal;
         }
     }

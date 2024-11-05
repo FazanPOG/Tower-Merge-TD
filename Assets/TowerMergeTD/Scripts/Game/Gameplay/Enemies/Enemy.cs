@@ -5,17 +5,21 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(CircleCollider2D))]
     public class Enemy : MonoBehaviour, IDamageable
     {
         [SerializeField] private EnemyView _view;
         
         private readonly ReactiveProperty<float> _health = new ReactiveProperty<float>();
         private EnemyConfig _config;
-        
-        public event Action OnDied;
 
-        public int Damage => _config.Damage;
+        public event Action OnDied;
         
+        public int Damage => _config.Damage;
+
+        private void Awake() => GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         public void Init(EnemyConfig config, List<Vector3> movePath)
         {
             _config = config;

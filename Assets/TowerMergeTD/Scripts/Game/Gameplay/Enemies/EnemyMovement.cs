@@ -11,7 +11,6 @@ namespace TowerMergeTD.Game.Gameplay
         private float _moveSpeed;
         private ObjectRotator _rotator;
 
-        //TODO: Monobehaviour Wrapper instead enemy
         public void Move(MonoBehaviour enemy, Transform view, List<Vector3> path, float moveSpeed)
         {
             _enemy = enemy;

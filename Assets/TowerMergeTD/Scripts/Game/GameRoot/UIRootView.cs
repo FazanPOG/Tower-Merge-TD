@@ -22,7 +22,7 @@ namespace TowerMergeTD.GameRoot
             _loadingScreen.gameObject.SetActive(false);
         }
 
-        public void AttackSceneUI(GameObject sceneUI)
+        public void AttachSceneUI(GameObject sceneUI)
         {
             ClearSceneUI();
             sceneUI.transform.SetParent(_uiSceneContainer.transform, false);

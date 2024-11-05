@@ -8,10 +8,10 @@ namespace TowerMergeTD.GameRoot
     {
         [Header("Gameplay")]
         [SerializeField] private TowerObject _towerPrefab;
-        [SerializeField] private Enemy _enemyPrefab;
+        [SerializeField] private Enemy enemyPrefab;
 
         public TowerObject TowerPrefab => _towerPrefab;
 
-        public Enemy EnemyPrefab => _enemyPrefab;
+        public Enemy EnemyPrefab => enemyPrefab;
     }
 }

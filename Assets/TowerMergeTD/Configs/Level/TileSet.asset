@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb9866627004d7783ddc671c7335170, type: 3}
   m_Name: TileSet
   m_EditorClassIdentifier: 
-  _enemyPathTiles:
-  - {fileID: 11400000, guid: 549d5230d0806044dbde3d52f785989e, type: 2}
-  - {fileID: 11400000, guid: 7152bd10bbd01cc4f824adbf429e2f7c, type: 2}
   _environmentTiles:
   - {fileID: 11400000, guid: ea32be9c4ef4b2e4f90f699427e46c92, type: 2}
   - {fileID: 11400000, guid: f23f50184d7e9e64ea8d6a9e3747bdbd, type: 2}
@@ -24,6 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 991a2b8e4b3574145a1ee718aa8f255f, type: 2}
   - {fileID: 11400000, guid: 2c07d95886a2c364a9b309913b82071d, type: 2}
   - {fileID: 11400000, guid: 809c03a51f2f3e84c940df1da871fb4d, type: 2}
+  - {fileID: 11400000, guid: 4844bb01ac58e3f439dabac8967d4809, type: 2}
   _towerPlaces:
-  - {fileID: 11400000, guid: e127f659efafd12418c93e39509eb8d3, type: 2}
-  - {fileID: 11400000, guid: fe279028ed9bbcf499c6af2075e58371, type: 2}
+  - {fileID: 11400000, guid: d43f0a44bf81f7149bd790909d9b4e89, type: 2}
+  - {fileID: 11400000, guid: 4844bb01ac58e3f439dabac8967d4809, type: 2}

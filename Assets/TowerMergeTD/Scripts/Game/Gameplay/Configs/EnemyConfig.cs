@@ -17,7 +17,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         [BoxGroup("Visuals")] [PreviewField(75, ObjectFieldAlignment.Center)] [HideLabel]
         [SerializeField] private Sprite _sprite;
-
+        
         public float Health => _health;
         public int Damage => _damage;
 

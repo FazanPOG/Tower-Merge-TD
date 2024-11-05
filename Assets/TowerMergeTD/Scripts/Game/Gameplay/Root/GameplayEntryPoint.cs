@@ -1,26 +1,15 @@
 ﻿using R3;
 using TowerMergeTD.Game.Gameplay;
-using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
 using TowerMergeTD.MainMenu.Root;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Zenject;
 
 namespace TowerMergeTD.Gameplay.Root
 {
     public class GameplayEntryPoint : MonoBehaviour
     {
-        //TODO: after complete level creator, ref to level prefab, instead this
         [SerializeField] private UIGameplayRootView _uiGameplayRootPrefab;
-        [SerializeField] private TileSetConfig _tileSetConfig;
-        [SerializeField] private Tilemap _baseTileMap;
-        [SerializeField] private Tilemap _environmentTileMap;
-        [SerializeField] private Transform _towersParent;
-        [SerializeField] private Transform _enemiesParent;
-        [SerializeField] private Transform[] _pathPoints;
-        [SerializeField] private EnemyFinishTrigger _enemyFinish;
-        [SerializeField] private Transform _enemySpawnPosition;
 
         public Observable<GameplayExitParams> Run(DiContainer gameplayContainer, GameplayEnterParams gameplayEnterParams)
         {
@@ -28,27 +17,22 @@ namespace TowerMergeTD.Gameplay.Root
             
             var uiRoot = gameplayContainer.Resolve<UIRootView>();
             var uiGameplayRoot = Instantiate(_uiGameplayRootPrefab);
-            uiRoot.AttackSceneUI(uiGameplayRoot.gameObject);
+            uiRoot.AttachSceneUI(uiGameplayRoot.gameObject);
+
+            var level = gameplayContainer.InstantiatePrefabForComponent<Level>(gameplayEnterParams.Level);
+            level.name = $"{gameplayEnterParams.Level.name}";
             
             var exitSceneSignalSubj = new Subject<Unit>();
 
             var gameplayBinder = new GameplayBinder(gameplayContainer);
-            gameplayBinder.Bind(
-                gameplayEnterParams.LevelConfig, 
-                _baseTileMap, 
-                _environmentTileMap, 
-                _tileSetConfig, 
-                _towersParent, 
-                _enemiesParent, 
-                _pathPoints,
-                _enemySpawnPosition.transform.position,
-                _enemyFinish);
+            gameplayBinder.Bind(level);
             
             uiGameplayRoot.Bind(exitSceneSignalSubj, gameplayContainer);
 
-            Debug.Log($"GAMEPLAY ENTER PARAMS: GameConfig: {gameplayEnterParams.LevelConfig.name}");
+            Debug.Log($"GAMEPLAY ENTER PARAMS: {level.name}");
             StartGameplay(gameplayContainer);
             
+            //TODO: Change MainMenuEnterParams to end level stats (score + ...)
             var mainMenuEnterParams = new MainMenuEnterParams("result");
             var exitParams = new GameplayExitParams(mainMenuEnterParams);
 
@@ -58,11 +42,8 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void StartGameplay(DiContainer container)
         {
-            IWaveSpawnerService waveSpawnerService = container.Resolve<IWaveSpawnerService>();
-            
-            waveSpawnerService.SpawnNextWave();
-            waveSpawnerService.OnWaveCompleted += () => { waveSpawnerService.SpawnNextWave(); };
-            waveSpawnerService.OnAllWavesCompleted += () => { Debug.Log("---Level complete!---"); };
+            GameStateMachine gameStateMachine = container.Resolve<GameStateMachine>();
+            gameStateMachine.EnterIn<BootState>();
         }
     }
 }

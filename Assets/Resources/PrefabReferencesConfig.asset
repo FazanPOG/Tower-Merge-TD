@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PrefabReferencesConfig
   m_EditorClassIdentifier: 
   _towerPrefab: {fileID: 89100193100193579, guid: cb667a1f8824cfd4999e382f0400bbad, type: 3}
-  _enemyPrefab: {fileID: 1089150644754554188, guid: 9b9b33c3ac270bf4ebededc9518fbf43, type: 3}
+  enemyPrefab: {fileID: 1089150644754554188, guid: 9b9b33c3ac270bf4ebededc9518fbf43, type: 3}

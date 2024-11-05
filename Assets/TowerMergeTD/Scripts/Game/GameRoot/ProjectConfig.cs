@@ -6,8 +6,8 @@ namespace TowerMergeTD.GameRoot
     [CreateAssetMenu(menuName = "Configs/ProjectConfig", order = 0)]
     public class ProjectConfig : ScriptableObject
     {
-        [SerializeField] private LevelConfig[] _levelConfigs;
+        [SerializeField] private Level[] _levels;
 
-        public LevelConfig[] LevelConfigs => _levelConfigs;
+        public Level[] Levels => _levels;
     }
 }

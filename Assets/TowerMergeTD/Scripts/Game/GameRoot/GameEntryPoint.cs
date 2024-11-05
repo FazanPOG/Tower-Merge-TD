@@ -59,7 +59,7 @@ namespace TowerMergeTD.GameRoot
 
             if (sceneName == Scenes.Gameplay)
             {
-                var enterParams = new GameplayEnterParams(_projectConfig.LevelConfigs.First());
+                var enterParams = new GameplayEnterParams(_projectConfig.Levels.First());
                 _monoBehaviourWrapper.StartCoroutine(LoadAndStartGameplay(enterParams));
                 return;
             }
@@ -98,7 +98,7 @@ namespace TowerMergeTD.GameRoot
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             var mainMenuContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
             
-            mainMenuEntryPoint.Run(mainMenuContainer, mainMenuEnterParams).Subscribe(mainMenuExitParams =>
+            mainMenuEntryPoint.Run(mainMenuContainer, mainMenuEnterParams).Skip(1).Subscribe(mainMenuExitParams =>
             {
                 var targetSceneName = mainMenuExitParams.TargetSceneEnterParams.SceneName;
 

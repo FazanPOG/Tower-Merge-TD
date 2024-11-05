@@ -17,7 +17,7 @@ namespace TowerMergeTD.Gameplay.Root
         private PlayerHealthProxy _playerHealthProxy;
         private PlayerMoneyProxy _playerMoneyProxy;
 
-        public Subject<Unit> _exitSceneSignalBus;
+        private Subject<Unit> _exitSceneSignalBus;
 
         public void HandleGoToMainMenuButtonClicked()
         {

@@ -5,11 +5,11 @@ namespace TowerMergeTD.Gameplay.Root
 {
     public class GameplayEnterParams : SceneEnterParams
     {
-        public LevelConfig LevelConfig { get; }
+        public Level Level { get; }
         
-        public GameplayEnterParams(LevelConfig levelConfig) : base(Scenes.Gameplay)
+        public GameplayEnterParams(Level level) : base(Scenes.Gameplay)
         {
-            LevelConfig = levelConfig;
+            Level = level;
         }
     }
 }

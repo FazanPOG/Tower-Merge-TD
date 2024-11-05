@@ -5,14 +5,14 @@ namespace TowerMergeTD.MainMenu.Root
 {
     public class UIMainMenuRootView : MonoBehaviour
     {
-        public Subject<Unit> _exitSceneSignalBus;
+        private ReactiveProperty<int> _exitSceneSignalBus;
 
-        public void HandleGoToGameplayButtonClicked()
+        public void HandleGoToGameplayButtonClicked(int levelNumber)
         {
-            _exitSceneSignalBus?.OnNext(Unit.Default);
+            _exitSceneSignalBus?.OnNext(levelNumber);
         }
 
-        public void Bind(Subject<Unit> exitSceneSignalBus)
+        public void Bind(ReactiveProperty<int> exitSceneSignalBus)
         {
             _exitSceneSignalBus = exitSceneSignalBus;
         }
