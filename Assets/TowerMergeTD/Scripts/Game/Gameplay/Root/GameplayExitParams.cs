@@ -1,14 +1,14 @@
-﻿using TowerMergeTD.MainMenu.Root;
+﻿using TowerMergeTD.GameRoot;
 
 namespace TowerMergeTD.Gameplay.Root
 {
     public class GameplayExitParams
     {
-        public MainMenuEnterParams MainMenuEnterParams { get; }
+        public SceneEnterParams TargetSceneEnterParams { get; }
 
-        public GameplayExitParams(MainMenuEnterParams mainMenuEnterParams)
+        public GameplayExitParams(SceneEnterParams targetSceneEnterParams)
         {
-            MainMenuEnterParams = mainMenuEnterParams;
+            TargetSceneEnterParams = targetSceneEnterParams;
         }
     }
 }

@@ -27,7 +27,6 @@ namespace TowerMergeTD.Game.MainMenu
 
         private void InvokeButtonEvent() => OnButtonClicked?.Invoke();
 
-        public void SetButtonInteractable(bool isInteractable) => _button.interactable = isInteractable;
         public void SetActiveDefaultStage(bool activeState) => _defaultStage.gameObject.SetActive(activeState);
         public void SetActiveLockStage(bool activeState) => _lockStage.gameObject.SetActive(activeState);
         public void SetActiveCompleteStage(bool activeState) => _completeStage.gameObject.SetActive(activeState);

@@ -31,9 +31,7 @@ namespace TowerMergeTD.MainMenu.Root
 
             exitSceneSignal.Skip(1).Subscribe(levelNumber =>
             {
-                var level = projectConfig.Levels[levelNumber];
-
-                var gameplayEnterParams = new GameplayEnterParams(level);
+                var gameplayEnterParams = new GameplayEnterParams(levelNumber);
                 _mainMenuExitParams = new MainMenuExitParams(gameplayEnterParams);
             });
 

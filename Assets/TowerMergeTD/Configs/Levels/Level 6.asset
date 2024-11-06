@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79943d46b204fba993eb210a1350975, type: 3}
   m_Name: Level 6
   m_EditorClassIdentifier: 
-  _isOpen: 1
+  _isOpen: 0
   _initialHealth: 50
   _initialMoney: 500
   scoreForOneStar: 100

@@ -59,7 +59,7 @@ namespace TowerMergeTD.GameRoot
 
             if (sceneName == Scenes.Gameplay)
             {
-                var enterParams = new GameplayEnterParams(_projectConfig.Levels.First());
+                var enterParams = new GameplayEnterParams(1);
                 _monoBehaviourWrapper.StartCoroutine(LoadAndStartGameplay(enterParams));
                 return;
             }
@@ -126,12 +126,21 @@ namespace TowerMergeTD.GameRoot
             //
             var gameplayEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
             var gameplayContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
-            
-            gameplayEntryPoint.Run(gameplayContainer, gameplayEnterParams).Subscribe(gameplayExitParams =>
-            {
-                _monoBehaviourWrapper.StartCoroutine(LoadAndStartMainMenu(gameplayExitParams.MainMenuEnterParams)); 
-            });
 
+            gameplayEntryPoint.Run(gameplayContainer, gameplayEnterParams).Skip(1).Subscribe(gameplayExitParams =>
+            {
+                var targetSceneName = gameplayExitParams.TargetSceneEnterParams.SceneName;
+
+                if (targetSceneName == Scenes.Gameplay)
+                {
+                    _monoBehaviourWrapper.StartCoroutine(LoadAndStartGameplay(gameplayExitParams.TargetSceneEnterParams.As<GameplayEnterParams>()));
+                }
+                else if (targetSceneName == Scenes.MainMenu)
+                {
+                    _monoBehaviourWrapper.StartCoroutine(LoadAndStartMainMenu(gameplayExitParams.TargetSceneEnterParams.As<MainMenuEnterParams>())); 
+                }
+            });
+            
             _uiRootView.HideLoadingScreen();
         }
 

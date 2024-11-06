@@ -1,6 +1,8 @@
-﻿using System;
-using R3;
+﻿using R3;
 using TowerMergeTD.Game.Gameplay;
+using TowerMergeTD.Gameplay.Root;
+using TowerMergeTD.GameRoot;
+using TowerMergeTD.MainMenu.Root;
 using UnityEngine.UI;
 
 namespace TowerMergeTD.Game.UI
@@ -8,12 +10,14 @@ namespace TowerMergeTD.Game.UI
     public class PausePopupViewAdapter
     {
         private readonly PausePopupView _view;
-        private readonly Subject<Unit> _exitSceneSignalBus;
+        private readonly int _currentLevelNumber;
+        private readonly ReactiveProperty<SceneEnterParams> _exitSceneSignalBus;
         private readonly IPauseService _pauseService;
 
-        public PausePopupViewAdapter(PausePopupView view, Button pauseButton, Subject<Unit> exitSceneSignalBus, IPauseService pauseService)
+        public PausePopupViewAdapter(PausePopupView view, int currentLevelNumber, Button pauseButton, ReactiveProperty<SceneEnterParams> exitSceneSignalBus, IPauseService pauseService)
         {
             _view = view;
+            _currentLevelNumber = currentLevelNumber;
             _exitSceneSignalBus = exitSceneSignalBus;
             _pauseService = pauseService;
             
@@ -37,12 +41,12 @@ namespace TowerMergeTD.Game.UI
 
         private void HandleRestartButtonClicked()
         {
-            
+            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelNumber));
         }
 
         private void HandleExitButtonClicked()
         {
-            _exitSceneSignalBus.OnNext(Unit.Default);
+            _exitSceneSignalBus.OnNext(new MainMenuEnterParams("Result"));
         }
     }
 }

@@ -7,25 +7,33 @@ namespace TowerMergeTD.Game.MainMenu
     public class LevelEntryViewAdapter
     {
         private readonly bool _isDevelopmentSettings;
-        private readonly LevelEntryView _view;
+        private readonly LevelEntryView _levelEntryView;
+        private readonly LevelLockPopupView _levelLockPopupView;
         private readonly LevelSaveDataProxy _levelSaveDataProxy;
         private readonly LevelConfig _levelConfig;
-        private readonly Action<int> _buttonClickedCallback;
+        private readonly Action<int> _goGameplayCallback;
 
-        public LevelEntryViewAdapter(bool isDevelopmentSettings, LevelEntryView view, LevelSaveDataProxy levelSaveDataProxy, LevelConfig levelConfig, Action<int> buttonClickedCallback)
+        public LevelEntryViewAdapter(
+            bool isDevelopmentSettings, 
+            LevelEntryView levelEntryView,
+            LevelLockPopupView levelLockPopupView,
+            LevelSaveDataProxy levelSaveDataProxy, 
+            LevelConfig levelConfig, 
+            Action<int> goGameplayCallback)
         {
             _isDevelopmentSettings = isDevelopmentSettings;
-            _view = view;
+            _levelEntryView = levelEntryView;
+            _levelLockPopupView = levelLockPopupView;
             _levelSaveDataProxy = levelSaveDataProxy;
             _levelConfig = levelConfig;
-            _buttonClickedCallback = buttonClickedCallback;
+            _goGameplayCallback = goGameplayCallback;
 
             Init();
         }
 
         private void Init()
         {
-            _view.SetLevelText(_levelSaveDataProxy.ID.ToString());
+            _levelEntryView.SetLevelText($"{_levelSaveDataProxy.ID + 1}");
 
             bool isOpen;
             if (_isDevelopmentSettings)
@@ -44,41 +52,46 @@ namespace TowerMergeTD.Game.MainMenu
                 else
                     CompleteStageView();
             }
-
-            _view.OnButtonClicked += () => _buttonClickedCallback.Invoke(_levelSaveDataProxy.ID);
         }
 
         private void LockStageView()
         {
-            _view.SetActiveLockStage(true);
-            _view.SetActiveDefaultStage(false);
-            _view.SetActiveCompleteStage(false);
-            _view.SetButtonInteractable(false);
+            _levelEntryView.SetActiveLockStage(true);
+            _levelEntryView.SetActiveDefaultStage(false);
+            _levelEntryView.SetActiveCompleteStage(false);
+            
+            _levelEntryView.OnButtonClicked += () =>
+            {
+                _levelLockPopupView.Show();
+                _levelLockPopupView.SetLevelNumberText($"Level: {_levelSaveDataProxy.ID + 1}");
+            };
         }
 
         private void OpenStageView()
         {
-            _view.SetActiveDefaultStage(true);
-            _view.SetActiveLockStage(false);
-            _view.SetActiveCompleteStage(false);
-            _view.SetButtonInteractable(true);
+            _levelEntryView.SetActiveDefaultStage(true);
+            _levelEntryView.SetActiveLockStage(false);
+            _levelEntryView.SetActiveCompleteStage(false);
+            
+            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelSaveDataProxy.ID);
         }
 
         private void CompleteStageView()
         {
-            _view.SetActiveCompleteStage(true);
-            _view.SetActiveDefaultStage(false);
-            _view.SetActiveLockStage(false);
-            _view.SetButtonInteractable(true);
+            _levelEntryView.SetActiveCompleteStage(true);
+            _levelEntryView.SetActiveDefaultStage(false);
+            _levelEntryView.SetActiveLockStage(false);
+            
+            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelSaveDataProxy.ID);
             
             if(_levelSaveDataProxy.Score < _levelConfig.ScoreForOneStar)
-                _view.SetStars(0);
+                _levelEntryView.SetStars(0);
             else if(_levelSaveDataProxy.Score < _levelConfig.ScoreForTwoStars)
-                _view.SetStars(1);
+                _levelEntryView.SetStars(1);
             else if(_levelSaveDataProxy.Score < _levelConfig.ScoreForThreeStars)
-                _view.SetStars(2);
+                _levelEntryView.SetStars(2);
             else
-                _view.SetStars(3);
+                _levelEntryView.SetStars(3);
         }
     }
 }

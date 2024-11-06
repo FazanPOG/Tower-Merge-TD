@@ -1551,6 +1551,10 @@
               <e p="MainMenu" t="Include">
                 <e p="Adapters" t="Include">
                   <e p="LevelEntryViewAdapter.cs" t="Include" />
+                  <e p="LevelLockPopupViewAdapter.cs" t="Include" />
+                  <e p="LevelsPanelViewAdapter.cs" t="Include" />
+                  <e p="MainMenuPanelsViewAdapter.cs" t="Include" />
+                  <e p="SettingsPopupViewAdapter.cs" t="Include" />
                 </e>
                 <e p="Root" t="Include">
                   <e p="MainMenuEnterParams.cs" t="Include" />
@@ -1562,6 +1566,10 @@
                 </e>
                 <e p="Views" t="Include">
                   <e p="LevelEntryView.cs" t="Include" />
+                  <e p="LevelLockPopupView.cs" t="Include" />
+                  <e p="LevelsPanelView.cs" t="Include" />
+                  <e p="MainMenuPanelView.cs" t="Include" />
+                  <e p="SettingsPopupView.cs" t="Include" />
                 </e>
               </e>
               <e p="State" t="Include">

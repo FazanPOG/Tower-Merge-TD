@@ -1,4 +1,3 @@
-using System.Linq;
 using R3;
 using TowerMergeTD.Game.MainMenu;
 using TowerMergeTD.Game.State;
@@ -9,14 +8,20 @@ namespace TowerMergeTD.MainMenu.Root
 {
     public class UIMainMenuRootView : MonoBehaviour
     {
+        [Header("Panels")]
+        [SerializeField] private MainMenuPanelView _mainMenuPanelView;
+        [SerializeField] private LevelsPanelView _levelsPanelView;
         [SerializeField] private LevelEntryView _levelEntryViewPrefab;
         [SerializeField] private Transform _levelEntryViewParent;
-        
+        [Header("Popups")]
+        [SerializeField] private SettingsPopupView _settingsPopupView;
+        [SerializeField] private LevelLockPopupView _levelLockPopupView;
+
         private ReactiveProperty<int> _exitSceneSignalBus;
         private ProjectConfig _projectConfig;
         private IGameStateProvider _gameStateProvider;
 
-        public void HandleGoToGameplayButtonClicked(int levelNumber)
+        private void HandleGoToGameplayButtonClicked(int levelNumber)
         {
             _exitSceneSignalBus?.OnNext(levelNumber);
         }
@@ -37,8 +42,22 @@ namespace TowerMergeTD.MainMenu.Root
                 var levelSaveDataProxy = _gameStateProvider.GameState.LevelDatas[i];
                 var viewInstance = Instantiate(_levelEntryViewPrefab, _levelEntryViewParent);
                 var levelConfig = _projectConfig.Levels[i].LevelConfig;
-                new LevelEntryViewAdapter(_projectConfig.IsDevelopmentSettings, viewInstance, levelSaveDataProxy, levelConfig, HandleGoToGameplayButtonClicked);
+                
+                new LevelEntryViewAdapter
+                    (
+                    _projectConfig.IsDevelopmentSettings, 
+                    viewInstance, 
+                    _levelLockPopupView, 
+                    levelSaveDataProxy, 
+                    levelConfig, 
+                    HandleGoToGameplayButtonClicked
+                    );
             }
+
+            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView);
+            new LevelsPanelViewAdapter(_levelsPanelView);
+            new SettingsPopupViewAdapter(_settingsPopupView);
+            new LevelLockPopupViewAdapter(_levelLockPopupView);
         }
     }
 }

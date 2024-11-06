@@ -2,6 +2,7 @@ using R3;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
+using TowerMergeTD.GameRoot;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -17,16 +18,19 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private PausePopupView _pausePopupView;
 
         private DiContainer _container;
+        private ReactiveProperty<SceneEnterParams> _exitSceneSignalBus;
+        private int _currentLevelNumber;
+        
         private PlayerHealthProxy _playerHealthProxy;
         private PlayerMoneyProxy _playerMoneyProxy;
 
-        private Subject<Unit> _exitSceneSignalBus;
 
-        public void Bind(Subject<Unit> exitSceneSignalBus, DiContainer container)
+        public void Bind(ReactiveProperty<SceneEnterParams> exitSceneSignalBus, DiContainer container, int currentLevelNumber)
         {
             _exitSceneSignalBus = exitSceneSignalBus;
             _container = container;
-
+            _currentLevelNumber = currentLevelNumber;
+            
             _playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
             _playerMoneyProxy = _container.Resolve<PlayerMoneyProxy>();
             
@@ -55,7 +59,7 @@ namespace TowerMergeTD.Gameplay.Root
             {
                 var pauseService = _container.Resolve<IPauseService>();
                 
-                new PausePopupViewAdapter(_pausePopupView, _pauseButton, _exitSceneSignalBus, pauseService);
+                new PausePopupViewAdapter(_pausePopupView, _currentLevelNumber, _pauseButton, _exitSceneSignalBus, pauseService);
             }
         }
     }
