@@ -4,40 +4,59 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.UI
 {
-    public class TowerActionsAdapter
+    public class TowerActionsAdapter : IPauseHandler
     {
         private readonly TowerActionsView _view;
         private readonly InputHandler _inputHandler;
         private readonly TowerFactory _towerFactory;
         private readonly MapCoordinator _mapCoordinator;
         private readonly PlayerMoneyProxy _playerMoneyProxy;
+        private readonly IPauseService _pauseService;
 
         private Vector2 _currentPosition;
         private TowerObject _currentClickedTower;
-        
+        private bool _canInteract;
+
         public TowerActionsAdapter(
             TowerActionsView view, 
             InputHandler inputHandler, 
             TowerFactory towerFactory, 
             MapCoordinator mapCoordinator, 
-            PlayerMoneyProxy playerMoneyProxy)
+            PlayerMoneyProxy playerMoneyProxy,
+            IPauseService pauseService)
         {
             _view = view;
             _inputHandler = inputHandler;
             _towerFactory = towerFactory;
             _mapCoordinator = mapCoordinator;
             _playerMoneyProxy = playerMoneyProxy;
+            _pauseService = pauseService;
 
+            _canInteract = true;
+            Register();
+        }
+
+        private void Register()
+        {
             _inputHandler.OnMouseClicked += OnMouseClicked;
             _inputHandler.OnMouseDrag += OnMouseDrag;
             _view.OnCreateTowerButtonClicked += CreateTower;
             _view.OnSellTowerButtonClicked += SellTower;
+            _pauseService.Register(this);
+        }
+
+        public void HandlePause(bool isPaused)
+        {
+            _canInteract = !isPaused;
+            
+            if(isPaused)
+                _view.Hide();
         }
 
         private void OnMouseClicked()
         {
-            if(_view.IsMouseOver)
-                return;
+            if(_canInteract == false) return;
+            if(_view.IsMouseOver) return;
 
             _currentClickedTower = null;
             Vector3 mouseWorldPosition = _inputHandler.GetMouseWorldPosition();

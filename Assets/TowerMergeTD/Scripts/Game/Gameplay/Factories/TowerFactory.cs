@@ -16,6 +16,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly InputHandler _inputHandler;
         private readonly Transform _parent;
         private readonly MonoBehaviour _monoBehaviourContext;
+        private readonly IPauseService _pauseService;
 
         public TowerFactory(
             DiContainer diContainer,
@@ -24,7 +25,8 @@ namespace TowerMergeTD.Game.Gameplay
             MapCoordinator mapCoordinator,
             InputHandler inputHandler,
             Transform parent,
-            MonoBehaviourWrapper monoBehaviourContext)
+            MonoBehaviourWrapper monoBehaviourContext,
+            IPauseService pauseService)
         {
             _diContainer = diContainer;
             _generations = generations;
@@ -33,6 +35,7 @@ namespace TowerMergeTD.Game.Gameplay
             _inputHandler = inputHandler;
             _parent = parent;
             _monoBehaviourContext = monoBehaviourContext;
+            _pauseService = pauseService;
         }
 
         public TowerObject Create(TowerType towerType, Vector2 spawnPosition, int towerLevel)
@@ -45,7 +48,7 @@ namespace TowerMergeTD.Game.Gameplay
             TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
 
             ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
-            instance.Init(_inputHandler, generation, proxy, _mapCoordinator, attacker);
+            instance.Init(_inputHandler, generation, proxy, _mapCoordinator, attacker, _pauseService);
 
             instance.name = $"{instance.Type} {towerLevel}";
             return instance;

@@ -13,8 +13,9 @@ namespace TowerMergeTD.Game.Gameplay
         private TowerDataProxy _dataProxy;
         private TowerProxy _towerProxy;
         private MapCoordinator _mapCoordinator;
-        private DragAndDrop _draggable;
+        private DragAndDrop _dragAndDrop;
         private ITowerAttacker _attacker;
+        private IPauseService _pauseService;
         private ObjectRotator _rotator;
         private Vector3 _rotateTarget;
 
@@ -38,15 +39,22 @@ namespace TowerMergeTD.Game.Gameplay
                             $"Attack cooldown: {_dataProxy.AttackCooldown} \n";
         }
 
-        public void Init(InputHandler inputHandler, TowerGenerationConfig generation, TowerProxy proxy, MapCoordinator mapCoordinator, ITowerAttacker attacker)
+        public void Init(
+            InputHandler inputHandler, 
+            TowerGenerationConfig generation, 
+            TowerProxy proxy, 
+            MapCoordinator mapCoordinator, 
+            ITowerAttacker attacker,
+            IPauseService pauseService)
         {
             _generation = generation;
             _towerProxy = proxy;
             _mapCoordinator = mapCoordinator;
             _attacker = attacker;
+            _pauseService = pauseService;
             
-            _draggable = _collisionHandler.gameObject.AddComponent<DragAndDrop>();
-            _draggable.Init(inputHandler, transform, _mapCoordinator);
+            _dragAndDrop = _collisionHandler.gameObject.AddComponent<DragAndDrop>();
+            _dragAndDrop.Init(inputHandler, transform, _mapCoordinator);
 
             _dataProxy = _generation.GetTowerDataProxy(_towerProxy.Level.CurrentValue);
             _attacker.Init(
@@ -60,8 +68,10 @@ namespace TowerMergeTD.Game.Gameplay
             //TODO: inject
             _rotator = new ObjectRotator(_view.gameObject.transform);
 
-            _draggable.OnDroppedOnTileMap += UpdateModel;
-            _draggable.OnDroppedOnTower += OnDroppedOnTower;
+            _pauseService.Register(_dragAndDrop);
+            
+            _dragAndDrop.OnDroppedOnTileMap += UpdateModel;
+            _dragAndDrop.OnDroppedOnTower += OnDroppedOnTower;
             _attacker.OnTargetChanged += AttackerOnTargetChanged;
         }
 
@@ -75,7 +85,7 @@ namespace TowerMergeTD.Game.Gameplay
             bool merged = MergeHandler.TryMerge(_generation, this, towerObject);
             
             if(merged == false)
-                _draggable.ResetPosition();
+                _dragAndDrop.ResetPosition();
         }
 
         private void AttackerOnTargetChanged(GameObject target)
@@ -90,9 +100,10 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void OnDisable()
         {
-            _draggable.OnDroppedOnTileMap -= UpdateModel;
-            _draggable.OnDroppedOnTower -= OnDroppedOnTower;
+            _dragAndDrop.OnDroppedOnTileMap -= UpdateModel;
+            _dragAndDrop.OnDroppedOnTower -= OnDroppedOnTower;
             _attacker.OnTargetChanged -= AttackerOnTargetChanged;
+            _pauseService.Unregister(_dragAndDrop);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using R3;
+using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -11,12 +12,14 @@ namespace TowerMergeTD.Game.Gameplay
 
         public Observable<IGameState> GameState => _currentState;
 
-        public GameStateMachine(IWaveSpawnerService waveSpawnerService)
+        public GameStateMachine(IWaveSpawnerService waveSpawnerService, IPauseService pauseService, PlayerHealthProxy playerHealthProxy)
         {
             _gameStatesMap = new Dictionary<Type, IGameState>()
             {
                 [typeof(BootState)] = new BootState(this),
-                [typeof(GameplayState)] = new GameplayState(waveSpawnerService),
+                [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerService, pauseService),
+                [typeof(WinGameState)] = new WinGameState(pauseService),
+                [typeof(LoseGameState)] = new LoseGameState(pauseService),
             };
         }
 

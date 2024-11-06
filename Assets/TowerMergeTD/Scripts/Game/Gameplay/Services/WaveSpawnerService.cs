@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using ModestTree;
 using TowerMergeTD.Utils;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class WaveSpawnerService : IWaveSpawnerService
+    public class WaveSpawnerService : IWaveSpawnerService, IPauseHandler
     {
         private readonly EnemyFactory _enemyFactory;
         private readonly List<Vector3> _path;
@@ -20,7 +22,8 @@ namespace TowerMergeTD.Game.Gameplay
         private WaveConfig _currentWave;
         private Coroutine _coroutine;
         private int _enemyDiedCounter;
-        
+        private bool _canSpawn;
+
         public WaveSpawnerService(
             EnemyFactory enemyFactory, 
             WaveConfig[] waves, 
@@ -34,8 +37,11 @@ namespace TowerMergeTD.Game.Gameplay
             _monoBehaviour = monoBehaviour;
 
             _waves = new Queue<WaveConfig>(waves);
+            _canSpawn = true;
         }
-        
+
+        public void HandlePause(bool isPaused) => _canSpawn = !isPaused;
+
         public void SpawnNextWave()
         {
             if(_coroutine != null)
@@ -58,8 +64,11 @@ namespace TowerMergeTD.Game.Gameplay
             
             foreach (var enemyConfig in wave.Enemies)
             {
+                yield return new WaitUntil(() => _canSpawn);
+                
                 var enemy = _enemyFactory.Create(enemyConfig, _path, _enemySpawnPosition);
                 enemies.Add(enemy);
+                
                 yield return new WaitForSeconds(wave.DelayBetweenEnemies);
             }
 

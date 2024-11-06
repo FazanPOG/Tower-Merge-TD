@@ -81,14 +81,14 @@ namespace TowerMergeTD.GameRoot
 
         private IEnumerator LoadAndStartMainMenu(MainMenuEnterParams mainMenuEnterParams = null)
         {
-            _uiRootView.ShowLoadingScreen();
             _cashedSceneContainer?.UnbindAll();
             
+            _uiRootView.ShowLoadingScreen();
+
             _monoBehaviourWrapper.ClearTickableList();
             
             yield return LoadScene(Scenes.Boot);
             yield return LoadScene(Scenes.MainMenu);
-            yield return new WaitForSeconds(1f);
             
             //
             bool isGameStateLoaded = false;
@@ -115,13 +115,13 @@ namespace TowerMergeTD.GameRoot
 
         private IEnumerator LoadAndStartGameplay(GameplayEnterParams gameplayEnterParams)
         {
-            _uiRootView.ShowLoadingScreen();
             _cashedSceneContainer?.UnbindAll();
+            
+            _uiRootView.ShowLoadingScreen();
             _monoBehaviourWrapper.ClearTickableList();
             
             yield return LoadScene(Scenes.Boot);
             yield return LoadScene(Scenes.Gameplay);
-            yield return new WaitForSeconds(1f);
             
             //
             var gameplayEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();

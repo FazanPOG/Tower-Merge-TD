@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class DragAndDrop : MonoBehaviour
+    public class DragAndDrop : MonoBehaviour, IPauseHandler
     {
         private const float DROP_ON_TOWER_DETECTION_RADIUS = 0.5f; 
         
@@ -16,6 +16,7 @@ namespace TowerMergeTD.Game.Gameplay
         private Vector2 _previousPosition;
         private BoxCollider2D _dragCollider;
         private bool _isDragging;
+        private bool _canDrag;
         
         public event Action OnDroppedOnTileMap;
         public event Action<TowerObject> OnDroppedOnTower;
@@ -25,9 +26,10 @@ namespace TowerMergeTD.Game.Gameplay
             _inputHandler = inputHandler;
             _draggedTransform = draggedTransform;
             _mapCoordinator = mapCoordinator;
-
+            
             _dragCollider = GetComponent<BoxCollider2D>();
-
+            _canDrag = true;
+            
             _inputHandler.OnMouseClickStarted += TryDrag;
             _inputHandler.OnMouseDrag += DragPerformed;
             _inputHandler.OnMouseCanceled += Drop;
@@ -35,8 +37,12 @@ namespace TowerMergeTD.Game.Gameplay
 
         public void ResetPosition() => _draggedTransform.position = _previousPosition;
 
+        public void HandlePause(bool isPaused) => _canDrag = !isPaused;
+
         private void TryDrag()
         {
+            if(_canDrag == false) return;
+            
             bool isClickedDraggableCollider = IsClickedDraggableCollider();
 
             if (isClickedDraggableCollider)
@@ -48,6 +54,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void DragPerformed()
         {
+            if(_canDrag == false) return;
             if(_isDragging == false) return;
 
             var dragWorldPosition = _inputHandler.GetMouseWorldPosition();
@@ -57,6 +64,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void Drop()
         {
+            if(_canDrag == false) return;
             if(_isDragging == false) return;
             
             var dropWorldPosition = _inputHandler.GetMouseWorldPosition();

@@ -1473,6 +1473,7 @@
                   <e p="DragAndDrop.cs" t="Include" />
                   <e p="HealthBarView.cs" t="Include" />
                   <e p="IDamageable.cs" t="Include" />
+                  <e p="IPauseHandler.cs" t="Include" />
                   <e p="ObjectRotator.cs" t="Include" />
                 </e>
                 <e p="Configs" t="Include">
@@ -1521,8 +1522,10 @@
                 </e>
                 <e p="Services" t="Include">
                   <e p="Interfaces" t="Include">
+                    <e p="IPauseService.cs" t="Include" />
                     <e p="IWaveSpawnerService.cs" t="Include" />
                   </e>
+                  <e p="PauseService.cs" t="Include" />
                   <e p="WaveSpawnerService.cs" t="Include" />
                 </e>
                 <e p="Towers" t="Include">
@@ -1598,9 +1601,13 @@
               <e p="UI" t="Include">
                 <e p="Gameplay" t="Include">
                   <e p="Adapters" t="Include">
+                    <e p="PausePopupViewAdapter.cs" t="Include" />
+                    <e p="PlayerHealthViewAdapter.cs" t="Include" />
+                    <e p="PlayerMoneyViewAdapter.cs" t="Include" />
                     <e p="TowerActionsAdapter.cs" t="Include" />
                   </e>
                   <e p="Views" t="Include">
+                    <e p="PausePopupView.cs" t="Include" />
                     <e p="PlayerHealthView.cs" t="Include" />
                     <e p="PlayerMoneyView.cs" t="Include" />
                     <e p="TowerActionsView.cs" t="Include" />

@@ -30,6 +30,7 @@ namespace TowerMergeTD.Gameplay.Root
         {
             _level = level;
             
+            _container.Bind<IPauseService>().To<PauseService>().FromNew().AsSingle().NonLazy();
             BindModels();
             BindInput();
             BindMap();
@@ -60,12 +61,15 @@ namespace TowerMergeTD.Gameplay.Root
         {
             _mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig, _inputHandler);
             _container.Bind<MapCoordinator>().FromInstance(_mapCoordinator).AsSingle().NonLazy();
+            
+            _level.EnemyFinish.Init(_playerHealthProxy);
         }
 
         private void BindFactories()
         {
             var prefabReferences = _container.Resolve<PrefabReferencesConfig>();
             _monoBehaviourWrapper = _container.Resolve<MonoBehaviourWrapper>();
+            var pauseService = _container.Resolve<IPauseService>();
             
             var towerFactory = new TowerFactory(
                 _container, 
@@ -74,7 +78,9 @@ namespace TowerMergeTD.Gameplay.Root
                 _mapCoordinator,
                 _inputHandler,
                 _level.TowersParent,
-                _monoBehaviourWrapper);
+                _monoBehaviourWrapper,
+                pauseService);
+            
             _container.Bind<TowerFactory>().FromInstance(towerFactory).AsSingle().NonLazy();
             
             _enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, _level.EnemiesParent);
@@ -85,12 +91,17 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindServices()
         {
-            List<Vector3> path = _level.PathPoints.Select(x => x.position).ToList();
+            bindWaveSpawnerService();
             
-            WaveSpawnerService spawnerService = new WaveSpawnerService(_enemyFactory, _level.LevelConfig.Waves, path, _level.EnemySpawnPosition.position, _monoBehaviourWrapper);
-            _container.Bind<IWaveSpawnerService>().To<WaveSpawnerService>().FromInstance(spawnerService).AsSingle().NonLazy();
-
-            _level.EnemyFinish.Init(_playerHealthProxy);
+            void bindWaveSpawnerService()
+            {
+                var pauseService = _container.Resolve<IPauseService>();
+                List<Vector3> path = _level.PathPoints.Select(x => x.position).ToList();
+            
+                WaveSpawnerService spawnerService = new WaveSpawnerService(_enemyFactory, _level.LevelConfig.Waves, path, _level.EnemySpawnPosition.position, _monoBehaviourWrapper);
+                _container.Bind<IWaveSpawnerService>().To<WaveSpawnerService>().FromInstance(spawnerService).AsSingle().NonLazy();
+                pauseService.Register(spawnerService);
+            }
         }
     }
 }

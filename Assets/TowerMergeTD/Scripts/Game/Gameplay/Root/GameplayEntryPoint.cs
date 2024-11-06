@@ -19,7 +19,7 @@ namespace TowerMergeTD.Gameplay.Root
             var uiGameplayRoot = Instantiate(_uiGameplayRootPrefab);
             uiRoot.AttachSceneUI(uiGameplayRoot.gameObject);
 
-            var level = gameplayContainer.InstantiatePrefabForComponent<Level>(gameplayEnterParams.Level);
+            var level = Instantiate(gameplayEnterParams.Level);
             level.name = $"{gameplayEnterParams.Level.name}";
             
             var exitSceneSignalSubj = new Subject<Unit>();
@@ -42,7 +42,7 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void StartGameplay(DiContainer container)
         {
-            GameStateMachine gameStateMachine = container.Resolve<GameStateMachine>();
+            var gameStateMachine = container.Resolve<GameStateMachine>();
             gameStateMachine.EnterIn<BootState>();
         }
     }
