@@ -1,5 +1,5 @@
-using System.Linq;
 using R3;
+using TowerMergeTD.Game.State;
 using TowerMergeTD.Gameplay.Root;
 using TowerMergeTD.GameRoot;
 using UnityEngine;
@@ -16,20 +16,22 @@ namespace TowerMergeTD.MainMenu.Root
         public Observable<MainMenuExitParams> Run(DiContainer mainMenuContainer, MainMenuEnterParams mainMenuEnterParams)
         {
             mainMenuContainer.UnbindAll();
+
+            var projectConfig = mainMenuContainer.Resolve<ProjectConfig>();
+            var gameStateProvider = mainMenuContainer.Resolve<IGameStateProvider>();
             
             var _uiRoot = mainMenuContainer.Resolve<UIRootView>();
             var uiMainMenuRoot = Instantiate(_uiMainMenuRootPrefab);
             _uiRoot.AttachSceneUI(uiMainMenuRoot.gameObject);
         
             var exitSceneSignal = new ReactiveProperty<int>();
-            uiMainMenuRoot.Bind(exitSceneSignal);
+            uiMainMenuRoot.Bind(exitSceneSignal, projectConfig, gameStateProvider);
             
             Debug.Log($"MAIN MENU ENTER PARAMS: {mainMenuEnterParams?.Result}");
 
             exitSceneSignal.Skip(1).Subscribe(levelNumber =>
             {
-                var projectConfig = mainMenuContainer.Resolve<ProjectConfig>();
-                var level = projectConfig.Levels[levelNumber - 1];
+                var level = projectConfig.Levels[levelNumber];
 
                 var gameplayEnterParams = new GameplayEnterParams(level);
                 _mainMenuExitParams = new MainMenuExitParams(gameplayEnterParams);

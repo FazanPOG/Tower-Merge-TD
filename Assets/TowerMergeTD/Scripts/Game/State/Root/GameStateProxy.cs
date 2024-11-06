@@ -1,35 +1,33 @@
 ﻿using System.Linq;
 using ObservableCollections;
 using R3;
-using TowerMergeTD.Game.State;
 
-namespace TowerMergeTD.Scripts.Game.State.Root
+namespace TowerMergeTD.Game.State
 {
     public class GameStateProxy
     {
-        public ObservableList<TowerProxy> AllTowers { get; } = new ObservableList<TowerProxy>();
+        public ObservableList<LevelSaveDataProxy> LevelDatas { get; } = new ObservableList<LevelSaveDataProxy>();
 
         public GameStateProxy(GameState gameState)
         {
-            gameState.Towers.ForEach(building => { AllTowers.Add(new TowerProxy(building)); });
+            gameState.LevelDatas.ForEach(levelData => { LevelDatas.Add(new LevelSaveDataProxy(levelData)); });
 
-            AllTowers.ObserveAdd().Subscribe(e =>
+            LevelDatas.ObserveAdd().Subscribe(e =>
             {
-                var newBuilding = e.Value;
-                gameState.Towers.Add(new Tower
+                var newData = e.Value;
+                gameState.LevelDatas.Add(new LevelSaveData
                 {
-                    ID = newBuilding.ID,
-                    Type = newBuilding.Type,
-                    Level = newBuilding.Level.Value,
-                    Position = newBuilding.Position.Value,
+                    ID = newData.ID,
+                    IsOpen = newData.IsOpen,
+                    Score = newData.Score,
                 });
             });
 
-            AllTowers.ObserveRemove().Subscribe(e =>
+            LevelDatas.ObserveRemove().Subscribe(e =>
             {
-                var removedBuilding = e.Value;
-                var building = gameState.Towers.FirstOrDefault(x => x.ID == removedBuilding.ID);
-                gameState.Towers.Remove(building);
+                var removedLevelData = e.Value;
+                var levelData = gameState.LevelDatas.FirstOrDefault(x => x.ID == removedLevelData.ID);
+                gameState.LevelDatas.Remove(levelData);
             });
         }
     }

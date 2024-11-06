@@ -1568,6 +1568,10 @@
                   <e p="TowerDataProxy.cs" t="Include" />
                   <e p="TowerGenerationConfig.cs" t="Include" />
                 </e>
+                <e p="Level" t="Include">
+                  <e p="LevelSaveData.cs" t="Include" />
+                  <e p="LevelSaveDataProxy.cs" t="Include" />
+                </e>
                 <e p="Map" t="Include">
                   <e p="MapCoordinator.cs" t="Include" />
                   <e p="TileMapType.cs" t="Include" />

@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Linq;
 using R3;
+using TowerMergeTD.Game.State;
 using TowerMergeTD.Gameplay.Root;
 using TowerMergeTD.MainMenu.Root;
-using TowerMergeTD.Scripts.Game.State;
 using TowerMergeTD.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -92,7 +92,9 @@ namespace TowerMergeTD.GameRoot
             
             //
             bool isGameStateLoaded = false;
-            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+            var gameStateProvider = _rootContainer.Resolve<IGameStateProvider>();
+            gameStateProvider.Init(_projectConfig);
+            gameStateProvider.LoadGameState().Subscribe(_ => isGameStateLoaded = true);
             yield return new WaitUntil(() => isGameStateLoaded);
             
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();

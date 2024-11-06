@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using TowerMergeTD.Game.State;
 
-namespace TowerMergeTD.Scripts.Game.State.Root
+namespace TowerMergeTD.Game.State
 {
     [Serializable]
     public class GameState
     {
-        public List<Tower> Towers;
+        public List<LevelSaveData> LevelDatas;
     }
 }

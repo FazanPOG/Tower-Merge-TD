@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49f42b5384e84c48a5bc21f38e3782f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelConfig: {fileID: 11400000, guid: 708c4d26c8f20174a8d72eab0cdd7819, type: 2}
+  _levelConfig: {fileID: 11400000, guid: cfe4efd34d9bf2f41b6e97704c90935d, type: 2}
   _baseTileMap: {fileID: 7694533224740762044}
   _environmentTileMap: {fileID: 7542593490681038741}
   _towersParent: {fileID: 3534004255195766464}

@@ -381,7 +381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3871037358562214775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -591,7 +591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6002245721763309947
 RectTransform:
   m_ObjectHideFlags: 0
@@ -867,6 +867,7 @@ MonoBehaviour:
   _defaultStage: {fileID: 2431535422585605665}
   _lockStage: {fileID: 4815032892062391443}
   _completeStage: {fileID: 4268625582323037391}
+  _button: {fileID: 2003438109147365770}
   _defaultStageLevelText: {fileID: 9107396801681425830}
   _completeStageLevelText: {fileID: 3694666840121320994}
   _starImages:
