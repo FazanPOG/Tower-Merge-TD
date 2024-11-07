@@ -1494,13 +1494,12 @@
                 </e>
                 <e p="GameStateMachine" t="Include">
                   <e p="GameStateMachine.cs" t="Include" />
-                  <e p="IGameStateObservable.cs" t="Include" />
+                  <e p="IGameStateHandler.cs" t="Include" />
                   <e p="States" t="Include">
                     <e p="BootState.cs" t="Include" />
                     <e p="GameplayState.cs" t="Include" />
                     <e p="IGameState.cs" t="Include" />
                     <e p="LoseGameState.cs" t="Include" />
-                    <e p="PauseState.cs" t="Include" />
                     <e p="WinGameState.cs" t="Include" />
                   </e>
                 </e>
@@ -1516,16 +1515,19 @@
                   <e p="GameplayEnterParams.cs" t="Include" />
                   <e p="GameplayEntryPoint.cs" t="Include" />
                   <e p="GameplayExitParams.cs" t="Include" />
-                  <e p="View" t="Include">
-                    <e p="UIGameplayRootView.cs" t="Include" />
-                  </e>
                 </e>
                 <e p="Services" t="Include">
+                  <e p="GameStateService.cs" t="Include" />
                   <e p="Interfaces" t="Include">
+                    <e p="IGameStateService.cs" t="Include" />
                     <e p="IPauseService.cs" t="Include" />
+                    <e p="IRewardCalculatorService.cs" t="Include" />
+                    <e p="IScoreService.cs" t="Include" />
                     <e p="IWaveSpawnerService.cs" t="Include" />
                   </e>
                   <e p="PauseService.cs" t="Include" />
+                  <e p="RewardCalculatorService.cs" t="Include" />
+                  <e p="ScoreService.cs" t="Include" />
                   <e p="WaveSpawnerService.cs" t="Include" />
                 </e>
                 <e p="Towers" t="Include">
@@ -1546,30 +1548,12 @@
                 <e p="ProjectConfig.cs" t="Include" />
                 <e p="SceneEnterParams.cs" t="Include" />
                 <e p="Scenes.cs" t="Include" />
-                <e p="UIRootView.cs" t="Include" />
               </e>
               <e p="MainMenu" t="Include">
-                <e p="Adapters" t="Include">
-                  <e p="LevelEntryViewAdapter.cs" t="Include" />
-                  <e p="LevelLockPopupViewAdapter.cs" t="Include" />
-                  <e p="LevelsPanelViewAdapter.cs" t="Include" />
-                  <e p="MainMenuPanelsViewAdapter.cs" t="Include" />
-                  <e p="SettingsPopupViewAdapter.cs" t="Include" />
-                </e>
                 <e p="Root" t="Include">
                   <e p="MainMenuEnterParams.cs" t="Include" />
                   <e p="MainMenuEntryPoint.cs" t="Include" />
                   <e p="MainMenuExitParams.cs" t="Include" />
-                  <e p="View" t="Include">
-                    <e p="UIMainMenuRootView.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="Views" t="Include">
-                  <e p="LevelEntryView.cs" t="Include" />
-                  <e p="LevelLockPopupView.cs" t="Include" />
-                  <e p="LevelsPanelView.cs" t="Include" />
-                  <e p="MainMenuPanelView.cs" t="Include" />
-                  <e p="SettingsPopupView.cs" t="Include" />
                 </e>
               </e>
               <e p="State" t="Include">
@@ -1609,21 +1593,54 @@
               <e p="UI" t="Include">
                 <e p="Gameplay" t="Include">
                   <e p="Adapters" t="Include">
+                    <e p="LevelCompletePopupAdapter.cs" t="Include" />
+                    <e p="LosePopupViewAdapter.cs" t="Include" />
                     <e p="PausePopupViewAdapter.cs" t="Include" />
                     <e p="PlayerHealthViewAdapter.cs" t="Include" />
                     <e p="PlayerMoneyViewAdapter.cs" t="Include" />
                     <e p="TowerActionsAdapter.cs" t="Include" />
                   </e>
+                  <e p="Root" t="Include">
+                    <e p="UIGameplayRootView.cs" t="Include" />
+                  </e>
                   <e p="Views" t="Include">
+                    <e p="LevelCompletePopupView.cs" t="Include" />
+                    <e p="LosePopupView.cs" t="Include" />
                     <e p="PausePopupView.cs" t="Include" />
                     <e p="PlayerHealthView.cs" t="Include" />
                     <e p="PlayerMoneyView.cs" t="Include" />
                     <e p="TowerActionsView.cs" t="Include" />
                   </e>
                 </e>
+                <e p="MainMenu" t="Include">
+                  <e p="Adapters" t="Include">
+                    <e p="LevelEntryViewAdapter.cs" t="Include" />
+                    <e p="LevelLockPopupViewAdapter.cs" t="Include" />
+                    <e p="LevelsPanelViewAdapter.cs" t="Include" />
+                    <e p="MainMenuPanelsViewAdapter.cs" t="Include" />
+                    <e p="SettingsPopupViewAdapter.cs" t="Include" />
+                  </e>
+                  <e p="Root" t="Include">
+                    <e p="UIMainMenuRootView.cs" t="Include" />
+                  </e>
+                  <e p="Views" t="Include">
+                    <e p="LevelEntryView.cs" t="Include" />
+                    <e p="LevelLockPopupView.cs" t="Include" />
+                    <e p="LevelsPanelView.cs" t="Include" />
+                    <e p="MainMenuPanelView.cs" t="Include" />
+                    <e p="SettingsPopupView.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Root" t="Include">
+                  <e p="LoadingScreen.cs" t="Include" />
+                  <e p="UIRootView.cs" t="Include" />
+                </e>
               </e>
             </e>
             <e p="Utils" t="Include">
+              <e p="Debug" t="Include">
+                <e p="GameplayDebug.cs" t="Include" />
+              </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="WorldTextCreator.cs" t="Include" />
             </e>

@@ -9,9 +9,6 @@ namespace TowerMergeTD.Game.Gameplay
 
         public static void Init(TowerFactory towerFactory)
         {
-            if(_towerFactory != null || _inputHandler != null)
-                return;
-            
             _towerFactory = towerFactory;
         }
         

@@ -44,13 +44,14 @@ namespace TowerMergeTD.Game.Gameplay
             
             var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(_prefab, _parent);
             instance.transform.position = spawnPosition;
-
+            
             TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
 
             ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
+            
             instance.Init(_inputHandler, generation, proxy, _mapCoordinator, attacker, _pauseService);
-
             instance.name = $"{instance.Type} {towerLevel}";
+            
             return instance;
         }
 

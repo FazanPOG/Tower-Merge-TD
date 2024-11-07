@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
-using R3;
 using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class GameStateMachine : IGameStateObservable
+    public class GameStateMachine
     {
-        private Dictionary<Type, IGameState> _gameStatesMap;
-        private ReactiveProperty<IGameState> _currentState = new ReactiveProperty<IGameState>();
+        private readonly IGameStateService _gameStateService;
+        private readonly Dictionary<Type, IGameState> _gameStatesMap;
+        
+        private IGameState _currentState;
 
-        public Observable<IGameState> GameState => _currentState;
-
-        public GameStateMachine(IWaveSpawnerService waveSpawnerService, IPauseService pauseService, PlayerHealthProxy playerHealthProxy)
+        public GameStateMachine(
+            IWaveSpawnerService waveSpawnerService, 
+            IPauseService pauseService, 
+            PlayerHealthProxy playerHealthProxy,
+            IGameStateService gameStateService)
         {
+            _gameStateService = gameStateService;
             _gameStatesMap = new Dictionary<Type, IGameState>()
             {
                 [typeof(BootState)] = new BootState(this),
@@ -28,9 +32,11 @@ namespace TowerMergeTD.Game.Gameplay
             if(_gameStatesMap.TryGetValue(typeof(T), out IGameState state) == false)
                 throw new MissingMemberException($"Missing state in dictionary: {typeof(T)}");
 
-            _currentState.Value?.Exit();
-            _currentState.Value = state;
-            _currentState.Value.Enter();
+            _currentState?.Exit();
+            _currentState = state;
+            _currentState.Enter();
+            
+            _gameStateService.ChangeState(state);
         }
     }
 }

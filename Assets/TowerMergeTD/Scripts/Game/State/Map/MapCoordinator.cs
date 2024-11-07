@@ -31,7 +31,7 @@ namespace TowerMergeTD.Game.State
         public Vector2Int GetCellPosition(TilemapType tilemapType, Vector3 position)
         {
             Vector3 worldPos = new Vector3(position.x, position.y, 0f);
-            Vector3Int tilePos = Vector3Int.zero;
+            Vector3Int tilePos;
             
             switch (tilemapType)
             {

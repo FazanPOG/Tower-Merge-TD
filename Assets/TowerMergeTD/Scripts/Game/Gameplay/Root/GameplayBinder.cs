@@ -17,18 +17,16 @@ namespace TowerMergeTD.Gameplay.Root
         private InputHandler _inputHandler;
         
         private MonoBehaviourWrapper _monoBehaviourWrapper;
-        private PlayerHealthProxy _playerHealthProxy;
-        private MapCoordinator _mapCoordinator;
-        private EnemyFactory _enemyFactory;
         
         public GameplayBinder(DiContainer container)
         {
             _container = container;
         }
 
-        public void Bind(Level level)
+        public GameStateMachine Bind(Level level)
         {
             _level = level;
+            _monoBehaviourWrapper = _container.Resolve<MonoBehaviourWrapper>();
             
             _container.Bind<IPauseService>().To<PauseService>().FromNew().AsSingle().NonLazy();
             BindModels();
@@ -36,16 +34,30 @@ namespace TowerMergeTD.Gameplay.Root
             BindMap();
             BindFactories();
             BindServices();
+            
+            return BindGameStateMachine();
+        }
 
-            _container.Bind<GameStateMachine>().FromNew().AsSingle().NonLazy();
+        private GameStateMachine BindGameStateMachine()
+        {
+            var spawnerService = _container.Resolve<IWaveSpawnerService>();
+            var pauseService = _container.Resolve<IPauseService>();
+            var gameStateService = _container.Resolve<IGameStateService>();
+            var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
+            
+            GameStateMachine gameStateMachine = new GameStateMachine(spawnerService, pauseService, playerHealthProxy, gameStateService);
+
+            return gameStateMachine;
         }
 
         private void BindModels()
         {
             PlayerHealth health = new PlayerHealth(_level.LevelConfig.InitialHealth);
-            _playerHealthProxy = new PlayerHealthProxy(health);
-            _container.Bind<PlayerHealthProxy>().FromInstance(_playerHealthProxy).AsSingle().NonLazy();
+            var playerHealthProxy = new PlayerHealthProxy(health);
+            _container.Bind<PlayerHealthProxy>().FromInstance(playerHealthProxy).AsSingle().NonLazy();
+         
             
+            //TODO: золото - софт валюта, заменить на геймплей валюту (шестеренки, металлолом...)
             PlayerMoney playerMoney = new PlayerMoney(_level.LevelConfig.InitialMoney);
             var playerMoneyProxy = new PlayerMoneyProxy(playerMoney);
             _container.Bind<PlayerMoneyProxy>().FromInstance(playerMoneyProxy).AsSingle().NonLazy();
@@ -59,23 +71,25 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindMap()
         {
-            _mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig, _inputHandler);
-            _container.Bind<MapCoordinator>().FromInstance(_mapCoordinator).AsSingle().NonLazy();
+            var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
             
-            _level.EnemyFinish.Init(_playerHealthProxy);
+            var mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig, _inputHandler);
+            _container.Bind<MapCoordinator>().FromInstance(mapCoordinator).AsSingle().NonLazy();
+            
+            _level.EnemyFinish.Init(playerHealthProxy);
         }
 
         private void BindFactories()
         {
             var prefabReferences = _container.Resolve<PrefabReferencesConfig>();
-            _monoBehaviourWrapper = _container.Resolve<MonoBehaviourWrapper>();
             var pauseService = _container.Resolve<IPauseService>();
+            var mapCoordinator = _container.Resolve<MapCoordinator>();
             
             var towerFactory = new TowerFactory(
                 _container, 
                 _level.LevelConfig.TowerGenerationConfigs,
                 prefabReferences,
-                _mapCoordinator,
+                mapCoordinator,
                 _inputHandler,
                 _level.TowersParent,
                 _monoBehaviourWrapper,
@@ -83,8 +97,8 @@ namespace TowerMergeTD.Gameplay.Root
             
             _container.Bind<TowerFactory>().FromInstance(towerFactory).AsSingle().NonLazy();
             
-            _enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, _level.EnemiesParent);
-            _container.Bind<EnemyFactory>().FromInstance(_enemyFactory).AsSingle().NonLazy();
+            var enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, _level.EnemiesParent);
+            _container.Bind<EnemyFactory>().FromInstance(enemyFactory).AsSingle().NonLazy();
             
             MergeHandler.Init(towerFactory);
         }
@@ -93,12 +107,19 @@ namespace TowerMergeTD.Gameplay.Root
         {
             bindWaveSpawnerService();
             
+            _container.Bind<IGameStateService>().To<GameStateService>().FromNew().AsSingle().NonLazy();
+            _container.Bind<IScoreService>().To<ScoreService>().FromNew().AsSingle().NonLazy();
+            _container.Bind<IRewardCalculatorService>().To<RewardCalculatorService>().FromNew().AsSingle().NonLazy();
+            
             void bindWaveSpawnerService()
             {
                 var pauseService = _container.Resolve<IPauseService>();
+                var enemyFactory = _container.Resolve<EnemyFactory>();
+                
+                
                 List<Vector3> path = _level.PathPoints.Select(x => x.position).ToList();
             
-                WaveSpawnerService spawnerService = new WaveSpawnerService(_enemyFactory, _level.LevelConfig.Waves, path, _level.EnemySpawnPosition.position, _monoBehaviourWrapper);
+                WaveSpawnerService spawnerService = new WaveSpawnerService(enemyFactory, _level.LevelConfig.Waves, path, _level.EnemySpawnPosition.position, _monoBehaviourWrapper);
                 _container.Bind<IWaveSpawnerService>().To<WaveSpawnerService>().FromInstance(spawnerService).AsSingle().NonLazy();
                 pauseService.Register(spawnerService);
             }

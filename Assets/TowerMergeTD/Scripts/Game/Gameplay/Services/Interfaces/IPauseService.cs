@@ -1,8 +1,10 @@
-﻿namespace TowerMergeTD.Game.Gameplay
+﻿using R3;
+
+namespace TowerMergeTD.Game.Gameplay
 {
     public interface IPauseService
     {
-        bool IsPaused { get; }
+        Observable<bool> IsPaused { get; }
         void Register(IPauseHandler handler);
         void Unregister(IPauseHandler handler);
         void SetPause(bool isPaused);

@@ -15,7 +15,7 @@ MonoBehaviour:
   _isOpen: 1
   _initialHealth: 50
   _initialMoney: 500
-  scoreForOneStar: 100
+  scoreForOneStar: 0
   scoreForTwoStars: 500
   scoreForThreeStars: 1000
   _tileSetConfig: {fileID: 11400000, guid: cf31c41e8f729004bb1e405f4d42723e, type: 2}
@@ -23,6 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
   - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
   _waves:
-  - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-  - {fileID: 11400000, guid: bf0e391a556b8b249955f1f99573e10d, type: 2}
   - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}

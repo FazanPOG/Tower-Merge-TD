@@ -21,7 +21,7 @@ namespace TowerMergeTD.Game.UI
 
         private void UpdateView(int money)
         {
-            _view.UpdateText($"Money: {money}");
+            _view.UpdateText($"{money}");
         }
     }
 }

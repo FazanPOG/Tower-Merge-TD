@@ -1,8 +1,5 @@
-﻿using UnityEngine;
-
-namespace TowerMergeTD.Game.Gameplay
+﻿namespace TowerMergeTD.Game.Gameplay
 {
-    //TODO
     public class WinGameState : IGameState
     {
         private readonly IPauseService _pauseService;
@@ -14,13 +11,9 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void Enter()
         {
-            Debug.Log("Win game");
             _pauseService.SetPause(true);
         }
 
-        public void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
+        public void Exit() { }
     }
 }
