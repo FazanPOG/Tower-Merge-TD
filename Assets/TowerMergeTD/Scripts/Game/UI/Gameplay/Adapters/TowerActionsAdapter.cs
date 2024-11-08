@@ -10,7 +10,7 @@ namespace TowerMergeTD.Game.UI
         private readonly InputHandler _inputHandler;
         private readonly TowerFactory _towerFactory;
         private readonly MapCoordinator _mapCoordinator;
-        private readonly PlayerMoneyProxy _playerMoneyProxy;
+        private readonly PlayerBuildingCurrencyProxy _buildingCurrencyProxy;
         private readonly IPauseService _pauseService;
 
         private Vector2 _currentPosition;
@@ -22,14 +22,14 @@ namespace TowerMergeTD.Game.UI
             InputHandler inputHandler, 
             TowerFactory towerFactory, 
             MapCoordinator mapCoordinator, 
-            PlayerMoneyProxy playerMoneyProxy,
+            PlayerBuildingCurrencyProxy buildingCurrencyProxy,
             IPauseService pauseService)
         {
             _view = view;
             _inputHandler = inputHandler;
             _towerFactory = towerFactory;
             _mapCoordinator = mapCoordinator;
-            _playerMoneyProxy = playerMoneyProxy;
+            _buildingCurrencyProxy = buildingCurrencyProxy;
             _pauseService = pauseService;
 
             _canInteract = true;
@@ -87,10 +87,10 @@ namespace TowerMergeTD.Game.UI
         {
             int cost = _towerFactory.GetCreateCost(towerType);
             
-            if (cost <= _playerMoneyProxy.Money.CurrentValue)
+            if (cost <= _buildingCurrencyProxy.BuildingCurrency.CurrentValue)
             {
                 _towerFactory.Create(towerType, _currentPosition, 1);
-                _playerMoneyProxy.Money.Value -= cost;
+                _buildingCurrencyProxy.BuildingCurrency.Value -= cost;
             }
             
             _view.Hide();
@@ -103,7 +103,7 @@ namespace TowerMergeTD.Game.UI
 
             int sellPrice = calculateSellPrice();
             
-            _playerMoneyProxy.Money.Value += sellPrice;
+            _buildingCurrencyProxy.BuildingCurrency.Value += sellPrice;
             _currentClickedTower.DestroySelf();
             _view.Hide();
 

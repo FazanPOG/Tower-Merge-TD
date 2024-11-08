@@ -1,4 +1,4 @@
-﻿namespace TowerMergeTD.Game.State
+﻿namespace TowerMergeTD.Game.Gameplay
 {
     public class PlayerHealth
     {

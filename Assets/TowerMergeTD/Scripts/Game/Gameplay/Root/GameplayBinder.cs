@@ -52,15 +52,14 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindModels()
         {
-            PlayerHealth health = new PlayerHealth(_level.LevelConfig.InitialHealth);
+            var health = new PlayerHealth(_level.LevelConfig.InitialHealth);
             var playerHealthProxy = new PlayerHealthProxy(health);
-            _container.Bind<PlayerHealthProxy>().FromInstance(playerHealthProxy).AsSingle().NonLazy();
-         
             
-            //TODO: золото - софт валюта, заменить на геймплей валюту (шестеренки, металлолом...)
-            PlayerMoney playerMoney = new PlayerMoney(_level.LevelConfig.InitialMoney);
-            var playerMoneyProxy = new PlayerMoneyProxy(playerMoney);
-            _container.Bind<PlayerMoneyProxy>().FromInstance(playerMoneyProxy).AsSingle().NonLazy();
+            var buildingCurrency = new PlayerBuildingCurrency(_level.LevelConfig.InitialBuildingCurrency);
+            var buildingCurrencyProxy = new PlayerBuildingCurrencyProxy(buildingCurrency);
+            
+            _container.Bind<PlayerHealthProxy>().FromInstance(playerHealthProxy).AsSingle().NonLazy();
+            _container.Bind<PlayerBuildingCurrencyProxy>().FromInstance(buildingCurrencyProxy).AsSingle().NonLazy();
         }
 
         private void BindInput()

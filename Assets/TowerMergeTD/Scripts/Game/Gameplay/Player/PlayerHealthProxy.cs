@@ -1,6 +1,6 @@
 ﻿using R3;
 
-namespace TowerMergeTD.Game.State
+namespace TowerMergeTD.Game.Gameplay
 {
     public class PlayerHealthProxy
     {

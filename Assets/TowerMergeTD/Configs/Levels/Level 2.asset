@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   _isOpen: 1
-  _initialHealth: 1
-  _initialMoney: 500
+  _initialHealth: 5
+  _initialBuildingCurrency: 500
   scoreForOneStar: 0
   scoreForTwoStars: 500
   scoreForThreeStars: 1000

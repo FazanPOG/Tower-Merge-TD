@@ -1,6 +1,5 @@
 ﻿using Sirenix.OdinInspector;
 using TowerMergeTD.Game.Gameplay;
-using TowerMergeTD.Game.State;
 using UnityEngine;
 using Zenject;
 
@@ -11,29 +10,32 @@ namespace TowerMergeTD.Utils.Debug
     {
         private IScoreService _scoreService;
         private IWaveSpawnerService _waveSpawnerService;
+        private PlayerHealthProxy _playerHealthProxy;
+        private PlayerBuildingCurrencyProxy _buildingCurrency;
 
         [ShowInInspector, ReadOnly] public int Score => _scoreService.Score;
-        [ShowInInspector] public PlayerHealthProxy Health { get; private set; }
-        [ShowInInspector] public PlayerMoneyProxy Money { get; private set; }
+        [ShowInInspector] public int Health => _playerHealthProxy.Health.CurrentValue;
+        [ShowInInspector] public int BuildingCurrency => _buildingCurrency.BuildingCurrency.CurrentValue;
 
         public void Init(DiContainer diContainer)
         {
             _scoreService = diContainer.Resolve<IScoreService>();
             _waveSpawnerService = diContainer.Resolve<IWaveSpawnerService>();
-            Health = diContainer.Resolve<PlayerHealthProxy>();
-            Money = diContainer.Resolve<PlayerMoneyProxy>();
+            
+            _playerHealthProxy = diContainer.Resolve<PlayerHealthProxy>();
+            _buildingCurrency = diContainer.Resolve<PlayerBuildingCurrencyProxy>();
         }
         
         [Button("Set health")]
         private void SetHealth(int health)
         {
-            Health.Health.Value = health;
+            _playerHealthProxy.Health.Value = health;
         }
         
-        [Button("Set money")]
-        private void SetMoney(int money)
+        [Button("Set building currency")]
+        private void SetBuildingCurrency(int money)
         {
-            Money.Money.Value = money;
+            _buildingCurrency.BuildingCurrency.Value = money;
         }
         
         [Button("Add score")]

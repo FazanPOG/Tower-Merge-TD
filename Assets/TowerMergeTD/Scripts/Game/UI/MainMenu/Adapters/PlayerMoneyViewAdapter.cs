@@ -7,16 +7,16 @@ namespace TowerMergeTD.Game.UI
     public class PlayerMoneyViewAdapter
     {
         private readonly PlayerMoneyView _view;
-        private readonly PlayerMoneyProxy _playerMoneyProxy;
+        private readonly PlayerGoldProxy _playerGoldProxy;
 
         private IDisposable _disposable;
 
-        public PlayerMoneyViewAdapter(PlayerMoneyView view, PlayerMoneyProxy playerMoneyProxy)
+        public PlayerMoneyViewAdapter(PlayerMoneyView view, PlayerGoldProxy playerGoldProxy)
         {
             _view = view;
-            _playerMoneyProxy = playerMoneyProxy;
+            _playerGoldProxy = playerGoldProxy;
 
-            _playerMoneyProxy.Money.Subscribe(UpdateView);
+            _playerGoldProxy.Gold.Subscribe(UpdateView);
         }
 
         private void UpdateView(int money)

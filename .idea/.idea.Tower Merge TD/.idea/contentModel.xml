@@ -1508,6 +1508,10 @@
                 </e>
                 <e p="Player" t="Include">
                   <e p="InputHandler.cs" t="Include" />
+                  <e p="PlayerBuildingCurrency.cs" t="Include" />
+                  <e p="PlayerBuildingCurrencyProxy.cs" t="Include" />
+                  <e p="PlayerHealth.cs" t="Include" />
+                  <e p="PlayerHealthProxy.cs" t="Include" />
                   <e p="PlayerInputActions.cs" t="Include" />
                 </e>
                 <e p="Root" t="Include">
@@ -1572,10 +1576,12 @@
                   <e p="TileMapType.cs" t="Include" />
                 </e>
                 <e p="Player" t="Include">
-                  <e p="PlayerHealth.cs" t="Include" />
-                  <e p="PlayerHealthProxy.cs" t="Include" />
-                  <e p="PlayerMoney.cs" t="Include" />
-                  <e p="PlayerMoneyProxy.cs" t="Include" />
+                  <e p="ICurrencyProvider.cs" t="Include" />
+                  <e p="PlayerGems.cs" t="Include" />
+                  <e p="PlayerGemsProxy.cs" t="Include" />
+                  <e p="PlayerGold.cs" t="Include" />
+                  <e p="PlayerGoldProxy.cs" t="Include" />
+                  <e p="PlayerPrefsCurrencyProvider.cs" t="Include" />
                 </e>
                 <e p="Providers" t="Include">
                   <e p="IGameStateProvider.cs" t="Include" />
@@ -1596,8 +1602,8 @@
                     <e p="LevelCompletePopupAdapter.cs" t="Include" />
                     <e p="LosePopupViewAdapter.cs" t="Include" />
                     <e p="PausePopupViewAdapter.cs" t="Include" />
+                    <e p="PlayerBuildingCurrencyViewAdapter.cs" t="Include" />
                     <e p="PlayerHealthViewAdapter.cs" t="Include" />
-                    <e p="PlayerMoneyViewAdapter.cs" t="Include" />
                     <e p="TowerActionsAdapter.cs" t="Include" />
                   </e>
                   <e p="Root" t="Include">
@@ -1607,8 +1613,8 @@
                     <e p="LevelCompletePopupView.cs" t="Include" />
                     <e p="LosePopupView.cs" t="Include" />
                     <e p="PausePopupView.cs" t="Include" />
+                    <e p="PlayerBuildingCurrencyView.cs" t="Include" />
                     <e p="PlayerHealthView.cs" t="Include" />
-                    <e p="PlayerMoneyView.cs" t="Include" />
                     <e p="TowerActionsView.cs" t="Include" />
                   </e>
                 </e>
@@ -1618,6 +1624,7 @@
                     <e p="LevelLockPopupViewAdapter.cs" t="Include" />
                     <e p="LevelsPanelViewAdapter.cs" t="Include" />
                     <e p="MainMenuPanelsViewAdapter.cs" t="Include" />
+                    <e p="PlayerMoneyViewAdapter.cs" t="Include" />
                     <e p="SettingsPopupViewAdapter.cs" t="Include" />
                   </e>
                   <e p="Root" t="Include">
@@ -1628,6 +1635,7 @@
                     <e p="LevelLockPopupView.cs" t="Include" />
                     <e p="LevelsPanelView.cs" t="Include" />
                     <e p="MainMenuPanelView.cs" t="Include" />
+                    <e p="PlayerMoneyView.cs" t="Include" />
                     <e p="SettingsPopupView.cs" t="Include" />
                   </e>
                 </e>
@@ -1640,6 +1648,7 @@
             <e p="Utils" t="Include">
               <e p="Debug" t="Include">
                 <e p="GameplayDebug.cs" t="Include" />
+                <e p="MainMenuDebug.cs" t="Include" />
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="WorldTextCreator.cs" t="Include" />

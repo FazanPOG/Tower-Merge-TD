@@ -13,7 +13,7 @@ namespace TowerMergeTD.Gameplay.Root
     {
         [Header("HUD")]
         [SerializeField] private PlayerHealthView _playerHealthView;
-        [SerializeField] private PlayerMoneyView _playerMoneyView;
+        [SerializeField] private PlayerBuildingCurrencyView _buildingCurrencyView;
         [SerializeField] private Button _pauseButton;
 
         [Header("Other")]
@@ -41,11 +41,11 @@ namespace TowerMergeTD.Gameplay.Root
         {
             var projectConfig = _container.Resolve<ProjectConfig>();
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
-            var playerMoneyProxy = _container.Resolve<PlayerMoneyProxy>();
+            var buildingCurrencyProxy = _container.Resolve<PlayerBuildingCurrencyProxy>();
             var pauseService = _container.Resolve<IPauseService>();
             var gameStateService = _container.Resolve<IGameStateService>();
-            
-            new PlayerMoneyViewAdapter(_playerMoneyView, playerMoneyProxy);
+
+            new PlayerBuildingCurrencyViewAdapter(_buildingCurrencyView, buildingCurrencyProxy);
             new PlayerHealthViewAdapter(_playerHealthView, playerHealthProxy);
             
             bindTowerActions();
@@ -59,7 +59,7 @@ namespace TowerMergeTD.Gameplay.Root
                 var towerFactory = _container.Resolve<TowerFactory>();
                 var mapCoordinator = _container.Resolve<MapCoordinator>();
 
-                new TowerActionsAdapter(_towerActionsView, inputHandler, towerFactory, mapCoordinator, playerMoneyProxy, pauseService);
+                new TowerActionsAdapter(_towerActionsView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
             }
 
             void bindPausePopup()

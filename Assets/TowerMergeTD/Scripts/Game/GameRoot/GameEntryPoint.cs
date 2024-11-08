@@ -20,6 +20,7 @@ namespace TowerMergeTD.GameRoot
         private ProjectConfig _projectConfig;
         private readonly DiContainer _rootContainer = new DiContainer();
         private DiContainer _cashedSceneContainer;
+        private bool _isDataLoaded = false;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void AutostartGame()
@@ -43,9 +44,12 @@ namespace TowerMergeTD.GameRoot
 
             _projectConfig = Resources.Load<ProjectConfig>("ProjectConfig");
             var prefabReferencesConfig = Resources.Load<PrefabReferencesConfig>("PrefabReferencesConfig");
+            
             var gameStateProvider = new PlayerPrefsGameStateProvider();
-
+            gameStateProvider.Init(_projectConfig);
+            
             _rootContainer.Bind<IGameStateProvider>().To<PlayerPrefsGameStateProvider>().FromInstance(gameStateProvider).AsSingle().NonLazy();
+            _rootContainer.Bind<ICurrencyProvider>().To<PlayerPrefsCurrencyProvider>().FromNew().AsSingle().NonLazy();
             _rootContainer.Bind<UIRootView>().FromInstance(_uiRootView).AsSingle().NonLazy();
             _rootContainer.Bind<MonoBehaviourWrapper>().FromInstance(_monoBehaviourWrapper).AsSingle().NonLazy();
             _rootContainer.Bind<ProjectConfig>().FromInstance(_projectConfig).AsSingle().NonLazy();
@@ -54,6 +58,8 @@ namespace TowerMergeTD.GameRoot
         
         private void StartGame()
         {
+            _monoBehaviourWrapper.StartCoroutine(LoadPlayerData());
+            
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
@@ -79,8 +85,25 @@ namespace TowerMergeTD.GameRoot
             _monoBehaviourWrapper.StartCoroutine(LoadAndStartMainMenu());
         }
 
+        private IEnumerator LoadPlayerData()
+        {
+            var currencyProvider = _rootContainer.Resolve<ICurrencyProvider>();
+            
+            bool isCurrencyLoaded = false;
+            currencyProvider.LoadCurrency().Subscribe(_ => isCurrencyLoaded = true);
+            yield return new WaitUntil(() => isCurrencyLoaded);
+
+            _rootContainer.Bind<PlayerGoldProxy>().FromInstance(currencyProvider.Gold).AsSingle().NonLazy();
+            _rootContainer.Bind<PlayerGemsProxy>().FromInstance(currencyProvider.Gems).AsSingle().NonLazy();
+
+            Debug.Log($"Data loaded, Gold: {currencyProvider.Gold.Gold.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
+            _isDataLoaded = true;
+        }
+        
         private IEnumerator LoadAndStartMainMenu(MainMenuEnterParams mainMenuEnterParams = null)
         {
+            yield return new WaitUntil(() => _isDataLoaded);
+            
             _cashedSceneContainer?.UnbindAll();
             
             _uiRootView.ShowLoadingScreen();
@@ -92,10 +115,9 @@ namespace TowerMergeTD.GameRoot
             
             //
             bool isGameStateLoaded = false;
-            var gameStateProvider = _rootContainer.Resolve<IGameStateProvider>();
-            gameStateProvider.Init(_projectConfig);
-            gameStateProvider.LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
             yield return new WaitUntil(() => isGameStateLoaded);
+
             
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             var mainMenuContainer = _cashedSceneContainer = new DiContainer(_rootContainer);

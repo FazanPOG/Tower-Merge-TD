@@ -4,6 +4,7 @@ using TowerMergeTD.Game.UI;
 using TowerMergeTD.Game.UI.Root;
 using TowerMergeTD.Gameplay.Root;
 using TowerMergeTD.GameRoot;
+using TowerMergeTD.Utils.Debug;
 using UnityEngine;
 using Zenject;
 
@@ -29,6 +30,8 @@ namespace TowerMergeTD.MainMenu.Root
             var exitSceneSignal = new ReactiveProperty<int>();
             uiMainMenuRoot.Bind(exitSceneSignal, projectConfig, gameStateProvider);
             
+            if(TryGetComponent(out MainMenuDebug mainMenuDebug))
+                mainMenuDebug.Init(mainMenuContainer);
             Debug.Log($"MAIN MENU ENTER PARAMS: {mainMenuEnterParams?.Result}");
 
             exitSceneSignal.Skip(1).Subscribe(levelNumber =>
