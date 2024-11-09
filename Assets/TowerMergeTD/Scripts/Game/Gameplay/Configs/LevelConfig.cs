@@ -1,4 +1,7 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using Sirenix.OdinInspector;
 using TowerMergeTD.Game.State;
 using UnityEngine;
 
@@ -39,10 +42,13 @@ namespace TowerMergeTD.Game.Gameplay
         [TabGroup("Configs", "Tower Generation")]
         [ListDrawerSettings(Expanded = true, ShowPaging = true)]
         [SerializeField] private TowerGenerationConfig[] _towerGenerationConfigs;
-
+        
         [TabGroup("Configs", "Waves")]
         [ListDrawerSettings(Expanded = true, ShowPaging = true)]
-        [SerializeField] private WaveConfig[] _waves;
+        [Tooltip("Каждая WavesData представляет собой отдельный путь. Заполняйте массивы 'Waves' для настройки волн врагов по каждому пути. " +
+                 "Количество WavesData ОБЯЗАТЕЛЬНО должно быть равно количетсву путей." +
+                 "Количество Waves ДОЛЖНО быть одиннаковым")]
+        [SerializeField] private WavesData[] _waveDatas;
 
         public bool IsOpen => _isOpen;
         public int InitialBuildingCurrency => _initialBuildingCurrency;
@@ -54,6 +60,31 @@ namespace TowerMergeTD.Game.Gameplay
 
         public TileSetConfig TileSetConfig => _tileSetConfig;
         public TowerGenerationConfig[] TowerGenerationConfigs => _towerGenerationConfigs;
+        
+        public WavesData[] WaveDatas => _waveDatas;
+
+        private void OnValidate()
+        {
+            int previousCount = 0;
+            foreach (var waveData in _waveDatas)
+            {
+                if (previousCount == 0)
+                {
+                    previousCount = waveData.Waves.Length;
+                    continue;
+                }
+
+                if (waveData.Waves.Length != previousCount)
+                    Debug.LogError($"The number of WaveConfig in each WaveData MUST be the same!");
+            }
+        }
+    }
+
+    [Serializable]
+    public class WavesData
+    {
+        [SerializeField] private WaveConfig[] _waves;
+
         public WaveConfig[] Waves => _waves;
     }
 }

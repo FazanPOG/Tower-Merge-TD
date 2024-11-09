@@ -678,11 +678,13 @@ MonoBehaviour:
   _environmentTileMap: {fileID: 7542593490681038741}
   _towersParent: {fileID: 3534004255195766464}
   _enemiesParent: {fileID: 49187232817970296}
-  _pathPoints:
-  - {fileID: 7148759390518162398}
-  - {fileID: 4328683193297521265}
-  _enemySpawnPosition: {fileID: 7148759390518162398}
-  _enemyFinish: {fileID: 2807213234071441277}
+  _enemyFinishes:
+  - {fileID: 2807213234071441277}
+  _paths:
+  - _pathPoints:
+    - {fileID: 7148759390518162398}
+    - {fileID: 4328683193297521265}
+    _enemySpawnPosition: {fileID: 7148759390518162398}
 --- !u!1 &3235724556091357161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4122,7 +4124,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &2807213234071441277
 MonoBehaviour:
@@ -4223,7 +4225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618065126780720607}
   m_Layer: 0
-  m_Name: PathPoints
+  m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

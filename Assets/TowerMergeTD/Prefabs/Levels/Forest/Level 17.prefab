@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &346330148991493950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3523243870397459717}
-  m_Layer: 0
-  m_Name: SpawnPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3523243870397459717
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346330148991493950}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6241142173515491586}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109706916122024568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,21 +1077,23 @@ MonoBehaviour:
   _environmentTileMap: {fileID: 3891896480261239353}
   _towersParent: {fileID: 3081737196457613332}
   _enemiesParent: {fileID: 6241142173515491586}
-  _pathPoints:
-  - {fileID: 6672837573570131220}
-  - {fileID: 5448777718122709061}
-  - {fileID: 1170560428634326632}
-  - {fileID: 3180012854052711613}
-  - {fileID: 2742220793492720176}
-  - {fileID: 6363990598158368203}
-  - {fileID: 6863715577691236149}
-  - {fileID: 6630331934128168761}
-  - {fileID: 4090395725183638411}
-  - {fileID: 3757402570890995767}
-  - {fileID: 998293000126246637}
-  - {fileID: 2261687170334972600}
-  _enemySpawnPosition: {fileID: 6672837573570131220}
-  _enemyFinish: {fileID: 3560402977095225643}
+  _enemyFinishes:
+  - {fileID: 3560402977095225643}
+  _paths:
+  - _pathPoints:
+    - {fileID: 6672837573570131220}
+    - {fileID: 5448777718122709061}
+    - {fileID: 1170560428634326632}
+    - {fileID: 3180012854052711613}
+    - {fileID: 2742220793492720176}
+    - {fileID: 6363990598158368203}
+    - {fileID: 6863715577691236149}
+    - {fileID: 6630331934128168761}
+    - {fileID: 4090395725183638411}
+    - {fileID: 3757402570890995767}
+    - {fileID: 998293000126246637}
+    - {fileID: 2261687170334972600}
+    _enemySpawnPosition: {fileID: 6672837573570131220}
 --- !u!1 &3854111226797670087
 GameObject:
   m_ObjectHideFlags: 0
@@ -4491,7 +4462,7 @@ Transform:
   m_GameObject: {fileID: 6522962823726824842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 4.5, z: 0}
+  m_LocalPosition: {x: -6, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4540,7 +4511,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &3560402977095225643
 MonoBehaviour:
@@ -4613,8 +4584,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3523243870397459717}
+  m_Children: []
   m_Father: {fileID: 7417038999195117683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8324723904905815259
@@ -4658,7 +4628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2912230911393243180}
   m_Layer: 0
-  m_Name: PathPoints
+  m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

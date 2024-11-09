@@ -89,7 +89,7 @@ Transform:
   m_GameObject: {fileID: 1712342882045334668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 3, z: 0}
+  m_LocalPosition: {x: -5, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &859120909546499926
 MonoBehaviour:
@@ -180,8 +180,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8840467932717505033}
+  m_Children: []
   m_Father: {fileID: 1495911529731508845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1831850294914774721
@@ -194,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334439132392311492}
   m_Layer: 0
-  m_Name: PathPoints
+  m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,54 +405,25 @@ MonoBehaviour:
   _environmentTileMap: {fileID: 3240769083558395675}
   _towersParent: {fileID: 4591115172401370770}
   _enemiesParent: {fileID: 1562950299148399718}
-  _pathPoints:
-  - {fileID: 6433768509693652568}
-  - {fileID: 7743090831905279886}
-  - {fileID: 1237745024305481502}
-  - {fileID: 7462399366525447159}
-  - {fileID: 2844970367536274610}
-  - {fileID: 4503984293217218615}
-  - {fileID: 4335574772806493938}
-  - {fileID: 5201989252950487912}
-  - {fileID: 9093764790592712312}
-  - {fileID: 29371718834548599}
-  - {fileID: 2983235540237074023}
-  - {fileID: 1214428621611713951}
-  - {fileID: 7261921751731974497}
-  - {fileID: 4169975602049463636}
-  _enemySpawnPosition: {fileID: 6433768509693652568}
-  _enemyFinish: {fileID: 859120909546499926}
---- !u!1 &4126163250422690939
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8840467932717505033}
-  m_Layer: 0
-  m_Name: SpawnPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8840467932717505033
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4126163250422690939}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1562950299148399718}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  _enemyFinishes:
+  - {fileID: 859120909546499926}
+  _paths:
+  - _pathPoints:
+    - {fileID: 6433768509693652568}
+    - {fileID: 7743090831905279886}
+    - {fileID: 1237745024305481502}
+    - {fileID: 7462399366525447159}
+    - {fileID: 2844970367536274610}
+    - {fileID: 4503984293217218615}
+    - {fileID: 4335574772806493938}
+    - {fileID: 5201989252950487912}
+    - {fileID: 9093764790592712312}
+    - {fileID: 29371718834548599}
+    - {fileID: 2983235540237074023}
+    - {fileID: 1214428621611713951}
+    - {fileID: 7261921751731974497}
+    - {fileID: 4169975602049463636}
+    _enemySpawnPosition: {fileID: 6433768509693652568}
 --- !u!1 &4556849285872504920
 GameObject:
   m_ObjectHideFlags: 0

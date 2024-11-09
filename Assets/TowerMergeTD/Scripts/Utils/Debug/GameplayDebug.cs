@@ -9,7 +9,6 @@ namespace TowerMergeTD.Utils.Debug
     public class GameplayDebug : MonoBehaviour
     {
         private IScoreService _scoreService;
-        private IWaveSpawnerService _waveSpawnerService;
         private PlayerHealthProxy _playerHealthProxy;
         private PlayerBuildingCurrencyProxy _buildingCurrency;
 
@@ -20,7 +19,6 @@ namespace TowerMergeTD.Utils.Debug
         public void Init(DiContainer diContainer)
         {
             _scoreService = diContainer.Resolve<IScoreService>();
-            _waveSpawnerService = diContainer.Resolve<IWaveSpawnerService>();
             
             _playerHealthProxy = diContainer.Resolve<PlayerHealthProxy>();
             _buildingCurrency = diContainer.Resolve<PlayerBuildingCurrencyProxy>();
@@ -42,12 +40,6 @@ namespace TowerMergeTD.Utils.Debug
         private void AddScore(int score)
         {
             _scoreService.AddScore(score);
-        }
-        
-        [Button("Spawn next wave")]
-        private void SpawnNextWave()
-        {
-            _waveSpawnerService.SpawnNextWave();
         }
     }
 }

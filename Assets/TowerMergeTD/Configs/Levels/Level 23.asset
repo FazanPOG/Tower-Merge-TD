@@ -22,8 +22,16 @@ MonoBehaviour:
   _towerGenerationConfigs:
   - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
   - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
-  _waves:
-  - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-  - {fileID: 11400000, guid: bf0e391a556b8b249955f1f99573e10d, type: 2}
-  - {fileID: 11400000, guid: 14ac0b4cb1c492c4e88f32a3da9b0acf, type: 2}
-  - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+  _waveDatas:
+  - _waves:
+    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+    - {fileID: 11400000, guid: 9c71f073b6d1d4e4b90f5a54a93d1a19, type: 2}
+  - _waves:
+    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+  - _waves:
+    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+    - {fileID: 11400000, guid: 763ad904732cda349b477145c32a4384, type: 2}
+  - _waves:
+    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+    - {fileID: 11400000, guid: 14ac0b4cb1c492c4e88f32a3da9b0acf, type: 2}

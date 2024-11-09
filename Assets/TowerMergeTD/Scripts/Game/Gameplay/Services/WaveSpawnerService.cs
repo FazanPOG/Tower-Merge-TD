@@ -50,7 +50,10 @@ namespace TowerMergeTD.Game.Gameplay
             if (_waves.Count > 0)
             {
                 _currentWave = _waves.Dequeue();
-                _coroutine = _monoBehaviour.StartCoroutine(SpawnEnemies(_currentWave));
+                if(_currentWave.Enemies.IsEmpty())
+                    OnWaveCompleted?.Invoke();
+                else
+                    _coroutine = _monoBehaviour.StartCoroutine(SpawnEnemies(_currentWave));
             }
             else
             {

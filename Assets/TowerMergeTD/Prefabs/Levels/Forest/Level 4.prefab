@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830019292317581471}
   m_Layer: 0
-  m_Name: PathPoints
+  m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,8 +96,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3247608195005070781}
+  m_Children: []
   m_Father: {fileID: 1424443800567786826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602401249067418260
@@ -130,37 +129,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 830019292317581471}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2240502545163100495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3247608195005070781}
-  m_Layer: 0
-  m_Name: SpawnPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3247608195005070781
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240502545163100495}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7651243863111459511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3044806742879229367
 GameObject:
@@ -220,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 3071714830000952341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 3, z: 0}
+  m_LocalPosition: {x: 6, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -269,7 +237,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &7281408775921358696
 MonoBehaviour:
@@ -2999,15 +2967,17 @@ MonoBehaviour:
   _environmentTileMap: {fileID: 5957173796604642840}
   _towersParent: {fileID: 5068804785628046822}
   _enemiesParent: {fileID: 7651243863111459511}
-  _pathPoints:
-  - {fileID: 1350857320818213923}
-  - {fileID: 3978125785057367178}
-  - {fileID: 5995451795688411020}
-  - {fileID: 5040850447246759387}
-  - {fileID: 7397385688878917588}
-  - {fileID: 6724165347629401528}
-  _enemySpawnPosition: {fileID: 1350857320818213923}
-  _enemyFinish: {fileID: 7281408775921358696}
+  _enemyFinishes:
+  - {fileID: 7281408775921358696}
+  _paths:
+  - _pathPoints:
+    - {fileID: 1350857320818213923}
+    - {fileID: 3978125785057367178}
+    - {fileID: 5995451795688411020}
+    - {fileID: 5040850447246759387}
+    - {fileID: 7397385688878917588}
+    - {fileID: 6724165347629401528}
+    _enemySpawnPosition: {fileID: 1350857320818213923}
 --- !u!1 &9029648536844479980
 GameObject:
   m_ObjectHideFlags: 0
