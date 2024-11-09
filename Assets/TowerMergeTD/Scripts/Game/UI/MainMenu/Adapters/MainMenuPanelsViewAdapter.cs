@@ -4,17 +4,21 @@
     {
         private readonly LevelsPanelView _levelsPanelView;
         private readonly SettingsPopupView _settingsPopupView;
+        private readonly ShopPopupView _shopPopupView;
 
         public MainMenuPanelsViewAdapter(
             MainMenuPanelView mainMenuPanelView, 
             LevelsPanelView levelsPanelView,
-            SettingsPopupView settingsPopupView)
+            SettingsPopupView settingsPopupView,
+            ShopPopupView shopPopupView)
         {
             _levelsPanelView = levelsPanelView;
             _settingsPopupView = settingsPopupView;
+            _shopPopupView = shopPopupView;
 
             mainMenuPanelView.OnPlayButtonClicked += HandlePlayButtonClicked;
             mainMenuPanelView.OnSettingsButtonClicked += HandleSettingsButtonClicked;
+            mainMenuPanelView.OnShopButtonClicked += HandleShopButtonClicked;
         }
 
         private void HandlePlayButtonClicked()
@@ -25,6 +29,11 @@
         private void HandleSettingsButtonClicked()
         {
             _settingsPopupView.Show();
+        }
+
+        private void HandleShopButtonClicked()
+        {
+            _shopPopupView.Show();
         }
     }
 }

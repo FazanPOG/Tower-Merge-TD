@@ -15,6 +15,10 @@ namespace TowerMergeTD.Game.UI
         [Header("Popups")]
         [SerializeField] private SettingsPopupView _settingsPopupView;
         [SerializeField] private LevelLockPopupView _levelLockPopupView;
+        [SerializeField] private ShopPopupView _shopPopupView;
+        [SerializeField] private ShopTowersView _shopTowersView;
+        [SerializeField] private ShopCoinView _shopCoinView;
+        [SerializeField] private ShopGemView _shopGemView;
 
         private ReactiveProperty<int> _exitSceneSignalBus;
         private ProjectConfig _projectConfig;
@@ -53,10 +57,11 @@ namespace TowerMergeTD.Game.UI
                     );
             }
 
-            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView);
+            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView);
             new LevelsPanelViewAdapter(_levelsPanelView);
             new SettingsPopupViewAdapter(_settingsPopupView);
             new LevelLockPopupViewAdapter(_levelLockPopupView);
+            new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView);
         }
     }
 }
