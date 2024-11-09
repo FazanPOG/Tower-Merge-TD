@@ -450,6 +450,22 @@
           </e>
         </e>
         <e p="Plugins" t="Include">
+          <e p="PageSlider" t="Include">
+            <e p="Demo" t="Include">
+              <e p="PageSliderDemo.cs" t="Include" />
+              <e p="PageSliderDemoLazy.cs" t="Include" />
+              <e p="SliderPage.cs" t="Include" />
+              <e p="SliderPageLazy.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="PageContainer.cs" t="Include" />
+              <e p="PageDot.cs" t="Include" />
+              <e p="PageDotsIndicator.cs" t="Include" />
+              <e p="PageScroller.cs" t="Include" />
+              <e p="PageSlider.cs" t="Include" />
+              <e p="PageView.cs" t="Include" />
+            </e>
+          </e>
           <e p="Sirenix" t="Include">
             <e p="Assemblies" t="Include">
               <e p="link.xml" t="Include" />

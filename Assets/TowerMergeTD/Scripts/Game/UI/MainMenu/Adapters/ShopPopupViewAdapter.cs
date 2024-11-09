@@ -40,6 +40,10 @@
             _shopTowersView.Show();
             _shopCoinView.Hide();
             _shopGemView.Hide();
+            
+            _shopPopupView.SetActiveTowerView(true);
+            _shopPopupView.SetActiveCoinView(false);
+            _shopPopupView.SetActiveGemView(false);
         }
 
         private void ShowCoinShop()
@@ -47,6 +51,10 @@
             _shopCoinView.Show();
             _shopTowersView.Hide();
             _shopGemView.Hide();
+
+            _shopPopupView.SetActiveCoinView(true);
+            _shopPopupView.SetActiveTowerView(false);
+            _shopPopupView.SetActiveGemView(false);
         }
 
         private void ShowGemShop()
@@ -54,6 +62,10 @@
             _shopGemView.Show();
             _shopTowersView.Hide();
             _shopCoinView.Hide();
+
+            _shopPopupView.SetActiveGemView(true);
+            _shopPopupView.SetActiveCoinView(false);
+            _shopPopupView.SetActiveTowerView(false);
         }
     }
 }
