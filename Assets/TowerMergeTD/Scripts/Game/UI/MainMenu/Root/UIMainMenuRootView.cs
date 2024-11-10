@@ -3,19 +3,25 @@ using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
 using TS.PageSlider;
 using UnityEngine;
+using Zenject;
 
 namespace TowerMergeTD.Game.UI
 {
     public class UIMainMenuRootView : MonoBehaviour
     {
         private const int MAX_LEVELS_ON_PAGE = 21;
-        
+
+        [Header("Player currencies")]
+        [SerializeField] private PlayerCoinsView _playerCoinsView;
+        [SerializeField] private PlayerGemsView _playerGemsView;
+        [Space(10)]
         [Header("Panels")]
         [SerializeField] private MainMenuPanelView _mainMenuPanelView;
         [SerializeField] private LevelsPanelView _levelsPanelView;
         [SerializeField] private PageSlider _pageSlider;
         [SerializeField] private PageView _pagePrefab;
         [SerializeField] private LevelEntryView _levelEntryViewPrefab;
+        [Space(10)]
         [Header("Popups")]
         [SerializeField] private SettingsPopupView _settingsPopupView;
         [SerializeField] private LevelLockPopupView _levelLockPopupView;
@@ -27,17 +33,21 @@ namespace TowerMergeTD.Game.UI
         private ReactiveProperty<int> _exitSceneSignalBus;
         private ProjectConfig _projectConfig;
         private IGameStateProvider _gameStateProvider;
+        private PlayerCoinsProxy _playerCoinsProxy;
+        private PlayerGemsProxy _playerGemsProxy;
 
         private void HandleGoToGameplayButtonClicked(int levelNumber)
         {
             _exitSceneSignalBus?.OnNext(levelNumber);
         }
 
-        public void Bind(ReactiveProperty<int> exitSceneSignalBus, ProjectConfig projectConfig, IGameStateProvider gameStateProvider)
+        public void Bind(ReactiveProperty<int> exitSceneSignalBus, DiContainer container)
         {
             _exitSceneSignalBus = exitSceneSignalBus;
-            _projectConfig = projectConfig;
-            _gameStateProvider = gameStateProvider;
+            _projectConfig = container.Resolve<ProjectConfig>();
+            _gameStateProvider = container.Resolve<IGameStateProvider>();
+            _playerCoinsProxy = container.Resolve<PlayerCoinsProxy>();
+            _playerGemsProxy = container.Resolve<PlayerGemsProxy>();
 
             BindAdapters();
         }
@@ -45,12 +55,14 @@ namespace TowerMergeTD.Game.UI
         private void BindAdapters()
         {
             BindLevelEntryViewAdapters();
-            
+
             new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView);
             new LevelsPanelViewAdapter(_levelsPanelView);
             new SettingsPopupViewAdapter(_settingsPopupView);
             new LevelLockPopupViewAdapter(_levelLockPopupView);
-            new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView);
+            
+            var shopAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView);
+            BindPlayerCurrencies(shopAdapter);
         }
 
         private void BindLevelEntryViewAdapters()
@@ -85,6 +97,12 @@ namespace TowerMergeTD.Game.UI
                     createdLevelCounter++;
                 }
             }
+        }
+
+        private void BindPlayerCurrencies(ShopPopupViewAdapter shopAdapter)
+        {
+            new PlayerCoinsViewAdapter(_playerCoinsView, _playerCoinsProxy, _shopPopupView, shopAdapter);
+            new PlayerGemsViewAdapter(_playerGemsView, _playerGemsProxy, _shopPopupView, shopAdapter);
         }
     }
 }

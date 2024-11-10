@@ -28,7 +28,7 @@ namespace TowerMergeTD.MainMenu.Root
             _uiRoot.AttachSceneUI(uiMainMenuRoot.gameObject);
         
             var exitSceneSignal = new ReactiveProperty<int>();
-            uiMainMenuRoot.Bind(exitSceneSignal, projectConfig, gameStateProvider);
+            uiMainMenuRoot.Bind(exitSceneSignal, mainMenuContainer);
             
             if(TryGetComponent(out MainMenuDebug mainMenuDebug))
                 mainMenuDebug.Init(mainMenuContainer);

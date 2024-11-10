@@ -4,7 +4,7 @@ namespace TowerMergeTD.Game.State
 {
     public interface ICurrencyProvider
     {
-        PlayerGoldProxy Gold { get; }
+        PlayerCoinsProxy Coins { get; }
         PlayerGemsProxy Gems { get; }
         Observable<bool> LoadCurrency();
         Observable<bool> SaveGold();

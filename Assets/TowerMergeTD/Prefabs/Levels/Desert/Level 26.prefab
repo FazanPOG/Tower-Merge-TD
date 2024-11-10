@@ -5059,6 +5059,24 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: 827.0254
+      e01: 1.1e-44
+      e02: 5.7558347e-11
+      e03: 0
+      e10: 3.6e-44
+      e11: NaN
+      e12: 4.5904e-41
+      e13: 0
+      e20: 1.51276e-40
+      e21: 0
+      e22: 827.0244
+      e23: 0
+      e30: 0
+      e31: 7.34684e-40
+      e32: 3.6e-44
+      e33: 1
   m_TileColorArray:
   - m_RefCount: 378
     m_Data: {r: 1, g: 1, b: 1, a: 1}
@@ -5162,7 +5180,7 @@ Transform:
   m_GameObject: {fileID: 7734217107630985558}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 3.5, z: 0}
+  m_LocalPosition: {x: 3, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5211,7 +5229,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &6309473143497542422
 MonoBehaviour:

@@ -1,10 +1,10 @@
 ﻿namespace TowerMergeTD.Game.State
 {
-    public class PlayerGold
+    public class PlayerCoins
     {
         public int Value;
         
-        public PlayerGold(int initialGold)
+        public PlayerCoins(int initialGold)
         {
             Value = initialGold;
         }

@@ -8,7 +8,7 @@ namespace TowerMergeTD.Game.State
         private const string CURRENCY_GOLD_KEY = nameof(CURRENCY_GOLD_KEY);
         private const string CURRENCY_GEMS_KEY = nameof(CURRENCY_GEMS_KEY);
         
-        public PlayerGoldProxy Gold { get; private set; }
+        public PlayerCoinsProxy Coins { get; private set; }
         public PlayerGemsProxy Gems { get; private set;}
         
         public Observable<bool> LoadCurrency()
@@ -20,8 +20,8 @@ namespace TowerMergeTD.Game.State
             }
             else
             {
-                PlayerGold gold = new PlayerGold(PlayerPrefs.GetInt(CURRENCY_GOLD_KEY));
-                Gold = new PlayerGoldProxy(gold);
+                PlayerCoins coins = new PlayerCoins(PlayerPrefs.GetInt(CURRENCY_GOLD_KEY));
+                Coins = new PlayerCoinsProxy(coins);
             }
             
             if (PlayerPrefs.HasKey(CURRENCY_GEMS_KEY) == false)
@@ -40,7 +40,7 @@ namespace TowerMergeTD.Game.State
 
         public Observable<bool> SaveGold()
         {
-            PlayerPrefs.SetInt(CURRENCY_GOLD_KEY, Gold.Gold.CurrentValue);
+            PlayerPrefs.SetInt(CURRENCY_GOLD_KEY, Coins.Coins.CurrentValue);
             PlayerPrefs.Save();
 
             return Observable.Return(true);
@@ -64,8 +64,8 @@ namespace TowerMergeTD.Game.State
 
         private void SetGoldFromSettings()
         {
-            PlayerGold gold = new PlayerGold(0);
-            Gold = new PlayerGoldProxy(gold);
+            PlayerCoins coins = new PlayerCoins(0);
+            Coins = new PlayerCoinsProxy(coins);
             
             SaveGold();
         }

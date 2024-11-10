@@ -46,7 +46,7 @@
             _shopPopupView.SetActiveGemView(false);
         }
 
-        private void ShowCoinShop()
+        public void ShowCoinShop()
         {
             _shopCoinView.Show();
             _shopTowersView.Hide();
@@ -57,7 +57,7 @@
             _shopPopupView.SetActiveGemView(false);
         }
 
-        private void ShowGemShop()
+        public void ShowGemShop()
         {
             _shopGemView.Show();
             _shopTowersView.Hide();

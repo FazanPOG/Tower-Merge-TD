@@ -65,7 +65,7 @@ namespace TowerMergeTD.GameRoot
 
             if (sceneName == Scenes.Gameplay)
             {
-                var enterParams = new GameplayEnterParams(1);
+                var enterParams = new GameplayEnterParams(14);
                 _monoBehaviourWrapper.StartCoroutine(LoadAndStartGameplay(enterParams));
                 return;
             }
@@ -93,10 +93,10 @@ namespace TowerMergeTD.GameRoot
             currencyProvider.LoadCurrency().Subscribe(_ => isCurrencyLoaded = true);
             yield return new WaitUntil(() => isCurrencyLoaded);
 
-            _rootContainer.Bind<PlayerGoldProxy>().FromInstance(currencyProvider.Gold).AsSingle().NonLazy();
+            _rootContainer.Bind<PlayerCoinsProxy>().FromInstance(currencyProvider.Coins).AsSingle().NonLazy();
             _rootContainer.Bind<PlayerGemsProxy>().FromInstance(currencyProvider.Gems).AsSingle().NonLazy();
 
-            Debug.Log($"Data loaded, Gold: {currencyProvider.Gold.Gold.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
+            Debug.Log($"Data loaded, Gold: {currencyProvider.Coins.Coins.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
             _isDataLoaded = true;
         }
         
