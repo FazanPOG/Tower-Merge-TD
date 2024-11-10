@@ -6,29 +6,39 @@ namespace TowerMergeTD.Game.Gameplay
 {
     public class CameraMovement : MonoBehaviour
     {
-        private const string TILEMAP_BASE_NAME = "Tilemap-Base";
         private const float MOVE_SPEED = 10f;
         private const float MAX_CAMERA_SIZE = 5f;
         private const float MIN_CAMERA_SIZE = 3f;
 
         private Camera _camera;
         private Tilemap _tilemap;
-
+        private IInput _input;
+        
+        private float _targetZoom;
         private Vector3 _minBounds;
         private Vector3 _maxBounds;
         private bool _isEnabled;
 
-        public void Init(Camera mainCamera, Tilemap baseTileMap)
+        public void Init(Camera mainCamera, Tilemap baseTileMap, IInput input)
         {
             _camera = mainCamera;
             _tilemap = baseTileMap;
-            
-            Tilemap[] maps = FindObjectsOfType<Tilemap>();
-            _tilemap = maps.First(x => x.name == TILEMAP_BASE_NAME);
+            _input = input;
             
             CalculateTilemapBounds();
-
             _isEnabled = true;
+
+            _input.OnZoomIn += HandleZoom;
+            _input.OnZoomOut += HandleZoom;
+        }
+
+        //TODO:
+        private void HandleZoom(float scrollSpeed)
+        {
+            _targetZoom -= scrollSpeed;
+
+            _targetZoom = Mathf.Clamp(_targetZoom, MIN_CAMERA_SIZE, MAX_CAMERA_SIZE);
+            _camera.orthographicSize -= _targetZoom * 5f;
         }
 
         private void Update()

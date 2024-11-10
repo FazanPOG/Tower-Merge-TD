@@ -1526,12 +1526,18 @@
                   <e p="Level.cs" t="Include" />
                 </e>
                 <e p="Player" t="Include">
-                  <e p="InputHandler.cs" t="Include" />
-                  <e p="PlayerBuildingCurrency.cs" t="Include" />
-                  <e p="PlayerBuildingCurrencyProxy.cs" t="Include" />
-                  <e p="PlayerHealth.cs" t="Include" />
-                  <e p="PlayerHealthProxy.cs" t="Include" />
-                  <e p="PlayerInputActions.cs" t="Include" />
+                  <e p="Input" t="Include">
+                    <e p="DesktopInput.cs" t="Include" />
+                    <e p="IInput.cs" t="Include" />
+                    <e p="MobileInput.cs" t="Include" />
+                    <e p="PlayerInputActions.cs" t="Include" />
+                  </e>
+                  <e p="Models" t="Include">
+                    <e p="PlayerBuildingCurrency.cs" t="Include" />
+                    <e p="PlayerBuildingCurrencyProxy.cs" t="Include" />
+                    <e p="PlayerHealth.cs" t="Include" />
+                    <e p="PlayerHealthProxy.cs" t="Include" />
+                  </e>
                 </e>
                 <e p="Root" t="Include">
                   <e p="GameplayBinder.cs" t="Include" />
@@ -1674,6 +1680,7 @@
             <e p="Utils" t="Include">
               <e p="Debug" t="Include">
                 <e p="GameplayDebug.cs" t="Include" />
+                <e p="GameplayInputDebugView.cs" t="Include" />
                 <e p="MainMenuDebug.cs" t="Include" />
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />

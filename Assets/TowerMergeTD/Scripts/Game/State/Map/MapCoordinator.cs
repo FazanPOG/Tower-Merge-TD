@@ -10,14 +10,14 @@ namespace TowerMergeTD.Game.State
         private readonly Tilemap _baseTilemap;
         private readonly Tilemap _environmentTilemap;
         private readonly TileSetConfig _tileSetConfig;
-        private readonly InputHandler _inputHandler;
+        private readonly IInput _input;
 
-        public MapCoordinator(Tilemap baseTilemap, Tilemap environmentTilemap, TileSetConfig tileSetConfig, InputHandler inputHandler)
+        public MapCoordinator(Tilemap baseTilemap, Tilemap environmentTilemap, TileSetConfig tileSetConfig, IInput input)
         {
             _baseTilemap = baseTilemap;
             _environmentTilemap = environmentTilemap;
             _tileSetConfig = tileSetConfig;
-            _inputHandler = inputHandler;
+            _input = input;
         }
 
         public bool CanPlaceTower(Vector3 worldPosition)
@@ -77,7 +77,7 @@ namespace TowerMergeTD.Game.State
 
         public bool HasTowerInCell(out TowerObject towerObject)
         {
-            Vector3 mouseWorldPosition = _inputHandler.GetMouseWorldPosition();
+            Vector3 mouseWorldPosition = _input.GetClickWorldPosition();
             mouseWorldPosition.z = 0;
 
             Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);

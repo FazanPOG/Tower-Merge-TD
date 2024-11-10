@@ -7,7 +7,7 @@ namespace TowerMergeTD.Game.UI
     public class TowerActionsAdapter : IPauseHandler
     {
         private readonly TowerActionsView _view;
-        private readonly InputHandler _inputHandler;
+        private readonly IInput _input;
         private readonly TowerFactory _towerFactory;
         private readonly MapCoordinator _mapCoordinator;
         private readonly PlayerBuildingCurrencyProxy _buildingCurrencyProxy;
@@ -19,14 +19,14 @@ namespace TowerMergeTD.Game.UI
 
         public TowerActionsAdapter(
             TowerActionsView view, 
-            InputHandler inputHandler, 
+            IInput input, 
             TowerFactory towerFactory, 
             MapCoordinator mapCoordinator, 
             PlayerBuildingCurrencyProxy buildingCurrencyProxy,
             IPauseService pauseService)
         {
             _view = view;
-            _inputHandler = inputHandler;
+            _input = input;
             _towerFactory = towerFactory;
             _mapCoordinator = mapCoordinator;
             _buildingCurrencyProxy = buildingCurrencyProxy;
@@ -38,8 +38,8 @@ namespace TowerMergeTD.Game.UI
 
         private void Register()
         {
-            _inputHandler.OnMouseClicked += OnMouseClicked;
-            _inputHandler.OnMouseDrag += OnMouseDrag;
+            _input.OnClicked += OnClicked;
+            _input.OnDrag += OnDrag;
             _view.OnCreateTowerButtonClicked += CreateTower;
             _view.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);
@@ -53,13 +53,13 @@ namespace TowerMergeTD.Game.UI
                 _view.Hide();
         }
 
-        private void OnMouseClicked()
+        private void OnClicked()
         {
             if(_canInteract == false) return;
             if(_view.IsMouseOver) return;
 
             _currentClickedTower = null;
-            Vector3 mouseWorldPosition = _inputHandler.GetMouseWorldPosition();
+            Vector3 mouseWorldPosition = _input.GetClickWorldPosition();
             Vector2 cellCenterPosition = _mapCoordinator.GetCellCenterPosition(TilemapType.Base, mouseWorldPosition);
             
             if (_mapCoordinator.HasTowerInCell(out TowerObject towerObject))
@@ -77,7 +77,7 @@ namespace TowerMergeTD.Game.UI
             }
         }
 
-        private void OnMouseDrag()
+        private void OnDrag()
         {
             if (_view.gameObject.activeSelf)
                 _view.Hide();

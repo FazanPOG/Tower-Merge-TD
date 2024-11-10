@@ -3,6 +3,7 @@ using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
 using TowerMergeTD.GameRoot;
+using TowerMergeTD.Utils.Debug;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -18,6 +19,7 @@ namespace TowerMergeTD.Gameplay.Root
 
         [Header("Other")]
         [SerializeField] private TowerActionsView _towerActionsView;
+        [SerializeField] private GameplayInputDebugView _debugInputView;
 
         [Header("Popups")]
         [SerializeField] private PausePopupView _pausePopupView;
@@ -52,10 +54,13 @@ namespace TowerMergeTD.Gameplay.Root
             bindPausePopup();
             bindLoseGamePopup();
             bindLevelCompletePopup();
+
+            //TODO: remove
+            //bindDebugView();
             
             void bindTowerActions()
             {
-                var inputHandler = _container.Resolve<InputHandler>();
+                var inputHandler = _container.Resolve<IInput>();
                 var towerFactory = _container.Resolve<TowerFactory>();
                 var mapCoordinator = _container.Resolve<MapCoordinator>();
 
@@ -92,6 +97,13 @@ namespace TowerMergeTD.Gameplay.Root
                     );
                 
                 gameStateService.Register(levelCompletePopupAdapter);
+            }
+
+            void bindDebugView()
+            {
+                var input = _container.Resolve<IInput>();
+                _debugInputView.gameObject.SetActive(true);
+                _debugInputView.Init(input);
             }
         }
     }

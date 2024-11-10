@@ -13,7 +13,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly TowerGenerationConfig[] _generations;
         private readonly TowerObject _prefab;
         private readonly MapCoordinator _mapCoordinator;
-        private readonly InputHandler _inputHandler;
+        private readonly IInput _input;
         private readonly Transform _parent;
         private readonly MonoBehaviour _monoBehaviourContext;
         private readonly IPauseService _pauseService;
@@ -23,7 +23,7 @@ namespace TowerMergeTD.Game.Gameplay
             TowerGenerationConfig[] generations,
             PrefabReferencesConfig prefabReferences,
             MapCoordinator mapCoordinator,
-            InputHandler inputHandler,
+            IInput input,
             Transform parent,
             MonoBehaviourWrapper monoBehaviourContext,
             IPauseService pauseService)
@@ -32,7 +32,7 @@ namespace TowerMergeTD.Game.Gameplay
             _generations = generations;
             _prefab = prefabReferences.TowerPrefab;
             _mapCoordinator = mapCoordinator;
-            _inputHandler = inputHandler;
+            _input = input;
             _parent = parent;
             _monoBehaviourContext = monoBehaviourContext;
             _pauseService = pauseService;
@@ -49,7 +49,7 @@ namespace TowerMergeTD.Game.Gameplay
 
             ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
             
-            instance.Init(_inputHandler, generation, proxy, _mapCoordinator, attacker, _pauseService);
+            instance.Init(_input, generation, proxy, _mapCoordinator, attacker, _pauseService);
             instance.name = $"{instance.Type} {towerLevel}";
             
             return instance;

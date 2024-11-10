@@ -4,36 +4,39 @@ using UnityEngine.InputSystem;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class InputHandler : IDisposable
+    public class DesktopInput : IInput, IDisposable
     {
         private const float MOUSE_DRAG_THRESHOLD = .25f;
-        
-        private Camera _camera;
 
-        private PlayerInputActions _playerInputActions;
+        private readonly Camera _camera;
+        private readonly PlayerInputActions _playerInputActions;
+
         private Vector2 _initialMousePosition;
         private float _dragDistance;
         private bool _isMousePressed;
 
-        public event Action OnMouseClicked;
-        public event Action OnMouseClickStarted;
-        public event Action OnMouseDrag;
-        public event Action OnMouseCanceled;
-        
-        public InputHandler()
+        public event Action OnClicked;
+        public event Action OnClickStarted;
+        public event Action OnDrag;
+        public event Action OnClickCanceled;
+        public event Action<float> OnZoomIn;
+        public event Action<float> OnZoomOut;
+
+        public DesktopInput(Camera camera)
         {
-            _camera = Camera.main;
+            _camera = camera;
             _playerInputActions = new PlayerInputActions();
             
             _playerInputActions.Enable();
             _playerInputActions.Mouse.Enable();
-            
-            _playerInputActions.Mouse.Delta.performed += DeltaPerformed;
+
             _playerInputActions.Mouse.LeftButton.started += LeftButtonStarted;
+            _playerInputActions.Mouse.Delta.performed += DeltaPerformed;
             _playerInputActions.Mouse.LeftButton.canceled += LeftButtonCanceled;
+            _playerInputActions.Mouse.Scroll.performed += ScrollPerformed;
         }
 
-        public Vector3 GetMouseWorldPosition()
+        public Vector3 GetClickWorldPosition()
         {
             Vector3 mouseScreenPosition = Mouse.current.position.ReadValue();
             Vector3 mouseWorldPosition = _camera.ScreenToWorldPoint(mouseScreenPosition);
@@ -45,21 +48,21 @@ namespace TowerMergeTD.Game.Gameplay
             if(_camera == null) return;
             
             _isMousePressed = true;
-            _initialMousePosition = GetMouseWorldPosition();
-            OnMouseClickStarted?.Invoke();
+            _initialMousePosition = GetClickWorldPosition();
+            OnClickStarted?.Invoke();
         }
 
         private void DeltaPerformed(InputAction.CallbackContext _)
         {
             if(_camera == null) return;
             
-            Vector2 currentMousePosition = GetMouseWorldPosition();
+            Vector2 currentMousePosition = GetClickWorldPosition();
             var distance = Vector2.Distance(_initialMousePosition, currentMousePosition);
             
             if (distance > MOUSE_DRAG_THRESHOLD && _isMousePressed)
             {
                 _dragDistance = distance;
-                OnMouseDrag?.Invoke();
+                OnDrag?.Invoke();
             }
         }
 
@@ -68,11 +71,27 @@ namespace TowerMergeTD.Game.Gameplay
             if(_camera == null) return;
             
             if (_isMousePressed && _dragDistance < MOUSE_DRAG_THRESHOLD)
-                OnMouseClicked?.Invoke();
+                OnClicked?.Invoke();
 
             _dragDistance = 0f;
             _isMousePressed = false;
-            OnMouseCanceled?.Invoke();
+            OnClickCanceled?.Invoke();
+        }
+
+        private void ScrollPerformed(InputAction.CallbackContext context)
+        {
+            Vector2 scrollValue = context.ReadValue<Vector2>();
+
+            if (scrollValue.y > 0)
+            {
+                Debug.Log("OnZoomIn");
+                OnZoomIn?.Invoke(scrollValue.y);
+            }
+            else if (scrollValue.y < 0)
+            {
+                Debug.Log("OnZoomOut");
+                OnZoomOut?.Invoke(scrollValue.y);
+            }
         }
 
         public void Dispose()
@@ -80,6 +99,7 @@ namespace TowerMergeTD.Game.Gameplay
             _playerInputActions.Mouse.Delta.performed -= DeltaPerformed;
             _playerInputActions.Mouse.LeftButton.started -= LeftButtonStarted;
             _playerInputActions.Mouse.LeftButton.canceled -= LeftButtonCanceled;
+            _playerInputActions.Mouse.Scroll.performed -= ScrollPerformed;
             _playerInputActions.Disable();
             _playerInputActions.Mouse.Disable();
         }

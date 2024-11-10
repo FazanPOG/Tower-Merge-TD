@@ -9,7 +9,7 @@ namespace TowerMergeTD.Game.Gameplay
     {
         private const float DROP_ON_TOWER_DETECTION_RADIUS = 0.5f; 
         
-        private InputHandler _inputHandler;
+        private IInput _input;
         private Transform _draggedTransform;
         private MapCoordinator _mapCoordinator;
 
@@ -21,18 +21,18 @@ namespace TowerMergeTD.Game.Gameplay
         public event Action OnDroppedOnTileMap;
         public event Action<TowerObject> OnDroppedOnTower;
 
-        public void Init(InputHandler inputHandler, Transform draggedTransform, MapCoordinator mapCoordinator)
+        public void Init(IInput input, Transform draggedTransform, MapCoordinator mapCoordinator)
         {
-            _inputHandler = inputHandler;
+            _input = input;
             _draggedTransform = draggedTransform;
             _mapCoordinator = mapCoordinator;
             
             _dragCollider = GetComponent<BoxCollider2D>();
             _canDrag = true;
             
-            _inputHandler.OnMouseClickStarted += TryDrag;
-            _inputHandler.OnMouseDrag += DragPerformed;
-            _inputHandler.OnMouseCanceled += Drop;
+            _input.OnClickStarted += TryDrag;
+            _input.OnDrag += DragPerformed;
+            _input.OnClickCanceled += Drop;
         }
 
         public void ResetPosition() => _draggedTransform.position = _previousPosition;
@@ -57,7 +57,7 @@ namespace TowerMergeTD.Game.Gameplay
             if(_canDrag == false) return;
             if(_isDragging == false) return;
 
-            var dragWorldPosition = _inputHandler.GetMouseWorldPosition();
+            var dragWorldPosition = _input.GetClickWorldPosition();
             Vector3 target = new Vector3(dragWorldPosition.x, dragWorldPosition.y, 0f);
             _draggedTransform.position = target;
         }
@@ -67,7 +67,7 @@ namespace TowerMergeTD.Game.Gameplay
             if(_canDrag == false) return;
             if(_isDragging == false) return;
             
-            var dropWorldPosition = _inputHandler.GetMouseWorldPosition();
+            var dropWorldPosition = _input.GetClickWorldPosition();
             bool droppedOnTower = HandleDropOnTower(dropWorldPosition);
 
             if (droppedOnTower == false)
@@ -78,7 +78,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private bool IsClickedDraggableCollider()
         {
-            Vector3 mouseWorldPosition = _inputHandler.GetMouseWorldPosition();
+            Vector3 mouseWorldPosition = _input.GetClickWorldPosition();
             mouseWorldPosition.z = 0;
 
             Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);
@@ -150,9 +150,9 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void OnDisable()
         {
-            _inputHandler.OnMouseClickStarted -= TryDrag;
-            _inputHandler.OnMouseDrag -= DragPerformed;
-            _inputHandler.OnMouseCanceled -= Drop;
+            _input.OnClickStarted -= TryDrag;
+            _input.OnDrag -= DragPerformed;
+            _input.OnClickCanceled -= Drop;
         }
     }
 }

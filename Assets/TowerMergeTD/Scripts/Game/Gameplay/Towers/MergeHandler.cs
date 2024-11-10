@@ -5,7 +5,6 @@ namespace TowerMergeTD.Game.Gameplay
     public static class MergeHandler
     {
         private static TowerFactory _towerFactory;
-        private static InputHandler _inputHandler;
 
         public static void Init(TowerFactory towerFactory)
         {

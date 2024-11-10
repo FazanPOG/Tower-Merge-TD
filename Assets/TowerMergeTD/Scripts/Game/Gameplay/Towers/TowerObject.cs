@@ -40,7 +40,7 @@ namespace TowerMergeTD.Game.Gameplay
         }
 
         public void Init(
-            InputHandler inputHandler, 
+            IInput input, 
             TowerGenerationConfig generation, 
             TowerProxy proxy, 
             MapCoordinator mapCoordinator, 
@@ -54,7 +54,7 @@ namespace TowerMergeTD.Game.Gameplay
             _pauseService = pauseService;
             
             _dragAndDrop = _collisionHandler.gameObject.AddComponent<DragAndDrop>();
-            _dragAndDrop.Init(inputHandler, transform, _mapCoordinator);
+            _dragAndDrop.Init(input, transform, _mapCoordinator);
 
             _dataProxy = _generation.GetTowerDataProxy(_towerProxy.Level.CurrentValue);
             _attacker.Init(

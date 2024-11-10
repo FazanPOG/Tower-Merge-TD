@@ -14,9 +14,9 @@ namespace TowerMergeTD.Gameplay.Root
         private readonly DiContainer _container;
         
         private Level _level;
-        private InputHandler _inputHandler;
         
         private MonoBehaviourWrapper _monoBehaviourWrapper;
+        private Camera _mainCamera;
         
         public GameplayBinder(DiContainer container)
         {
@@ -27,6 +27,7 @@ namespace TowerMergeTD.Gameplay.Root
         {
             _level = level;
             _monoBehaviourWrapper = _container.Resolve<MonoBehaviourWrapper>();
+            _mainCamera = Camera.main;
             
             _container.Bind<IPauseService>().To<PauseService>().FromNew().AsSingle().NonLazy();
             BindModels();
@@ -34,7 +35,8 @@ namespace TowerMergeTD.Gameplay.Root
             BindMap();
             BindFactories();
             BindServices();
-            
+            BindCameraSystem();
+
             return BindGameStateMachine();
         }
 
@@ -64,15 +66,15 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindInput()
         {
-            _inputHandler = new InputHandler();
-            _container.BindInterfacesAndSelfTo<InputHandler>().FromInstance(_inputHandler).AsSingle().NonLazy();
+            _container.BindInterfacesTo<DesktopInput>().FromNew().AsSingle().WithArguments(_mainCamera).NonLazy();
         }
 
         private void BindMap()
         {
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
+            var input = _container.Resolve<IInput>();
             
-            var mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig, _inputHandler);
+            var mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig, input);
             _container.Bind<MapCoordinator>().FromInstance(mapCoordinator).AsSingle().NonLazy();
 
             foreach (var finish in _level.EnemyFinishes)
@@ -84,13 +86,14 @@ namespace TowerMergeTD.Gameplay.Root
             var prefabReferences = _container.Resolve<PrefabReferencesConfig>();
             var pauseService = _container.Resolve<IPauseService>();
             var mapCoordinator = _container.Resolve<MapCoordinator>();
+            var input = _container.Resolve<IInput>();
             
             var towerFactory = new TowerFactory(
                 _container, 
                 _level.LevelConfig.TowerGenerationConfigs,
                 prefabReferences,
                 mapCoordinator,
-                _inputHandler,
+                input,
                 _level.TowersParent,
                 _monoBehaviourWrapper,
                 pauseService);
@@ -138,6 +141,16 @@ namespace TowerMergeTD.Gameplay.Root
 
                 _container.Bind<IWaveSpawnerService[]>().FromInstance(spawnerServices.ToArray()).AsSingle().NonLazy();
             }
+        }
+
+        private void BindCameraSystem()
+        {
+            var instance = new GameObject("CameraSystem");
+            var cameraMovement = instance.AddComponent<CameraMovement>();
+            var input = _container.Resolve<IInput>();
+            
+            _mainCamera.transform.SetParent(instance.transform);
+            cameraMovement.Init(_mainCamera, _level.BaseTileMap, input);
         }
     }
 }
