@@ -11,6 +11,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly PlayerHealthProxy _playerHealthProxy;
         private readonly IWaveSpawnerService[] _waveSpawnerServices;
         private readonly IPauseService _pauseService;
+        private readonly IGameTimerService _gameTimerService;
 
         private int _completeWavesCount;
         private int _completeAllWavesCount;
@@ -20,12 +21,14 @@ namespace TowerMergeTD.Game.Gameplay
             GameStateMachine gameStateMachine, 
             PlayerHealthProxy playerHealthProxy, 
             IWaveSpawnerService[] waveSpawnerServices,
-            IPauseService pauseService)
+            IPauseService pauseService,
+            IGameTimerService gameTimerService)
         {
             _gameStateMachine = gameStateMachine;
             _playerHealthProxy = playerHealthProxy;
             _waveSpawnerServices = waveSpawnerServices;
             _pauseService = pauseService;
+            _gameTimerService = gameTimerService;
 
             _completeWavesCount = 0;
             _completeAllWavesCount = 0;
@@ -34,7 +37,8 @@ namespace TowerMergeTD.Game.Gameplay
         public void Enter()
         {
             _pauseService.SetPause(false);
-
+            _gameTimerService.StartTimer();
+            
             foreach (var waveSpawnerService in _waveSpawnerServices)
             {
                 waveSpawnerService.OnWaveCompleted += OnWaveComplete;
@@ -83,6 +87,8 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void Exit()
         {
+            _gameTimerService.StopTimer();
+            
             foreach (var waveSpawnerService in _waveSpawnerServices)
             {
                 waveSpawnerService.OnWaveCompleted -= OnWaveComplete;

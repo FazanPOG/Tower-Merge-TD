@@ -1547,8 +1547,10 @@
                 </e>
                 <e p="Services" t="Include">
                   <e p="GameStateService.cs" t="Include" />
+                  <e p="GameTimerService.cs" t="Include" />
                   <e p="Interfaces" t="Include">
                     <e p="IGameStateService.cs" t="Include" />
+                    <e p="IGameTimerService.cs" t="Include" />
                     <e p="IPauseService.cs" t="Include" />
                     <e p="IRewardCalculatorService.cs" t="Include" />
                     <e p="IScoreService.cs" t="Include" />
@@ -1624,6 +1626,7 @@
               <e p="UI" t="Include">
                 <e p="Gameplay" t="Include">
                   <e p="Adapters" t="Include">
+                    <e p="GameTimerViewAdapter.cs" t="Include" />
                     <e p="LevelCompletePopupAdapter.cs" t="Include" />
                     <e p="LosePopupViewAdapter.cs" t="Include" />
                     <e p="PausePopupViewAdapter.cs" t="Include" />
@@ -1635,6 +1638,7 @@
                     <e p="UIGameplayRootView.cs" t="Include" />
                   </e>
                   <e p="Views" t="Include">
+                    <e p="GameTimerView.cs" t="Include" />
                     <e p="LevelCompletePopupView.cs" t="Include" />
                     <e p="LosePopupView.cs" t="Include" />
                     <e p="PausePopupView.cs" t="Include" />
@@ -1683,6 +1687,7 @@
                 <e p="MainMenuDebug.cs" t="Include" />
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
+              <e p="ScoreCalculator.cs" t="Include" />
               <e p="WorldTextCreator.cs" t="Include" />
             </e>
           </e>

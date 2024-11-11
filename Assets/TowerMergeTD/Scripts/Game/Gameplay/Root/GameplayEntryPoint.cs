@@ -59,7 +59,7 @@ namespace TowerMergeTD.Gameplay.Root
             _exitSceneSignalSubj = new ReactiveProperty<SceneEnterParams>();
             
             var gameplayBinder = new GameplayBinder(gameplayContainer);
-            _gameStateMachine = gameplayBinder.Bind(level);
+            _gameStateMachine = gameplayBinder.Bind(level, gameplayEnterParams.LevelIndex);
             
             uiGameplayRoot.Bind(_exitSceneSignalSubj, gameplayContainer, gameplayEnterParams.LevelIndex);
             

@@ -3,6 +3,6 @@
     public interface IScoreService
     {
         int Score { get; }
-        void AddScore(int score);
+        void CalculateScore();
     }
 }

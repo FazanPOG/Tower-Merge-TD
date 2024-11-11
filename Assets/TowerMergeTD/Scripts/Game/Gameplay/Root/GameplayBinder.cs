@@ -12,9 +12,10 @@ namespace TowerMergeTD.Gameplay.Root
     public class GameplayBinder
     {
         private readonly DiContainer _container;
-        
+
         private Level _level;
-        
+        private int _currentLevelIndex;
+
         private MonoBehaviourWrapper _monoBehaviourWrapper;
         private Camera _mainCamera;
         
@@ -23,9 +24,11 @@ namespace TowerMergeTD.Gameplay.Root
             _container = container;
         }
 
-        public GameStateMachine Bind(Level level)
+        public GameStateMachine Bind(Level currentLevel, int currentLevelIndex)
         {
-            _level = level;
+            _level = currentLevel;
+            _currentLevelIndex = currentLevelIndex;
+
             _monoBehaviourWrapper = _container.Resolve<MonoBehaviourWrapper>();
             _mainCamera = Camera.main;
             
@@ -46,8 +49,16 @@ namespace TowerMergeTD.Gameplay.Root
             var pauseService = _container.Resolve<IPauseService>();
             var gameStateService = _container.Resolve<IGameStateService>();
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
+            var gameTimerService = _container.Resolve<IGameTimerService>();
+            var scoreService = _container.Resolve<IScoreService>();
             
-            GameStateMachine gameStateMachine = new GameStateMachine(spawnerServices, pauseService, playerHealthProxy, gameStateService);
+            GameStateMachine gameStateMachine = new GameStateMachine(
+                spawnerServices, 
+                pauseService, 
+                playerHealthProxy, 
+                gameStateService, 
+                gameTimerService,
+                scoreService);
 
             return gameStateMachine;
         }
@@ -109,15 +120,22 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindServices()
         {
+            var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
+            var playerBuildingCurrencyProxy = _container.Resolve<PlayerBuildingCurrencyProxy>();
+            var pauseService = _container.Resolve<IPauseService>();
+            
+            var scoreService = new ScoreService(playerHealthProxy, playerBuildingCurrencyProxy);
+            
             bindWaveSpawnerService();
+            bindGameTimerService();
+            bindRewardCalculatorService();
             
             _container.Bind<IGameStateService>().To<GameStateService>().FromNew().AsSingle().NonLazy();
-            _container.Bind<IScoreService>().To<ScoreService>().FromNew().AsSingle().NonLazy();
-            _container.Bind<IRewardCalculatorService>().To<RewardCalculatorService>().FromNew().AsSingle().NonLazy();
-            
+            _container.Bind<IScoreService>().To<ScoreService>().FromInstance(scoreService).AsSingle().NonLazy();
+
+
             void bindWaveSpawnerService()
             {
-                var pauseService = _container.Resolve<IPauseService>();
                 var enemyFactory = _container.Resolve<EnemyFactory>();
                 
                 List<WaveSpawnerService> spawnerServices = new List<WaveSpawnerService>();
@@ -141,6 +159,24 @@ namespace TowerMergeTD.Gameplay.Root
                     pauseService.Register(spawnerService);
 
                 _container.Bind<IWaveSpawnerService[]>().FromInstance(spawnerServices.ToArray()).AsSingle().NonLazy();
+            }
+
+            void bindGameTimerService()
+            {
+                var monoBehaviour = _container.Resolve<MonoBehaviourWrapper>();
+                
+                GameTimerService gameTimerService = new GameTimerService(monoBehaviour);
+                _container.Bind<IGameTimerService>().To<GameTimerService>().FromInstance(gameTimerService).AsSingle().NonLazy();
+                
+                pauseService.Register(gameTimerService);
+            }
+
+            void bindRewardCalculatorService()
+            {
+                var gameStateProvider = _container.Resolve<IGameStateProvider>();
+                
+                RewardCalculatorService service = new RewardCalculatorService(scoreService, _currentLevelIndex, _level.LevelConfig, gameStateProvider);
+                _container.Bind<IRewardCalculatorService>().To<RewardCalculatorService>().FromInstance(service).AsSingle().NonLazy();
             }
         }
 

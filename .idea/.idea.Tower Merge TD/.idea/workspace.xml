@@ -22,18 +22,127 @@
     <list default="true" id="894b49d9-1518-414d-8956-dd52cbe53e02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PrefabReferencesConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PrefabReferencesConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Levels/Level 11.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Levels/Level 11.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile130.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile130.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile131.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile131.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile132.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile132.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile133.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile133.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile134.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile134.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile135.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile135.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile136.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile136.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile137.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile137.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile180.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile180.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile181.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile181.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile182.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile182.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile183.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile183.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile203.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile203.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile204.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile204.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile205.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile205.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile206.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile206.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile226.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile226.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile227.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile227.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile228.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile228.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile229.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile229.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile245.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile245.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile246.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile246.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile247.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile247.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile248.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile248.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile249.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile249.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile250.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile250.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile251.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile251.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile252.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile252.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile268.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile268.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile269.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile269.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile270.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile270.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile271.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile271.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile291.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile291.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile292.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile292.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile293.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile293.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile294.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile294.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile295.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile295.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile296.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile296.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile297.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile297.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile298.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/PNG/Retina/towerDefense_tile298.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_268.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_268.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_269.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_269.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_270.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_270.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_271.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_271.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_291.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_291.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_292.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_292.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Enemies/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Enemies/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Enemies/Enemy.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Enemies/Enemy.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/Tower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/Tower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerBuidlingCurrencyView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerBuidlingCurrencyView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerHealthView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerHealthView.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/GameplayUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/GameplayUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/CameraSystem/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/CameraSystem/CameraMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Common/DragAndDrop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Common/DragAndDrop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/DesktopInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/DesktopInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/IInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/IInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/MobileInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/MobileInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scenes/LevelCreator.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scenes/LevelCreator.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/PrefabReferencesConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/PrefabReferencesConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/GameStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/GameStateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/GameplayState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/GameplayState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/WinGameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/WinGameState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Map/MapCoordinator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Map/MapCoordinator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/TowerActionsAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/TowerActionsAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/Interfaces/IScoreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/Interfaces/IScoreService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/RewardCalculatorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/RewardCalculatorService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/ScoreService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/ScoreService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObjectView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObjectView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/IGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/IGameStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerPrefsGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerPrefsGameStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LevelCompletePopupAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LevelCompletePopupAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayInputDebugView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayInputDebugView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayDebug.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayDebug.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,29 +168,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/PlayerHealth.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/PlayerHealthProxy.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Player/PlayerGems.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Player/PlayerGemsProxy.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Player/ICurrencyProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/PlayerBuildingCurrency.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/PlayerBuildingCurrencyProxy.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerBuildingCurrencyView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerBuildingCurrencyViewAdapter.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Player/PlayerPrefsCurrencyProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Enemies/EnemyFinishTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopTowersPopupView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopCoinView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopGemView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopTowersView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/MainMenuPanelsViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopPopupView.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/PageSlider/Scripts/PageSlider.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Binding/Binders/FromBinders/FromBinderGeneric.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayDebug.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/GameStateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/GameplayState.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Level/Level.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/WaveSpawnerService.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/LevelConfig.cs" />
@@ -95,11 +185,8 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerGemsViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerCoinsViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/InputHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Map/MapCoordinator.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObject.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/MergeHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayInputDebugView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Common/DragAndDrop.cs" />
@@ -108,8 +195,30 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/IInput.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/DesktopInput.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Player/Input/MobileInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/GameTimerView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/Interfaces/IGameTimerService.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/GameplayState.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/GameTimerService.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/GameTimerViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerPrefsGameStateProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/IGameStateProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayEntryPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/GameStateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/ScoreService.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/Interfaces/IScoreService.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LevelCompletePopupAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/WinGameState.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/RewardCalculatorService.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/Debug/GameplayDebug.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/ScoreCalculator.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObjectView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/PrefabReferencesConfig.cs" />
       </list>
     </option>
   </component>
@@ -201,6 +310,8 @@
       <workItem from="1731237239375" duration="5384000" />
       <workItem from="1731252199498" duration="8924000" />
       <workItem from="1731316344473" duration="6105000" />
+      <workItem from="1731330255436" duration="3010000" />
+      <workItem from="1731333932699" duration="11238000" />
     </task>
     <servers />
   </component>
@@ -225,19 +336,23 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="794" y="218" key="RiderGenerateDialog" timestamp="1731268887523">
+    <state x="794" y="218" key="RiderGenerateDialog" timestamp="1731330769965">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="794" y="218" key="RiderGenerateDialog/0.0.1920.1034/1920.151.1366.728@0.0.1920.1034" timestamp="1728912349732" />
-    <state x="794" y="218" key="RiderGenerateDialog/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731268887523" />
+    <state x="794" y="218" key="RiderGenerateDialog/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731330769965" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1730927442870">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state width="498" height="446" key="SwitcherDM/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1730927442870" />
-    <state x="552" y="250" width="815" height="534" key="find.popup" timestamp="1731316888915">
+    <state x="92" y="92" width="1736" height="850" maximized="true" key="VCS.FileHistoryDialog" timestamp="1731340411086">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="552" y="250" width="815" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731316888915" />
+    <state x="92" y="92" width="1736" height="850" maximized="true" key="VCS.FileHistoryDialog/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731340411086" />
+    <state x="552" y="250" width="815" height="534" key="find.popup" timestamp="1731334670316">
+      <screen x="0" y="0" width="1920" height="1034" />
+    </state>
+    <state x="552" y="250" width="815" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731334670316" />
     <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1730465102443">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

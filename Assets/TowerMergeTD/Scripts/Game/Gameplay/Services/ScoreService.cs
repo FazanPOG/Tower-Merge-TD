@@ -1,22 +1,31 @@
-﻿namespace TowerMergeTD.Game.Gameplay
+﻿using System;
+
+namespace TowerMergeTD.Game.Gameplay
 {
     public class ScoreService : IScoreService
     {
-        private int _score;
+        private const float HEALTH_WEIGHT = 1.5f;
+        private const float BUILDING_CURRENCY_WEIGHT = 1.5f;
 
-        public int Score => _score;
+        private readonly PlayerHealthProxy _healthProxy;
+        private readonly PlayerBuildingCurrencyProxy _buildingCurrencyProxy;
 
-        public ScoreService()
+        public int Score { get; private set; }
+
+        public ScoreService(PlayerHealthProxy healthProxy, PlayerBuildingCurrencyProxy buildingCurrencyProxy)
         {
-            _score = 0;
+            _healthProxy = healthProxy;
+            _buildingCurrencyProxy = buildingCurrencyProxy;
         }
-        
-        public void AddScore(int score)
+
+        public void CalculateScore()
         {
-            if(score < 0)
-                return;
+            float score = 0;
             
-            _score += score;
+            score += (_healthProxy.Health.CurrentValue * HEALTH_WEIGHT) + (_buildingCurrencyProxy.BuildingCurrency.CurrentValue * BUILDING_CURRENCY_WEIGHT);
+            score *= 100f;
+            
+            Score = (int)Math.Round(score/100) * 100;
         }
     }
 }

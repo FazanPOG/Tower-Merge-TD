@@ -15,7 +15,7 @@ MonoBehaviour:
   _isOpen: 1
   _initialHealth: 5
   _initialBuildingCurrency: 500
-  scoreForOneStar: 0
+  scoreForOneStar: 50
   scoreForTwoStars: 500
   scoreForThreeStars: 1000
   _tileSetConfig: {fileID: 11400000, guid: cf31c41e8f729004bb1e405f4d42723e, type: 2}
@@ -24,14 +24,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
   _waveDatas:
   - _waves:
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-    - {fileID: 11400000, guid: 9c71f073b6d1d4e4b90f5a54a93d1a19, type: 2}
+    - {fileID: 11400000, guid: 763ad904732cda349b477145c32a4384, type: 2}
   - _waves:
-    - {fileID: 11400000, guid: 9c71f073b6d1d4e4b90f5a54a93d1a19, type: 2}
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-  - _waves:
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-    - {fileID: 11400000, guid: 9c71f073b6d1d4e4b90f5a54a93d1a19, type: 2}
+    - {fileID: 11400000, guid: 763ad904732cda349b477145c32a4384, type: 2}

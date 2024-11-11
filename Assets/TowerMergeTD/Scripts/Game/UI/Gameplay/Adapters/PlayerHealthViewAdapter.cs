@@ -19,7 +19,7 @@ namespace TowerMergeTD.Game.UI
 
         private void UpdateView(int health)
         {
-            _view.UpdateText($"HP: {health}");
+            _view.UpdateText($"{health}");
         }
     }
 }

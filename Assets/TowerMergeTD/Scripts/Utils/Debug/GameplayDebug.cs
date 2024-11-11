@@ -36,10 +36,10 @@ namespace TowerMergeTD.Utils.Debug
             _buildingCurrency.BuildingCurrency.Value = money;
         }
         
-        [Button("Add score")]
-        private void AddScore(int score)
+        [Button("Calculate score")]
+        private void CalculateScore()
         {
-            _scoreService.AddScore(score);
+            _scoreService.CalculateScore();
         }
     }
 }

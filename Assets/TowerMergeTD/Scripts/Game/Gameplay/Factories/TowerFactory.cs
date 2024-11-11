@@ -11,7 +11,7 @@ namespace TowerMergeTD.Game.Gameplay
     {
         private readonly DiContainer _diContainer;
         private readonly TowerGenerationConfig[] _generations;
-        private readonly TowerObject _prefab;
+        private readonly PrefabReferencesConfig _prefabReferences;
         private readonly MapCoordinator _mapCoordinator;
         private readonly IInput _input;
         private readonly Transform _parent;
@@ -30,7 +30,7 @@ namespace TowerMergeTD.Game.Gameplay
         {
             _diContainer = diContainer;
             _generations = generations;
-            _prefab = prefabReferences.TowerPrefab;
+            _prefabReferences = prefabReferences;
             _mapCoordinator = mapCoordinator;
             _input = input;
             _parent = parent;
@@ -42,14 +42,14 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var generation = GetTowerGenerationConfig(towerType);
             
-            var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(_prefab, _parent);
+            var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(_prefabReferences.TowerPrefab, _parent);
             instance.transform.position = spawnPosition;
             
             TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
 
             ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
             
-            instance.Init(_input, generation, proxy, _mapCoordinator, attacker, _pauseService);
+            instance.Init(_prefabReferences, _input, generation, proxy, _mapCoordinator, attacker, _pauseService);
             instance.name = $"{instance.Type} {towerLevel}";
             
             return instance;

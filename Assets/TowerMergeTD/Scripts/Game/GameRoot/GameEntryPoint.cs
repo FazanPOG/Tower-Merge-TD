@@ -45,8 +45,7 @@ namespace TowerMergeTD.GameRoot
             _projectConfig = Resources.Load<ProjectConfig>("ProjectConfig");
             var prefabReferencesConfig = Resources.Load<PrefabReferencesConfig>("PrefabReferencesConfig");
             
-            var gameStateProvider = new PlayerPrefsGameStateProvider();
-            gameStateProvider.Init(_projectConfig);
+            var gameStateProvider = new PlayerPrefsGameStateProvider(_projectConfig);
             
             _rootContainer.Bind<IGameStateProvider>().To<PlayerPrefsGameStateProvider>().FromInstance(gameStateProvider).AsSingle().NonLazy();
             _rootContainer.Bind<ICurrencyProvider>().To<PlayerPrefsCurrencyProvider>().FromNew().AsSingle().NonLazy();

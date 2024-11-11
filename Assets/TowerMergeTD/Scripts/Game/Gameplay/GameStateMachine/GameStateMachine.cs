@@ -15,14 +15,16 @@ namespace TowerMergeTD.Game.Gameplay
             IWaveSpawnerService[] waveSpawnerServices, 
             IPauseService pauseService, 
             PlayerHealthProxy playerHealthProxy,
-            IGameStateService gameStateService)
+            IGameStateService gameStateService,
+            IGameTimerService gameTimerService,
+            IScoreService scoreService)
         {
             _gameStateService = gameStateService;
             _gameStatesMap = new Dictionary<Type, IGameState>()
             {
                 [typeof(BootState)] = new BootState(this),
-                [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerServices, pauseService),
-                [typeof(WinGameState)] = new WinGameState(pauseService),
+                [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerServices, pauseService, gameTimerService),
+                [typeof(WinGameState)] = new WinGameState(pauseService, scoreService),
                 [typeof(LoseGameState)] = new LoseGameState(pauseService),
             };
         }

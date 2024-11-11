@@ -10,12 +10,13 @@ namespace TowerMergeTD.Game.State
     {
         private const string GAME_STATE_KEY = nameof(GAME_STATE_KEY);
         
-        private ProjectConfig _projectConfig;
+        private readonly ProjectConfig _projectConfig;
+        
         private GameState _gameStateOrigin;
         
         public GameStateProxy GameState { get; private set; }
 
-        public void Init(ProjectConfig projectConfig)
+        public PlayerPrefsGameStateProvider(ProjectConfig projectConfig)
         {
             _projectConfig = projectConfig;
         }

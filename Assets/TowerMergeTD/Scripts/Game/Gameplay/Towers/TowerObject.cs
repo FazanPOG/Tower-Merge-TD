@@ -1,4 +1,5 @@
 using TowerMergeTD.Game.State;
+using TowerMergeTD.GameRoot;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -6,7 +7,6 @@ namespace TowerMergeTD.Game.Gameplay
     public class TowerObject : MonoBehaviour
     {
         [SerializeField] private TowerCollisionHandler _collisionHandler;
-        [SerializeField] private TowerObjectView _view;
         [SerializeField, TextArea(0, 10)] private string DEBUG_STRING;
 
         private TowerGenerationConfig _generation;
@@ -40,6 +40,7 @@ namespace TowerMergeTD.Game.Gameplay
         }
 
         public void Init(
+            PrefabReferencesConfig prefabReferencesConfig,
             IInput input, 
             TowerGenerationConfig generation, 
             TowerProxy proxy, 
@@ -63,10 +64,10 @@ namespace TowerMergeTD.Game.Gameplay
                 _dataProxy.AttackCooldown
                 );
 
-            _view.Init(_dataProxy);
+            var viewInstance = Instantiate(prefabReferencesConfig.GetTowerViewPrefab(_generation.TowersType), transform);
+            viewInstance.Init(_dataProxy);
             
-            //TODO: inject
-            _rotator = new ObjectRotator(_view.gameObject.transform);
+            _rotator = new ObjectRotator(viewInstance.ObjectToRotate.transform);
 
             _pauseService.Register(_dragAndDrop);
             

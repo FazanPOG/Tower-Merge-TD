@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: towerDefense_tilesheet_292
+  m_Name: Plane 2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1779264617, guid: 9b465840998ad70488ba291731d4421d, type: 3}
+  m_Sprite: {fileID: 455728273, guid: 9b465840998ad70488ba291731d4421d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

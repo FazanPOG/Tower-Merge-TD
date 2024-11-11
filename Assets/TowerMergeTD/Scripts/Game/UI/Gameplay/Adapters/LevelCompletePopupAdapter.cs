@@ -17,6 +17,7 @@ namespace TowerMergeTD.Game.UI
         private readonly LevelConfig _levelConfig;
         private readonly IScoreService _scoreService;
         private readonly IRewardCalculatorService _rewardCalculatorService;
+        private readonly IGameTimerService _gameTimerService;
 
         public LevelCompletePopupAdapter(
             LevelCompletePopupView view,
@@ -25,7 +26,8 @@ namespace TowerMergeTD.Game.UI
             ReactiveProperty<SceneEnterParams> exitSceneSignalBus,
             LevelConfig levelConfig,
             IScoreService scoreService,
-            IRewardCalculatorService rewardCalculatorService)
+            IRewardCalculatorService rewardCalculatorService,
+            IGameTimerService gameTimerService)
         {
             _view = view;
             _isLastLevel = isLastLevel;
@@ -34,39 +36,25 @@ namespace TowerMergeTD.Game.UI
             _levelConfig = levelConfig;
             _scoreService = scoreService;
             _rewardCalculatorService = rewardCalculatorService;
+            _gameTimerService = gameTimerService;
 
             Subscribe();
         }
 
         private void Subscribe()
         {
-            _view.OnHomeButtonClicked += HandleOnHomeButtonClicked;
-            _view.OnRestartButtonClicked += HandleOnRestartButtonClicked;
+            _view.OnHomeButtonClicked += () => { _exitSceneSignalBus.OnNext(new MainMenuEnterParams("TEST")); };
+            _view.OnRestartButtonClicked += () => { _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex)); };
 
             if (_isLastLevel == false)
             {
                 _view.ShowNextLevelButton();
-                _view.OnNextLevelButtonClicked += HandleOnNextLevelButtonClicked;
+                _view.OnNextLevelButtonClicked += () => { _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex + 1)); };
             }
             else
             {
                 _view.HideNextLevelButton();
             }
-        }
-
-        private void HandleOnNextLevelButtonClicked()
-        {
-            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex + 1));
-        }
-
-        private void HandleOnHomeButtonClicked()
-        {
-            _exitSceneSignalBus.OnNext(new MainMenuEnterParams("TEST"));
-        }
-
-        private void HandleOnRestartButtonClicked()
-        {
-            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
         }
 
         public void HandleGameState(IGameState gameState)
@@ -77,6 +65,14 @@ namespace TowerMergeTD.Game.UI
                 UpdateTexts();
                 SetStars();
             }
+        }
+
+        private void UpdateTexts()
+        {
+            _view.SetScoreValueText(_scoreService.Score.ToString("N0"));
+            _view.SetTimerValueText($"{_gameTimerService.Time.CurrentValue.Minutes:D2}:{_gameTimerService.Time.CurrentValue.Seconds:D2}");
+            _view.SetGoldValueText(_rewardCalculatorService.CalculateGoldReward().ToString("N0"));
+            _view.SetGemsValueText(_rewardCalculatorService.CalculateGemReward().ToString("N0"));
         }
 
         private void SetStars()
@@ -90,15 +86,6 @@ namespace TowerMergeTD.Game.UI
                 _view.SetStars(2);
             else
                 _view.SetStars(3);
-        }
-
-        //TODO
-        private void UpdateTexts()
-        {
-            _view.SetScoreValueText(_scoreService.Score.ToString("N0"));
-            //_view.SetTimerValueText();
-            _view.SetGoldValueText(_rewardCalculatorService.CalculateGoldReward().ToString("N0"));
-            _view.SetGemsValueText(_rewardCalculatorService.CalculateGemReward().ToString("N0"));
         }
     }
 }
