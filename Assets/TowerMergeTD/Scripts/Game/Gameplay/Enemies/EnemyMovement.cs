@@ -9,14 +9,12 @@ namespace TowerMergeTD.Game.Gameplay
         private MonoBehaviour _enemy;
         private Transform _view;
         private float _moveSpeed;
-        private ObjectRotator _rotator;
 
         public void Move(MonoBehaviour enemy, Transform view, List<Vector3> path, float moveSpeed)
         {
             _enemy = enemy;
             _view = view;
             _moveSpeed = moveSpeed;
-            _rotator = new ObjectRotator(view);
             _enemy.StartCoroutine(MoveRoutine(path));
         }
         
@@ -24,8 +22,9 @@ namespace TowerMergeTD.Game.Gameplay
         {
             foreach (Vector3 targetPosition in path)
             {
-                //TODO: smooth rotation
-                _rotator.StartRotate(_enemy, targetPosition);
+                Vector3 direction = (targetPosition - _enemy.transform.position).normalized;
+                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                _view.transform.rotation = Quaternion.Euler(0, 0, targetAngle);
                 
                 while (Vector2.Distance(_enemy.transform.position, targetPosition) > 0.1f)
                 {

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using TowerMergeTD.Game.Gameplay;
+﻿using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 
 namespace TowerMergeTD.GameRoot
@@ -8,18 +7,15 @@ namespace TowerMergeTD.GameRoot
     public class PrefabReferencesConfig : ScriptableObject
     {
         [Header("Gameplay")]
-        [SerializeField] private TowerObject _towerPrefab;
-        [SerializeField] private TowerObjectView[] _towerObjectViews;
+        [SerializeField] private TowerObject _gunTowerPrefab;
+        [SerializeField] private TowerObject _rocketTowerPrefab;
+        [SerializeField] private TowerObject _noNameTowerPrefab;
         [SerializeField] private Enemy enemyPrefab;
 
-        public TowerObject TowerPrefab => _towerPrefab;
+        public TowerObject GunTowerPrefab => _gunTowerPrefab;
+        public TowerObject RocketTowerPrefab => _rocketTowerPrefab;
+        public TowerObject NoNameTowerPrefab => _noNameTowerPrefab;
 
         public Enemy EnemyPrefab => enemyPrefab;
-
-        public TowerObjectView GetTowerViewPrefab(TowerType towerType)
-        {
-            string towerViewName = towerType + "TowerView";
-            return _towerObjectViews.First(x => x.name == towerViewName);
-        }
     }
 }

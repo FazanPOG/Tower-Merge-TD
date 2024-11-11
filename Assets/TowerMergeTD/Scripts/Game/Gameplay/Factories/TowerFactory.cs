@@ -41,15 +41,16 @@ namespace TowerMergeTD.Game.Gameplay
         public TowerObject Create(TowerType towerType, Vector2 spawnPosition, int towerLevel)
         {
             var generation = GetTowerGenerationConfig(towerType);
+            var prefab = GetTowerPrefab(towerType);
             
-            var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(_prefabReferences.TowerPrefab, _parent);
+            var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(prefab, _parent);
             instance.transform.position = spawnPosition;
             
             TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
 
             ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
             
-            instance.Init(_prefabReferences, _input, generation, proxy, _mapCoordinator, attacker, _pauseService);
+            instance.Init(_input, generation, proxy, _mapCoordinator, attacker, _pauseService);
             instance.name = $"{instance.Type} {towerLevel}";
             
             return instance;
@@ -59,6 +60,24 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var generation = GetTowerGenerationConfig(towerType);
             return generation.CreateCost;
+        }
+
+        private TowerObject GetTowerPrefab(TowerType towerType)
+        {
+            switch (towerType)
+            {
+                case TowerType.Gun:
+                    return _prefabReferences.GunTowerPrefab; 
+                
+                case TowerType.Rocket:
+                    return _prefabReferences.RocketTowerPrefab;
+                
+                case TowerType.Laser:
+                    return _prefabReferences.NoNameTowerPrefab;
+
+                default:
+                    throw new MissingReferenceException($"Missing tower type: {towerType}");
+            }
         }
         
         private TowerGenerationConfig GetTowerGenerationConfig(TowerType towerType)

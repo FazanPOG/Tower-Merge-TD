@@ -7,6 +7,7 @@ namespace TowerMergeTD.Game.Gameplay
     public class TowerObject : MonoBehaviour
     {
         [SerializeField] private TowerCollisionHandler _collisionHandler;
+        [SerializeField] private TowerObjectView _view;
         [SerializeField, TextArea(0, 10)] private string DEBUG_STRING;
 
         private TowerGenerationConfig _generation;
@@ -16,7 +17,6 @@ namespace TowerMergeTD.Game.Gameplay
         private DragAndDrop _dragAndDrop;
         private ITowerAttacker _attacker;
         private IPauseService _pauseService;
-        private ObjectRotator _rotator;
         private Vector3 _rotateTarget;
 
         public TowerType Type => _generation.TowersType;
@@ -40,7 +40,6 @@ namespace TowerMergeTD.Game.Gameplay
         }
 
         public void Init(
-            PrefabReferencesConfig prefabReferencesConfig,
             IInput input, 
             TowerGenerationConfig generation, 
             TowerProxy proxy, 
@@ -64,16 +63,12 @@ namespace TowerMergeTD.Game.Gameplay
                 _dataProxy.AttackCooldown
                 );
 
-            var viewInstance = Instantiate(prefabReferencesConfig.GetTowerViewPrefab(_generation.TowersType), transform);
-            viewInstance.Init(_dataProxy);
-            
-            _rotator = new ObjectRotator(viewInstance.ObjectToRotate.transform);
+            _view.Init(_dataProxy, _attacker);
 
             _pauseService.Register(_dragAndDrop);
             
             _dragAndDrop.OnDroppedOnTileMap += UpdateModel;
             _dragAndDrop.OnDroppedOnTower += OnDroppedOnTower;
-            _attacker.OnTargetChanged += AttackerOnTargetChanged;
         }
 
         public void DestroySelf()
@@ -89,11 +84,6 @@ namespace TowerMergeTD.Game.Gameplay
                 _dragAndDrop.ResetPosition();
         }
 
-        private void AttackerOnTargetChanged(GameObject target)
-        {
-            _rotator.StartRotate(this, target.transform.position);
-        }
-
         private void UpdateModel()
         {
             _towerProxy.Position.Value = _mapCoordinator.GetCellPosition(TilemapType.Base, transform.position);
@@ -103,7 +93,6 @@ namespace TowerMergeTD.Game.Gameplay
         {
             _dragAndDrop.OnDroppedOnTileMap -= UpdateModel;
             _dragAndDrop.OnDroppedOnTower -= OnDroppedOnTower;
-            _attacker.OnTargetChanged -= AttackerOnTargetChanged;
             _pauseService.Unregister(_dragAndDrop);
         }
     }

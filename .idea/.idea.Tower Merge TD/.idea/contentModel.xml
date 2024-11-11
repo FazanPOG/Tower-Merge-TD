@@ -1493,7 +1493,6 @@
                   <e p="HealthBarView.cs" t="Include" />
                   <e p="IDamageable.cs" t="Include" />
                   <e p="IPauseHandler.cs" t="Include" />
-                  <e p="ObjectRotator.cs" t="Include" />
                 </e>
                 <e p="Configs" t="Include">
                   <e p="EnemyConfig.cs" t="Include" />

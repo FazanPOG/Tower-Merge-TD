@@ -5,6 +5,7 @@ namespace TowerMergeTD.Game.Gameplay
 {
     public interface ITowerAttacker
     {
+        event Action OnAttacked;
         event Action<GameObject> OnTargetChanged;
         void Init(float initialDamage, float attackRange, float attackCooldown);
     }

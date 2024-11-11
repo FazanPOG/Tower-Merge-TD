@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -11,7 +12,7 @@ namespace TowerMergeTD.Game.Gameplay
         private CircleCollider2D _attackCollider;
 
         public event Action<Collider2D> OnDragAndDropColliderTriggering;
-        public event Action<Collider2D> OnAttackColliderTriggering;
+        public event Action<List<Collider2D>> OnAttackColliderTriggering;
 
         public CircleCollider2D AttackCollider => _attackCollider;
 
@@ -32,7 +33,9 @@ namespace TowerMergeTD.Game.Gameplay
             
             if (_attackCollider.IsTouching(other))
             {
-                OnAttackColliderTriggering?.Invoke(other);
+                List<Collider2D> results = new List<Collider2D>();
+                _attackCollider.OverlapCollider(new ContactFilter2D(), results);
+                OnAttackColliderTriggering?.Invoke(results);
             }
         }
     }

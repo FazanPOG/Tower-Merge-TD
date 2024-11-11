@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea784ead926049dbadc4cea6406f9152, type: 3}
   m_Name: PrefabReferencesConfig
   m_EditorClassIdentifier: 
-  _towerPrefab: {fileID: 89100193100193579, guid: cb667a1f8824cfd4999e382f0400bbad, type: 3}
-  _towerObjectViews:
-  - {fileID: 3409804049451382766, guid: b2822b831825a0344b975c29574aca87, type: 3}
-  - {fileID: 6367219868589175490, guid: 5cb63aaecc25b1741a002594b686991f, type: 3}
-  - {fileID: 4037462618204247328, guid: f9e39d7e39900f6429f878b0f8250578, type: 3}
+  _gunTowerPrefab: {fileID: 89100193100193579, guid: cb667a1f8824cfd4999e382f0400bbad, type: 3}
+  _rocketTowerPrefab: {fileID: 89100193100193579, guid: 0fed3f03ea92fb34ea09213695ad56f4, type: 3}
+  _noNameTowerPrefab: {fileID: 89100193100193579, guid: 6958e6de75ebc0d4d84a252c671d7169, type: 3}
   enemyPrefab: {fileID: 5552914785644839461, guid: 3ca5299434c5e3d459eac60ef92fc873, type: 3}
