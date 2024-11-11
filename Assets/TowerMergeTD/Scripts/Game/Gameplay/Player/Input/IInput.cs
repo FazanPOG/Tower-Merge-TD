@@ -7,11 +7,12 @@ namespace TowerMergeTD.Game.Gameplay
     {
         event Action OnClicked;
         event Action OnClickStarted;
-        event Action OnDrag;
+        event Action OnDragStarted;
+        event Action<Vector2> OnDragWithThreshold;
         event Action OnClickCanceled;
         event Action<float> OnZoomIn;
         event Action<float> OnZoomOut;
 
-        Vector3 GetClickWorldPosition();
+        Vector3 GetInputWorldPosition();
     }
 }

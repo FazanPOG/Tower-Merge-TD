@@ -19,7 +19,6 @@ namespace TowerMergeTD.Gameplay.Root
 
         [Header("Other")]
         [SerializeField] private TowerActionsView _towerActionsView;
-        [SerializeField] private GameplayInputDebugView _debugInputView;
 
         [Header("Popups")]
         [SerializeField] private PausePopupView _pausePopupView;
@@ -54,9 +53,6 @@ namespace TowerMergeTD.Gameplay.Root
             bindPausePopup();
             bindLoseGamePopup();
             bindLevelCompletePopup();
-
-            //TODO: remove
-            //bindDebugView();
             
             void bindTowerActions()
             {
@@ -97,13 +93,6 @@ namespace TowerMergeTD.Gameplay.Root
                     );
                 
                 gameStateService.Register(levelCompletePopupAdapter);
-            }
-
-            void bindDebugView()
-            {
-                var input = _container.Resolve<IInput>();
-                _debugInputView.gameObject.SetActive(true);
-                _debugInputView.Init(input);
             }
         }
     }

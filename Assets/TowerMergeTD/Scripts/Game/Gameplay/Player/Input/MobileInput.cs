@@ -12,17 +12,16 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly PlayerInputActions _playerInputActions;
 
         private Vector2 _primaryTouchStartPos;
-        private Vector2 _secondaryTouchStartPos;
-        private bool _isSecondaryTouchActive = false;
-        private float _previousDistance = 0f;
-        
         private Vector2 _initialTouchPosition;
+        private bool _isSecondaryTouchActive;
         private bool _isTouchScreenPressed;
+        private float _previousDistance;
         private float _dragDistance;
 
         public event Action OnClicked;
         public event Action OnClickStarted;
-        public event Action OnDrag;
+        public event Action OnDragStarted;
+        public event Action<Vector2> OnDragWithThreshold;
         public event Action OnClickCanceled;
         public event Action<float> OnZoomIn;
         public event Action<float> OnZoomOut;
@@ -38,113 +37,102 @@ namespace TowerMergeTD.Game.Gameplay
             
             _playerInputActions.TouchScreen.PrimaryTouchPressed.started += HandlePrimaryTouchPressed;
             _playerInputActions.TouchScreen.PrimaryTouchPressed.canceled += HandlePrimaryTouchPressed;
-            
             _playerInputActions.TouchScreen.PrimaryTouchDelta.performed += PrimaryTouchDeltaPerformed;
             
             _playerInputActions.TouchScreen.SecondaryTouchPressed.started += HandleSecondaryTouchPressed;
-            _playerInputActions.TouchScreen.SecondaryTouchPressed.canceled += HandleSecondaryTouchPressed;
-            
+            _playerInputActions.TouchScreen.SecondaryTouchPressed.canceled += HandleSecondaryTouchCanceled;
             _playerInputActions.TouchScreen.SecondaryTouchDelta.performed += SecondaryTouchDeltaPerformed;
         }
 
         private void HandlePrimaryTouchPressed(InputAction.CallbackContext context)
         {
-            if(_camera == null) return;
+            if (_camera == null) return;
 
             if (context.started)
             {
-                Debug.Log("PrimaryTouchPressed START");
                 _primaryTouchStartPos = Touchscreen.current.primaryTouch.position.ReadValue();
                 _isTouchScreenPressed = true;
-                _initialTouchPosition = GetClickWorldPosition();
+                _initialTouchPosition = GetInputWorldPosition();
                 OnClickStarted?.Invoke();
             }
 
             if (context.canceled)
-            { 
-                if(_camera == null) return;
-            
-                Debug.Log("PrimaryTouchPressed CANCELED");
-                
+            {
                 if (_isTouchScreenPressed && _dragDistance < TOUCH_DRAG_THRESHOLD)
                     OnClicked?.Invoke();
 
                 _dragDistance = 0f;
                 _isTouchScreenPressed = false;
-                
                 OnClickCanceled?.Invoke();
             }
         }
 
         private void PrimaryTouchDeltaPerformed(InputAction.CallbackContext _)
         {
-            if(_camera == null) return;
-            
-            if (!_isSecondaryTouchActive)
-                return;
+            if (_camera == null || _isSecondaryTouchActive) return;
+
+            Vector2 currentTouchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+            var distance = Vector2.Distance(_initialTouchPosition, currentTouchPosition);
+
+            if (distance > TOUCH_DRAG_THRESHOLD && _isTouchScreenPressed)
+            {
+                _dragDistance = distance;
+                OnDragWithThreshold?.Invoke(currentTouchPosition - _primaryTouchStartPos);
+                OnDragStarted?.Invoke();
+            }
+        }
+
+        private void HandleSecondaryTouchPressed(InputAction.CallbackContext context)
+        {
+            if (context.started && Touchscreen.current.touches.Count > 1)
+            {
+                _isSecondaryTouchActive = true;
+                _previousDistance = Vector2.Distance(
+                    Touchscreen.current.primaryTouch.position.ReadValue(),
+                    Touchscreen.current.touches[1].position.ReadValue()
+                );
+            }
+        }
+
+        private void HandleSecondaryTouchCanceled(InputAction.CallbackContext context)
+        {
+            if (context.canceled)
+            {
+                _isSecondaryTouchActive = false;
+                _previousDistance = 0f;
+            }
+        }
+
+        private void SecondaryTouchDeltaPerformed(InputAction.CallbackContext context)
+        {
+            if (!_isSecondaryTouchActive || Touchscreen.current.touches.Count < 2) return;
 
             Vector2 primaryTouchPos = Touchscreen.current.primaryTouch.position.ReadValue();
             Vector2 secondaryTouchPos = Touchscreen.current.touches[1].position.ReadValue();
 
             float currentDistance = Vector2.Distance(primaryTouchPos, secondaryTouchPos);
             float deltaMagnitude = currentDistance - _previousDistance;
-            float zoomSpeed = Mathf.Abs(deltaMagnitude) * Time.deltaTime;
 
-            if (deltaMagnitude > 0)
+            if (Mathf.Abs(deltaMagnitude) > 0.01f)
             {
-                OnZoomIn?.Invoke(zoomSpeed);
-            }
-            else if (deltaMagnitude < 0)
-            {
-                OnZoomOut?.Invoke(zoomSpeed);
+                if (deltaMagnitude > 0)
+                {
+                    OnZoomIn?.Invoke(deltaMagnitude);
+                }
+                else if (deltaMagnitude < 0)
+                {
+                    OnZoomOut?.Invoke(-deltaMagnitude);
+                }
             }
 
             _previousDistance = currentDistance;
-            
-            Debug.Log("PrimaryTouchPositionPerformed");
-            
-            Vector2 currentMousePosition = GetClickWorldPosition();
-            var distance = Vector2.Distance(_initialTouchPosition, currentMousePosition);
-            
-            if (distance > TOUCH_DRAG_THRESHOLD && _isTouchScreenPressed)
-            {
-                _dragDistance = distance;
-                OnDrag?.Invoke();
-            }
-        }
-
-        private void HandleSecondaryTouchPressed(InputAction.CallbackContext context)
-        {
-            if (context.started)
-            {
-                _secondaryTouchStartPos = Touchscreen.current.touches[1].position.ReadValue();
-                _isSecondaryTouchActive = true;
-
-                _previousDistance = Vector2.Distance(_primaryTouchStartPos, _secondaryTouchStartPos);
-                Debug.Log("Secondary touch START");
-            }
-
-            if (context.canceled)
-            {
-                Debug.Log("Secondary touch CANCEL");
-            }
-        }
-
-        private void SecondaryTouchDeltaPerformed(InputAction.CallbackContext context)
-        {
-            Debug.Log("SecondaryTouchDelta Performed");
-            PrimaryTouchDeltaPerformed(context);
-        }
-
-        private void ResetTouch()
-        {
-            _isSecondaryTouchActive = false;
-            _previousDistance = 0f;
         }
         
-        public Vector3 GetClickWorldPosition()
+        public Vector3 GetInputWorldPosition()
         {
-            return Vector3.zero;
+            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+            Vector3 touchScreenPosition = new Vector3(touchPosition.x, touchPosition.y, _camera.nearClipPlane);
+            return _camera.ScreenToWorldPoint(touchScreenPosition);
         }
 
         public void Dispose()
@@ -153,11 +141,11 @@ namespace TowerMergeTD.Game.Gameplay
             _playerInputActions.TouchScreen.PrimaryTouchPressed.canceled -= HandlePrimaryTouchPressed;
             _playerInputActions.TouchScreen.PrimaryTouchDelta.performed -= PrimaryTouchDeltaPerformed;
             _playerInputActions.TouchScreen.SecondaryTouchPressed.started -= HandleSecondaryTouchPressed;
-            _playerInputActions.TouchScreen.SecondaryTouchPressed.canceled -= HandleSecondaryTouchPressed;
+            _playerInputActions.TouchScreen.SecondaryTouchPressed.canceled -= HandleSecondaryTouchCanceled;
             _playerInputActions.TouchScreen.SecondaryTouchDelta.performed -= SecondaryTouchDeltaPerformed;
             _playerInputActions.TouchScreen.Disable();
             _playerInputActions.Disable();
-            _playerInputActions?.Dispose();
+            _playerInputActions.Dispose();
         }
     }
 }

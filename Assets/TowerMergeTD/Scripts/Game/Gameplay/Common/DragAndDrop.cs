@@ -17,7 +17,7 @@ namespace TowerMergeTD.Game.Gameplay
         private BoxCollider2D _dragCollider;
         private bool _isDragging;
         private bool _canDrag;
-        
+
         public event Action OnDroppedOnTileMap;
         public event Action<TowerObject> OnDroppedOnTower;
 
@@ -31,7 +31,7 @@ namespace TowerMergeTD.Game.Gameplay
             _canDrag = true;
             
             _input.OnClickStarted += TryDrag;
-            _input.OnDrag += DragPerformed;
+            _input.OnDragWithThreshold += DragPerformed;
             _input.OnClickCanceled += Drop;
         }
 
@@ -52,12 +52,12 @@ namespace TowerMergeTD.Game.Gameplay
             }
         }
 
-        private void DragPerformed()
+        private void DragPerformed(Vector2 _)
         {
             if(_canDrag == false) return;
             if(_isDragging == false) return;
 
-            var dragWorldPosition = _input.GetClickWorldPosition();
+            var dragWorldPosition = _input.GetInputWorldPosition();
             Vector3 target = new Vector3(dragWorldPosition.x, dragWorldPosition.y, 0f);
             _draggedTransform.position = target;
         }
@@ -67,7 +67,7 @@ namespace TowerMergeTD.Game.Gameplay
             if(_canDrag == false) return;
             if(_isDragging == false) return;
             
-            var dropWorldPosition = _input.GetClickWorldPosition();
+            var dropWorldPosition = _input.GetInputWorldPosition();
             bool droppedOnTower = HandleDropOnTower(dropWorldPosition);
 
             if (droppedOnTower == false)
@@ -78,7 +78,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private bool IsClickedDraggableCollider()
         {
-            Vector3 mouseWorldPosition = _input.GetClickWorldPosition();
+            Vector3 mouseWorldPosition = _input.GetInputWorldPosition();
             mouseWorldPosition.z = 0;
 
             Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);
@@ -151,7 +151,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void OnDisable()
         {
             _input.OnClickStarted -= TryDrag;
-            _input.OnDrag -= DragPerformed;
+            _input.OnDragWithThreshold -= DragPerformed;
             _input.OnClickCanceled -= Drop;
         }
     }

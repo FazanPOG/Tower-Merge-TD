@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using TowerMergeTD.Game.State;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class CameraMovement : MonoBehaviour
+    public class CameraMovement : MonoBehaviour, IPauseHandler
     {
         private const float MOVE_SPEED = 10f;
         private const float MAX_CAMERA_SIZE = 5f;
@@ -13,51 +14,80 @@ namespace TowerMergeTD.Game.Gameplay
         private Camera _camera;
         private Tilemap _tilemap;
         private IInput _input;
+        private MapCoordinator _mapCoordinator;
         
+        private Vector2 _targetPosition;    
+        private bool _isDragging; 
+        
+        private float _zoom;
+        private float _zoomMultiplier = 4f;
+        private float _velocity;
+        private float _smoothTime = 0.05f;
+
         private float _targetZoom;
         private Vector3 _minBounds;
         private Vector3 _maxBounds;
         private bool _isEnabled;
 
-        public void Init(Camera mainCamera, Tilemap baseTileMap, IInput input)
+        public void Init(Camera mainCamera, Tilemap baseTileMap, IInput input, MapCoordinator mapCoordinator)
         {
             _camera = mainCamera;
             _tilemap = baseTileMap;
             _input = input;
+            _mapCoordinator = mapCoordinator;
             
             CalculateTilemapBounds();
             _isEnabled = true;
 
+            _input.OnDragStarted += StartDrag;
+            _input.OnDragWithThreshold += UpdateDrag;
             _input.OnZoomIn += HandleZoom;
             _input.OnZoomOut += HandleZoom;
         }
 
-        //TODO:
-        private void HandleZoom(float scrollSpeed)
+        public void HandlePause(bool isPaused)
         {
-            _targetZoom -= scrollSpeed;
-
-            _targetZoom = Mathf.Clamp(_targetZoom, MIN_CAMERA_SIZE, MAX_CAMERA_SIZE);
-            _camera.orthographicSize -= _targetZoom * 5f;
+            _isEnabled = !isPaused;
         }
 
-        private void Update()
+        private void HandleZoom(float scroll)
         {
             if(_isEnabled == false)
                 return;
             
-            MoveCamera();
-            ClampCameraPosition();
+            _zoom -= scroll * _zoomMultiplier;
+            _zoom = Mathf.Clamp(_zoom, MIN_CAMERA_SIZE, MAX_CAMERA_SIZE);
+            _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, _zoom, ref _velocity, _smoothTime);
         }
 
-        private void MoveCamera()
+
+        private void LateUpdate()
         {
-            float moveX = Input.GetAxis("Horizontal");
-            float moveY = Input.GetAxis("Vertical");
-
-            Vector3 move = new Vector3(moveX, moveY, 0) * (MOVE_SPEED * Time.deltaTime);
-            transform.position += move;
+            if (_isDragging)
+            {
+                transform.position = Vector2.Lerp(transform.position, _targetPosition, MOVE_SPEED * Time.deltaTime);
+                ClampCameraPosition();
+            }
         }
+
+        private void StartDrag()
+        {
+            _isDragging = !_mapCoordinator.HasTowerInCell(out TowerObject _);
+        }
+        
+        private void UpdateDrag(Vector2 input)
+        {
+            if (_isDragging)
+            {
+                float speed = 150f;
+                Vector2 direction = input.normalized;
+                Vector2 offset = -direction * speed * Time.deltaTime;
+
+                var target = new Vector2(transform.position.x + offset.x, transform.position.y + offset.y);
+                _targetPosition = target;
+            }
+        }
+        
 
         private void ClampCameraPosition()
         {

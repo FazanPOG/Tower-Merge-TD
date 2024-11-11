@@ -11,13 +11,15 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly Camera _camera;
         private readonly PlayerInputActions _playerInputActions;
 
+        private Vector3 _targetPosition;
         private Vector2 _initialMousePosition;
         private float _dragDistance;
         private bool _isMousePressed;
 
         public event Action OnClicked;
         public event Action OnClickStarted;
-        public event Action OnDrag;
+        public event Action OnDragStarted;
+        public event Action<Vector2> OnDragWithThreshold;
         public event Action OnClickCanceled;
         public event Action<float> OnZoomIn;
         public event Action<float> OnZoomOut;
@@ -31,12 +33,13 @@ namespace TowerMergeTD.Game.Gameplay
             _playerInputActions.Mouse.Enable();
 
             _playerInputActions.Mouse.LeftButton.started += LeftButtonStarted;
-            _playerInputActions.Mouse.Delta.performed += DeltaPerformed;
+            _playerInputActions.Mouse.Delta.started += Delta;
+            _playerInputActions.Mouse.Delta.performed += Delta;
             _playerInputActions.Mouse.LeftButton.canceled += LeftButtonCanceled;
             _playerInputActions.Mouse.Scroll.performed += ScrollPerformed;
         }
 
-        public Vector3 GetClickWorldPosition()
+        public Vector3 GetInputWorldPosition()
         {
             Vector3 mouseScreenPosition = Mouse.current.position.ReadValue();
             Vector3 mouseWorldPosition = _camera.ScreenToWorldPoint(mouseScreenPosition);
@@ -48,21 +51,27 @@ namespace TowerMergeTD.Game.Gameplay
             if(_camera == null) return;
             
             _isMousePressed = true;
-            _initialMousePosition = GetClickWorldPosition();
+            _initialMousePosition = GetInputWorldPosition();
             OnClickStarted?.Invoke();
         }
 
-        private void DeltaPerformed(InputAction.CallbackContext _)
+        private void Delta(InputAction.CallbackContext context)
         {
             if(_camera == null) return;
+
+            if (context.started)
+            {
+                OnDragStarted?.Invoke();
+                return;
+            }
             
-            Vector2 currentMousePosition = GetClickWorldPosition();
+            Vector2 currentMousePosition = GetInputWorldPosition();
             var distance = Vector2.Distance(_initialMousePosition, currentMousePosition);
-            
+
             if (distance > MOUSE_DRAG_THRESHOLD && _isMousePressed)
             {
                 _dragDistance = distance;
-                OnDrag?.Invoke();
+                OnDragWithThreshold?.Invoke(context.ReadValue<Vector2>());
             }
         }
 
@@ -84,19 +93,17 @@ namespace TowerMergeTD.Game.Gameplay
 
             if (scrollValue.y > 0)
             {
-                Debug.Log("OnZoomIn");
                 OnZoomIn?.Invoke(scrollValue.y);
             }
             else if (scrollValue.y < 0)
             {
-                Debug.Log("OnZoomOut");
                 OnZoomOut?.Invoke(scrollValue.y);
             }
         }
 
         public void Dispose()
         {
-            _playerInputActions.Mouse.Delta.performed -= DeltaPerformed;
+            _playerInputActions.Mouse.Delta.performed -= Delta;
             _playerInputActions.Mouse.LeftButton.started -= LeftButtonStarted;
             _playerInputActions.Mouse.LeftButton.canceled -= LeftButtonCanceled;
             _playerInputActions.Mouse.Scroll.performed -= ScrollPerformed;

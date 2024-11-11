@@ -77,7 +77,7 @@ namespace TowerMergeTD.Game.State
 
         public bool HasTowerInCell(out TowerObject towerObject)
         {
-            Vector3 mouseWorldPosition = _input.GetClickWorldPosition();
+            Vector3 mouseWorldPosition = _input.GetInputWorldPosition();
             mouseWorldPosition.z = 0;
 
             Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);

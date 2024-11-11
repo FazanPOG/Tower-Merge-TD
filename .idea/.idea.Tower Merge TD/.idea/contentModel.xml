@@ -1680,7 +1680,6 @@
             <e p="Utils" t="Include">
               <e p="Debug" t="Include">
                 <e p="GameplayDebug.cs" t="Include" />
-                <e p="GameplayInputDebugView.cs" t="Include" />
                 <e p="MainMenuDebug.cs" t="Include" />
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />

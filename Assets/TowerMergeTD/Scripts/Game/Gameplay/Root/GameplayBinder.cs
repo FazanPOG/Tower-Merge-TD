@@ -66,6 +66,7 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindInput()
         {
+            //TODO: change input depending on device
             _container.BindInterfacesTo<DesktopInput>().FromNew().AsSingle().WithArguments(_mainCamera).NonLazy();
         }
 
@@ -145,12 +146,17 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindCameraSystem()
         {
+            var input = _container.Resolve<IInput>();
+            var pauseService = _container.Resolve<IPauseService>();
+            var mapCoordinator = _container.Resolve<MapCoordinator>();
+            
             var instance = new GameObject("CameraSystem");
             var cameraMovement = instance.AddComponent<CameraMovement>();
-            var input = _container.Resolve<IInput>();
-            
+
             _mainCamera.transform.SetParent(instance.transform);
-            cameraMovement.Init(_mainCamera, _level.BaseTileMap, input);
+            cameraMovement.Init(_mainCamera, _level.BaseTileMap, input, mapCoordinator);
+            
+            pauseService.Register(cameraMovement);
         }
     }
 }
