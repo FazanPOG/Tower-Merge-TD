@@ -9,7 +9,7 @@ namespace TowerMergeTD.Game.UI
 {
     public class UIMainMenuRootView : MonoBehaviour
     {
-        private const int MAX_LEVELS_ON_PAGE = 21;
+        private const int MAX_EPISODE_LEVELS = 21;
 
         [Header("Player currencies")]
         [SerializeField] private PlayerCoinsView _playerCoinsView;
@@ -18,8 +18,9 @@ namespace TowerMergeTD.Game.UI
         [Header("Panels")]
         [SerializeField] private MainMenuPanelView _mainMenuPanelView;
         [SerializeField] private LevelsPanelView _levelsPanelView;
-        [SerializeField] private PageSlider _pageSlider;
-        [SerializeField] private PageView _pagePrefab;
+        [SerializeField] private EpisodeView _episodeViewPrefab;
+        [SerializeField] private Transform _allLevelsParent;
+        [SerializeField] private GameObject _levelsContainerPrefab;
         [SerializeField] private LevelEntryView _levelEntryViewPrefab;
         [Space(10)]
         [Header("Popups")]
@@ -67,21 +68,23 @@ namespace TowerMergeTD.Game.UI
 
         private void BindLevelEntryViewAdapters()
         {
-            int pagesCount = Mathf.CeilToInt((float)_projectConfig.Levels.Length / MAX_LEVELS_ON_PAGE);
+            int episodesCount = Mathf.CeilToInt((float)_projectConfig.Levels.Length / MAX_EPISODE_LEVELS);
 
             int createdLevelCounter = 0;
-            for (int i = 0; i < pagesCount; i++)
+            for (int i = 0; i < episodesCount; i++)
             {
-                var container = Instantiate(_pagePrefab);
-                _pageSlider.AddPage((RectTransform)container.transform);
+                var episodeView = Instantiate(_episodeViewPrefab, _allLevelsParent);
+                episodeView.SetEpisodeNumberText(i + 1);
                 
-                for (int j = 0; j < MAX_LEVELS_ON_PAGE; j++)
+                var currentLevelsContainer = Instantiate(_levelsContainerPrefab, _allLevelsParent);
+
+                for (int j = 0; j < MAX_EPISODE_LEVELS; j++)
                 {
                     if(createdLevelCounter >= _projectConfig.Levels.Length)
                         return;
                     
                     var levelSaveDataProxy = _gameStateProvider.GameState.LevelDatas[createdLevelCounter];
-                    var viewInstance = Instantiate(_levelEntryViewPrefab, container.transform);
+                    var viewInstance = Instantiate(_levelEntryViewPrefab, currentLevelsContainer.transform);
                     var levelConfig = _projectConfig.Levels[createdLevelCounter].LevelConfig;
                 
                     new LevelEntryViewAdapter

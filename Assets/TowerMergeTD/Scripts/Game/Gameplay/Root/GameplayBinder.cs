@@ -51,14 +51,17 @@ namespace TowerMergeTD.Gameplay.Root
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
             var gameTimerService = _container.Resolve<IGameTimerService>();
             var scoreService = _container.Resolve<IScoreService>();
+            var gameStateProvider = _container.Resolve<IGameStateProvider>();
             
             GameStateMachine gameStateMachine = new GameStateMachine(
+                _currentLevelIndex,
                 spawnerServices, 
                 pauseService, 
                 playerHealthProxy, 
                 gameStateService, 
                 gameTimerService,
-                scoreService);
+                scoreService,
+                gameStateProvider);
 
             return gameStateMachine;
         }
@@ -99,6 +102,7 @@ namespace TowerMergeTD.Gameplay.Root
             var pauseService = _container.Resolve<IPauseService>();
             var mapCoordinator = _container.Resolve<MapCoordinator>();
             var input = _container.Resolve<IInput>();
+            var playerBuildingCurrency = _container.Resolve<PlayerBuildingCurrencyProxy>();
             
             var towerFactory = new TowerFactory(
                 _container, 
@@ -112,7 +116,7 @@ namespace TowerMergeTD.Gameplay.Root
             
             _container.Bind<TowerFactory>().FromInstance(towerFactory).AsSingle().NonLazy();
             
-            var enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, _level.EnemiesParent);
+            var enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, playerBuildingCurrency, _level.EnemiesParent);
             _container.Bind<EnemyFactory>().FromInstance(enemyFactory).AsSingle().NonLazy();
             
             MergeHandler.Init(towerFactory);

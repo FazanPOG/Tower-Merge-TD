@@ -25,3 +25,5 @@ MonoBehaviour:
   _towerPlaces:
   - {fileID: 11400000, guid: d43f0a44bf81f7149bd790909d9b4e89, type: 2}
   - {fileID: 11400000, guid: 4844bb01ac58e3f439dabac8967d4809, type: 2}
+  - {fileID: 11400000, guid: 263c4430c14c7fe45844c8920c888e5d, type: 2}
+  - {fileID: 11400000, guid: 8fb5a979c2e5c1142a66c0a1bb40a65e, type: 2}

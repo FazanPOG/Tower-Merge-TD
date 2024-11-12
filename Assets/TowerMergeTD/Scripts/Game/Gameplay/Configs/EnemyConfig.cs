@@ -6,7 +6,7 @@ namespace TowerMergeTD.Game.Gameplay
     [CreateAssetMenu(menuName = "Configs/Enemy", order = 1)]
     public class EnemyConfig : ScriptableObject
     {
-        [BoxGroup("Settings")] [Range(1, 500)]
+        [BoxGroup("Settings")] [Range(1, 5000)]
         [SerializeField] private float _health = 1f;
         
         [BoxGroup("Settings")] [Range(1, 25)]
@@ -14,6 +14,9 @@ namespace TowerMergeTD.Game.Gameplay
 
         [BoxGroup("Settings")] [Range(1, 20)]
         [SerializeField] private float _moveSpeed = 1f;
+        
+        [BoxGroup("Settings")] [Range(1, 50)]
+        [SerializeField] private int _buildingCurrencyOnDeath;
 
         [BoxGroup("Visuals")] [PreviewField(75, ObjectFieldAlignment.Center)] [HideLabel]
         [SerializeField] private Sprite _sprite;
@@ -23,6 +26,8 @@ namespace TowerMergeTD.Game.Gameplay
 
         public float MoveSpeed => _moveSpeed;
 
+        public int BuildingCurrencyOnDeath => _buildingCurrencyOnDeath;
+        
         public Sprite Sprite => _sprite;
     }
 }

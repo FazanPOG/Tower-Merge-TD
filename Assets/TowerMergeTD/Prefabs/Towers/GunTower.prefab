@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8568699819210901166}
-  - component: {fileID: 4733536545727583933}
+  - component: {fileID: 3873265252221476316}
   m_Layer: 0
   m_Name: GunTowerView
   m_TagString: Untagged
@@ -286,7 +286,7 @@ Transform:
   - {fileID: 3704961512555267238}
   m_Father: {fileID: 256159661839411716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4733536545727583933
+--- !u!114 &3873265252221476316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,10 +295,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6202640362856604180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ccd78d44110e846a4496574286f76c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5375070a42ad4ce0b18a72a716a11754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 5272387960234728177}
+  _towerSpriteRenderer: {fileID: 5272387960234728177}
   _objectToRotate: {fileID: 8490296489678466895}
   _fireSpriteRenderer: {fileID: 6598328974644380442}
 --- !u!1 &8450082386612984398
@@ -535,5 +535,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionHandler: {fileID: 4433547488564041750}
-  _view: {fileID: 4733536545727583933}
+  _view: {fileID: 3873265252221476316}
   DEBUG_STRING: 

@@ -22,6 +22,7 @@ namespace TowerMergeTD.Game.Gameplay
         public TowerType Type => _generation.TowersType;
         public int Level => _towerProxy.Level.Value;
         public TowerCollisionHandler CollisionHandler => _collisionHandler;
+        public TowerObjectView View => _view;
 
         private void Update()
         {
@@ -57,11 +58,7 @@ namespace TowerMergeTD.Game.Gameplay
             _dragAndDrop.Init(input, transform, _mapCoordinator);
 
             _dataProxy = _generation.GetTowerDataProxy(_towerProxy.Level.CurrentValue);
-            _attacker.Init(
-                _dataProxy.Damage, 
-                _dataProxy.AttackRange,
-                _dataProxy.AttackCooldown
-                );
+            _attacker.Init(_dataProxy.Damage, _dataProxy.AttackRange, _dataProxy.AttackCooldown, _dragAndDrop.IsDragging);
 
             _view.Init(_dataProxy, _attacker);
 
@@ -69,6 +66,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             _dragAndDrop.OnDroppedOnTileMap += UpdateModel;
             _dragAndDrop.OnDroppedOnTower += OnDroppedOnTower;
+            
         }
 
         public void DestroySelf()

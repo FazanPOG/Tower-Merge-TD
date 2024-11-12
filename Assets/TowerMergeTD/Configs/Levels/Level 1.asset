@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   _isOpen: 1
-  _initialHealth: 5
-  _initialBuildingCurrency: 500
+  _initialHealth: 10
+  _initialBuildingCurrency: 200
   scoreForOneStar: 0
   scoreForTwoStars: 500
   scoreForThreeStars: 1000
@@ -23,11 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
   - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
   _waveDatas:
-  - _waves:
-    - {fileID: 11400000, guid: bf0e391a556b8b249955f1f99573e10d, type: 2}
-  - _waves:
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-  - _waves:
-    - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
   - _waves:
     - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}

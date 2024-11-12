@@ -8,12 +8,14 @@ namespace TowerMergeTD.Game.Gameplay
     {
         private readonly DiContainer _diContainer;
         private readonly Enemy _prefab;
+        private readonly PlayerBuildingCurrencyProxy _playerBuildingCurrencyProxy;
         private readonly Transform _parent;
 
-        public EnemyFactory(DiContainer diContainer, Enemy prefab, Transform parent)
+        public EnemyFactory(DiContainer diContainer, Enemy prefab, PlayerBuildingCurrencyProxy playerBuildingCurrencyProxy, Transform parent)
         {
             _diContainer = diContainer;
             _prefab = prefab;
+            _playerBuildingCurrencyProxy = playerBuildingCurrencyProxy;
             _parent = parent;
         }
 
@@ -23,7 +25,7 @@ namespace TowerMergeTD.Game.Gameplay
             instance.transform.position = position;
             instance.name = $"{config.name}";
 
-            instance.Init(config, path);
+            instance.Init(_playerBuildingCurrencyProxy, config, path);
             
             return instance;
         }

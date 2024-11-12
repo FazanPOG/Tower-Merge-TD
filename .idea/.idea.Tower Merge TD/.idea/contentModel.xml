@@ -1501,6 +1501,7 @@
                 </e>
                 <e p="Enemies" t="Include">
                   <e p="Enemy.cs" t="Include" />
+                  <e p="EnemyDeathPopupView.cs" t="Include" />
                   <e p="EnemyFinishTrigger.cs" t="Include" />
                   <e p="EnemyMovement.cs" t="Include" />
                   <e p="EnemyView.cs" t="Include" />
@@ -1563,13 +1564,19 @@
                 <e p="Towers" t="Include">
                   <e p="Attackers" t="Include">
                     <e p="ITowerAttacker.cs" t="Include" />
+                    <e p="Rocket.cs" t="Include" />
                     <e p="TowerRegularAttacker.cs" t="Include" />
+                    <e p="TowerRocketAttacker.cs" t="Include" />
                   </e>
                   <e p="MergeHandler.cs" t="Include" />
                   <e p="TowerCollisionHandler.cs" t="Include" />
                   <e p="TowerObject.cs" t="Include" />
-                  <e p="TowerObjectView.cs" t="Include" />
                   <e p="TowerType.cs" t="Include" />
+                  <e p="Views" t="Include">
+                    <e p="GunTowerObjectView.cs" t="Include" />
+                    <e p="RocketTowerObjectView.cs" t="Include" />
+                    <e p="TowerObjectView.cs" t="Include" />
+                  </e>
                 </e>
               </e>
               <e p="GameRoot" t="Include">
@@ -1643,7 +1650,8 @@
                     <e p="PausePopupView.cs" t="Include" />
                     <e p="PlayerBuildingCurrencyView.cs" t="Include" />
                     <e p="PlayerHealthView.cs" t="Include" />
-                    <e p="TowerActionsView.cs" t="Include" />
+                    <e p="TowerSellView.cs" t="Include" />
+                    <e p="TowersListView.cs" t="Include" />
                   </e>
                 </e>
                 <e p="MainMenu" t="Include">
@@ -1661,6 +1669,7 @@
                     <e p="UIMainMenuRootView.cs" t="Include" />
                   </e>
                   <e p="Views" t="Include">
+                    <e p="EpisodeView.cs" t="Include" />
                     <e p="LevelEntryView.cs" t="Include" />
                     <e p="LevelLockPopupView.cs" t="Include" />
                     <e p="LevelsPanelView.cs" t="Include" />

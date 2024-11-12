@@ -12,22 +12,30 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private EnemyView _view;
         
         private readonly ReactiveProperty<float> _health = new ReactiveProperty<float>();
+        
+        private Collider2D _collider;
+        private PlayerBuildingCurrencyProxy _playerBuildingCurrencyProxy;
         private EnemyConfig _config;
 
         public event Action OnDied;
         
         public int Damage => _config.Damage;
 
-        private void Awake() => GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-
-        public void Init(EnemyConfig config, List<Vector3> movePath)
+        private void Awake()
         {
+            _collider = GetComponent<CircleCollider2D>();
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        public void Init(PlayerBuildingCurrencyProxy playerBuildingCurrencyProxy, EnemyConfig config, List<Vector3> movePath)
+        {
+            _playerBuildingCurrencyProxy = playerBuildingCurrencyProxy;
             _config = config;
             _health.Value = _config.Health;
             
             EnemyMovement movement = new EnemyMovement();
             movement.Move(this, _view.transform, movePath, _config.MoveSpeed);
-            _view.Init(_health, _config.Sprite);
+            _view.Init(this, DestroySelf, _health, _config.BuildingCurrencyOnDeath, _config.Sprite);
         }
 
         public void TakeDamage(float damage)
@@ -38,12 +46,21 @@ namespace TowerMergeTD.Game.Gameplay
             _health.Value -= damage;
 
             if (_health.Value <= 0)
-                DestroySelf();
+            {
+                _playerBuildingCurrencyProxy.BuildingCurrency.Value += _config.BuildingCurrencyOnDeath;
+                _collider.enabled = false;
+                OnDied?.Invoke();
+            }
         }
 
-        public void DestroySelf()
+        public void Died()
         {
             OnDied?.Invoke();
+            DestroySelf();
+        }
+
+        private void DestroySelf()
+        {
             Destroy(gameObject);
         }
     }

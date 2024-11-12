@@ -12,19 +12,21 @@ namespace TowerMergeTD.Game.Gameplay
         private IGameState _currentState;
 
         public GameStateMachine(
+            int currentLevelIndex,
             IWaveSpawnerService[] waveSpawnerServices, 
             IPauseService pauseService, 
             PlayerHealthProxy playerHealthProxy,
             IGameStateService gameStateService,
             IGameTimerService gameTimerService,
-            IScoreService scoreService)
+            IScoreService scoreService,
+            IGameStateProvider gameStateProvider)
         {
             _gameStateService = gameStateService;
             _gameStatesMap = new Dictionary<Type, IGameState>()
             {
                 [typeof(BootState)] = new BootState(this),
                 [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerServices, pauseService, gameTimerService),
-                [typeof(WinGameState)] = new WinGameState(pauseService, scoreService),
+                [typeof(WinGameState)] = new WinGameState(currentLevelIndex, pauseService, scoreService, gameStateProvider),
                 [typeof(LoseGameState)] = new LoseGameState(pauseService),
             };
         }

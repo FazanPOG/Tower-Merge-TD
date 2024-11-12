@@ -48,7 +48,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
 
-            ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler);
+            ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler, towerLevel, instance.View);
             
             instance.Init(_input, generation, proxy, _mapCoordinator, attacker, _pauseService);
             instance.name = $"{instance.Type} {towerLevel}";
@@ -72,9 +72,6 @@ namespace TowerMergeTD.Game.Gameplay
                 case TowerType.Rocket:
                     return _prefabReferences.RocketTowerPrefab;
                 
-                case TowerType.Laser:
-                    return _prefabReferences.NoNameTowerPrefab;
-
                 default:
                     throw new MissingReferenceException($"Missing tower type: {towerType}");
             }
@@ -111,7 +108,13 @@ namespace TowerMergeTD.Game.Gameplay
             return towerModel;
         }
         
-        private ITowerAttacker GetTowerAttacker(TowerGenerationConfig generation, TowerCollisionHandler collisionHandler)
+        private ITowerAttacker GetTowerAttacker
+            (
+            TowerGenerationConfig generation, 
+            TowerCollisionHandler collisionHandler, 
+            int towerLevel, 
+            TowerObjectView towerObjectView
+            )
         {
             if (generation.TowersType == TowerType.Gun)
             {
@@ -120,7 +123,10 @@ namespace TowerMergeTD.Game.Gameplay
             
             if (generation.TowersType == TowerType.Rocket)
             {
-                return new TowerRegularAttacker(collisionHandler, _monoBehaviourContext);
+                if(towerLevel < 3)
+                    return new TowerRocketAttacker(collisionHandler, _monoBehaviourContext, _prefabReferences.SmallRocket, towerObjectView as RocketTowerObjectView);
+                else
+                    return new TowerRocketAttacker(collisionHandler, _monoBehaviourContext, _prefabReferences.BigRocket, towerObjectView as RocketTowerObjectView);
             }
             
             throw new MissingReferenceException($"Missing tower type: {generation.TowersType}");

@@ -63,20 +63,15 @@ namespace TowerMergeTD.Game.Gameplay
 
         private IEnumerator SpawnEnemies(WaveConfig wave)
         {
-            List<Enemy> enemies = new List<Enemy>();
-            
             foreach (var enemyConfig in wave.Enemies)
             {
                 yield return new WaitUntil(() => _canSpawn);
-                
+            
                 var enemy = _enemyFactory.Create(enemyConfig, _path, _enemySpawnPosition);
-                enemies.Add(enemy);
+                enemy.OnDied += OnEnemyDied;
                 
                 yield return new WaitForSeconds(wave.DelayBetweenEnemies);
             }
-
-            foreach (var enemy in enemies)
-                enemy.OnDied += OnEnemyDied;
         }
 
         private void OnEnemyDied()

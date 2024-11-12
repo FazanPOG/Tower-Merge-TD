@@ -18,7 +18,8 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private Button _pauseButton;
 
         [Header("Other")]
-        [SerializeField] private TowerActionsView _towerActionsView;
+        [SerializeField] private TowerSellView _towerSellView;
+        [SerializeField] private TowersListView _towersListView;
         [SerializeField] private GameTimerView _gameTimerView;
 
         [Header("Popups")]
@@ -63,7 +64,7 @@ namespace TowerMergeTD.Gameplay.Root
                 var towerFactory = _container.Resolve<TowerFactory>();
                 var mapCoordinator = _container.Resolve<MapCoordinator>();
 
-                new TowerActionsAdapter(_towerActionsView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
+                new TowerActionsAdapter(_towerSellView, _towersListView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
             }
 
             void bindPausePopup()

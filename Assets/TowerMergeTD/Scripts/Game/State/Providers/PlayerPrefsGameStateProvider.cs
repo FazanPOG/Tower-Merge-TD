@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using R3;
+using Sirenix.Utilities;
 using TowerMergeTD.GameRoot;
 using UnityEngine;
 
@@ -63,6 +64,7 @@ namespace TowerMergeTD.Game.State
 
         public Observable<bool> SaveGameState()
         {
+            _gameStateOrigin.LevelDatas.Sort();
             var json = JsonUtility.ToJson(_gameStateOrigin, true);
             PlayerPrefs.SetString(GAME_STATE_KEY, json);
             PlayerPrefs.Save();

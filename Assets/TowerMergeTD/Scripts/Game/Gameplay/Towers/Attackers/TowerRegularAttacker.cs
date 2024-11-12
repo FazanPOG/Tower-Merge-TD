@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using R3;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -14,7 +14,9 @@ namespace TowerMergeTD.Game.Gameplay
         private float _initialDamage;
         private float _attackCooldown;
         private bool _canAttack = true;
-        private IDamageable _currentAttackTarget;
+        private ReadOnlyReactiveProperty<bool> _isDragging;
+        private GameObject _closestTargetObject;
+        private IDamageable _closestTargetEnemy;
 
         public event Action OnAttacked;
         public event Action<GameObject> OnTargetChanged;
@@ -25,10 +27,11 @@ namespace TowerMergeTD.Game.Gameplay
             _monoBehaviourContext = monoBehaviourContext;
         }
         
-        public void Init(float initialDamage, float attackRange, float attackCooldown)
+        public void Init(float initialDamage, float attackRange, float attackCooldown, ReadOnlyReactiveProperty<bool> isDragging)
         {
             _initialDamage = initialDamage;
             _attackCooldown = attackCooldown;
+            _isDragging = isDragging;
             
             _collisionHandler.AttackCollider.radius = attackRange;
             
@@ -37,10 +40,23 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void OnAttackColliderTriggering(List<Collider2D> others)
         {
-            IDamageable closestTarget = null;
-            GameObject closestTargetObject = null;
-            float closestDistance = Mathf.Infinity;
+            List<GameObject> enemies = new List<GameObject>();
+            foreach (var other in others)
+                if (other.gameObject.TryGetComponent(out IDamageable damageable))
+                    enemies.Add(other.gameObject);
+            
+            
+            if (enemies.Contains(_closestTargetObject) == false)
+                FindClosestEnemy(others);
 
+            if (_closestTargetObject != null)
+                Attack(_closestTargetEnemy);
+        }
+
+        private void FindClosestEnemy(List<Collider2D> others)
+        {
+            float closestDistance = Mathf.Infinity;
+            
             foreach (var other in others)
             {
                 if (other.gameObject.TryGetComponent(out IDamageable damageable))
@@ -50,23 +66,17 @@ namespace TowerMergeTD.Game.Gameplay
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
-                        closestTarget = damageable;
-                        closestTargetObject = other.gameObject;
+                        _closestTargetObject = other.gameObject;
+                        _closestTargetEnemy = damageable;
+                        OnTargetChanged?.Invoke(_closestTargetObject);
                     }
                 }
             }
-
-            if (closestTarget != null && closestTarget != _currentAttackTarget)
-            {
-                _currentAttackTarget = closestTarget;
-                Attack(_currentAttackTarget);
-                OnTargetChanged?.Invoke(closestTargetObject);
-            }
         }
-
+        
         private void Attack(IDamageable damageable)
         {
-            if (_canAttack)
+            if (_canAttack && _isDragging.CurrentValue == false)
             {
                 damageable.TakeDamage(_initialDamage);
                 _monoBehaviourContext.StartCoroutine(AttackCooldown(_attackCooldown));

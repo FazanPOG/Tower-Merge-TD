@@ -1,4 +1,5 @@
 ﻿using System;
+using R3;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -7,6 +8,6 @@ namespace TowerMergeTD.Game.Gameplay
     {
         event Action OnAttacked;
         event Action<GameObject> OnTargetChanged;
-        void Init(float initialDamage, float attackRange, float attackCooldown);
+        void Init(float initialDamage, float attackRange, float attackCooldown, ReadOnlyReactiveProperty<bool> isDragging);
     }
 }

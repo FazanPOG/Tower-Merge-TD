@@ -6,21 +6,19 @@ using UnityEngine.UI;
 
 namespace TowerMergeTD.Game.UI
 {
-    public class TowerActionsView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class TowersListView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private Button _createGunTowerButton;
-        [SerializeField] private Button _createRocketTowerButton;
-        [SerializeField] private Button _sellTowerButton;
+        [SerializeField] private Button _gunTowerButton;
+        [SerializeField] private Button _rocketTowerButton;
 
         private Camera _mainCamera;
         private Canvas _parentCanvas;
         private RectTransform _rectTransform;
-
+        
         public bool IsMouseOver { get; private set; }
-
-        public event Action<TowerType> OnCreateTowerButtonClicked;
-        public event Action OnSellTowerButtonClicked;
-
+        
+        public event Action<TowerType> OnTowerButtonClicked; 
+        
         private void Start()
         {
             _mainCamera = Camera.main;
@@ -29,18 +27,17 @@ namespace TowerMergeTD.Game.UI
             
             Hide();
         }
-
+        
         private void OnEnable()
         {
-            _createGunTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Gun));
-            _createRocketTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Rocket));
-            _sellTowerButton.onClick.AddListener(() => OnSellTowerButtonClicked?.Invoke());
+            _gunTowerButton.onClick.AddListener(() => OnTowerButtonClicked?.Invoke(TowerType.Gun));
+            _rocketTowerButton.onClick.AddListener(() => OnTowerButtonClicked?.Invoke(TowerType.Rocket));
         }
 
         public void OnPointerEnter(PointerEventData eventData) => IsMouseOver = true;
         
         public void OnPointerExit(PointerEventData eventData) => IsMouseOver = false;
-
+        
         public void Show() => gameObject.SetActive(true);
 
         public void Hide()
@@ -54,14 +51,6 @@ namespace TowerMergeTD.Game.UI
             Vector2 canvasPosition = WorldToCanvasPosition(position);
             _rectTransform.anchoredPosition = canvasPosition;
         }
-
-        public void SetActiveCreateTowerButtons(bool activeState)
-        {
-            _createGunTowerButton.gameObject.SetActive(activeState); 
-            _createRocketTowerButton.gameObject.SetActive(activeState);
-        }
-
-        public void SetActiveSellButton(bool activeState) => _sellTowerButton.gameObject.SetActive(activeState);
 
         private Vector2 WorldToCanvasPosition(Vector2 worldPosition)
         {
@@ -78,9 +67,8 @@ namespace TowerMergeTD.Game.UI
 
         private void OnDisable()
         {
-            _createGunTowerButton.onClick.RemoveAllListeners();
-            _createRocketTowerButton.onClick.RemoveAllListeners();
-            _sellTowerButton.onClick.RemoveAllListeners();
+            _gunTowerButton.onClick.RemoveAllListeners();
+            _rocketTowerButton.onClick.RemoveAllListeners();
         }
     }
 }

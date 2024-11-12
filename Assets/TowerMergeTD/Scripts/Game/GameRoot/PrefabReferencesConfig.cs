@@ -9,13 +9,17 @@ namespace TowerMergeTD.GameRoot
         [Header("Gameplay")]
         [SerializeField] private TowerObject _gunTowerPrefab;
         [SerializeField] private TowerObject _rocketTowerPrefab;
-        [SerializeField] private TowerObject _noNameTowerPrefab;
+        [SerializeField] private Rocket _smallRocket;
+        [SerializeField] private Rocket _bigRocket;
         [SerializeField] private Enemy enemyPrefab;
 
         public TowerObject GunTowerPrefab => _gunTowerPrefab;
         public TowerObject RocketTowerPrefab => _rocketTowerPrefab;
-        public TowerObject NoNameTowerPrefab => _noNameTowerPrefab;
 
+        public Rocket SmallRocket => _smallRocket;
+
+        public Rocket BigRocket => _bigRocket;
+        
         public Enemy EnemyPrefab => enemyPrefab;
     }
 }

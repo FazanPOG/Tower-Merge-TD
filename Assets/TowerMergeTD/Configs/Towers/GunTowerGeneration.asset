@@ -17,11 +17,11 @@ MonoBehaviour:
   _generation:
   - AttackRange: 2
     AttackCooldown: 1
-    Damage: 1
+    Damage: 25
     Level: 1
     Sprite: {fileID: 21300000, guid: f1c834ff5e9b48340a92376b364b576c, type: 3}
-  - AttackRange: 2
-    AttackCooldown: 3
-    Damage: 5
+  - AttackRange: 2.25
+    AttackCooldown: 0.8
+    Damage: 32
     Level: 2
     Sprite: {fileID: 21300000, guid: d4a26c28238de144abf5c0421783310e, type: 3}

@@ -6,7 +6,8 @@ namespace TowerMergeTD.Game.UI
 {
     public class TowerActionsAdapter : IPauseHandler
     {
-        private readonly TowerActionsView _view;
+        private readonly TowerSellView _towerSellView;
+        private readonly TowersListView _towersListView;
         private readonly IInput _input;
         private readonly TowerFactory _towerFactory;
         private readonly MapCoordinator _mapCoordinator;
@@ -18,14 +19,16 @@ namespace TowerMergeTD.Game.UI
         private bool _canInteract;
 
         public TowerActionsAdapter(
-            TowerActionsView view, 
+            TowerSellView towerSellView,
+            TowersListView towersListView,
             IInput input, 
             TowerFactory towerFactory, 
             MapCoordinator mapCoordinator, 
             PlayerBuildingCurrencyProxy buildingCurrencyProxy,
             IPauseService pauseService)
         {
-            _view = view;
+            _towerSellView = towerSellView;
+            _towersListView = towersListView;
             _input = input;
             _towerFactory = towerFactory;
             _mapCoordinator = mapCoordinator;
@@ -40,8 +43,8 @@ namespace TowerMergeTD.Game.UI
         {
             _input.OnClicked += OnClicked;
             _input.OnDragWithThreshold += OnDrag;
-            _view.OnCreateTowerButtonClicked += CreateTower;
-            _view.OnSellTowerButtonClicked += SellTower;
+            _towersListView.OnTowerButtonClicked += CreateTower;
+            _towerSellView.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);
         }
 
@@ -50,13 +53,14 @@ namespace TowerMergeTD.Game.UI
             _canInteract = !isPaused;
             
             if(isPaused)
-                _view.Hide();
+                _towerSellView.Hide();
         }
 
         private void OnClicked()
         {
             if(_canInteract == false) return;
-            if(_view.IsMouseOver) return;
+            if(_towerSellView.IsMouseOver) return;
+            if(_towersListView.IsMouseOver) return;
 
             _currentClickedTower = null;
             Vector3 mouseWorldPosition = _input.GetInputWorldPosition();
@@ -73,14 +77,18 @@ namespace TowerMergeTD.Game.UI
             }
             else
             {
-                _view.Hide();
+                _towerSellView.Hide();
+                _towersListView.Hide();
             }
         }
 
         private void OnDrag(Vector2 _)
         {
-            if (_view.gameObject.activeSelf)
-                _view.Hide();
+            if (_towerSellView.gameObject.activeSelf)
+                _towerSellView.Hide();
+            
+            if(_towersListView.gameObject.activeSelf)
+                _towersListView.Hide();
         }
 
         private void CreateTower(TowerType towerType)
@@ -93,7 +101,7 @@ namespace TowerMergeTD.Game.UI
                 _buildingCurrencyProxy.BuildingCurrency.Value -= cost;
             }
             
-            _view.Hide();
+            _towersListView.Hide();
         }
 
         private void SellTower()
@@ -105,7 +113,7 @@ namespace TowerMergeTD.Game.UI
             
             _buildingCurrencyProxy.BuildingCurrency.Value += sellPrice;
             _currentClickedTower.DestroySelf();
-            _view.Hide();
+            _towerSellView.Hide();
 
             int calculateSellPrice()
             {
@@ -120,20 +128,16 @@ namespace TowerMergeTD.Game.UI
         {
             _currentPosition = cellCenterPosition;
 
-            _view.SetActiveCreateTowerButtons(false);
-            _view.SetActiveSellButton(true);
-            _view.Show();
-            _view.UpdatePosition(cellCenterPosition);
+            _towerSellView.Show();
+            _towerSellView.UpdatePosition(cellCenterPosition);
         }
 
         private void MapClickedState(Vector2 cellCenterPosition)
         {
             _currentPosition = cellCenterPosition;
 
-            _view.SetActiveCreateTowerButtons(true);
-            _view.SetActiveSellButton(false);
-            _view.Show();
-            _view.UpdatePosition(cellCenterPosition);
+            _towersListView.Show();
+            _towersListView.UpdatePosition(cellCenterPosition);
         }
     }
 }

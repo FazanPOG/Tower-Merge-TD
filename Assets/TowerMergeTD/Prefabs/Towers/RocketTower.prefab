@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &982388083562676063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3940308266324296328}
+  m_Layer: 0
+  m_Name: rocketSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3940308266324296328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982388083562676063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6775896671790245104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2713860376401395377
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d66db88bb7bc1154ea337c654d9ec757, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29a71a9c8aae10a40a57140314e4b329, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -401,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionHandler: {fileID: 4433547488564041750}
-  _view: {fileID: 7589154031489397987}
+  _view: {fileID: 5267015423119856188}
   DEBUG_STRING: 
 --- !u!1 &9148716869318557770
 GameObject:
@@ -412,7 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6775896671790245104}
-  - component: {fileID: 7589154031489397987}
+  - component: {fileID: 5267015423119856188}
   m_Layer: 0
   m_Name: RocketTowerView
   m_TagString: Untagged
@@ -435,9 +466,10 @@ Transform:
   m_Children:
   - {fileID: 7336890696796905020}
   - {fileID: 1983936605933790968}
+  - {fileID: 3940308266324296328}
   m_Father: {fileID: 256159661839411716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7589154031489397987
+--- !u!114 &5267015423119856188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -446,8 +478,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9148716869318557770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ccd78d44110e846a4496574286f76c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab921b3d25714e7fb69d8ae6f83ded19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 7046367477078194351}
-  _objectToRotate: {fileID: 2713860376401395377}
+  _towerSpriteRenderer: {fileID: 7046367477078194351}
+  _objectToRotate: {fileID: 4404503748576735943}
+  rocketSpawnTransform: {fileID: 3940308266324296328}

@@ -7,7 +7,7 @@ namespace TowerMergeTD.Game.State
     [Serializable]
     public class TowerData
     {
-        [BoxGroup("Settings")] [Range(1, 20)] [LabelText("Attack Range")] [Tooltip("Defines the range of the tower's attack.")]
+        [BoxGroup("Settings")] [Range(2, 20)] [LabelText("Attack Range")] [Tooltip("Defines the range of the tower's attack.")]
         public float AttackRange = 1f;
 
         [BoxGroup("Settings")] [LabelText("Tower Attack Cooldown")] [Tooltip("Initial tower attack cooldown.")]

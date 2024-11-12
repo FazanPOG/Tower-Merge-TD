@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using R3;
 using TowerMergeTD.Game.State;
 using UnityEngine;
 
@@ -15,9 +16,11 @@ namespace TowerMergeTD.Game.Gameplay
 
         private Vector2 _previousPosition;
         private BoxCollider2D _dragCollider;
-        private bool _isDragging;
         private bool _canDrag;
+        private ReactiveProperty<bool> _isDragging = new ReactiveProperty<bool>();
 
+        public ReadOnlyReactiveProperty<bool> IsDragging => _isDragging;
+        
         public event Action OnDroppedOnTileMap;
         public event Action<TowerObject> OnDroppedOnTower;
 
@@ -47,7 +50,7 @@ namespace TowerMergeTD.Game.Gameplay
 
             if (isClickedDraggableCollider)
             {
-                _isDragging = true;
+                _isDragging.Value = true;
                 _previousPosition = _draggedTransform.position;
             }
         }
@@ -55,7 +58,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void DragPerformed(Vector2 _)
         {
             if(_canDrag == false) return;
-            if(_isDragging == false) return;
+            if(_isDragging.CurrentValue == false) return;
 
             var dragWorldPosition = _input.GetInputWorldPosition();
             Vector3 target = new Vector3(dragWorldPosition.x, dragWorldPosition.y, 0f);
@@ -65,7 +68,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void Drop()
         {
             if(_canDrag == false) return;
-            if(_isDragging == false) return;
+            if(_isDragging.CurrentValue == false) return;
             
             var dropWorldPosition = _input.GetInputWorldPosition();
             bool droppedOnTower = HandleDropOnTower(dropWorldPosition);
@@ -73,7 +76,7 @@ namespace TowerMergeTD.Game.Gameplay
             if (droppedOnTower == false)
                 HandleDropOnTileMap(dropWorldPosition);
             
-            _isDragging = false;
+            _isDragging.Value = false;
         }
 
         private bool IsClickedDraggableCollider()

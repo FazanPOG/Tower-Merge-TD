@@ -1,9 +1,7 @@
 using R3;
-using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
 using TowerMergeTD.Game.UI.Root;
 using TowerMergeTD.Gameplay.Root;
-using TowerMergeTD.GameRoot;
 using TowerMergeTD.Utils.Debug;
 using UnityEngine;
 using Zenject;
@@ -19,9 +17,6 @@ namespace TowerMergeTD.MainMenu.Root
         public Observable<MainMenuExitParams> Run(DiContainer mainMenuContainer, MainMenuEnterParams mainMenuEnterParams)
         {
             mainMenuContainer.UnbindAll();
-
-            var projectConfig = mainMenuContainer.Resolve<ProjectConfig>();
-            var gameStateProvider = mainMenuContainer.Resolve<IGameStateProvider>();
             
             var _uiRoot = mainMenuContainer.Resolve<UIRootView>();
             var uiMainMenuRoot = Instantiate(_uiMainMenuRootPrefab);
