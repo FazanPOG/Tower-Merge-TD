@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using TowerMergeTD.Game.State;
+using TowerMergeTD.Utils;
+using Zenject;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -12,23 +14,32 @@ namespace TowerMergeTD.Game.Gameplay
         private IGameState _currentState;
 
         public GameStateMachine(
+            DiContainer container,
+            LevelConfig levelConfig,
             int currentLevelIndex,
-            IWaveSpawnerService[] waveSpawnerServices, 
-            IPauseService pauseService, 
-            PlayerHealthProxy playerHealthProxy,
-            IGameStateService gameStateService,
-            IGameTimerService gameTimerService,
-            IScoreService scoreService,
-            IGameStateProvider gameStateProvider)
+            ITutorialBinder tutorialBinder)
         {
-            _gameStateService = gameStateService;
+            var monoBehaviourWrapper = container.Resolve<MonoBehaviourWrapper>();
+            var waveSpawnerServices = container.Resolve<IWaveSpawnerService[]>();
+            var pauseService = container.Resolve<IPauseService>();
+            var gameStateService = container.Resolve<IGameStateService>();
+            var playerHealthProxy = container.Resolve<PlayerHealthProxy>();
+            var gameTimerService = container.Resolve<IGameTimerService>();
+            var scoreService = container.Resolve<IScoreService>();
+            var rewardCalculatorService = container.Resolve<IRewardCalculatorService>();
+            var gameStateProvider = container.Resolve<IGameStateProvider>();
+            var currencyProvider = container.Resolve<ICurrencyProvider>();
+
             _gameStatesMap = new Dictionary<Type, IGameState>()
             {
-                [typeof(BootState)] = new BootState(this),
+                [typeof(BootState)] = new BootState(this, levelConfig),
+                [typeof(TutorialState)] = new TutorialState(container, this, currentLevelIndex, tutorialBinder),
                 [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerServices, pauseService, gameTimerService),
-                [typeof(WinGameState)] = new WinGameState(currentLevelIndex, pauseService, scoreService, gameStateProvider),
+                [typeof(WinGameState)] = new WinGameState(currentLevelIndex, pauseService, scoreService, rewardCalculatorService, gameStateProvider, currencyProvider),
                 [typeof(LoseGameState)] = new LoseGameState(pauseService),
             };
+            
+            _gameStateService = gameStateService;
         }
 
         public void EnterIn<T>() where T : IGameState

@@ -1,4 +1,5 @@
-﻿using TowerMergeTD.Game.State;
+﻿using System;
+using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -6,6 +7,8 @@ namespace TowerMergeTD.Game.Gameplay
     {
         private static TowerFactory _towerFactory;
 
+        public static event Action OnMerged;
+        
         public static void Init(TowerFactory towerFactory)
         {
             _towerFactory = towerFactory;
@@ -27,6 +30,8 @@ namespace TowerMergeTD.Game.Gameplay
             secondMergedTower.DestroySelf();
             
             _towerFactory.Create(generation.TowersType, spawnPosition, firstMergedTower.Level + 1);
+            
+            OnMerged?.Invoke();
             return true;
         }
     }

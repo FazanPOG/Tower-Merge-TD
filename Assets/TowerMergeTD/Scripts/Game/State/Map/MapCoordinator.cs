@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -20,6 +21,37 @@ namespace TowerMergeTD.Game.State
             _input = input;
         }
 
+        public List<Vector2> GetAllTowerPlaceTiles()
+        {
+            List<Vector2> towerPlaceTiles = new List<Vector2>();
+
+            BoundsInt bounds = _baseTilemap.cellBounds;
+            foreach (var position in bounds.allPositionsWithin)
+            {
+                var tile = _baseTilemap.GetTile(position);
+            
+                if (tile != null && _tileSetConfig.TowerPlaces.Contains(tile))
+                {
+                    Vector3 worldPosition = _baseTilemap.CellToWorld(position);
+                    towerPlaceTiles.Add(worldPosition);
+                }
+            }
+
+            return towerPlaceTiles;
+        }
+
+        public Vector2 GetFirstTowerPlaceTilePosition()
+        {
+            List<Vector2> towerPlaceTiles = GetAllTowerPlaceTiles();
+        
+            if (towerPlaceTiles.Count > 0)
+            {
+                return towerPlaceTiles[0];
+            }
+
+            throw new MissingComponentException("Missing tower place tile");
+        }
+        
         public bool CanPlaceTower(Vector3 worldPosition)
         {
             TileBase baseMapTile = GetTile(TilemapType.Base, worldPosition);

@@ -15,7 +15,3 @@ MonoBehaviour:
   _delayBetweenEnemies: 1
   _enemies:
   - {fileID: 11400000, guid: 7a4073c281ccd944bb9bad8daf9592ea, type: 2}
-  - {fileID: 11400000, guid: 7a4073c281ccd944bb9bad8daf9592ea, type: 2}
-  - {fileID: 11400000, guid: 7a4073c281ccd944bb9bad8daf9592ea, type: 2}
-  - {fileID: 11400000, guid: 7a4073c281ccd944bb9bad8daf9592ea, type: 2}
-  - {fileID: 11400000, guid: 7a4073c281ccd944bb9bad8daf9592ea, type: 2}

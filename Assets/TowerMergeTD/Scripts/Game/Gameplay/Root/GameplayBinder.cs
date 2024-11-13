@@ -45,23 +45,21 @@ namespace TowerMergeTD.Gameplay.Root
 
         private GameStateMachine BindGameStateMachine()
         {
-            var spawnerServices = _container.Resolve<IWaveSpawnerService[]>();
-            var pauseService = _container.Resolve<IPauseService>();
-            var gameStateService = _container.Resolve<IGameStateService>();
-            var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
-            var gameTimerService = _container.Resolve<IGameTimerService>();
-            var scoreService = _container.Resolve<IScoreService>();
-            var gameStateProvider = _container.Resolve<IGameStateProvider>();
+            var mapCoordinator = _container.Resolve<MapCoordinator>();
             
-            GameStateMachine gameStateMachine = new GameStateMachine(
-                _currentLevelIndex,
-                spawnerServices, 
-                pauseService, 
-                playerHealthProxy, 
-                gameStateService, 
-                gameTimerService,
-                scoreService,
-                gameStateProvider);
+            ITutorialBinder tutorialBinder;
+            switch (_currentLevelIndex + 1)
+            {
+                case 1:
+                    tutorialBinder = new Level1TutorialBinder(_monoBehaviourWrapper, mapCoordinator);
+                    break;
+                
+                default:
+                    tutorialBinder = null;
+                    break;
+            }
+            
+            GameStateMachine gameStateMachine = new GameStateMachine(_container, _level.LevelConfig, _currentLevelIndex, tutorialBinder);
 
             return gameStateMachine;
         }

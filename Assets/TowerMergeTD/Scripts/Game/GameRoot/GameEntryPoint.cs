@@ -64,7 +64,7 @@ namespace TowerMergeTD.GameRoot
 
             if (sceneName == Scenes.Gameplay)
             {
-                var enterParams = new GameplayEnterParams(14);
+                var enterParams = new GameplayEnterParams(0);
                 _monoBehaviourWrapper.StartCoroutine(LoadAndStartGameplay(enterParams));
                 return;
             }
@@ -96,6 +96,12 @@ namespace TowerMergeTD.GameRoot
             _rootContainer.Bind<PlayerGemsProxy>().FromInstance(currencyProvider.Gems).AsSingle().NonLazy();
 
             Debug.Log($"Data loaded, Gold: {currencyProvider.Coins.Coins.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
+            
+            //Load game state
+            bool isGameStateLoaded = false;
+            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+            yield return new WaitUntil(() => isGameStateLoaded);
+            
             _isDataLoaded = true;
         }
         
@@ -111,12 +117,6 @@ namespace TowerMergeTD.GameRoot
             
             yield return LoadScene(Scenes.Boot);
             yield return LoadScene(Scenes.MainMenu);
-            
-            //
-            bool isGameStateLoaded = false;
-            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
-            yield return new WaitUntil(() => isGameStateLoaded);
-
             
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             var mainMenuContainer = _cashedSceneContainer = new DiContainer(_rootContainer);

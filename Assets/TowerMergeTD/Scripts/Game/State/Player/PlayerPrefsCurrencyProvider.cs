@@ -16,7 +16,7 @@ namespace TowerMergeTD.Game.State
             if (PlayerPrefs.HasKey(CURRENCY_GOLD_KEY) == false)
             {
                 SetGoldFromSettings();
-                SaveGold();
+                SaveCoins();
             }
             else
             {
@@ -38,7 +38,7 @@ namespace TowerMergeTD.Game.State
             return Observable.Return(true);
         }
 
-        public Observable<bool> SaveGold()
+        public Observable<bool> SaveCoins()
         {
             PlayerPrefs.SetInt(CURRENCY_GOLD_KEY, Coins.Coins.CurrentValue);
             PlayerPrefs.Save();
@@ -67,7 +67,7 @@ namespace TowerMergeTD.Game.State
             PlayerCoins coins = new PlayerCoins(0);
             Coins = new PlayerCoinsProxy(coins);
             
-            SaveGold();
+            SaveCoins();
         }
 
         private void SetGemsFromSettings()

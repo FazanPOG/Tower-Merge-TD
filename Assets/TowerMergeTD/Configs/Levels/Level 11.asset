@@ -15,7 +15,7 @@ MonoBehaviour:
   _isOpen: 1
   _initialHealth: 5
   _initialBuildingCurrency: 500
-  scoreForOneStar: 50
+  scoreForOneStar: 100
   scoreForTwoStars: 500
   scoreForThreeStars: 1000
   _tileSetConfig: {fileID: 11400000, guid: cf31c41e8f729004bb1e405f4d42723e, type: 2}

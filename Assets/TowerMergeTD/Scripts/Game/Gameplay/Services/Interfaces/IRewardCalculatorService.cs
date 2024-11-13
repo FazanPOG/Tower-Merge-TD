@@ -2,7 +2,7 @@
 {
     public interface IRewardCalculatorService
     {
-        int CalculateGoldReward();
+        int CalculateCoinReward();
         int CalculateGemReward();
     }
 }

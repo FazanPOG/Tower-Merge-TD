@@ -3,7 +3,6 @@ using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
 using TowerMergeTD.GameRoot;
-using TowerMergeTD.Utils.Debug;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -21,6 +20,7 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private TowerSellView _towerSellView;
         [SerializeField] private TowersListView _towersListView;
         [SerializeField] private GameTimerView _gameTimerView;
+        [SerializeField] private TutorialView tutorialViewPrefab;
 
         [Header("Popups")]
         [SerializeField] private PausePopupView _pausePopupView;
@@ -30,6 +30,8 @@ namespace TowerMergeTD.Gameplay.Root
         private DiContainer _container;
         private ReactiveProperty<SceneEnterParams> _exitSceneSignalBus;
         private int _currentLevelIndex;
+        private ProjectConfig _projectConfig;
+        private LevelConfig _currentLevelConfig;
 
         public void Bind(ReactiveProperty<SceneEnterParams> exitSceneSignalBus, DiContainer container, int currentLevelIndex)
         {
@@ -37,12 +39,26 @@ namespace TowerMergeTD.Gameplay.Root
             _container = container;
             _currentLevelIndex = currentLevelIndex;
             
+            _projectConfig = _container.Resolve<ProjectConfig>();
+            _currentLevelConfig = _projectConfig.Levels[_currentLevelIndex].LevelConfig;
+
+            if (_currentLevelConfig.IsTutorial)
+                BindTutorial();
+            
             BindAdapters();
         }
 
+        private void BindTutorial()
+        {
+            var tutorialTextView = Instantiate(tutorialViewPrefab, transform);
+            
+            _container.Bind<TutorialView>().FromInstance(tutorialTextView).AsSingle().NonLazy();
+            _container.Bind<TowersListView>().FromInstance(_towersListView).AsSingle().NonLazy();
+        }
+        
         private void BindAdapters()
         {
-            var projectConfig = _container.Resolve<ProjectConfig>();
+            
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
             var buildingCurrencyProxy = _container.Resolve<PlayerBuildingCurrencyProxy>();
             var pauseService = _container.Resolve<IPauseService>();
@@ -80,8 +96,7 @@ namespace TowerMergeTD.Gameplay.Root
 
             void bindLevelCompletePopup()
             {
-                var levelConfig = projectConfig.Levels[_currentLevelIndex].LevelConfig;
-                bool isLastLevel = _currentLevelIndex + 1 == projectConfig.Levels.Length;
+                bool isLastLevel = _currentLevelIndex + 1 == _projectConfig.Levels.Length;
                 var scoreService = _container.Resolve<IScoreService>();
                 var rewardCalculate = _container.Resolve<IRewardCalculatorService>();
                 
@@ -91,7 +106,7 @@ namespace TowerMergeTD.Gameplay.Root
                     isLastLevel,
                     _currentLevelIndex,
                     _exitSceneSignalBus,
-                    levelConfig,
+                    _currentLevelConfig,
                     scoreService,
                     rewardCalculate,
                     gameTimerService

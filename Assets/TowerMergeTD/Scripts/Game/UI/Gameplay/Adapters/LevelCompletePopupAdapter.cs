@@ -71,7 +71,7 @@ namespace TowerMergeTD.Game.UI
         {
             _view.SetScoreValueText(_scoreService.Score.ToString("N0"));
             _view.SetTimerValueText($"{_gameTimerService.Time.CurrentValue.Minutes:D2}:{_gameTimerService.Time.CurrentValue.Seconds:D2}");
-            _view.SetGoldValueText(_rewardCalculatorService.CalculateGoldReward().ToString("N0"));
+            _view.SetGoldValueText(_rewardCalculatorService.CalculateCoinReward().ToString("N0"));
             _view.SetGemsValueText(_rewardCalculatorService.CalculateGemReward().ToString("N0"));
         }
 

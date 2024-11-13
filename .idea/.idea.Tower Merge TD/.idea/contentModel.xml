@@ -1519,6 +1519,7 @@
                     <e p="GameplayState.cs" t="Include" />
                     <e p="IGameState.cs" t="Include" />
                     <e p="LoseGameState.cs" t="Include" />
+                    <e p="TutorialState.cs" t="Include" />
                     <e p="WinGameState.cs" t="Include" />
                   </e>
                 </e>
@@ -1576,6 +1577,20 @@
                     <e p="GunTowerObjectView.cs" t="Include" />
                     <e p="RocketTowerObjectView.cs" t="Include" />
                     <e p="TowerObjectView.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Tutorial" t="Include">
+                  <e p="TutorialActions" t="Include">
+                    <e p="ClickButtonTutorialAction.cs" t="Include" />
+                    <e p="ITutorialAction.cs" t="Include" />
+                    <e p="MergeTutorialAction.cs" t="Include" />
+                    <e p="SpawnWaveTutorialAction.cs" t="Include" />
+                    <e p="WaitingTutorialAction.cs" t="Include" />
+                  </e>
+                  <e p="TutorialActionType.cs" t="Include" />
+                  <e p="TutorialLevelBinders" t="Include">
+                    <e p="ITutorialBinder.cs" t="Include" />
+                    <e p="Level1TutorialBinder.cs" t="Include" />
                   </e>
                 </e>
               </e>
@@ -1652,6 +1667,7 @@
                     <e p="PlayerHealthView.cs" t="Include" />
                     <e p="TowerSellView.cs" t="Include" />
                     <e p="TowersListView.cs" t="Include" />
+                    <e p="TutorialView.cs" t="Include" />
                   </e>
                 </e>
                 <e p="MainMenu" t="Include">

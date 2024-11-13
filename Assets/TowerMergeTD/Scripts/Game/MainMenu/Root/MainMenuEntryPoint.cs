@@ -18,9 +18,9 @@ namespace TowerMergeTD.MainMenu.Root
         {
             mainMenuContainer.UnbindAll();
             
-            var _uiRoot = mainMenuContainer.Resolve<UIRootView>();
+            var uiRoot = mainMenuContainer.Resolve<UIRootView>();
             var uiMainMenuRoot = Instantiate(_uiMainMenuRootPrefab);
-            _uiRoot.AttachSceneUI(uiMainMenuRoot.gameObject);
+            uiRoot.AttachSceneUI(uiMainMenuRoot.gameObject);
         
             var exitSceneSignal = new ReactiveProperty<int>();
             uiMainMenuRoot.Bind(exitSceneSignal, mainMenuContainer);

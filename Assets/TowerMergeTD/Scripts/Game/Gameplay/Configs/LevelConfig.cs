@@ -14,6 +14,14 @@ namespace TowerMergeTD.Game.Gameplay
         [LabelText("Level Unlocked")]
         [SerializeField] private bool _isOpen;
 
+        [ToggleLeft]
+        [LabelText("Is Tutorial Level")]
+        [SerializeField] private bool _isTutorial;
+        
+        [LabelText("Tutorial Actions")]
+        [ShowIf(nameof(_isTutorial))]
+        [SerializeField] private TutorialActionType[] _tutorialActions;
+        
         [FoldoutGroup("Initial Settings")]
         [LabelText("Starting Health")]
         [SerializeField] private int _initialHealth;
@@ -24,15 +32,15 @@ namespace TowerMergeTD.Game.Gameplay
 
         [FoldoutGroup("Star Points Requirements", expanded: true)]
         [LabelText("Points for 1 Star")]
-        [SerializeField] private int scoreForOneStar;
+        [SerializeField, Min(1)] private int scoreForOneStar;
 
         [FoldoutGroup("Star Points Requirements")]
         [LabelText("Points for 2 Stars")]
-        [SerializeField] private int scoreForTwoStars;
+        [SerializeField, Min(2)] private int scoreForTwoStars;
 
         [FoldoutGroup("Star Points Requirements")]
         [LabelText("Points for 3 Stars")]
-        [SerializeField] private int scoreForThreeStars;
+        [SerializeField, Min(3)] private int scoreForThreeStars;
 
         [Space(10)]
         [TabGroup("Configs", "Tile Set")]
@@ -51,6 +59,11 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private WavesData[] _waveDatas;
 
         public bool IsOpen => _isOpen;
+
+        public bool IsTutorial => _isTutorial;
+
+        public TutorialActionType[] TutorialActions => _tutorialActions;
+        
         public int InitialBuildingCurrency => _initialBuildingCurrency;
         public int InitialHealth => _initialHealth;
 

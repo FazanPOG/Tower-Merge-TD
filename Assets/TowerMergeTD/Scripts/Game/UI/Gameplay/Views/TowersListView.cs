@@ -14,7 +14,8 @@ namespace TowerMergeTD.Game.UI
         private Camera _mainCamera;
         private Canvas _parentCanvas;
         private RectTransform _rectTransform;
-        
+
+        public Button GunTowerButton => _gunTowerButton;
         public bool IsMouseOver { get; private set; }
         
         public event Action<TowerType> OnTowerButtonClicked; 
@@ -46,6 +47,20 @@ namespace TowerMergeTD.Game.UI
             gameObject.SetActive(false);
         }
 
+        public void SetButtonInteractable(TowerType towerType, bool canInteract)
+        {
+            switch (towerType)
+            {
+                case TowerType.Gun:
+                    _gunTowerButton.interactable = canInteract;
+                    break;
+                
+                case TowerType.Rocket:
+                    _rocketTowerButton.interactable = canInteract;
+                    break;
+            }
+        }
+        
         public void UpdatePosition(Vector2 position)
         {
             Vector2 canvasPosition = WorldToCanvasPosition(position);

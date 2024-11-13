@@ -1,6 +1,5 @@
 ﻿using System;
 using TowerMergeTD.Game.State;
-using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -24,9 +23,11 @@ namespace TowerMergeTD.Game.Gameplay
         }
         
         //TODO
-        public int CalculateGoldReward()
+        public int CalculateCoinReward()
         {
-            return 100;
+            int reward = 100;
+            //if replayed level than /2
+            return reward;
         }
 
         public int CalculateGemReward()
