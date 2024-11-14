@@ -27,4 +27,4 @@ MonoBehaviour:
   _waveDatas:
   - _waves:
     - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
-    - {fileID: 11400000, guid: 5705e571a8c89ee4aad9f4b3b0759983, type: 2}
+    - {fileID: 11400000, guid: 9cdc84b9c66f2e742bb3305b177d21a8, type: 2}

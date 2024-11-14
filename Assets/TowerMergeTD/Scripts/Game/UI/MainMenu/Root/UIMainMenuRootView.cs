@@ -50,6 +50,8 @@ namespace TowerMergeTD.Game.UI
             _playerCoinsProxy = container.Resolve<PlayerCoinsProxy>();
             _playerGemsProxy = container.Resolve<PlayerGemsProxy>();
 
+            _gameStateProvider.SaveGameState();
+            
             BindAdapters();
         }
 
@@ -84,7 +86,9 @@ namespace TowerMergeTD.Game.UI
                         return;
                     
                     var levelSaveDataProxy = _gameStateProvider.GameState.LevelDatas[createdLevelCounter];
+                    
                     var viewInstance = Instantiate(_levelEntryViewPrefab, currentLevelsContainer.transform);
+                    viewInstance.name = $"LevelEntry: {createdLevelCounter + 1}";
                     var levelConfig = _projectConfig.Levels[createdLevelCounter].LevelConfig;
                 
                     new LevelEntryViewAdapter

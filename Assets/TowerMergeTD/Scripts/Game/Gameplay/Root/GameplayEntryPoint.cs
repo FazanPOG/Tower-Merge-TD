@@ -22,8 +22,6 @@ namespace TowerMergeTD.Gameplay.Root
             BindDependencies(gameplayContainer, gameplayEnterParams);
             StartGameplay();
             
-            //TODO: Change MainMenuEnterParams to end level stats (score + ...)
-
             GameplayExitParams exitParams = null;
             _exitSceneSignalSubj.Skip(1).Subscribe((sceneEnterParams) =>
             {
@@ -37,6 +35,8 @@ namespace TowerMergeTD.Gameplay.Root
                     var enterParams = sceneEnterParams.As<MainMenuEnterParams>();
                     exitParams = new GameplayExitParams(enterParams);
                 }
+
+                _gameStateMachine.EnterIn<NoneState>();
             });
 
             var exitToMainMenuSceneSignal = _exitSceneSignalSubj.Select(_ => exitParams);

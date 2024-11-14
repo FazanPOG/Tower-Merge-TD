@@ -7,6 +7,7 @@ namespace TowerMergeTD.Game.Gameplay
     {
         Queue<ITutorialAction> TutorialActions { get; }
         Queue<string> TutorialTexts { get; }
+        Queue<TutorialHandImageData> TutorialHandDatas { get; }
 
         void Bind(DiContainer diContainer);
     }

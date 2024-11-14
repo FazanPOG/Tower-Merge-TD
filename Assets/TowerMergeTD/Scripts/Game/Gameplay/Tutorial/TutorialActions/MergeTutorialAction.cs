@@ -10,7 +10,18 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void StartAction()
         {
-            MergeHandler.OnMerged += () => { _isComplete.Value = true; };
+            MergeHandler.OnMerged += IsCompleted;
+        }
+
+        private void IsCompleted()
+        {
+            _isComplete.Value = true;
+        }
+        
+        public void Dispose()
+        {
+            MergeHandler.OnMerged -= IsCompleted;
+            _isComplete?.Dispose();
         }
     }
 }

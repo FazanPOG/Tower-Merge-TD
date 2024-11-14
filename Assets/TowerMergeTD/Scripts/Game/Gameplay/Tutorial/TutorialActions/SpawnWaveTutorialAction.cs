@@ -23,5 +23,10 @@ namespace TowerMergeTD.Game.Gameplay
 
             _isComplete.Value = true;
         }
+
+        public void Dispose()
+        {
+            _isComplete?.Dispose();
+        }
     }
 }

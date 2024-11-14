@@ -15,6 +15,7 @@ namespace TowerMergeTD.Game.Gameplay
         private Vector2 _initialMousePosition;
         private float _dragDistance;
         private bool _isMousePressed;
+        private bool _enabled;
 
         public event Action OnClicked;
         public event Action OnClickStarted;
@@ -31,6 +32,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             _playerInputActions.Enable();
             _playerInputActions.Mouse.Enable();
+            _enabled = true;
 
             _playerInputActions.Mouse.LeftButton.started += LeftButtonStarted;
             _playerInputActions.Mouse.Delta.started += Delta;
@@ -46,9 +48,13 @@ namespace TowerMergeTD.Game.Gameplay
             return mouseWorldPosition;
         }
 
+        public void EnableInput() => _enabled = true;
+        public void DisableInput() => _enabled = false;
+
         private void LeftButtonStarted(InputAction.CallbackContext _)
         {
             if(_camera == null) return;
+            if (_enabled == false) return;
             
             _isMousePressed = true;
             _initialMousePosition = GetInputWorldPosition();
@@ -58,6 +64,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void Delta(InputAction.CallbackContext context)
         {
             if(_camera == null) return;
+            if (_enabled == false) return;
 
             if (context.started)
             {
@@ -78,6 +85,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void LeftButtonCanceled(InputAction.CallbackContext _)
         {
             if(_camera == null) return;
+            if (_enabled == false) return;
             
             if (_isMousePressed && _dragDistance < MOUSE_DRAG_THRESHOLD)
                 OnClicked?.Invoke();

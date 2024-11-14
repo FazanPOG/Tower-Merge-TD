@@ -14,5 +14,8 @@ namespace TowerMergeTD.Game.Gameplay
         event Action<float> OnZoomOut;
 
         Vector3 GetInputWorldPosition();
+
+        void EnableInput();
+        void DisableInput();
     }
 }

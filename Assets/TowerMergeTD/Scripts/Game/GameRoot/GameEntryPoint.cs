@@ -118,6 +118,11 @@ namespace TowerMergeTD.GameRoot
             yield return LoadScene(Scenes.Boot);
             yield return LoadScene(Scenes.MainMenu);
             
+            //
+            bool isGameStateLoaded = false;
+            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+            yield return new WaitUntil(() => isGameStateLoaded);
+            
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             var mainMenuContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
             

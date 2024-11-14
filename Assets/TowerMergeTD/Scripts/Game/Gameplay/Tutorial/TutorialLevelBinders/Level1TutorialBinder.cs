@@ -12,9 +12,14 @@ namespace TowerMergeTD.Game.Gameplay
     //TODO: disable tower create places, finish tutorial
     public class Level1TutorialBinder : ITutorialBinder
     {
+        private const int NONE_ANIMATION_INDEX = 0;
+        private const int CLICK_ANIMATION_INDEX = 1;
+        private const int DRAG_ANIMATION_INDEX = 2;
+        
         private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
         private readonly MapCoordinator _mapCoordinator;
 
+        private IInput _input;
         private IWaveSpawnerService[] _waveSpawnServices;
         private TowersListView _towersListView;
         private TutorialView _tutorialView;
@@ -22,6 +27,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         public Queue<ITutorialAction> TutorialActions { get; } = new Queue<ITutorialAction>();
         public Queue<string> TutorialTexts { get; } = new Queue<string>();
+        public Queue<TutorialHandImageData> TutorialHandDatas { get; } = new Queue<TutorialHandImageData>();
 
         public Level1TutorialBinder(MonoBehaviourWrapper monoBehaviourWrapper, MapCoordinator mapCoordinator)
         {
@@ -31,6 +37,7 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void Bind(DiContainer diContainer)
         {
+            _input = diContainer.Resolve<IInput>();
             _waveSpawnServices = diContainer.Resolve<IWaveSpawnerService[]>();
             _towersListView = diContainer.Resolve<TowersListView>();
             _tutorialView = diContainer.Resolve<TutorialView>();
@@ -49,77 +56,126 @@ namespace TowerMergeTD.Game.Gameplay
             BindAction7();
             BindAction8();
             BindAction9();
+            BindAction10();
+            BindAction11();
+            BindAction12();
+            BindAction13();
         }
 
         private void BindAction1()
         {
-            var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, 2f);
+            var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input, 2f);
             TutorialActions.Enqueue(waitAction);
             TutorialTexts.Enqueue("ТЕСТ: туториал ожидания");
-            _tutorialView.SetActiveHandImage(false);
-            Debug.Log("Action 1");
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
-        
+
         private void BindAction2()
         {
-            var clickAction = new ClickButtonTutorialAction(_gunTowerButton);
-            TutorialActions.Enqueue(clickAction);
+            var towerPlaceClickTutorialAction = new TowerPlaceClickTutorialAction(_input, _mapCoordinator);
+            TutorialActions.Enqueue(towerPlaceClickTutorialAction);
             TutorialTexts.Enqueue("Нажмите, чтобы поставить башню");
-
+            
             var tilePos = _mapCoordinator.GetFirstTowerPlaceTilePosition();
             Vector2 offset = new Vector2(0.5f, 4.15f);
-            _tutorialView.SetActiveHandImage(true);
-            _tutorialView.UpdateHandImagePosition(tilePos + offset);
-            Debug.Log("Action 2");
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
         }
-        
+
         private void BindAction3()
         {
-            var spawnAction = new SpawnWaveTutorialAction(_waveSpawnServices);
-            TutorialActions.Enqueue(spawnAction);
+            var showViewTutorialAction = new ShowViewTutorialAction(_monoBehaviourWrapper, _towersListView.gameObject);
+            TutorialActions.Enqueue(showViewTutorialAction);
             TutorialTexts.Enqueue(String.Empty);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
-        
+
         private void BindAction4()
         {
-            var waitAction2 = new WaitingTutorialAction(_monoBehaviourWrapper, 10f);
-            TutorialActions.Enqueue(waitAction2);
-            TutorialTexts.Enqueue(String.Empty);
+            var clickAction = new ClickButtonTutorialAction(_monoBehaviourWrapper, _gunTowerButton);
+            TutorialActions.Enqueue(clickAction);
+            TutorialTexts.Enqueue("Нажмите, чтобы поставить башню");
+            var tilePos = _mapCoordinator.GetFirstTowerPlaceTilePosition();
+            Vector2 offset = new Vector2(1.15f, 3.65f);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
         }
         
         private void BindAction5()
         {
-            var clickAction2 = new ClickButtonTutorialAction(_gunTowerButton);
-            TutorialActions.Enqueue(clickAction2);
-            TutorialTexts.Enqueue("ТЕСТ: туториал кнопки, создание башни 2");
+            var spawnAction = new SpawnWaveTutorialAction(_waveSpawnServices);
+            TutorialActions.Enqueue(spawnAction);
+            TutorialTexts.Enqueue(String.Empty);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
         
         private void BindAction6()
         {
-            var mergeAction = new MergeTutorialAction();
-            TutorialActions.Enqueue(mergeAction);
-            TutorialTexts.Enqueue("ТЕСТ: объедините башни");
+            var waitAction2 = new WaitingTutorialAction(_monoBehaviourWrapper, _input,10f);
+            TutorialActions.Enqueue(waitAction2);
+            TutorialTexts.Enqueue(String.Empty);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
         
         private void BindAction7()
         {
+            var towerPlaceClickTutorialAction = new TowerPlaceClickTutorialAction(_input, _mapCoordinator);
+            TutorialActions.Enqueue(towerPlaceClickTutorialAction);
+            TutorialTexts.Enqueue("Нажмите, чтобы поставить вторую башню");
+            
+            var tilePos = _mapCoordinator.GetFirstTowerPlaceTilePosition();
+            Vector2 offset = new Vector2(1.5f, 4.15f);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
+        }
+
+        private void BindAction8()
+        {
+            var showViewTutorialAction = new ShowViewTutorialAction(_monoBehaviourWrapper, _towersListView.gameObject);
+            TutorialActions.Enqueue(showViewTutorialAction);
+            TutorialTexts.Enqueue(String.Empty);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
+        }
+        
+        private void BindAction9()
+        {
+            var clickAction2 = new ClickButtonTutorialAction(_monoBehaviourWrapper, _gunTowerButton);
+            TutorialActions.Enqueue(clickAction2);
+            TutorialTexts.Enqueue("Нажмите, чтобы поставить вторую башню");
+            var tilePos = _mapCoordinator.GetFirstTowerPlaceTilePosition();
+            Vector2 offset = new Vector2(2.25f, 3.65f);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
+        }
+        
+        private void BindAction10()
+        {
+            var mergeAction = new MergeTutorialAction();
+            TutorialActions.Enqueue(mergeAction);
+            TutorialTexts.Enqueue("Объедините башни");
+            var tilePos = _mapCoordinator.GetFirstTowerPlaceTilePosition();
+            Vector2 offset = new Vector2(1.5f, 4.15f);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, DRAG_ANIMATION_INDEX));
+        }
+        
+        private void BindAction11()
+        {
             var spawnAction2 = new SpawnWaveTutorialAction(_waveSpawnServices);
             TutorialActions.Enqueue(spawnAction2);
             TutorialTexts.Enqueue(String.Empty);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
         
-        private void BindAction8()
+        private void BindAction12()
         {
-            var waitAction3 = new WaitingTutorialAction(_monoBehaviourWrapper, 10f);
+            var waitAction3 = new WaitingTutorialAction(_monoBehaviourWrapper, _input,15f);
             TutorialActions.Enqueue(waitAction3);
             TutorialTexts.Enqueue("ТЕСТ: ожидание смерти врага");
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
 
-        private void BindAction9()
+        private void BindAction13()
         {
-            var waitAction4 = new WaitingTutorialAction(_monoBehaviourWrapper, 5f);
+            var waitAction4 = new WaitingTutorialAction(_monoBehaviourWrapper, _input, 5f);
             TutorialActions.Enqueue(waitAction4);
             TutorialTexts.Enqueue("ТЕСТ: удачной игры!");
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
     }
 }

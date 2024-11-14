@@ -2,50 +2,42 @@
 using R3;
 using TowerMergeTD.Utils;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public class ClickButtonTutorialAction : ITutorialAction
+    public class ShowViewTutorialAction : ITutorialAction
     {
         private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
-        private readonly Button _button;
+        private readonly GameObject _viewObject;
         private readonly ReactiveProperty<bool> _isComplete = new ReactiveProperty<bool>();
 
         private Coroutine _coroutine;
         
         public ReadOnlyReactiveProperty<bool> IsComplete => _isComplete;
 
-        public ClickButtonTutorialAction(MonoBehaviourWrapper monoBehaviourWrapper, Button button)
+        public ShowViewTutorialAction(MonoBehaviourWrapper monoBehaviourWrapper, GameObject viewObject)
         {
             _monoBehaviourWrapper = monoBehaviourWrapper;
-            _button = button;
-        }
-
-        public void StartAction()
-        {
-            _coroutine = _monoBehaviourWrapper.StartCoroutine(Subscribe());
-        }
-
-        private IEnumerator Subscribe()
-        {
-            yield return new WaitUntil(() => _button.gameObject.activeSelf);
-            _button.onClick.AddListener(IsCompleted);
+            _viewObject = viewObject;
         }
         
-        private void IsCompleted()
+        public void StartAction()
         {
+            _coroutine = _monoBehaviourWrapper.StartCoroutine(WaitUntilViewShowed());
+        }
+
+        private IEnumerator WaitUntilViewShowed()
+        {
+            yield return new WaitUntil(() => _viewObject.gameObject.activeSelf);
             _isComplete.Value = true;
         }
         
         public void Dispose()
         {
-            _isComplete?.Dispose();
-
             if (_coroutine != null)
                 _monoBehaviourWrapper.StopCoroutine(_coroutine);
-
-            _button.onClick.RemoveListener(IsCompleted);
+            
+            _isComplete?.Dispose();
         }
     }
 }

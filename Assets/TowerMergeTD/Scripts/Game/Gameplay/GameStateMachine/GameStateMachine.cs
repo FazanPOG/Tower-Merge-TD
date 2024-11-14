@@ -37,6 +37,7 @@ namespace TowerMergeTD.Game.Gameplay
                 [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerServices, pauseService, gameTimerService),
                 [typeof(WinGameState)] = new WinGameState(currentLevelIndex, pauseService, scoreService, rewardCalculatorService, gameStateProvider, currencyProvider),
                 [typeof(LoseGameState)] = new LoseGameState(pauseService),
+                [typeof(NoneState)] = new NoneState(),
             };
             
             _gameStateService = gameStateService;

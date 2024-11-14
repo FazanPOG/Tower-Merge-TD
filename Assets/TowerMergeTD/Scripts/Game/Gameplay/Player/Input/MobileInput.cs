@@ -17,6 +17,7 @@ namespace TowerMergeTD.Game.Gameplay
         private bool _isTouchScreenPressed;
         private float _previousDistance;
         private float _dragDistance;
+        private bool _enabled;
 
         public event Action OnClicked;
         public event Action OnClickStarted;
@@ -34,6 +35,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             _playerInputActions.Enable();
             _playerInputActions.TouchScreen.Enable();
+            _enabled = true;
             
             _playerInputActions.TouchScreen.PrimaryTouchPressed.started += HandlePrimaryTouchPressed;
             _playerInputActions.TouchScreen.PrimaryTouchPressed.canceled += HandlePrimaryTouchPressed;
@@ -44,9 +46,14 @@ namespace TowerMergeTD.Game.Gameplay
             _playerInputActions.TouchScreen.SecondaryTouchDelta.performed += SecondaryTouchDeltaPerformed;
         }
 
+        public void EnableInput() => _enabled = true;
+
+        public void DisableInput() => _enabled = false;
+        
         private void HandlePrimaryTouchPressed(InputAction.CallbackContext context)
         {
             if (_camera == null) return;
+            if (_enabled == false) return;
 
             if (context.started)
             {
@@ -70,6 +77,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void PrimaryTouchDeltaPerformed(InputAction.CallbackContext _)
         {
             if (_camera == null || _isSecondaryTouchActive) return;
+            if (_enabled == false) return;
 
             Vector2 currentTouchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
             var distance = Vector2.Distance(_initialTouchPosition, currentTouchPosition);
@@ -84,6 +92,8 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void HandleSecondaryTouchPressed(InputAction.CallbackContext context)
         {
+            if (_enabled == false) return;
+            
             if (context.started && Touchscreen.current.touches.Count > 1)
             {
                 _isSecondaryTouchActive = true;
@@ -96,6 +106,8 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void HandleSecondaryTouchCanceled(InputAction.CallbackContext context)
         {
+            if (_enabled == false) return;
+            
             if (context.canceled)
             {
                 _isSecondaryTouchActive = false;
@@ -106,6 +118,7 @@ namespace TowerMergeTD.Game.Gameplay
         private void SecondaryTouchDeltaPerformed(InputAction.CallbackContext context)
         {
             if (!_isSecondaryTouchActive || Touchscreen.current.touches.Count < 2) return;
+            if (_enabled == false) return;
 
             Vector2 primaryTouchPos = Touchscreen.current.primaryTouch.position.ReadValue();
             Vector2 secondaryTouchPos = Touchscreen.current.touches[1].position.ReadValue();

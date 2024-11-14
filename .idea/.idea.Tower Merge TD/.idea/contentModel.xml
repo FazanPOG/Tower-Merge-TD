@@ -1519,6 +1519,7 @@
                     <e p="GameplayState.cs" t="Include" />
                     <e p="IGameState.cs" t="Include" />
                     <e p="LoseGameState.cs" t="Include" />
+                    <e p="NoneState.cs" t="Include" />
                     <e p="TutorialState.cs" t="Include" />
                     <e p="WinGameState.cs" t="Include" />
                   </e>
@@ -1584,10 +1585,13 @@
                     <e p="ClickButtonTutorialAction.cs" t="Include" />
                     <e p="ITutorialAction.cs" t="Include" />
                     <e p="MergeTutorialAction.cs" t="Include" />
+                    <e p="ShowViewTutorialAction.cs" t="Include" />
                     <e p="SpawnWaveTutorialAction.cs" t="Include" />
+                    <e p="TowerPlaceClickTutorialAction.cs" t="Include" />
                     <e p="WaitingTutorialAction.cs" t="Include" />
                   </e>
                   <e p="TutorialActionType.cs" t="Include" />
+                  <e p="TutorialHandImageData.cs" t="Include" />
                   <e p="TutorialLevelBinders" t="Include">
                     <e p="ITutorialBinder.cs" t="Include" />
                     <e p="Level1TutorialBinder.cs" t="Include" />
