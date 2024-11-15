@@ -93,6 +93,7 @@ namespace TowerMergeTD.Game.UI
                 
                     new LevelEntryViewAdapter
                     (
+                        createdLevelCounter + 1,
                         _projectConfig.IsDevelopmentSettings, 
                         viewInstance, 
                         _levelLockPopupView, 

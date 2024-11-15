@@ -11,17 +11,15 @@ namespace TowerMergeTD.Game.State
         private readonly Tilemap _baseTilemap;
         private readonly Tilemap _environmentTilemap;
         private readonly TileSetConfig _tileSetConfig;
-        private readonly IInput _input;
 
-        public MapCoordinator(Tilemap baseTilemap, Tilemap environmentTilemap, TileSetConfig tileSetConfig, IInput input)
+        public MapCoordinator(Tilemap baseTilemap, Tilemap environmentTilemap, TileSetConfig tileSetConfig)
         {
             _baseTilemap = baseTilemap;
             _environmentTilemap = environmentTilemap;
             _tileSetConfig = tileSetConfig;
-            _input = input;
         }
 
-        public List<Vector2> GetAllTowerPlaceTiles()
+        public List<Vector2> GetAllTowerPlaceTileWorldPositions()
         {
             List<Vector2> towerPlaceTiles = new List<Vector2>();
 
@@ -32,7 +30,7 @@ namespace TowerMergeTD.Game.State
             
                 if (tile != null && _tileSetConfig.TowerPlaces.Contains(tile))
                 {
-                    Vector3 worldPosition = _baseTilemap.CellToWorld(position);
+                    Vector2 worldPosition = _baseTilemap.CellToWorld(position);
                     towerPlaceTiles.Add(worldPosition);
                 }
             }
@@ -40,9 +38,9 @@ namespace TowerMergeTD.Game.State
             return towerPlaceTiles;
         }
 
-        public Vector2 GetFirstTowerPlaceTilePosition()
+        public Vector2 GetFirstTowerPlaceTileWorldPosition()
         {
-            List<Vector2> towerPlaceTiles = GetAllTowerPlaceTiles();
+            List<Vector2> towerPlaceTiles = GetAllTowerPlaceTileWorldPositions();
         
             if (towerPlaceTiles.Count > 0)
             {
@@ -50,6 +48,14 @@ namespace TowerMergeTD.Game.State
             }
 
             throw new MissingComponentException("Missing tower place tile");
+        }
+        
+        public Vector2 GetTileWorldPosition(Vector2 mouseWorldPosition)
+        {
+            Vector3Int tilePosition = _baseTilemap.WorldToCell(mouseWorldPosition);
+            Vector3 tileWorldPosition = _baseTilemap.CellToWorld(tilePosition);
+
+            return tileWorldPosition;
         }
         
         public bool CanPlaceTower(Vector3 worldPosition)
@@ -107,12 +113,11 @@ namespace TowerMergeTD.Game.State
             return new Vector2(cellCenter.x, cellCenter.y);
         }
 
-        public bool HasTowerInCell(out TowerObject towerObject)
+        public bool HasTowerInCell(Vector3 worldPosition, out TowerObject towerObject)
         {
-            Vector3 mouseWorldPosition = _input.GetInputWorldPosition();
-            mouseWorldPosition.z = 0;
+            worldPosition.z = 0;
 
-            Collider2D[] colliders = Physics2D.OverlapPointAll(mouseWorldPosition);
+            Collider2D[] colliders = Physics2D.OverlapPointAll(worldPosition);
             if (colliders.Length > 0)
             {
                 foreach (var collider in colliders)

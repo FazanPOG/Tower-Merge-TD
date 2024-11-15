@@ -5024,6 +5024,7 @@ MonoBehaviour:
   _playerHealthView: {fileID: 3066184720522217273}
   _buildingCurrencyView: {fileID: 7075958807049571287}
   _pauseButton: {fileID: 1092743858769810786}
+  _otherObjectsParent: {fileID: 3412650791723275345}
   _towerSellView: {fileID: 9067606628791829949}
   _towersListView: {fileID: 5128589506530985592}
   _gameTimerView: {fileID: 7176910576586831863}

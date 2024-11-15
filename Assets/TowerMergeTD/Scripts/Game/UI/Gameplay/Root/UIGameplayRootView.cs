@@ -17,6 +17,7 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private Button _pauseButton;
 
         [Header("Other")]
+        [SerializeField] private Transform _otherObjectsParent;
         [SerializeField] private TowerSellView _towerSellView;
         [SerializeField] private TowersListView _towersListView;
         [SerializeField] private GameTimerView _gameTimerView;
@@ -50,15 +51,15 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindTutorial()
         {
-            var tutorialTextView = Instantiate(tutorialViewPrefab, transform);
+            var tutorialTextView = Instantiate(tutorialViewPrefab, _otherObjectsParent);
             
             _container.Bind<TutorialView>().FromInstance(tutorialTextView).AsSingle().NonLazy();
             _container.Bind<TowersListView>().FromInstance(_towersListView).AsSingle().NonLazy();
+            _container.Bind<TowerSellView>().FromInstance(_towerSellView).AsSingle().NonLazy();
         }
         
         private void BindAdapters()
         {
-            
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
             var buildingCurrencyProxy = _container.Resolve<PlayerBuildingCurrencyProxy>();
             var pauseService = _container.Resolve<IPauseService>();

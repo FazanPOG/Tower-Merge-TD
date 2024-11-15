@@ -41,7 +41,9 @@ namespace TowerMergeTD.Game.Gameplay
             
             _monoBehaviourWrapper = _container.Resolve<MonoBehaviourWrapper>();
             _tutorialView = _container.Resolve<TutorialView>();
+            
             _container.Resolve<IPauseService>().SetPause(false);
+            _container.Resolve<IGameTimerService>().StartTimer();
             
             _tutorialBinder.Bind(_container);
             _tutorialActions = _tutorialBinder.TutorialActions;

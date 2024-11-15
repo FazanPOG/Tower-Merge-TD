@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   _isOpen: 1
+  _canMoveCamera: 1
   _isTutorial: 0
-  _tutorialActions: 
   _initialHealth: 5
   _initialBuildingCurrency: 500
   scoreForOneStar: 100

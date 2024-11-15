@@ -1582,7 +1582,7 @@
                 </e>
                 <e p="Tutorial" t="Include">
                   <e p="TutorialActions" t="Include">
-                    <e p="ClickButtonTutorialAction.cs" t="Include" />
+                    <e p="CreateTowerTutorialAction.cs" t="Include" />
                     <e p="ITutorialAction.cs" t="Include" />
                     <e p="MergeTutorialAction.cs" t="Include" />
                     <e p="ShowViewTutorialAction.cs" t="Include" />

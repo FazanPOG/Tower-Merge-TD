@@ -13,6 +13,8 @@ namespace TowerMergeTD.Game.UI
         private Canvas _parentCanvas;
         private RectTransform _rectTransform;
 
+        public bool CanEnabled { get; set; } = true;
+
         public bool IsMouseOver { get; private set; }
         
         public event Action OnSellTowerButtonClicked;
@@ -30,12 +32,16 @@ namespace TowerMergeTD.Game.UI
         {
             _sellTowerButton.onClick.AddListener(() => OnSellTowerButtonClicked?.Invoke());
         }
-
+        
         public void OnPointerEnter(PointerEventData eventData) => IsMouseOver = true;
         
         public void OnPointerExit(PointerEventData eventData) => IsMouseOver = false;
 
-        public void Show() => gameObject.SetActive(true);
+        public void Show()
+        {
+            if(CanEnabled)
+                gameObject.SetActive(true);
+        }
 
         public void Hide()
         {

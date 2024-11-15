@@ -15,24 +15,26 @@ namespace TowerMergeTD.Game.UI
         private Canvas _parentCanvas;
         private RectTransform _rectTransform;
 
-        public Button GunTowerButton => _gunTowerButton;
+        public bool CanDisable { get; set; }
         public bool IsMouseOver { get; private set; }
         
-        public event Action<TowerType> OnTowerButtonClicked; 
+        public event Action OnGunTowerButtonClicked;
+        public event Action OnRocketTowerButtonClicked;
         
         private void Start()
         {
             _mainCamera = Camera.main;
             _rectTransform = GetComponent<RectTransform>();
             _parentCanvas = GetComponentInParent<Canvas>();
+            CanDisable = true;
             
             Hide();
         }
         
         private void OnEnable()
         {
-            _gunTowerButton.onClick.AddListener(() => OnTowerButtonClicked?.Invoke(TowerType.Gun));
-            _rocketTowerButton.onClick.AddListener(() => OnTowerButtonClicked?.Invoke(TowerType.Rocket));
+            _gunTowerButton.onClick.AddListener(() => OnGunTowerButtonClicked?.Invoke());
+            _rocketTowerButton.onClick.AddListener(() => OnRocketTowerButtonClicked?.Invoke());
         }
 
         public void OnPointerEnter(PointerEventData eventData) => IsMouseOver = true;
@@ -43,8 +45,11 @@ namespace TowerMergeTD.Game.UI
 
         public void Hide()
         {
-            IsMouseOver = false;
-            gameObject.SetActive(false);
+            if (CanDisable)
+            {
+                IsMouseOver = false;
+                gameObject.SetActive(false);
+            }
         }
 
         public void SetButtonInteractable(TowerType towerType, bool canInteract)

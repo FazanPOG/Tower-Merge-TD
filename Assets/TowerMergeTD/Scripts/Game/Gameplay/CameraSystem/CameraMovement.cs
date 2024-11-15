@@ -72,7 +72,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void StartDrag()
         {
-            _isDragging = !_mapCoordinator.HasTowerInCell(out TowerObject _);
+            _isDragging = !_mapCoordinator.HasTowerInCell(_input.GetInputWorldPosition(), out TowerObject _);
         }
         
         private void UpdateDrag(Vector2 input)

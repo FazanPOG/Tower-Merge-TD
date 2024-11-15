@@ -43,7 +43,8 @@ namespace TowerMergeTD.Game.UI
         {
             _input.OnClicked += OnClicked;
             _input.OnDragWithThreshold += OnDrag;
-            _towersListView.OnTowerButtonClicked += CreateTower;
+            _towersListView.OnGunTowerButtonClicked += () => { CreateTower(TowerType.Gun);};
+            _towersListView.OnRocketTowerButtonClicked += () => { CreateTower(TowerType.Rocket);};
             _towerSellView.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);
         }
@@ -66,7 +67,7 @@ namespace TowerMergeTD.Game.UI
             Vector3 mouseWorldPosition = _input.GetInputWorldPosition();
             Vector2 cellCenterPosition = _mapCoordinator.GetCellCenterPosition(TilemapType.Base, mouseWorldPosition);
             
-            if (_mapCoordinator.HasTowerInCell(out TowerObject towerObject))
+            if (_mapCoordinator.HasTowerInCell(mouseWorldPosition, out TowerObject towerObject))
             {
                 _currentClickedTower = towerObject;
                 TowerClickedState(cellCenterPosition);

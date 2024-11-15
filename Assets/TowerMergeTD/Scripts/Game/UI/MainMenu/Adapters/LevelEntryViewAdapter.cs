@@ -6,6 +6,7 @@ namespace TowerMergeTD.Game.UI
 {
     public class LevelEntryViewAdapter
     {
+        private readonly int _levelNumber;
         private readonly bool _isDevelopmentSettings;
         private readonly LevelEntryView _levelEntryView;
         private readonly LevelLockPopupView _levelLockPopupView;
@@ -14,6 +15,7 @@ namespace TowerMergeTD.Game.UI
         private readonly Action<int> _goGameplayCallback;
 
         public LevelEntryViewAdapter(
+            int levelNumber,
             bool isDevelopmentSettings, 
             LevelEntryView levelEntryView,
             LevelLockPopupView levelLockPopupView,
@@ -21,6 +23,7 @@ namespace TowerMergeTD.Game.UI
             LevelConfig levelConfig, 
             Action<int> goGameplayCallback)
         {
+            _levelNumber = levelNumber;
             _isDevelopmentSettings = isDevelopmentSettings;
             _levelEntryView = levelEntryView;
             _levelLockPopupView = levelLockPopupView;
@@ -33,7 +36,7 @@ namespace TowerMergeTD.Game.UI
 
         private void Init()
         {
-            _levelEntryView.SetLevelText($"{_levelSaveDataProxy.ID + 1}");
+            _levelEntryView.SetLevelText($"{_levelNumber}");
 
             bool isOpen;
             if (_isDevelopmentSettings)

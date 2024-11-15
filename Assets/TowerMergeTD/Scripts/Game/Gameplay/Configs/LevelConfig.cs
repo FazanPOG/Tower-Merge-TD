@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using Sirenix.OdinInspector;
 using TowerMergeTD.Game.State;
 using UnityEngine;
@@ -13,14 +11,10 @@ namespace TowerMergeTD.Game.Gameplay
         [ToggleLeft]
         [LabelText("Level Unlocked")]
         [SerializeField] private bool _isOpen;
-
+        
         [ToggleLeft]
         [LabelText("Is Tutorial Level")]
         [SerializeField] private bool _isTutorial;
-        
-        [LabelText("Tutorial Actions")]
-        [ShowIf(nameof(_isTutorial))]
-        [SerializeField] private TutorialActionType[] _tutorialActions;
         
         [FoldoutGroup("Initial Settings")]
         [LabelText("Starting Health")]
@@ -59,10 +53,8 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private WavesData[] _waveDatas;
 
         public bool IsOpen => _isOpen;
-
+        
         public bool IsTutorial => _isTutorial;
-
-        public TutorialActionType[] TutorialActions => _tutorialActions;
         
         public int InitialBuildingCurrency => _initialBuildingCurrency;
         public int InitialHealth => _initialHealth;

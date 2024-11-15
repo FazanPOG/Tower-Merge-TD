@@ -85,9 +85,8 @@ namespace TowerMergeTD.Gameplay.Root
         private void BindMap()
         {
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
-            var input = _container.Resolve<IInput>();
             
-            var mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig, input);
+            var mapCoordinator = new MapCoordinator(_level.BaseTileMap, _level.EnvironmentTileMap, _level.LevelConfig.TileSetConfig);
             _container.Bind<MapCoordinator>().FromInstance(mapCoordinator).AsSingle().NonLazy();
 
             foreach (var finish in _level.EnemyFinishes)
