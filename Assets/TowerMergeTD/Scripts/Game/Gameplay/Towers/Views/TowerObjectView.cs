@@ -12,14 +12,11 @@ namespace TowerMergeTD.Game.Gameplay
         private Transform _currentRotateTarget;
         private ITowerAttacker _towerAttacker;
 
-        protected TowerDataProxy _towerData;
-        
         public virtual void Init(TowerDataProxy data, ITowerAttacker towerAttacker)
         {
-            _towerData = data;
             _towerAttacker = towerAttacker;
             
-            _towerSpriteRenderer.sprite = _towerData.Sprite;
+            _towerSpriteRenderer.sprite = data.Sprite;
 
             _towerAttacker.OnTargetChanged += StartRotation;
             _towerAttacker.OnAttacked += TowerAttackerOnAttacked;
@@ -33,7 +30,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         protected abstract void TowerAttackerOnAttacked();
 
-        private void Update()
+        protected virtual void Update()
         {
             if (_isRotate && _currentRotateTarget != null)
             {
@@ -44,7 +41,12 @@ namespace TowerMergeTD.Game.Gameplay
             }
         }
 
-        private void OnDestroy()
+        public T As<T>() where T : TowerObjectView
+        {
+            return this as T;
+        }
+        
+        protected virtual void OnDestroy()
         {
             _towerAttacker.OnTargetChanged -= StartRotation;
             _towerAttacker.OnAttacked -= TowerAttackerOnAttacked;

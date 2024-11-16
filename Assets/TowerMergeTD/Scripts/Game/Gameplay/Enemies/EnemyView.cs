@@ -8,19 +8,17 @@ namespace TowerMergeTD.Game.Gameplay
     public class EnemyView : MonoBehaviour
     {
         [SerializeField] private HealthBarView _healthBar;
-        [SerializeField] private EnemyDeathPopupView _deathPopup;
+        [SerializeField] private EnemyDeathPopupView _deathPopupPrefab;
 
         private Enemy _enemy;
-        private Action _onDiedCallback;
         private SpriteRenderer _spriteRenderer;
         private float _maxHealth;
         private int _buildingCurrencyOnDeath;
         private IDisposable _disposable;
 
-        public void Init(Enemy enemy, Action onDiedCallback, ReadOnlyReactiveProperty<float> health, int buildingCurrencyOnDeath, Sprite enemySprite)
+        public void Init(Enemy enemy, ReadOnlyReactiveProperty<float> health, int buildingCurrencyOnDeath, Sprite enemySprite)
         {
             _enemy = enemy;
-            _onDiedCallback = onDiedCallback;
             _maxHealth = health.CurrentValue;
             _buildingCurrencyOnDeath = buildingCurrencyOnDeath;
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,8 +33,10 @@ namespace TowerMergeTD.Game.Gameplay
         {
             _spriteRenderer.gameObject.SetActive(false);
             _healthBar.gameObject.SetActive(false);
-            _deathPopup.gameObject.SetActive(true);
-            _deathPopup.ShowPopup(_buildingCurrencyOnDeath, _onDiedCallback);
+
+            var deathPopup = Instantiate(_deathPopupPrefab);
+            deathPopup.transform.position = _enemy.transform.position;
+            deathPopup.Init(_buildingCurrencyOnDeath);
         }
         
         private void UpdateHealthBar(float health)

@@ -45,6 +45,7 @@ namespace TowerMergeTD.Game.UI
             _input.OnDragWithThreshold += OnDrag;
             _towersListView.OnGunTowerButtonClicked += () => { CreateTower(TowerType.Gun);};
             _towersListView.OnRocketTowerButtonClicked += () => { CreateTower(TowerType.Rocket);};
+            _towersListView.OnLaserTowerButtonClicked += () => { CreateTower(TowerType.Laser);};
             _towerSellView.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);
         }

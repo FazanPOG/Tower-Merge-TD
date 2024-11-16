@@ -1,6 +1,6 @@
-﻿using R3;
+﻿using System;
+using R3;
 using TowerMergeTD.Game.Gameplay;
-using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.UI
 {
@@ -19,7 +19,7 @@ namespace TowerMergeTD.Game.UI
 
         private void UpdateView(int health)
         {
-            _view.UpdateText($"{health}");
+            _view.UpdateText($"{Math.Max(0, health)}");
         }
     }
 }

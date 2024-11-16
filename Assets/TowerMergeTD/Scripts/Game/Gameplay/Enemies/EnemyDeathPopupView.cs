@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -9,19 +9,18 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Animation _animation;
 
-        private Action _onPopupEndedCallback;
-        
-        public void ShowPopup(int buildingCurrencyValue, Action onPopupEndedCallback)
+        public void Init(int buildingCurrencyValue)
         {
-            _onPopupEndedCallback = onPopupEndedCallback;
-            
             _text.text = buildingCurrencyValue.ToString();
             _animation.Play();
+
+            StartCoroutine(WaitUntilAnimationEnded());
         }
 
-        private void OnAnimationEnded()
+        private IEnumerator WaitUntilAnimationEnded()
         {
-            _onPopupEndedCallback?.Invoke();
+            yield return new WaitForSeconds(_animation.clip.length);
+            Destroy(gameObject);
         }
     }
 }

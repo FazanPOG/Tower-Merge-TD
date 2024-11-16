@@ -10,6 +10,7 @@ namespace TowerMergeTD.Game.UI
     {
         [SerializeField] private Button _gunTowerButton;
         [SerializeField] private Button _rocketTowerButton;
+        [SerializeField] private Button _laserTowerButton;
 
         private Camera _mainCamera;
         private Canvas _parentCanvas;
@@ -20,6 +21,7 @@ namespace TowerMergeTD.Game.UI
         
         public event Action OnGunTowerButtonClicked;
         public event Action OnRocketTowerButtonClicked;
+        public event Action OnLaserTowerButtonClicked;
         
         private void Start()
         {
@@ -35,6 +37,7 @@ namespace TowerMergeTD.Game.UI
         {
             _gunTowerButton.onClick.AddListener(() => OnGunTowerButtonClicked?.Invoke());
             _rocketTowerButton.onClick.AddListener(() => OnRocketTowerButtonClicked?.Invoke());
+            _laserTowerButton.onClick.AddListener(() => OnLaserTowerButtonClicked?.Invoke());
         }
 
         public void OnPointerEnter(PointerEventData eventData) => IsMouseOver = true;
@@ -89,6 +92,7 @@ namespace TowerMergeTD.Game.UI
         {
             _gunTowerButton.onClick.RemoveAllListeners();
             _rocketTowerButton.onClick.RemoveAllListeners();
+            _laserTowerButton.onClick.RemoveAllListeners();
         }
     }
 }

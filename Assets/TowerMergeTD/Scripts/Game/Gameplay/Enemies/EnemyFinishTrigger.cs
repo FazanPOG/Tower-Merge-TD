@@ -17,7 +17,7 @@ namespace TowerMergeTD.Game.Gameplay
             if (other.gameObject.TryGetComponent(out Enemy enemy))
             {
                 _playerHealth.Health.Value -= enemy.Damage;
-                enemy.Died();
+                enemy.DestroySelf();
             }
         }
     }

@@ -13,14 +13,14 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly RocketTowerObjectView _rocketTowerObjectView;
 
         private float _initialDamage;
-        private float _defaultAttackCooldown;
-        private float _currentAttackCooldown;
+        private float _attackCooldown;
         private float _lastAttackTime = -Mathf.Infinity;
         private ReadOnlyReactiveProperty<bool> _isDragging;
         private GameObject _closestTargetObject;
-        
+
         public event Action OnAttacked;
         public event Action<GameObject> OnTargetChanged;
+
 
         public TowerRocketAttacker(
             TowerCollisionHandler collisionHandler, 
@@ -31,39 +31,16 @@ namespace TowerMergeTD.Game.Gameplay
             _rocketPrefab = rocketPrefab;
             _rocketTowerObjectView = rocketTowerObjectView;
         }
-        
+
         public void Init(float initialDamage, float attackRange, float attackCooldown, ReadOnlyReactiveProperty<bool> isDragging)
         {
             _initialDamage = initialDamage;
-            _defaultAttackCooldown = attackCooldown;
-            _currentAttackCooldown = _defaultAttackCooldown;
+            _attackCooldown = attackCooldown;
             _isDragging = isDragging;
             
             _collisionHandler.AttackCollider.radius = attackRange;
             
             _collisionHandler.OnAttackColliderTriggering += OnAttackColliderTriggering;
-        }
-
-        public void HandleGameSpeed(GameSpeed gameSpeed)
-        {
-            switch (gameSpeed)
-            {
-                case GameSpeed.X1:
-                    _currentAttackCooldown = _defaultAttackCooldown;
-                    break;
-                
-                case GameSpeed.X2:
-                    _currentAttackCooldown /= 2f;
-                    break;
-                
-                case GameSpeed.X4:
-                    _currentAttackCooldown /= 4f;
-                    break;
-                
-                case GameSpeed.X8:
-                    _currentAttackCooldown /= 8f;
-                    break;
-            }
         }
 
         private void OnAttackColliderTriggering(List<Collider2D> others)
@@ -117,7 +94,7 @@ namespace TowerMergeTD.Game.Gameplay
         
         private bool CanAttack()
         {
-            return Time.time >= _lastAttackTime + _currentAttackCooldown;
+            return Time.time >= _lastAttackTime + _attackCooldown;
         }
     }
 }

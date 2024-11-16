@@ -35,7 +35,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             EnemyMovement movement = new EnemyMovement();
             movement.Move(this, _view.transform, movePath, _config.MoveSpeed);
-            _view.Init(this, DestroySelf, _health, _config.BuildingCurrencyOnDeath, _config.Sprite);
+            _view.Init(this, _health, _config.BuildingCurrencyOnDeath, _config.Sprite);
         }
 
         public void TakeDamage(float damage)
@@ -47,20 +47,14 @@ namespace TowerMergeTD.Game.Gameplay
 
             if (_health.Value <= 0)
             {
-                _playerBuildingCurrencyProxy.BuildingCurrency.Value += _config.BuildingCurrencyOnDeath;
-                _collider.enabled = false;
-                OnDied?.Invoke();
+                DestroySelf();
             }
         }
-
-        public void Died()
+        
+        public void DestroySelf()
         {
+            _playerBuildingCurrencyProxy.BuildingCurrency.Value += _config.BuildingCurrencyOnDeath;
             OnDied?.Invoke();
-            DestroySelf();
-        }
-
-        private void DestroySelf()
-        {
             Destroy(gameObject);
         }
     }

@@ -26,6 +26,11 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void Update()
         {
+            UpdateDebug();
+        }
+
+        private void UpdateDebug()
+        {
             DEBUG_STRING = "";
 
             if (_generation == null) return;
@@ -39,7 +44,7 @@ namespace TowerMergeTD.Game.Gameplay
                             $"Attack range: {_dataProxy.AttackRange} \n" +
                             $"Attack cooldown: {_dataProxy.AttackCooldown} \n";
         }
-
+        
         public void Init(
             IInput input, 
             TowerGenerationConfig generation, 

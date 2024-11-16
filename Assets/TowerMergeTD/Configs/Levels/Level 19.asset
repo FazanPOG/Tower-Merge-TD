@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Level 19
   m_EditorClassIdentifier: 
   _isOpen: 1
-  _canMoveCamera: 1
   _isTutorial: 0
   _initialHealth: 5
   _initialBuildingCurrency: 500
@@ -24,6 +23,7 @@ MonoBehaviour:
   _towerGenerationConfigs:
   - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
   - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
+  - {fileID: 11400000, guid: 51a39b6f4b31a614aa43a52f74f27411, type: 2}
   _waveDatas:
   - _waves:
     - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
