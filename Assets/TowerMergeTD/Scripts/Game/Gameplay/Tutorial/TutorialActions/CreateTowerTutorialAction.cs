@@ -35,17 +35,11 @@ namespace TowerMergeTD.Game.Gameplay
         {
             yield return new WaitUntil(() => _towersListView.gameObject.activeSelf);
 
-            switch (_towerType)
+            _towersListView.OnCreateTowerButtonClicked += (type) =>
             {
-                case TowerType.Gun:
-                    _towersListView.OnGunTowerButtonClicked += IsCompleted;
-                    break;
-                case TowerType.Rocket:
-                    _towersListView.OnRocketTowerButtonClicked += IsCompleted;
-                    break;
-                default:
-                    throw new Exception($"Tower type {_towerType} is not implemented");
-            }
+                if(_towerType == type)
+                    IsCompleted();
+            };
         }
         
         private void IsCompleted()

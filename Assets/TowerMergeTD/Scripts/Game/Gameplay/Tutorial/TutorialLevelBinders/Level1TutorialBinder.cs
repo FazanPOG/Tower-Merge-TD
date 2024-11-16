@@ -41,7 +41,6 @@ namespace TowerMergeTD.Game.Gameplay
             _tutorialView = diContainer.Resolve<TutorialView>();
             diContainer.Resolve<TowerSellView>().CanEnabled = false;
 
-            _towersListView.SetButtonInteractable(TowerType.Rocket, false);
             _tutorialView.Init();
             _tutorialView.SetActiveHandImage(false);
 

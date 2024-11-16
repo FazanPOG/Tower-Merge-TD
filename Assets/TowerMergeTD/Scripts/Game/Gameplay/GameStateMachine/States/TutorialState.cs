@@ -122,7 +122,6 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void Exit()
         {
-            Debug.Log($"Exit TutorialState");
             _monoBehaviourWrapper.StopCoroutine(_coroutine);
 
             foreach (var tutorialAction in _tutorialBinder.TutorialActions)

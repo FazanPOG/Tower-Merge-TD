@@ -1,3 +1,4 @@
+using System.Linq;
 using R3;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
@@ -84,7 +85,9 @@ namespace TowerMergeTD.Gameplay.Root
                 var towerFactory = _container.Resolve<TowerFactory>();
                 var mapCoordinator = _container.Resolve<MapCoordinator>();
 
-                new TowerActionsAdapter(_towerSellView, _towersListView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
+                TowerType[] types = _currentLevelConfig.TowerGenerationConfigs.Select(x => x.TowersType).ToArray();
+                
+                new TowerActionsAdapter(types, _towerSellView, _towersListView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
             }
 
             void bindPausePopup()

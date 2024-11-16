@@ -6,6 +6,7 @@ namespace TowerMergeTD.Game.UI
 {
     public class TowerActionsAdapter : IPauseHandler
     {
+        private readonly TowerType[] _levelTowerTypes;
         private readonly TowerSellView _towerSellView;
         private readonly TowersListView _towersListView;
         private readonly IInput _input;
@@ -19,6 +20,7 @@ namespace TowerMergeTD.Game.UI
         private bool _canInteract;
 
         public TowerActionsAdapter(
+            TowerType[] levelTowerTypes,
             TowerSellView towerSellView,
             TowersListView towersListView,
             IInput input, 
@@ -27,6 +29,7 @@ namespace TowerMergeTD.Game.UI
             PlayerBuildingCurrencyProxy buildingCurrencyProxy,
             IPauseService pauseService)
         {
+            _levelTowerTypes = levelTowerTypes;
             _towerSellView = towerSellView;
             _towersListView = towersListView;
             _input = input;
@@ -36,6 +39,8 @@ namespace TowerMergeTD.Game.UI
             _pauseService = pauseService;
 
             _canInteract = true;
+            
+            _towersListView.InitButtons();
             Register();
         }
 
@@ -43,9 +48,18 @@ namespace TowerMergeTD.Game.UI
         {
             _input.OnClicked += OnClicked;
             _input.OnDragWithThreshold += OnDrag;
-            _towersListView.OnGunTowerButtonClicked += () => { CreateTower(TowerType.Gun);};
-            _towersListView.OnRocketTowerButtonClicked += () => { CreateTower(TowerType.Rocket);};
-            _towersListView.OnLaserTowerButtonClicked += () => { CreateTower(TowerType.Laser);};
+            _towersListView.OnCreateTowerButtonClicked += CreateTower;
+            
+            _towersListView.LockAllButtons();
+            
+            foreach (var towerType in _levelTowerTypes)
+            {
+                if (_towersListView.HasCreateButton(towerType))
+                    _towersListView.SetTowerCreateButtonActiveState(towerType, true);
+                else
+                    Debug.LogError($"Create tower button with type {towerType} does not implemented");
+            }
+            
             _towerSellView.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);
         }

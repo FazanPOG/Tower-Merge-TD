@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,20 +9,37 @@ namespace TowerMergeTD.Game.UI
 {
     public class TowersListView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private Button _gunTowerButton;
-        [SerializeField] private Button _rocketTowerButton;
-        [SerializeField] private Button _laserTowerButton;
+        [SerializeField] private Sprite _lockSprite;
 
+        [Header("Gun tower")]
+        [SerializeField] private Button _gunTowerButton;
+        [SerializeField] private Image _gunTowerImage;
+        [SerializeField] private Sprite _gunTowerSprite;
+        [Space(5)]
+        
+        [Header("Rocket tower")]
+        [SerializeField] private Button _rocketTowerButton;
+        [SerializeField] private Image _rocketTowerImage;
+        [SerializeField] private Sprite _rocketTowerSprite;
+        [Space(5)]
+        
+        [Header("Laser tower")]
+        [SerializeField] private Button _laserTowerButton;
+        [SerializeField] private Image _laserTowerImage;
+        [SerializeField] private Sprite _laserTowerSprite;
+        
         private Camera _mainCamera;
         private Canvas _parentCanvas;
         private RectTransform _rectTransform;
 
+        private Dictionary<TowerType, Button> _towerTypeButtonMap;
+        private Dictionary<TowerType, Image> _towerTypeImageMap;
+        private Dictionary<TowerType, Sprite> _towerTypeSpriteMap;
+        
         public bool CanDisable { get; set; }
         public bool IsMouseOver { get; private set; }
         
-        public event Action OnGunTowerButtonClicked;
-        public event Action OnRocketTowerButtonClicked;
-        public event Action OnLaserTowerButtonClicked;
+        public event Action<TowerType> OnCreateTowerButtonClicked;
         
         private void Start()
         {
@@ -35,11 +53,35 @@ namespace TowerMergeTD.Game.UI
         
         private void OnEnable()
         {
-            _gunTowerButton.onClick.AddListener(() => OnGunTowerButtonClicked?.Invoke());
-            _rocketTowerButton.onClick.AddListener(() => OnRocketTowerButtonClicked?.Invoke());
-            _laserTowerButton.onClick.AddListener(() => OnLaserTowerButtonClicked?.Invoke());
+            _gunTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Gun));
+            _rocketTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Rocket));
+            _laserTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Laser));
         }
 
+        public void InitButtons()
+        {
+            _towerTypeButtonMap = new Dictionary<TowerType, Button>()
+            {
+                [TowerType.Gun] = _gunTowerButton,
+                [TowerType.Rocket] = _rocketTowerButton,
+                [TowerType.Laser] = _laserTowerButton
+            };
+            
+            _towerTypeImageMap = new Dictionary<TowerType, Image>()
+            {
+                [TowerType.Gun] = _gunTowerImage,
+                [TowerType.Rocket] = _rocketTowerImage,
+                [TowerType.Laser] = _laserTowerImage
+            };
+            
+            _towerTypeSpriteMap = new Dictionary<TowerType, Sprite>()
+            {
+                [TowerType.Gun] = _gunTowerSprite,
+                [TowerType.Rocket] = _rocketTowerSprite,
+                [TowerType.Laser] = _laserTowerSprite
+            };
+        }
+        
         public void OnPointerEnter(PointerEventData eventData) => IsMouseOver = true;
         
         public void OnPointerExit(PointerEventData eventData) => IsMouseOver = false;
@@ -55,17 +97,39 @@ namespace TowerMergeTD.Game.UI
             }
         }
 
-        public void SetButtonInteractable(TowerType towerType, bool canInteract)
+        public bool HasCreateButton(TowerType type)
         {
-            switch (towerType)
+            return _towerTypeButtonMap.ContainsKey(type);
+        }
+
+        public void LockAllButtons()
+        {
+            foreach (var towerType in _towerTypeButtonMap.Keys)
+                SetTowerCreateButtonActiveState(towerType, false);
+        }
+
+        public void UnlockAllButtons()
+        {
+            foreach (var towerType in _towerTypeButtonMap.Keys)
+                SetTowerCreateButtonActiveState(towerType, true);
+        }
+        
+        public void SetTowerCreateButtonActiveState(TowerType towerType, bool activeState)
+        {
+            Button button = _towerTypeButtonMap[towerType];
+            Image image = _towerTypeImageMap[towerType];
+            
+            if (activeState)
             {
-                case TowerType.Gun:
-                    _gunTowerButton.interactable = canInteract;
-                    break;
-                
-                case TowerType.Rocket:
-                    _rocketTowerButton.interactable = canInteract;
-                    break;
+                Sprite sprite = _towerTypeSpriteMap[towerType];
+
+                button.interactable = true;
+                image.sprite = sprite;
+            }
+            else
+            {
+                image.sprite = _lockSprite;
+                button.interactable = false;
             }
         }
         

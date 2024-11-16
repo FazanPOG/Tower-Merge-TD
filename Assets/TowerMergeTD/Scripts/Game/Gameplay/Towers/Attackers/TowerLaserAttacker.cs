@@ -59,11 +59,6 @@ namespace TowerMergeTD.Game.Gameplay
                 FindClosestEnemy(others);
 
             Attack();
-
-            if (_closestTargetObject == null)
-            {
-                Debug.Log("_closestTargetObject NULL");
-            }
         }
 
         private void FindClosestEnemy(List<Collider2D> others)
