@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using R3;
 using UnityEngine;
@@ -10,13 +9,13 @@ namespace TowerMergeTD.Game.Gameplay
     public class TowerRocketAttacker : ITowerAttacker
     {
         private readonly TowerCollisionHandler _collisionHandler;
-        private readonly MonoBehaviour _monoBehaviourContext;
         private readonly Rocket _rocketPrefab;
         private readonly RocketTowerObjectView _rocketTowerObjectView;
 
         private float _initialDamage;
-        private float _attackCooldown;
-        private bool _canAttack = true;
+        private float _defaultAttackCooldown;
+        private float _currentAttackCooldown;
+        private float _lastAttackTime = -Mathf.Infinity;
         private ReadOnlyReactiveProperty<bool> _isDragging;
         private GameObject _closestTargetObject;
         
@@ -25,12 +24,10 @@ namespace TowerMergeTD.Game.Gameplay
 
         public TowerRocketAttacker(
             TowerCollisionHandler collisionHandler, 
-            MonoBehaviour monoBehaviourContext, 
             Rocket rocketPrefab,
             RocketTowerObjectView rocketTowerObjectView)
         {
             _collisionHandler = collisionHandler;
-            _monoBehaviourContext = monoBehaviourContext;
             _rocketPrefab = rocketPrefab;
             _rocketTowerObjectView = rocketTowerObjectView;
         }
@@ -38,14 +35,37 @@ namespace TowerMergeTD.Game.Gameplay
         public void Init(float initialDamage, float attackRange, float attackCooldown, ReadOnlyReactiveProperty<bool> isDragging)
         {
             _initialDamage = initialDamage;
-            _attackCooldown = attackCooldown;
+            _defaultAttackCooldown = attackCooldown;
+            _currentAttackCooldown = _defaultAttackCooldown;
             _isDragging = isDragging;
             
             _collisionHandler.AttackCollider.radius = attackRange;
             
             _collisionHandler.OnAttackColliderTriggering += OnAttackColliderTriggering;
         }
-        
+
+        public void HandleGameSpeed(GameSpeed gameSpeed)
+        {
+            switch (gameSpeed)
+            {
+                case GameSpeed.X1:
+                    _currentAttackCooldown = _defaultAttackCooldown;
+                    break;
+                
+                case GameSpeed.X2:
+                    _currentAttackCooldown /= 2f;
+                    break;
+                
+                case GameSpeed.X4:
+                    _currentAttackCooldown /= 4f;
+                    break;
+                
+                case GameSpeed.X8:
+                    _currentAttackCooldown /= 8f;
+                    break;
+            }
+        }
+
         private void OnAttackColliderTriggering(List<Collider2D> others)
         {
             List<GameObject> enemies = new List<GameObject>();
@@ -80,26 +100,24 @@ namespace TowerMergeTD.Game.Gameplay
                 }
             }
         }
-        
+
         private void Attack(Transform transform)
         {
-            if(_canAttack == false || _isDragging.CurrentValue)
+            if(CanAttack() == false || _isDragging.CurrentValue)
                 return;
             
             Rocket rocket = Object.Instantiate(_rocketPrefab);
             rocket.transform.position = _rocketTowerObjectView.RocketSpawnTransform.position;
             rocket.Init(_initialDamage, transform);
             
-            _monoBehaviourContext.StartCoroutine(AttackCooldown(_attackCooldown));
+            _lastAttackTime = Time.time;
             
             OnAttacked?.Invoke();
         }
-
-        private IEnumerator AttackCooldown(float cooldown)
+        
+        private bool CanAttack()
         {
-            _canAttack = false;
-            yield return new WaitForSeconds(cooldown);
-            _canAttack = true;
+            return Time.time >= _lastAttackTime + _currentAttackCooldown;
         }
     }
 }

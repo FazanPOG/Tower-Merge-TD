@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   _isOpen: 1
-  _canMoveCamera: 1
   _isTutorial: 0
   _initialHealth: 5
   _initialBuildingCurrency: 500
@@ -27,3 +26,4 @@ MonoBehaviour:
   _waveDatas:
   - _waves:
     - {fileID: 11400000, guid: 587e647496c0694468890fa1b68743b4, type: 2}
+    - {fileID: 11400000, guid: bf0e391a556b8b249955f1f99573e10d, type: 2}

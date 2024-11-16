@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using R3;
 using UnityEngine;
@@ -9,33 +8,55 @@ namespace TowerMergeTD.Game.Gameplay
     public class TowerRegularAttacker : ITowerAttacker
     {
         private readonly TowerCollisionHandler _collisionHandler;
-        private readonly MonoBehaviour _monoBehaviourContext;
         
         private float _initialDamage;
-        private float _attackCooldown;
-        private bool _canAttack = true;
+        private float _defaultAttackCooldown;
+        private float _currentAttackCooldown;
         private ReadOnlyReactiveProperty<bool> _isDragging;
         private GameObject _closestTargetObject;
         private IDamageable _closestTargetEnemy;
+        private float _lastAttackTime = -Mathf.Infinity;
 
         public event Action OnAttacked;
         public event Action<GameObject> OnTargetChanged;
 
-        public TowerRegularAttacker(TowerCollisionHandler collisionHandler, MonoBehaviour monoBehaviourContext)
+        public TowerRegularAttacker(TowerCollisionHandler collisionHandler)
         {
             _collisionHandler = collisionHandler;
-            _monoBehaviourContext = monoBehaviourContext;
         }
-        
+
         public void Init(float initialDamage, float attackRange, float attackCooldown, ReadOnlyReactiveProperty<bool> isDragging)
         {
             _initialDamage = initialDamage;
-            _attackCooldown = attackCooldown;
+            _defaultAttackCooldown = attackCooldown;
+            _currentAttackCooldown = _defaultAttackCooldown;
             _isDragging = isDragging;
             
             _collisionHandler.AttackCollider.radius = attackRange;
             
             _collisionHandler.OnAttackColliderTriggering += OnAttackColliderTriggering;
+        }
+
+        public void HandleGameSpeed(GameSpeed gameSpeed)
+        {
+            switch (gameSpeed)
+            {
+                case GameSpeed.X1:
+                    _currentAttackCooldown = _defaultAttackCooldown;
+                    break;
+                
+                case GameSpeed.X2:
+                    _currentAttackCooldown /= 2f;
+                    break;
+                
+                case GameSpeed.X4:
+                    _currentAttackCooldown /= 4f;
+                    break;
+                
+                case GameSpeed.X8:
+                    _currentAttackCooldown /= 8f;
+                    break;
+            }
         }
 
         private void OnAttackColliderTriggering(List<Collider2D> others)
@@ -73,22 +94,20 @@ namespace TowerMergeTD.Game.Gameplay
                 }
             }
         }
-        
+
         private void Attack(IDamageable damageable)
         {
-            if (_canAttack && _isDragging.CurrentValue == false)
+            if (CanAttack() && _isDragging.CurrentValue == false)
             {
                 damageable.TakeDamage(_initialDamage);
-                _monoBehaviourContext.StartCoroutine(AttackCooldown(_attackCooldown));
+                _lastAttackTime = Time.time;
                 OnAttacked?.Invoke();
             }
         }
 
-        private IEnumerator AttackCooldown(float cooldown)
+        private bool CanAttack()
         {
-            _canAttack = false;
-            yield return new WaitForSeconds(cooldown);
-            _canAttack = true;
+            return Time.time >= _lastAttackTime + _currentAttackCooldown;
         }
     }
 }

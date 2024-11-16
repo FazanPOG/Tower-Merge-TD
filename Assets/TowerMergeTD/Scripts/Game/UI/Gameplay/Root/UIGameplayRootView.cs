@@ -15,6 +15,7 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private PlayerHealthView _playerHealthView;
         [SerializeField] private PlayerBuildingCurrencyView _buildingCurrencyView;
         [SerializeField] private Button _pauseButton;
+        [SerializeField] private GameSpeedView _gameSpeedView;
 
         [Header("Other")]
         [SerializeField] private Transform _otherObjectsParent;
@@ -65,10 +66,12 @@ namespace TowerMergeTD.Gameplay.Root
             var pauseService = _container.Resolve<IPauseService>();
             var gameStateService = _container.Resolve<IGameStateService>();
             var gameTimerService = _container.Resolve<IGameTimerService>();
+            var gameSpeedService = _container.Resolve<IGameSpeedService>();
 
             new PlayerBuildingCurrencyViewAdapter(_buildingCurrencyView, buildingCurrencyProxy);
             new PlayerHealthViewAdapter(_playerHealthView, playerHealthProxy);
             new GameTimerViewAdapter(_gameTimerView, gameTimerService);
+            new GameSpeedViewAdapter(gameSpeedService, _gameSpeedView);
             
             bindTowerActions();
             bindPausePopup();

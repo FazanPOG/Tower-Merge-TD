@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    public interface ITowerAttacker
+    public interface ITowerAttacker : IGameSpeedHandler
     {
         event Action OnAttacked;
         event Action<GameObject> OnTargetChanged;

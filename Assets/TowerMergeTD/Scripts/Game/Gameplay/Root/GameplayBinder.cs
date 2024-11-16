@@ -130,10 +130,10 @@ namespace TowerMergeTD.Gameplay.Root
             bindWaveSpawnerService();
             bindGameTimerService();
             bindRewardCalculatorService();
-            
-            _container.Bind<IGameStateService>().To<GameStateService>().FromNew().AsSingle().NonLazy();
-            _container.Bind<IScoreService>().To<ScoreService>().FromInstance(scoreService).AsSingle().NonLazy();
 
+            _container.Bind<IScoreService>().To<ScoreService>().FromInstance(scoreService).AsSingle().NonLazy();
+            _container.Bind<IGameStateService>().To<GameStateService>().FromNew().AsSingle().NonLazy();
+            _container.Bind<IGameSpeedService>().To<GameSpeedService>().FromNew().AsSingle().NonLazy();
 
             void bindWaveSpawnerService()
             {

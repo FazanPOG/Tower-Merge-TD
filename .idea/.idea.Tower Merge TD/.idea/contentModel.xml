@@ -1490,8 +1490,10 @@
                 </e>
                 <e p="Common" t="Include">
                   <e p="DragAndDrop.cs" t="Include" />
+                  <e p="GameSpeed.cs" t="Include" />
                   <e p="HealthBarView.cs" t="Include" />
                   <e p="IDamageable.cs" t="Include" />
+                  <e p="IGameSpeedHandler.cs" t="Include" />
                   <e p="IPauseHandler.cs" t="Include" />
                 </e>
                 <e p="Configs" t="Include">
@@ -1548,9 +1550,11 @@
                   <e p="GameplayExitParams.cs" t="Include" />
                 </e>
                 <e p="Services" t="Include">
+                  <e p="GameSpeedService.cs" t="Include" />
                   <e p="GameStateService.cs" t="Include" />
                   <e p="GameTimerService.cs" t="Include" />
                   <e p="Interfaces" t="Include">
+                    <e p="IGameSpeedService.cs" t="Include" />
                     <e p="IGameStateService.cs" t="Include" />
                     <e p="IGameTimerService.cs" t="Include" />
                     <e p="IPauseService.cs" t="Include" />
@@ -1651,6 +1655,7 @@
               <e p="UI" t="Include">
                 <e p="Gameplay" t="Include">
                   <e p="Adapters" t="Include">
+                    <e p="GameSpeedViewAdapter.cs" t="Include" />
                     <e p="GameTimerViewAdapter.cs" t="Include" />
                     <e p="LevelCompletePopupAdapter.cs" t="Include" />
                     <e p="LosePopupViewAdapter.cs" t="Include" />
@@ -1663,6 +1668,7 @@
                     <e p="UIGameplayRootView.cs" t="Include" />
                   </e>
                   <e p="Views" t="Include">
+                    <e p="GameSpeedView.cs" t="Include" />
                     <e p="GameTimerView.cs" t="Include" />
                     <e p="LevelCompletePopupView.cs" t="Include" />
                     <e p="LosePopupView.cs" t="Include" />

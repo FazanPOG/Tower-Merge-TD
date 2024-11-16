@@ -118,15 +118,15 @@ namespace TowerMergeTD.Game.Gameplay
         {
             if (generation.TowersType == TowerType.Gun)
             {
-                return new TowerRegularAttacker(collisionHandler, _monoBehaviourContext);
+                return new TowerRegularAttacker(collisionHandler);
             }
             
             if (generation.TowersType == TowerType.Rocket)
             {
                 if(towerLevel < 3)
-                    return new TowerRocketAttacker(collisionHandler, _monoBehaviourContext, _prefabReferences.SmallRocket, towerObjectView as RocketTowerObjectView);
+                    return new TowerRocketAttacker(collisionHandler, _prefabReferences.SmallRocket, towerObjectView as RocketTowerObjectView);
                 else
-                    return new TowerRocketAttacker(collisionHandler, _monoBehaviourContext, _prefabReferences.BigRocket, towerObjectView as RocketTowerObjectView);
+                    return new TowerRocketAttacker(collisionHandler, _prefabReferences.BigRocket, towerObjectView as RocketTowerObjectView);
             }
             
             throw new MissingReferenceException($"Missing tower type: {generation.TowersType}");
