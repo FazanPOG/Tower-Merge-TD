@@ -15,6 +15,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly Vector2 _enemySpawnPosition;
         private readonly MonoBehaviour _monoBehaviour;
 
+        public int WavesCount { get; }
         public event Action OnWaveCompleted;
         public event Action OnAllWavesCompleted;
 
@@ -36,6 +37,7 @@ namespace TowerMergeTD.Game.Gameplay
             _enemySpawnPosition = enemySpawnPosition;
             _monoBehaviour = monoBehaviour;
 
+            WavesCount = waves.Length;
             _waves = new Queue<WaveConfig>(waves);
             _canSpawn = true;
         }

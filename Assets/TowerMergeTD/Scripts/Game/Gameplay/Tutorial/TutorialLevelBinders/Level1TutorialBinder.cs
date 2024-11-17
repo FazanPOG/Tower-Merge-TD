@@ -59,6 +59,7 @@ namespace TowerMergeTD.Game.Gameplay
             BindAction13();
             BindAction14();
             BindAction15();
+            BindAction16();
         }
 
         private void BindAction1()
@@ -119,12 +120,21 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,5f);
             TutorialActions.Enqueue(waitAction);
+            TutorialTexts.Enqueue("Следите за количеством волн");
+            Vector2 handPosition = new Vector2(-8.1f, 6.5f);
+            TutorialHandDatas.Enqueue(new TutorialHandImageData(handPosition, CLICK_ANIMATION_INDEX));
+        }
+        
+        private void BindAction8()
+        {
+            var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,5f);
+            TutorialActions.Enqueue(waitAction);
             TutorialTexts.Enqueue("Добывайте ресурсы, уничтожая врагов");
             Vector2 handPosition = new Vector2(-8.1f, 7.3f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(handPosition, CLICK_ANIMATION_INDEX));
         }
         
-        private void BindAction8()
+        private void BindAction9()
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,6f);
             TutorialActions.Enqueue(waitAction);
@@ -133,7 +143,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(handPosition, CLICK_ANIMATION_INDEX));
         }
         
-        private void BindAction9()
+        private void BindAction10()
         {
             var towerPlaces = _mapCoordinator.GetAllTowerPlaceTileWorldPositions();
             var towerPlaceClickTutorialAction = new TowerPlaceClickTutorialAction(towerPlaces[1], _input, _mapCoordinator, _towersListView);
@@ -145,7 +155,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
         }
         
-        private void BindAction10()
+        private void BindAction11()
         {
             var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, TowerType.Gun);
             TutorialActions.Enqueue(clickAction);
@@ -155,7 +165,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
         }
         
-        private void BindAction11()
+        private void BindAction12()
         {
             var mergeAction = new MergeTutorialAction();
             TutorialActions.Enqueue(mergeAction);
@@ -165,7 +175,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, DRAG_ANIMATION_INDEX));
         }
         
-        private void BindAction12()
+        private void BindAction13()
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,5f);
             TutorialActions.Enqueue(waitAction);
@@ -173,7 +183,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
         
-        private void BindAction13()
+        private void BindAction14()
         {
             var spawnAction = new SpawnWaveTutorialAction(_waveSpawnServices);
             TutorialActions.Enqueue(spawnAction);
@@ -181,7 +191,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
         
-        private void BindAction14()
+        private void BindAction15()
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,15f);
             TutorialActions.Enqueue(waitAction);
@@ -189,7 +199,7 @@ namespace TowerMergeTD.Game.Gameplay
             TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
 
-        private void BindAction15()
+        private void BindAction16()
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input, 5f);
             TutorialActions.Enqueue(waitAction);

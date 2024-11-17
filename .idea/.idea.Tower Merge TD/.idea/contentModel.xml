@@ -1665,6 +1665,7 @@
                     <e p="PlayerBuildingCurrencyViewAdapter.cs" t="Include" />
                     <e p="PlayerHealthViewAdapter.cs" t="Include" />
                     <e p="TowerActionsAdapter.cs" t="Include" />
+                    <e p="WavesCounterViewAdapter.cs" t="Include" />
                   </e>
                   <e p="Root" t="Include">
                     <e p="UIGameplayRootView.cs" t="Include" />
@@ -1680,6 +1681,7 @@
                     <e p="TowerSellView.cs" t="Include" />
                     <e p="TowersListView.cs" t="Include" />
                     <e p="TutorialView.cs" t="Include" />
+                    <e p="WavesCounterView.cs" t="Include" />
                   </e>
                 </e>
                 <e p="MainMenu" t="Include">

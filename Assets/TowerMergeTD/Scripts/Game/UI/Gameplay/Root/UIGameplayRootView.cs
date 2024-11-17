@@ -15,6 +15,7 @@ namespace TowerMergeTD.Gameplay.Root
         [Header("HUD")]
         [SerializeField] private PlayerHealthView _playerHealthView;
         [SerializeField] private PlayerBuildingCurrencyView _buildingCurrencyView;
+        [SerializeField] private WavesCounterView _wavesCounterView;
         [SerializeField] private Button _pauseButton;
         [SerializeField] private GameSpeedView _gameSpeedView;
 
@@ -68,11 +69,13 @@ namespace TowerMergeTD.Gameplay.Root
             var gameStateService = _container.Resolve<IGameStateService>();
             var gameTimerService = _container.Resolve<IGameTimerService>();
             var gameSpeedService = _container.Resolve<IGameSpeedService>();
+            var waveSpawnerServices = _container.Resolve<IWaveSpawnerService[]>();
 
             new PlayerBuildingCurrencyViewAdapter(_buildingCurrencyView, buildingCurrencyProxy);
             new PlayerHealthViewAdapter(_playerHealthView, playerHealthProxy);
             new GameTimerViewAdapter(_gameTimerView, gameTimerService);
             new GameSpeedViewAdapter(gameSpeedService, _gameSpeedView);
+            new WavesCounterViewAdapter(waveSpawnerServices, _wavesCounterView);
             
             bindTowerActions();
             bindPausePopup();
