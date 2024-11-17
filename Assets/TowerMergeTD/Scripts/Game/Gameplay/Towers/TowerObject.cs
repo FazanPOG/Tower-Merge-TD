@@ -1,16 +1,15 @@
 using TowerMergeTD.Game.State;
-using TowerMergeTD.GameRoot;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
     public class TowerObject : MonoBehaviour
     {
+        [SerializeField] private TowerGenerationConfig _generation;
         [SerializeField] private TowerCollisionHandler _collisionHandler;
         [SerializeField] private TowerObjectView _view;
         [SerializeField, TextArea(0, 10)] private string DEBUG_STRING;
 
-        private TowerGenerationConfig _generation;
         private TowerDataProxy _dataProxy;
         private TowerProxy _towerProxy;
         private MapCoordinator _mapCoordinator;
@@ -47,13 +46,11 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void Init(
             IInput input, 
-            TowerGenerationConfig generation, 
             TowerProxy proxy, 
             MapCoordinator mapCoordinator, 
             ITowerAttacker attacker,
             IPauseService pauseService)
         {
-            _generation = generation;
             _towerProxy = proxy;
             _mapCoordinator = mapCoordinator;
             _attacker = attacker;

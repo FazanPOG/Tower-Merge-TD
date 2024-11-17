@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
-using TowerMergeTD.Utils;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +14,6 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly MapCoordinator _mapCoordinator;
         private readonly IInput _input;
         private readonly Transform _parent;
-        private readonly MonoBehaviourWrapper _monoBehaviourContext;
         private readonly IPauseService _pauseService;
         private readonly IGameSpeedService _gameSpeedService;
 
@@ -26,7 +24,6 @@ namespace TowerMergeTD.Game.Gameplay
             MapCoordinator mapCoordinator,
             IInput input,
             Transform parent,
-            MonoBehaviourWrapper monoBehaviourContext,
             IPauseService pauseService
             )
         {
@@ -36,23 +33,21 @@ namespace TowerMergeTD.Game.Gameplay
             _mapCoordinator = mapCoordinator;
             _input = input;
             _parent = parent;
-            _monoBehaviourContext = monoBehaviourContext;
             _pauseService = pauseService;
         }
 
         public TowerObject Create(TowerType towerType, Vector2 spawnPosition, int towerLevel)
         {
-            var generation = GetTowerGenerationConfig(towerType);
             var prefab = GetTowerPrefab(towerType);
             
             var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(prefab, _parent);
             instance.transform.position = spawnPosition;
             
-            TowerProxy proxy = new TowerProxy(CreateTowerModel(generation, instance, towerLevel, spawnPosition));
+            TowerProxy proxy = new TowerProxy(CreateTowerModel(towerType, instance, towerLevel, spawnPosition));
 
-            ITowerAttacker attacker = GetTowerAttacker(generation, instance.CollisionHandler, towerLevel, instance.View);
+            ITowerAttacker attacker = GetTowerAttacker(towerType, instance.CollisionHandler, towerLevel, instance.View);
             
-            instance.Init(_input, generation, proxy, _mapCoordinator, attacker, _pauseService);
+            instance.Init(_input, proxy, _mapCoordinator, attacker, _pauseService);
             instance.name = $"{instance.Type} {towerLevel}";
             
             return instance;
@@ -66,48 +61,32 @@ namespace TowerMergeTD.Game.Gameplay
 
         private TowerObject GetTowerPrefab(TowerType towerType)
         {
-            switch (towerType)
-            {
-                case TowerType.Gun:
-                    return _prefabReferences.GunTowerPrefab; 
-                
-                case TowerType.Rocket:
-                    return _prefabReferences.RocketTowerPrefab;
-                
-                case TowerType.Laser:
-                    return _prefabReferences.LaserTowerPrefab;
-                
-                default:
-                    throw new MissingReferenceException($"Missing tower type: {towerType}");
-            }
+            var prefab = _prefabReferences.TowersPrefab.FirstOrDefault(x => x.Type == towerType);
+
+            if(prefab == null)
+                throw new MissingReferenceException($"Missing tower type: {towerType}");
+            
+            return prefab;
         }
         
         private TowerGenerationConfig GetTowerGenerationConfig(TowerType towerType)
         {
-            switch (towerType)
-            {
-                case TowerType.Gun:
-                    return _generations.First(x => x.TowersType == TowerType.Gun); 
-                
-                case TowerType.Rocket:
-                    return _generations.First(x => x.TowersType == TowerType.Rocket);
-                
-                case TowerType.Laser:
-                    return _generations.First(x => x.TowersType == TowerType.Laser);
+            var towerGeneration = _generations.FirstOrDefault(x => x.TowersType == towerType);
+            
+            if(towerGeneration == null)
+                throw new MissingReferenceException($"Missing tower type on level: {towerType}");
 
-                default:
-                    throw new MissingReferenceException($"Missing tower type: {towerType}");
-            }
+            return towerGeneration;
         }
         
-        private Tower CreateTowerModel(TowerGenerationConfig generation, TowerObject towerObject, int towerLevel, Vector2 spawnPosition)
+        private Tower CreateTowerModel(TowerType towerType, TowerObject towerObject, int towerLevel, Vector2 spawnPosition)
         {
             Tower towerModel = new Tower()
             {
                 ID = towerObject.GetInstanceID(),
                 Level = towerLevel,
                 Position = _mapCoordinator.GetCellPosition(TilemapType.Base, spawnPosition),
-                Type = generation.TowersType
+                Type = towerType
             };
 
             return towerModel;
@@ -115,31 +94,32 @@ namespace TowerMergeTD.Game.Gameplay
         
         private ITowerAttacker GetTowerAttacker
             (
-            TowerGenerationConfig generation, 
+            TowerType towerType, 
             TowerCollisionHandler collisionHandler, 
             int towerLevel, 
             TowerObjectView towerObjectView
             )
         {
-            if (generation.TowersType == TowerType.Gun)
+            switch (towerType)
             {
-                return new TowerRegularAttacker(collisionHandler);
+                case TowerType.Gun:
+                    return new TowerRegularAttacker(collisionHandler);
+                
+                case TowerType.Rocket:
+                    if(towerLevel < 3)
+                        return new TowerRocketAttacker(collisionHandler, _prefabReferences.SmallRocket, towerObjectView.As<RocketTowerObjectView>());
+                    else
+                        return new TowerRocketAttacker(collisionHandler, _prefabReferences.BigRocket, towerObjectView.As<RocketTowerObjectView>());
+                
+                case TowerType.Laser:
+                    return new TowerLaserAttacker(collisionHandler);
+                
+                case TowerType.Sniper:
+                    return new TowerSniperAttacker(collisionHandler);
+                    
+                default:
+                    throw new MissingReferenceException($"Missing tower type: {towerType}");
             }
-            
-            if (generation.TowersType == TowerType.Rocket)
-            {
-                if(towerLevel < 3)
-                    return new TowerRocketAttacker(collisionHandler, _prefabReferences.SmallRocket, towerObjectView.As<RocketTowerObjectView>());
-                else
-                    return new TowerRocketAttacker(collisionHandler, _prefabReferences.BigRocket, towerObjectView.As<RocketTowerObjectView>());
-            }
-            
-            if (generation.TowersType == TowerType.Laser)
-            {
-                return new TowerLaserAttacker(collisionHandler);
-            }
-            
-            throw new MissingReferenceException($"Missing tower type: {generation.TowersType}");
         }
     }
 }

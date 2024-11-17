@@ -108,7 +108,6 @@ namespace TowerMergeTD.Gameplay.Root
                 mapCoordinator,
                 input,
                 _level.TowersParent,
-                _monoBehaviourWrapper,
                 pauseService);
             
             _container.Bind<TowerFactory>().FromInstance(towerFactory).AsSingle().NonLazy();

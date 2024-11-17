@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea784ead926049dbadc4cea6406f9152, type: 3}
   m_Name: PrefabReferencesConfig
   m_EditorClassIdentifier: 
-  _gunTowerPrefab: {fileID: 89100193100193579, guid: cb667a1f8824cfd4999e382f0400bbad, type: 3}
-  _rocketTowerPrefab: {fileID: 89100193100193579, guid: 0fed3f03ea92fb34ea09213695ad56f4, type: 3}
-  _laserTowerPrefab: {fileID: 89100193100193579, guid: 8e1d58dc38341f949a598d505b0f0ceb, type: 3}
+  _towersPrefab:
+  - {fileID: 89100193100193579, guid: cb667a1f8824cfd4999e382f0400bbad, type: 3}
+  - {fileID: 89100193100193579, guid: 8e1d58dc38341f949a598d505b0f0ceb, type: 3}
+  - {fileID: 89100193100193579, guid: 0fed3f03ea92fb34ea09213695ad56f4, type: 3}
+  - {fileID: 89100193100193579, guid: 1858a37b23493b64baac7790f0f87ffe, type: 3}
   _smallRocket: {fileID: 5716763079115186679, guid: 75d3463c6c63a2b4caaff2f288a54f1b, type: 3}
   _bigRocket: {fileID: 4272366120053060530, guid: 172698dad582db4428aa4908e194651d, type: 3}
   enemyPrefab: {fileID: 5552914785644839461, guid: 3ca5299434c5e3d459eac60ef92fc873, type: 3}

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f1c834ff5e9b48340a92376b364b576c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11108647553a043e4a217a441ee177ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &3418328389903863697
+--- !u!1 &1976947226014970240
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,37 +92,101 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2618039904012076112}
-  - component: {fileID: 6598328974644380442}
+  - component: {fileID: 5108185669450245768}
   m_Layer: 0
-  m_Name: FireSprite
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2618039904012076112
+--- !u!4 &5108185669450245768
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3418328389903863697}
+  m_GameObject: {fileID: 1976947226014970240}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.84400004, z: 0}
-  m_LocalScale: {x: 0.8000001, y: 0.8000001, z: 0.8000001}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8198597432261925563}
+  m_Father: {fileID: 2240680388804880505}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3589910816673186721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2240680388804880505}
+  m_Layer: 0
+  m_Name: LaserStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2240680388804880505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3589910816673186721}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0134, y: 0.4523, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5108185669450245768}
   m_Father: {fileID: 5588564685980506097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6598328974644380442
+--- !u!1 &3846712325325418407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8198597432261925563}
+  - component: {fileID: 1224989654112862793}
+  m_Layer: 0
+  m_Name: laserSpriteRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8198597432261925563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846712325325418407}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -0.039, z: 0}
+  m_LocalScale: {x: 0.010431905, y: 0.43, z: 0.9959692}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5108185669450245768}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1224989654112862793
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3418328389903863697}
+  m_GameObject: {fileID: 3846712325325418407}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -156,13 +220,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 518412eaed589ff46bd8714ba6cc5d67, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 5fcdf63060e3af1428d6dcac99fa0cd5, type: 3}
+  m_Color: {r: 1, g: 0, b: 0.046545982, a: 0.7882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -261,9 +325,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8568699819210901166}
-  - component: {fileID: 3873265252221476316}
+  - component: {fileID: 6018576804445192725}
   m_Layer: 0
-  m_Name: GunTowerView
+  m_Name: SniperTowerView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +350,7 @@ Transform:
   - {fileID: 3704961512555267238}
   m_Father: {fileID: 256159661839411716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3873265252221476316
+--- !u!114 &6018576804445192725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,12 +359,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6202640362856604180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5375070a42ad4ce0b18a72a716a11754, type: 3}
+  m_Script: {fileID: 11500000, guid: f379b8cc85ace454e9b9e7b0322911db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _towerSpriteRenderer: {fileID: 5272387960234728177}
   _objectToRotate: {fileID: 8490296489678466895}
-  _fireSpriteRenderer: {fileID: 6598328974644380442}
+  _towerTransform: {fileID: 256159661839411716}
+  _laserObject: {fileID: 1976947226014970240}
 --- !u!1 &8450082386612984398
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +522,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2671962288826691423}
-  - {fileID: 2618039904012076112}
+  - {fileID: 2240680388804880505}
   m_Father: {fileID: 8568699819210901166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8961539290486974469
@@ -472,7 +537,7 @@ GameObject:
   - component: {fileID: 2803205547268568994}
   - component: {fileID: 89100193100193579}
   m_Layer: 0
-  m_Name: GunTower
+  m_Name: SniperTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc3415be29efd74aa1b85be46b91f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _generation: {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
+  _generation: {fileID: 11400000, guid: 3dfaaa6836b703641806e01d675f4bcd, type: 2}
   _collisionHandler: {fileID: 4433547488564041750}
-  _view: {fileID: 3873265252221476316}
+  _view: {fileID: 6018576804445192725}
   DEBUG_STRING: 

@@ -27,6 +27,12 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private Button _laserTowerButton;
         [SerializeField] private Image _laserTowerImage;
         [SerializeField] private Sprite _laserTowerSprite;
+        [Space(5)]
+        
+        [Header("Sniper tower")]
+        [SerializeField] private Button _sniperTowerButton;
+        [SerializeField] private Image _sniperTowerImage;
+        [SerializeField] private Sprite _sniperTowerSprite;
         
         private Camera _mainCamera;
         private Canvas _parentCanvas;
@@ -56,6 +62,7 @@ namespace TowerMergeTD.Game.UI
             _gunTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Gun));
             _rocketTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Rocket));
             _laserTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Laser));
+            _sniperTowerButton.onClick.AddListener(() => OnCreateTowerButtonClicked?.Invoke(TowerType.Sniper));
         }
 
         public void InitButtons()
@@ -64,21 +71,24 @@ namespace TowerMergeTD.Game.UI
             {
                 [TowerType.Gun] = _gunTowerButton,
                 [TowerType.Rocket] = _rocketTowerButton,
-                [TowerType.Laser] = _laserTowerButton
+                [TowerType.Laser] = _laserTowerButton,
+                [TowerType.Sniper] = _sniperTowerButton,
             };
             
             _towerTypeImageMap = new Dictionary<TowerType, Image>()
             {
                 [TowerType.Gun] = _gunTowerImage,
                 [TowerType.Rocket] = _rocketTowerImage,
-                [TowerType.Laser] = _laserTowerImage
+                [TowerType.Laser] = _laserTowerImage,
+                [TowerType.Sniper] = _sniperTowerImage,
             };
             
             _towerTypeSpriteMap = new Dictionary<TowerType, Sprite>()
             {
                 [TowerType.Gun] = _gunTowerSprite,
                 [TowerType.Rocket] = _rocketTowerSprite,
-                [TowerType.Laser] = _laserTowerSprite
+                [TowerType.Laser] = _laserTowerSprite,
+                [TowerType.Sniper] = _sniperTowerSprite,
             };
         }
         
@@ -157,6 +167,7 @@ namespace TowerMergeTD.Game.UI
             _gunTowerButton.onClick.RemoveAllListeners();
             _rocketTowerButton.onClick.RemoveAllListeners();
             _laserTowerButton.onClick.RemoveAllListeners();
+            _sniperTowerButton.onClick.RemoveAllListeners();
         }
     }
 }

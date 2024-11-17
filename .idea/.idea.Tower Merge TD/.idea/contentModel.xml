@@ -1574,6 +1574,7 @@
                     <e p="TowerLaserAttacker.cs" t="Include" />
                     <e p="TowerRegularAttacker.cs" t="Include" />
                     <e p="TowerRocketAttacker.cs" t="Include" />
+                    <e p="TowerSniperAttacker.cs" t="Include" />
                   </e>
                   <e p="MergeHandler.cs" t="Include" />
                   <e p="TowerCollisionHandler.cs" t="Include" />
@@ -1583,6 +1584,7 @@
                     <e p="GunTowerObjectView.cs" t="Include" />
                     <e p="LaserTowerObjectView.cs" t="Include" />
                     <e p="RocketTowerObjectView.cs" t="Include" />
+                    <e p="SniperTowerObjectView.cs" t="Include" />
                     <e p="TowerObjectView.cs" t="Include" />
                   </e>
                 </e>

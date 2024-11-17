@@ -6,5 +6,6 @@
         Gun = 1,
         Rocket = 2,
         Laser = 3,
+        Sniper = 4,
     }
 }
