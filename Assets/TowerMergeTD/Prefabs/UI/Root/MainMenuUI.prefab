@@ -6404,7 +6404,7 @@ GameObject:
   - component: {fileID: 4215085970614896750}
   - component: {fileID: 3811896626443091147}
   m_Layer: 5
-  m_Name: InfoText
+  m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10232,7 +10232,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -11196,7 +11196,7 @@ GameObject:
   - component: {fileID: 5878123160197702527}
   - component: {fileID: 3569271622886624234}
   m_Layer: 5
-  m_Name: Text_Settings
+  m_Name: settingsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11610,7 +11610,7 @@ GameObject:
   - component: {fileID: 8609781770456162593}
   - component: {fileID: 3283328900182016002}
   m_Layer: 5
-  m_Name: Icon_Settings
+  m_Name: settingsIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12739,7 +12739,7 @@ GameObject:
   - component: {fileID: 6611676763120609378}
   - component: {fileID: 3856440598333871770}
   m_Layer: 5
-  m_Name: Icon_Shop
+  m_Name: shopIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14167,6 +14167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelNumberText: {fileID: 1725626195281335633}
+  _descriptionText: {fileID: 3811896626443091147}
   _closeButtons:
   - {fileID: 6483619705773067559}
   - {fileID: 8178560501675950127}
@@ -15476,6 +15477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _closeButton: {fileID: 7900279498660804515}
+  _settingsText: {fileID: 8435566091720133301}
+  _soundText: {fileID: 4655308612287439260}
+  _musicText: {fileID: 7777051688827383975}
 --- !u!1 &6194862800999682806
 GameObject:
   m_ObjectHideFlags: 0
@@ -19296,7 +19300,7 @@ GameObject:
   - component: {fileID: 7735580023669541625}
   - component: {fileID: 6150975154467777137}
   m_Layer: 5
-  m_Name: Text_shop
+  m_Name: shopText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20164,6 +20168,9 @@ MonoBehaviour:
   _playButton: {fileID: 8136977513618520510}
   _shopButton: {fileID: 2134844795158409745}
   _settingsButton: {fileID: 1422928650089398584}
+  _gameTitleText: {fileID: 5178759859907250696}
+  _shopText: {fileID: 6150975154467777137}
+  _settingsText: {fileID: 3569271622886624234}
 --- !u!1 &8004355685750630859
 GameObject:
   m_ObjectHideFlags: 0
@@ -21645,6 +21652,7 @@ MonoBehaviour:
   _towerShopButton: {fileID: 1747504531672814365}
   _coinShopButton: {fileID: 3306986560191319332}
   _gemShopButton: {fileID: 3066392668081844325}
+  _shopText: {fileID: 9036567760904226192}
   _towerText: {fileID: 5901291204753796709}
   _coinText: {fileID: 1840993692937591835}
   _gemText: {fileID: 3081544797701626225}

@@ -36,6 +36,7 @@ namespace TowerMergeTD.Gameplay.Root
         private int _currentLevelIndex;
         private ProjectConfig _projectConfig;
         private LevelConfig _currentLevelConfig;
+        private ILocalizationAsset _localizationAsset;
 
         public void Bind(ReactiveProperty<SceneEnterParams> exitSceneSignalBus, DiContainer container, int currentLevelIndex)
         {
@@ -45,6 +46,7 @@ namespace TowerMergeTD.Gameplay.Root
             
             _projectConfig = _container.Resolve<ProjectConfig>();
             _currentLevelConfig = _projectConfig.Levels[_currentLevelIndex].LevelConfig;
+            _localizationAsset = _container.Resolve<ILocalizationAsset>();
 
             if (_currentLevelConfig.IsTutorial)
                 BindTutorial();
@@ -95,12 +97,12 @@ namespace TowerMergeTD.Gameplay.Root
 
             void bindPausePopup()
             {
-                new PausePopupViewAdapter(_pausePopupView, _currentLevelIndex, _pauseButton, _exitSceneSignalBus, pauseService);
+                new PausePopupViewAdapter(_pausePopupView, _currentLevelIndex, _pauseButton, _exitSceneSignalBus, pauseService, _localizationAsset);
             }
 
             void bindLoseGamePopup()
             {
-                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus);
+                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, _localizationAsset);
                 gameStateService.Register(losePopupViewAdapter);
             }
 
@@ -119,7 +121,8 @@ namespace TowerMergeTD.Gameplay.Root
                     _currentLevelConfig,
                     scoreService,
                     rewardCalculate,
-                    gameTimerService
+                    gameTimerService,
+                    _localizationAsset
                     );
                 
                 gameStateService.Register(levelCompletePopupAdapter);

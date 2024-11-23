@@ -7,7 +7,8 @@ namespace TowerMergeTD.Game.UI
 {
     public class LevelLockPopupView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _levelNumberText; 
+        [SerializeField] private TextMeshProUGUI _levelNumberText;
+        [SerializeField] private TextMeshProUGUI _descriptionText;
         [SerializeField] private Button[] _closeButtons;
 
         public event Action OnCloseButtonClicked;
@@ -22,6 +23,7 @@ namespace TowerMergeTD.Game.UI
         public void Hide() => gameObject.SetActive(false);
 
         public void SetLevelNumberText(string text) => _levelNumberText.text = text;
+        public void SetDescriptionText(string text) => _descriptionText.text = text;
         
         private void OnDisable()
         {

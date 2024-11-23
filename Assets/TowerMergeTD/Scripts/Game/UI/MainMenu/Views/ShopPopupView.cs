@@ -11,6 +11,7 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private Button _towerShopButton;
         [SerializeField] private Button _coinShopButton;
         [SerializeField] private Button _gemShopButton;
+        [SerializeField] private TextMeshProUGUI _shopText;
         [SerializeField] private TextMeshProUGUI _towerText;
         [SerializeField] private TextMeshProUGUI _coinText;
         [SerializeField] private TextMeshProUGUI _gemText;
@@ -47,6 +48,11 @@ namespace TowerMergeTD.Game.UI
         public void Show() => gameObject.SetActive(true);
         public void Hide() => gameObject.SetActive(false);
 
+        public void SetShopText(string text) => _shopText.text = text;
+        public void SetTowerText(string text) => _towerText.text = text;
+        public void SetCoinText(string text) => _coinText.text = text;
+        public void SetGemText(string text) => _gemText.text = text;
+        
         public void SetActiveTowerView(bool activeState)
         {
             _towerButtonImage.sprite = activeState ? _enableButtonSprite : _disableButtonSprite;

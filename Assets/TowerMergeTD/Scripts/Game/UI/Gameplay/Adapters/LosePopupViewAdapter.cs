@@ -1,5 +1,6 @@
 ﻿using R3;
 using TowerMergeTD.Game.Gameplay;
+using TowerMergeTD.Game.State;
 using TowerMergeTD.Gameplay.Root;
 using TowerMergeTD.GameRoot;
 using TowerMergeTD.MainMenu.Root;
@@ -15,12 +16,16 @@ namespace TowerMergeTD.Game.UI
         public LosePopupViewAdapter(
             LosePopupView losePopupView, 
             int currentLevelIndex, 
-            ReactiveProperty<SceneEnterParams> exitSceneSignalBus)
+            ReactiveProperty<SceneEnterParams> exitSceneSignalBus,
+            ILocalizationAsset localizationAsset)
         {
             _losePopupView = losePopupView;
             _currentLevelIndex = currentLevelIndex;
             _exitSceneSignalBus = exitSceneSignalBus;
 
+            _losePopupView.SetLoseText(localizationAsset.GetTranslation(LocalizationKeys.LOSE_KEY));
+            _losePopupView.SetCoinText(localizationAsset.GetTranslation(LocalizationKeys.COIN_KEY));
+            
             _losePopupView.OnHomeButtonClicked += HandleOnHomeButtonClicked;
             _losePopupView.OnRestartButtonClicked += HandleOnRestartButtonClicked;
         }

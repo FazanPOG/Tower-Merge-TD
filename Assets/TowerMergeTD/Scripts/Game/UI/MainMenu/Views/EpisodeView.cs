@@ -7,9 +7,6 @@ namespace TowerMergeTD.Game.UI
     {
         [SerializeField] private TextMeshProUGUI _episodeText;
 
-        public void SetEpisodeNumberText(int number)
-        {
-            _episodeText.text = $"Эпизод {number}";
-        }
+        public void SetEpisodeNumberText(string text) => _episodeText.text = text;
     }
 }

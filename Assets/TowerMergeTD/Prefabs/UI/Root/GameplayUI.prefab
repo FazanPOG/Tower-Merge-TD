@@ -1250,6 +1250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _homeButton: {fileID: 361332845347146819}
   _restartButton: {fileID: 5737165720874670233}
+  _loseText: {fileID: 757638994957984185}
+  _coinText: {fileID: 1146654788959328669}
 --- !u!1 &1415662348190863727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1536,10 @@ MonoBehaviour:
   _continueButton: {fileID: 7942364544590761417}
   _restartButton: {fileID: 4858911410807065979}
   _exitButton: {fileID: 9107769253705732513}
+  _pauseText: {fileID: 5669392905191693274}
+  _continueText: {fileID: 3156761979123119235}
+  _restartText: {fileID: 5951258701481351446}
+  _exitText: {fileID: 5763667699389662366}
 --- !u!1 &1833265260656090790
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,7 +4177,7 @@ GameObject:
   - component: {fileID: 3994547814397620440}
   - component: {fileID: 5351464698224215642}
   m_Layer: 5
-  m_Name: GoldGroup
+  m_Name: CoinGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5424,7 +5430,7 @@ GameObject:
   - component: {fileID: 3098611612690733003}
   - component: {fileID: 3567368598396528220}
   m_Layer: 5
-  m_Name: GoldText
+  m_Name: CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5560,7 +5566,7 @@ GameObject:
   - component: {fileID: 1918081695216033268}
   - component: {fileID: 5675857397498624751}
   m_Layer: 5
-  m_Name: Gold
+  m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6499,6 +6505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6ad5e610074164a2f3a5eb5049cb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _completeText: {fileID: 8474287563608139440}
+  _scoreText: {fileID: 7016522090940284704}
+  _timeText: {fileID: 8116805000665957318}
+  _coinText: {fileID: 3567368598396528220}
+  _gemsText: {fileID: 6919500741534098660}
   _scoreValueText: {fileID: 3207979211770923829}
   _timerValueText: {fileID: 9200147785409229708}
   _goldValueText: {fileID: 2286254494864190209}
@@ -6522,7 +6533,7 @@ GameObject:
   - component: {fileID: 6566640170736477763}
   - component: {fileID: 7016522090940284704}
   m_Layer: 5
-  m_Name: Text_Score
+  m_Name: scoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6885,7 +6896,7 @@ GameObject:
   - component: {fileID: 4261895648113556403}
   - component: {fileID: 2286254494864190209}
   m_Layer: 5
-  m_Name: GoldValueText
+  m_Name: CoinValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7967,7 +7978,7 @@ GameObject:
   - component: {fileID: 1146654788959328669}
   - component: {fileID: 3391551167231206874}
   m_Layer: 5
-  m_Name: Text_Gold
+  m_Name: coinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8297,7 +8308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 00:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5094b715585444e90b7306721788dae5, type: 2}
   m_sharedMaterial: {fileID: 2393364598115949451, guid: 5094b715585444e90b7306721788dae5, type: 2}

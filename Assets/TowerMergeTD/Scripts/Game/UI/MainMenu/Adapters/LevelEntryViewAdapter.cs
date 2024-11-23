@@ -6,37 +6,40 @@ namespace TowerMergeTD.Game.UI
 {
     public class LevelEntryViewAdapter
     {
-        private readonly int _levelNumber;
+        private readonly int _levelIndex;
         private readonly bool _isDevelopmentSettings;
         private readonly LevelEntryView _levelEntryView;
         private readonly LevelLockPopupView _levelLockPopupView;
         private readonly LevelSaveDataProxy _levelSaveDataProxy;
         private readonly LevelConfig _levelConfig;
         private readonly Action<int> _goGameplayCallback;
+        private readonly ILocalizationAsset _localizationAsset;
 
         public LevelEntryViewAdapter(
-            int levelNumber,
+            int levelIndex,
             bool isDevelopmentSettings, 
             LevelEntryView levelEntryView,
             LevelLockPopupView levelLockPopupView,
             LevelSaveDataProxy levelSaveDataProxy, 
             LevelConfig levelConfig, 
-            Action<int> goGameplayCallback)
+            Action<int> goGameplayCallback,
+            ILocalizationAsset localizationAsset)
         {
-            _levelNumber = levelNumber;
+            _levelIndex = levelIndex;
             _isDevelopmentSettings = isDevelopmentSettings;
             _levelEntryView = levelEntryView;
             _levelLockPopupView = levelLockPopupView;
             _levelSaveDataProxy = levelSaveDataProxy;
             _levelConfig = levelConfig;
             _goGameplayCallback = goGameplayCallback;
+            _localizationAsset = localizationAsset;
 
             Init();
         }
 
         private void Init()
         {
-            _levelEntryView.SetLevelText($"{_levelNumber}");
+            _levelEntryView.SetLevelText($"{_levelIndex + 1}");
 
             bool isOpen;
             if (_isDevelopmentSettings)
@@ -66,7 +69,8 @@ namespace TowerMergeTD.Game.UI
             _levelEntryView.OnButtonClicked += () =>
             {
                 _levelLockPopupView.Show();
-                _levelLockPopupView.SetLevelNumberText($"Level: {_levelSaveDataProxy.ID + 1}");
+                _levelLockPopupView.SetLevelNumberText($"{_localizationAsset.GetTranslation(LocalizationKeys.LEVEL_KEY)}: {_levelSaveDataProxy.ID + 1}");
+                _levelLockPopupView.SetDescriptionText(_localizationAsset.GetTranslation(LocalizationKeys.LEVEL_LOCK_DESCRIPTION_KEY));
             };
         }
 
@@ -76,7 +80,7 @@ namespace TowerMergeTD.Game.UI
             _levelEntryView.SetActiveLockStage(false);
             _levelEntryView.SetActiveCompleteStage(false);
             
-            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelSaveDataProxy.ID);
+            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelIndex);
         }
 
         private void CompleteStageView()
@@ -85,7 +89,7 @@ namespace TowerMergeTD.Game.UI
             _levelEntryView.SetActiveDefaultStage(false);
             _levelEntryView.SetActiveLockStage(false);
             
-            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelSaveDataProxy.ID);
+            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelIndex);
             
             if(_levelSaveDataProxy.Score < _levelConfig.ScoreForOneStar)
                 _levelEntryView.SetStars(0);

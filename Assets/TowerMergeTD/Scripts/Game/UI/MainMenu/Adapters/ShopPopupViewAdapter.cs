@@ -1,4 +1,6 @@
-﻿namespace TowerMergeTD.Game.UI
+﻿using TowerMergeTD.Game.State;
+
+namespace TowerMergeTD.Game.UI
 {
     public class ShopPopupViewAdapter
     {
@@ -11,13 +13,19 @@
             ShopPopupView shopPopupView, 
             ShopTowersView shopTowersView,
             ShopCoinView shopCoinView,
-            ShopGemView shopGemView)
+            ShopGemView shopGemView,
+            ILocalizationAsset localizationAsset)
         {
             _shopPopupView = shopPopupView;
             _shopTowersView = shopTowersView;
             _shopCoinView = shopCoinView;
             _shopGemView = shopGemView;
 
+            _shopPopupView.SetShopText(localizationAsset.GetTranslation(LocalizationKeys.SHOP_KEY));
+            _shopPopupView.SetTowerText(localizationAsset.GetTranslation(LocalizationKeys.TOWER_KEY));
+            _shopPopupView.SetCoinText(localizationAsset.GetTranslation(LocalizationKeys.COIN_KEY));
+            _shopPopupView.SetGemText(localizationAsset.GetTranslation(LocalizationKeys.GEM_KEY));
+            
             Subscribe();
             ShowTowersShop();
         }

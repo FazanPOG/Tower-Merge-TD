@@ -1631,6 +1631,11 @@
                   <e p="LevelSaveData.cs" t="Include" />
                   <e p="LevelSaveDataProxy.cs" t="Include" />
                 </e>
+                <e p="Localization" t="Include">
+                  <e p="EnglishLocalizationAsset.cs" t="Include" />
+                  <e p="ILocalizationAsset.cs" t="Include" />
+                  <e p="RussianLocalizationAsset.cs" t="Include" />
+                </e>
                 <e p="Map" t="Include">
                   <e p="MapCoordinator.cs" t="Include" />
                   <e p="TileMapType.cs" t="Include" />
@@ -1644,8 +1649,15 @@
                   <e p="PlayerPrefsCurrencyProvider.cs" t="Include" />
                 </e>
                 <e p="Providers" t="Include">
-                  <e p="IGameStateProvider.cs" t="Include" />
-                  <e p="PlayerPrefsGameStateProvider.cs" t="Include" />
+                  <e p="GameState" t="Include">
+                    <e p="IGameStateProvider.cs" t="Include" />
+                    <e p="PlayerPrefsGameStateProvider.cs" t="Include" />
+                  </e>
+                  <e p="Localization" t="Include">
+                    <e p="GamePushLocalizationProvider.cs" t="Include" />
+                    <e p="ILocalizationProvider.cs" t="Include" />
+                    <e p="LocalizationKeys.cs" t="Include" />
+                  </e>
                 </e>
                 <e p="Root" t="Include">
                   <e p="GameState.cs" t="Include" />

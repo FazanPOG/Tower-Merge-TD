@@ -1,4 +1,6 @@
-﻿namespace TowerMergeTD.Game.UI
+﻿using TowerMergeTD.Game.State;
+
+namespace TowerMergeTD.Game.UI
 {
     public class MainMenuPanelsViewAdapter
     {
@@ -10,12 +12,17 @@
             MainMenuPanelView mainMenuPanelView, 
             LevelsPanelView levelsPanelView,
             SettingsPopupView settingsPopupView,
-            ShopPopupView shopPopupView)
+            ShopPopupView shopPopupView,
+            ILocalizationAsset localizationAsset)
         {
             _levelsPanelView = levelsPanelView;
             _settingsPopupView = settingsPopupView;
             _shopPopupView = shopPopupView;
 
+            mainMenuPanelView.SetGameTitleText(localizationAsset.GetTranslation(LocalizationKeys.TOWER_MERGE_TD_KEY));
+            mainMenuPanelView.SetShopText(localizationAsset.GetTranslation(LocalizationKeys.SHOP_KEY));
+            mainMenuPanelView.SetSettingsText(localizationAsset.GetTranslation(LocalizationKeys.SETTINGS_KEY));
+            
             mainMenuPanelView.OnPlayButtonClicked += HandlePlayButtonClicked;
             mainMenuPanelView.OnSettingsButtonClicked += HandleSettingsButtonClicked;
             mainMenuPanelView.OnShopButtonClicked += HandleShopButtonClicked;

@@ -22,6 +22,7 @@ namespace TowerMergeTD.Game.Gameplay
         private IWaveSpawnerService[] _waveSpawnServices;
         private TowersListView _towersListView;
         private TutorialView _tutorialView;
+        private ILocalizationAsset _localizationAsset;
 
         public Queue<ITutorialAction> TutorialActions { get; } = new Queue<ITutorialAction>();
         public Queue<string> TutorialTexts { get; } = new Queue<string>();
@@ -39,6 +40,7 @@ namespace TowerMergeTD.Game.Gameplay
             _waveSpawnServices = diContainer.Resolve<IWaveSpawnerService[]>();
             _towersListView = diContainer.Resolve<TowersListView>();
             _tutorialView = diContainer.Resolve<TutorialView>();
+            _localizationAsset = diContainer.Resolve<ILocalizationAsset>();
             diContainer.Resolve<TowerSellView>().CanEnabled = false;
 
             _tutorialView.Init();
@@ -75,7 +77,8 @@ namespace TowerMergeTD.Game.Gameplay
             var towerPlaces = _mapCoordinator.GetAllTowerPlaceTileWorldPositions();
             var towerPlaceClickTutorialAction = new TowerPlaceClickTutorialAction(towerPlaces.First(), _input, _mapCoordinator, _towersListView);
             TutorialActions.Enqueue(towerPlaceClickTutorialAction);
-            TutorialTexts.Enqueue("Нажмите, чтобы поставить башню");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_1_KEY);
+            TutorialTexts.Enqueue(text);
             
             var tilePos = _mapCoordinator.GetFirstTowerPlaceTileWorldPosition();
             Vector2 offset = new Vector2(0.5f, 4.15f);
@@ -94,7 +97,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, TowerType.Gun);
             TutorialActions.Enqueue(clickAction);
-            TutorialTexts.Enqueue("Нажмите, чтобы выбрать и поставить башню. Для этого требуются ресурсы.");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_2_KEY);
+            TutorialTexts.Enqueue(text);
             var tilePos = _mapCoordinator.GetFirstTowerPlaceTileWorldPosition();
             Vector2 offset = new Vector2(1.15f, 3.65f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
@@ -120,7 +124,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,5f);
             TutorialActions.Enqueue(waitAction);
-            TutorialTexts.Enqueue("Следите за количеством волн");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_3_KEY);
+            TutorialTexts.Enqueue(text);
             Vector2 handPosition = new Vector2(-8.1f, 6.5f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(handPosition, CLICK_ANIMATION_INDEX));
         }
@@ -129,7 +134,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,5f);
             TutorialActions.Enqueue(waitAction);
-            TutorialTexts.Enqueue("Добывайте ресурсы, уничтожая врагов");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_4_KEY);
+            TutorialTexts.Enqueue(text);
             Vector2 handPosition = new Vector2(-8.1f, 7.3f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(handPosition, CLICK_ANIMATION_INDEX));
         }
@@ -138,7 +144,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,6f);
             TutorialActions.Enqueue(waitAction);
-            TutorialTexts.Enqueue("Не дайте противникам добраться до базы, чтобы сохранить здоровье.");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_5_KEY);
+            TutorialTexts.Enqueue(text);
             Vector2 handPosition = new Vector2(-8.1f, 8.1f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(handPosition, CLICK_ANIMATION_INDEX));
         }
@@ -148,7 +155,8 @@ namespace TowerMergeTD.Game.Gameplay
             var towerPlaces = _mapCoordinator.GetAllTowerPlaceTileWorldPositions();
             var towerPlaceClickTutorialAction = new TowerPlaceClickTutorialAction(towerPlaces[1], _input, _mapCoordinator, _towersListView);
             TutorialActions.Enqueue(towerPlaceClickTutorialAction);
-            TutorialTexts.Enqueue("Нажмите, чтобы поставить вторую башню");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_6_KEY);
+            TutorialTexts.Enqueue(text);
             
             var tilePos = _mapCoordinator.GetFirstTowerPlaceTileWorldPosition();
             Vector2 offset = new Vector2(1.5f, 4.15f);
@@ -159,7 +167,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, TowerType.Gun);
             TutorialActions.Enqueue(clickAction);
-            TutorialTexts.Enqueue("Нажмите, чтобы поставить вторую башню");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_7_KEY);
+            TutorialTexts.Enqueue(text);
             var tilePos = _mapCoordinator.GetFirstTowerPlaceTileWorldPosition();
             Vector2 offset = new Vector2(2.25f, 3.65f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, CLICK_ANIMATION_INDEX));
@@ -169,7 +178,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var mergeAction = new MergeTutorialAction();
             TutorialActions.Enqueue(mergeAction);
-            TutorialTexts.Enqueue("Объедините башни");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_8_KEY);
+            TutorialTexts.Enqueue(text);
             var tilePos = _mapCoordinator.GetFirstTowerPlaceTileWorldPosition();
             Vector2 offset = new Vector2(1.5f, 4.15f);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(tilePos + offset, DRAG_ANIMATION_INDEX));
@@ -179,7 +189,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input,5f);
             TutorialActions.Enqueue(waitAction);
-            TutorialTexts.Enqueue("Объединяйте одиннаковые башни, чтобы получить их усиленную версию!");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_9_KEY);
+            TutorialTexts.Enqueue(text);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
         
@@ -203,7 +214,8 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var waitAction = new WaitingTutorialAction(_monoBehaviourWrapper, _input, 5f);
             TutorialActions.Enqueue(waitAction);
-            TutorialTexts.Enqueue("Обучение завершено, удачной игры!");
+            string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_10_KEY);
+            TutorialTexts.Enqueue(text);
             TutorialHandDatas.Enqueue(new TutorialHandImageData(Vector2.zero, NONE_ANIMATION_INDEX));
         }
     }

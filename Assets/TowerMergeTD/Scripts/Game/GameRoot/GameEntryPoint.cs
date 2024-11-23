@@ -15,10 +15,11 @@ namespace TowerMergeTD.GameRoot
     {
         private static GameEntryPoint _instance;
 
+        private readonly DiContainer _rootContainer = new DiContainer();
+        
         private MonoBehaviourWrapper _monoBehaviourWrapper;
         private UIRootView _uiRootView;
         private ProjectConfig _projectConfig;
-        private readonly DiContainer _rootContainer = new DiContainer();
         private DiContainer _cashedSceneContainer;
         private bool _isDataLoaded = false;
         
@@ -86,23 +87,45 @@ namespace TowerMergeTD.GameRoot
 
         private IEnumerator LoadPlayerData()
         {
-            var currencyProvider = _rootContainer.Resolve<ICurrencyProvider>();
-            
-            bool isCurrencyLoaded = false;
-            currencyProvider.LoadCurrency().Subscribe(_ => isCurrencyLoaded = true);
-            yield return new WaitUntil(() => isCurrencyLoaded);
-
-            _rootContainer.Bind<PlayerCoinsProxy>().FromInstance(currencyProvider.Coins).AsSingle().NonLazy();
-            _rootContainer.Bind<PlayerGemsProxy>().FromInstance(currencyProvider.Gems).AsSingle().NonLazy();
-
-            Debug.Log($"Data loaded, Gold: {currencyProvider.Coins.Coins.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
-            
-            //Load game state
-            bool isGameStateLoaded = false;
-            _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
-            yield return new WaitUntil(() => isGameStateLoaded);
+            yield return loadPlayerCurrency();
+            yield return loadGameState();
+            yield return loadLocalization();
             
             _isDataLoaded = true;
+
+            IEnumerator loadPlayerCurrency()
+            {
+                //Load player currency
+                var currencyProvider = _rootContainer.Resolve<ICurrencyProvider>();
+            
+                bool isCurrencyLoaded = false;
+                currencyProvider.LoadCurrency().Subscribe(_ => isCurrencyLoaded = true);
+                yield return new WaitUntil(() => isCurrencyLoaded);
+
+                _rootContainer.Bind<PlayerCoinsProxy>().FromInstance(currencyProvider.Coins).AsSingle().NonLazy();
+                _rootContainer.Bind<PlayerGemsProxy>().FromInstance(currencyProvider.Gems).AsSingle().NonLazy();
+
+                Debug.Log($"Player currency, Gold: {currencyProvider.Coins.Coins.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
+            }
+            IEnumerator loadGameState()
+            {
+                bool isGameStateLoaded = false;
+                _rootContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+                yield return new WaitUntil(() => isGameStateLoaded);
+            }
+            IEnumerator loadLocalization()
+            {
+                ILocalizationProvider provider = new GamePushLocalizationProvider();
+                
+                bool isLocalizationLoaded = false;
+                provider.LoadLocalizationAsset().Subscribe(asset =>
+                {
+                    _rootContainer.Bind<ILocalizationAsset>().FromInstance(asset).AsSingle().NonLazy();
+                    isLocalizationLoaded = true;
+                    Debug.Log($"Asset: {asset}");
+                });
+                yield return new WaitUntil(() => isLocalizationLoaded);
+            }
         }
         
         private IEnumerator LoadAndStartMainMenu(MainMenuEnterParams mainMenuEnterParams = null)
@@ -141,6 +164,8 @@ namespace TowerMergeTD.GameRoot
 
         private IEnumerator LoadAndStartGameplay(GameplayEnterParams gameplayEnterParams)
         {
+            yield return new WaitUntil(() => _isDataLoaded);
+            
             _cashedSceneContainer?.UnbindAll();
             
             _uiRootView.ShowLoadingScreen();

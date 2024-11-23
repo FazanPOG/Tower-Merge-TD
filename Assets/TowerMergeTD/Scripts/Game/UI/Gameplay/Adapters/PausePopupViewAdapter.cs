@@ -1,5 +1,6 @@
 ﻿using R3;
 using TowerMergeTD.Game.Gameplay;
+using TowerMergeTD.Game.State;
 using TowerMergeTD.Gameplay.Root;
 using TowerMergeTD.GameRoot;
 using TowerMergeTD.MainMenu.Root;
@@ -21,7 +22,8 @@ namespace TowerMergeTD.Game.UI
             int currentLevelIndex, 
             Button pauseButton, 
             ReactiveProperty<SceneEnterParams> exitSceneSignalBus, 
-            IPauseService pauseService
+            IPauseService pauseService,
+            ILocalizationAsset localizationAsset
             )
         {
             _view = view;
@@ -30,6 +32,11 @@ namespace TowerMergeTD.Game.UI
             _exitSceneSignalBus = exitSceneSignalBus;
             _pauseService = pauseService;
 
+            _view.SetPauseText(localizationAsset.GetTranslation(LocalizationKeys.PAUSE_KEY));
+            _view.SetContinueText(localizationAsset.GetTranslation(LocalizationKeys.CONTINUE_KEY));
+            _view.SetRestartText(localizationAsset.GetTranslation(LocalizationKeys.RESTART_KEY));
+            _view.SetExitText(localizationAsset.GetTranslation(LocalizationKeys.EXIT_KEY));
+            
             Subscribe();
         }
 

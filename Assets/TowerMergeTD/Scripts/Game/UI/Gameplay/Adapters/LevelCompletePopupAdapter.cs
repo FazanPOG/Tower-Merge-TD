@@ -27,7 +27,8 @@ namespace TowerMergeTD.Game.UI
             LevelConfig levelConfig,
             IScoreService scoreService,
             IRewardCalculatorService rewardCalculatorService,
-            IGameTimerService gameTimerService)
+            IGameTimerService gameTimerService,
+            ILocalizationAsset localizationAsset)
         {
             _view = view;
             _isLastLevel = isLastLevel;
@@ -38,6 +39,12 @@ namespace TowerMergeTD.Game.UI
             _rewardCalculatorService = rewardCalculatorService;
             _gameTimerService = gameTimerService;
 
+            _view.SetCompleteText(localizationAsset.GetTranslation(LocalizationKeys.COMPLETE_KEY));
+            _view.SetScoreText(localizationAsset.GetTranslation(LocalizationKeys.SCORE_KEY));
+            _view.SetTimeText(localizationAsset.GetTranslation(LocalizationKeys.TIME_KEY));
+            _view.SetCoinText(localizationAsset.GetTranslation(LocalizationKeys.COIN_KEY));
+            _view.SetGemsText(localizationAsset.GetTranslation(LocalizationKeys.GEM_KEY));
+            
             Subscribe();
         }
 

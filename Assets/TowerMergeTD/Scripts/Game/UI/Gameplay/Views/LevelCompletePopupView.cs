@@ -7,6 +7,12 @@ namespace TowerMergeTD.Game.UI
 {
     public class LevelCompletePopupView : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI _completeText;
+        [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TextMeshProUGUI _timeText;
+        [SerializeField] private TextMeshProUGUI _coinText;
+        [SerializeField] private TextMeshProUGUI _gemsText;
+        
         [SerializeField] private TextMeshProUGUI _scoreValueText;
         [SerializeField] private TextMeshProUGUI _timerValueText;
         [SerializeField] private TextMeshProUGUI _goldValueText;
@@ -32,6 +38,12 @@ namespace TowerMergeTD.Game.UI
         public void ShowNextLevelButton() => _nextLevelButton.gameObject.SetActive(true);
         public void HideNextLevelButton() => _nextLevelButton.gameObject.SetActive(false);
 
+        public void SetCompleteText(string text) => _completeText.text = text;
+        public void SetScoreText(string text) => _scoreText.text = text;
+        public void SetTimeText(string text) => _timeText.text = text;
+        public void SetCoinText(string text) => _coinText.text = text;
+        public void SetGemsText(string text) => _gemsText.text = text;
+        
         public void SetScoreValueText(string text) => _scoreValueText.text = text;
         public void SetTimerValueText(string text) => _timerValueText.text = text;
         public void SetGoldValueText(string text) => _goldValueText.text = text;

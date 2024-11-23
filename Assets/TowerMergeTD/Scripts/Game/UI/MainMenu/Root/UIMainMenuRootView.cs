@@ -36,11 +36,7 @@ namespace TowerMergeTD.Game.UI
         private IGameStateProvider _gameStateProvider;
         private PlayerCoinsProxy _playerCoinsProxy;
         private PlayerGemsProxy _playerGemsProxy;
-
-        private void HandleGoToGameplayButtonClicked(int levelNumber)
-        {
-            _exitSceneSignalBus?.OnNext(levelNumber);
-        }
+        private ILocalizationAsset _localizationAsset;
 
         public void Bind(ReactiveProperty<int> exitSceneSignalBus, DiContainer container)
         {
@@ -49,22 +45,25 @@ namespace TowerMergeTD.Game.UI
             _gameStateProvider = container.Resolve<IGameStateProvider>();
             _playerCoinsProxy = container.Resolve<PlayerCoinsProxy>();
             _playerGemsProxy = container.Resolve<PlayerGemsProxy>();
-
+            _localizationAsset = container.Resolve<ILocalizationAsset>();
+            
             _gameStateProvider.SaveGameState();
             
             BindAdapters();
         }
 
+        private void HandleGoToGameplayButtonClicked(int levelIndex) => _exitSceneSignalBus?.OnNext(levelIndex);
+
         private void BindAdapters()
         {
             BindLevelEntryViewAdapters();
 
-            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView);
+            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView, _localizationAsset);
             new LevelsPanelViewAdapter(_levelsPanelView);
-            new SettingsPopupViewAdapter(_settingsPopupView);
+            new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset);
             new LevelLockPopupViewAdapter(_levelLockPopupView);
             
-            var shopAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView);
+            var shopAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset);
             BindPlayerCurrencies(shopAdapter);
         }
 
@@ -76,7 +75,7 @@ namespace TowerMergeTD.Game.UI
             for (int i = 0; i < episodesCount; i++)
             {
                 var episodeView = Instantiate(_episodeViewPrefab, _allLevelsParent);
-                episodeView.SetEpisodeNumberText(i + 1);
+                episodeView.SetEpisodeNumberText($"{_localizationAsset.GetTranslation(LocalizationKeys.EPISODE_KEY)} {i + 1}");
                 
                 var currentLevelsContainer = Instantiate(_levelsContainerPrefab, _allLevelsParent);
 
@@ -93,13 +92,14 @@ namespace TowerMergeTD.Game.UI
                 
                     new LevelEntryViewAdapter
                     (
-                        createdLevelCounter + 1,
+                        createdLevelCounter,
                         _projectConfig.IsDevelopmentSettings, 
                         viewInstance, 
                         _levelLockPopupView, 
                         levelSaveDataProxy, 
                         levelConfig, 
-                        HandleGoToGameplayButtonClicked
+                        HandleGoToGameplayButtonClicked,
+                        _localizationAsset
                     );
 
                     createdLevelCounter++;

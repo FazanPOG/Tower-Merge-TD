@@ -27,11 +27,10 @@ namespace TowerMergeTD.MainMenu.Root
             
             if(TryGetComponent(out MainMenuDebug mainMenuDebug))
                 mainMenuDebug.Init(mainMenuContainer);
-            Debug.Log($"MAIN MENU ENTER PARAMS: {mainMenuEnterParams?.Result}");
 
-            exitSceneSignal.Skip(1).Subscribe(levelNumber =>
+            exitSceneSignal.Skip(1).Subscribe(levelIndex =>
             {
-                var gameplayEnterParams = new GameplayEnterParams(levelNumber);
+                var gameplayEnterParams = new GameplayEnterParams(levelIndex);
                 _mainMenuExitParams = new MainMenuExitParams(gameplayEnterParams);
             });
 
