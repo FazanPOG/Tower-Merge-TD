@@ -1,4 +1,5 @@
 using System.Collections;
+using GamePush;
 using R3;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI.Root;
@@ -87,15 +88,19 @@ namespace TowerMergeTD.GameRoot
 
         private IEnumerator LoadPlayerData()
         {
+            yield return waitAPILoad();
             yield return loadPlayerCurrency();
             yield return loadGameState();
             yield return loadLocalization();
             
             _isDataLoaded = true;
 
+            IEnumerator waitAPILoad()
+            {
+                yield return new WaitUntil(() => GP_Init.isReady);
+            }
             IEnumerator loadPlayerCurrency()
             {
-                //Load player currency
                 var currencyProvider = _rootContainer.Resolve<ICurrencyProvider>();
             
                 bool isCurrencyLoaded = false;
@@ -104,8 +109,6 @@ namespace TowerMergeTD.GameRoot
 
                 _rootContainer.Bind<PlayerCoinsProxy>().FromInstance(currencyProvider.Coins).AsSingle().NonLazy();
                 _rootContainer.Bind<PlayerGemsProxy>().FromInstance(currencyProvider.Gems).AsSingle().NonLazy();
-
-                Debug.Log($"Player currency, Gold: {currencyProvider.Coins.Coins.CurrentValue}, Gems: {currencyProvider.Gems.Gems.CurrentValue}");
             }
             IEnumerator loadGameState()
             {

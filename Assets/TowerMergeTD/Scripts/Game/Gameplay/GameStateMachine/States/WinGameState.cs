@@ -1,4 +1,5 @@
-﻿using TowerMergeTD.Game.State;
+﻿using GamePush;
+using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -29,6 +30,8 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void Enter()
         {
+            GP_Game.GameplayStop();
+            
             _pauseService.SetPause(true);
             _scoreService.CalculateScore();
             

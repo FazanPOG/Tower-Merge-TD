@@ -450,6 +450,93 @@
           </e>
         </e>
         <e p="Plugins" t="Include">
+          <e p="GamePush" t="Include">
+            <e p="Data" t="Include">
+              <e p="ConfigData.cs" t="Include" />
+              <e p="EditorSaves.json" t="Include" />
+              <e p="GamePush.Data.asmdef" t="Include" />
+              <e p="ModulesData" t="Include">
+                <e p="PlatformModuleData.cs" t="Include" />
+              </e>
+              <e p="PluginData.cs" t="Include" />
+              <e p="ProjectData.cs" t="Include" />
+              <e p="SavedDataSO.cs" t="Include" />
+              <e p="SavedProjectData.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="Emulator" t="Include">
+                <e p="GP_EmulatorEditor.cs" t="Include" />
+                <e p="GP_SettingsProvider.cs" t="Include" />
+                <e p="GP_SettingsWrap.cs" t="Include" />
+              </e>
+              <e p="GamePush.Editor.asmdef" t="Include" />
+              <e p="GP_SetUpWindow.cs" t="Include" />
+            </e>
+            <e p="InitScene" t="Include">
+              <e p="Init.cs" t="Include" />
+            </e>
+            <e p="JS" t="Include">
+              <e p="jsAnchor.txt" t="Include" />
+            </e>
+            <e p="Runtime" t="Include">
+              <e p="Emulator" t="Include">
+                <e p="GP_Activator.cs" t="Include" />
+                <e p="GP_PaymentsStub.cs" t="Include" />
+                <e p="GP_PlatformSettings.cs" t="Include" />
+                <e p="GP_Settings.cs" t="Include" />
+              </e>
+              <e p="GamePush.Runtime.asmdef" t="Include" />
+              <e p="Modules" t="Include">
+                <e p="Base" t="Include">
+                  <e p="GP_Module.cs" t="Include" />
+                  <e p="IGP_Module.cs" t="Include" />
+                  <e p="ModuleData.cs" t="Include" />
+                </e>
+                <e p="GP_Achievements.cs" t="Include" />
+                <e p="GP_Ads.cs" t="Include" />
+                <e p="GP_Analytics.cs" t="Include" />
+                <e p="GP_App.cs" t="Include" />
+                <e p="GP_AvatarGenerator.cs" t="Include" />
+                <e p="GP_Channels.cs" t="Include" />
+                <e p="GP_Custom.cs" t="Include" />
+                <e p="GP_Device.cs" t="Include" />
+                <e p="GP_Documents.cs" t="Include" />
+                <e p="GP_Events.cs" t="Include" />
+                <e p="GP_Experiments.cs" t="Include" />
+                <e p="GP_Files.cs" t="Include" />
+                <e p="GP_Fullscreen.cs" t="Include" />
+                <e p="GP_Game.cs" t="Include" />
+                <e p="GP_GamesCollections.cs" t="Include" />
+                <e p="GP_Images.cs" t="Include" />
+                <e p="GP_Init.cs" t="Include" />
+                <e p="GP_Language.cs" t="Include" />
+                <e p="GP_Leaderboard.cs" t="Include" />
+                <e p="GP_LeaderboardScoped.cs" t="Include" />
+                <e p="GP_Payments.cs" t="Include" />
+                <e p="GP_Platform.cs" t="Include" />
+                <e p="GP_Player.cs" t="Include" />
+                <e p="GP_Players.cs" t="Include" />
+                <e p="GP_Rewards.cs" t="Include" />
+                <e p="GP_Schedulers.cs" t="Include" />
+                <e p="GP_Segments.cs" t="Include" />
+                <e p="GP_Server.cs" t="Include" />
+                <e p="GP_Socials.cs" t="Include" />
+                <e p="GP_Storage.cs" t="Include" />
+                <e p="GP_System.cs" t="Include" />
+                <e p="GP_Triggers.cs" t="Include" />
+                <e p="GP_Uniques.cs" t="Include" />
+                <e p="GP_Variables.cs" t="Include" />
+              </e>
+              <e p="Utilities" t="Include">
+                <e p="GP_Console.cs" t="Include" />
+                <e p="GP_ConsoleController.cs" t="Include" />
+                <e p="GP_Data.cs" t="Include" />
+                <e p="GP_Initialization.cs" t="Include" />
+                <e p="GP_Logger.cs" t="Include" />
+                <e p="GP_Utility.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="PageSlider" t="Include">
             <e p="Demo" t="Include">
               <e p="PageSliderDemo.cs" t="Include" />
@@ -1641,15 +1728,14 @@
                   <e p="TileMapType.cs" t="Include" />
                 </e>
                 <e p="Player" t="Include">
-                  <e p="ICurrencyProvider.cs" t="Include" />
                   <e p="PlayerCoins.cs" t="Include" />
                   <e p="PlayerCoinsProxy.cs" t="Include" />
                   <e p="PlayerGems.cs" t="Include" />
                   <e p="PlayerGemsProxy.cs" t="Include" />
-                  <e p="PlayerPrefsCurrencyProvider.cs" t="Include" />
                 </e>
                 <e p="Providers" t="Include">
                   <e p="GameState" t="Include">
+                    <e p="GamePushGameStateProvider.cs" t="Include" />
                     <e p="IGameStateProvider.cs" t="Include" />
                     <e p="PlayerPrefsGameStateProvider.cs" t="Include" />
                   </e>
@@ -1657,6 +1743,11 @@
                     <e p="GamePushLocalizationProvider.cs" t="Include" />
                     <e p="ILocalizationProvider.cs" t="Include" />
                     <e p="LocalizationKeys.cs" t="Include" />
+                  </e>
+                  <e p="PlayerCurrency" t="Include">
+                    <e p="GamePushCurrencyProvider.cs" t="Include" />
+                    <e p="ICurrencyProvider.cs" t="Include" />
+                    <e p="PlayerPrefsCurrencyProvider.cs" t="Include" />
                   </e>
                 </e>
                 <e p="Root" t="Include">
@@ -1744,7 +1835,28 @@
             </e>
           </e>
         </e>
+        <e p="WebGLTemplates" t="Include">
+          <e p="GamePush" t="Include">
+            <e p="TemplateData" t="Include">
+              <e p="gp_bundle" t="Include">
+                <e p="6690.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
+                <e p="7896.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
+                <e p="8881.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
+                <e p="external-sdk.js.LICENSE.txt" t="Include" />
+                <e p="gamepush-module.js.LICENSE.txt" t="Include" />
+                <e p="gamepush.js.LICENSE.txt" t="Include" />
+                <e p="messenger.js.LICENSE.txt" t="Include" />
+                <e p="Utils" t="Include">
+                  <e p="centrifuge.protobuf.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
       </e>
+      <e p="GamePush.csproj" t="IncludeRecursive" />
+      <e p="GamePush.Data.csproj" t="IncludeRecursive" />
+      <e p="GamePush.Editor.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="PhotonChat.csproj" t="IncludeRecursive" />

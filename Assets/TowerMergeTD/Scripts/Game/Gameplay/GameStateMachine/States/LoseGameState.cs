@@ -1,4 +1,6 @@
-﻿namespace TowerMergeTD.Game.Gameplay
+﻿using GamePush;
+
+namespace TowerMergeTD.Game.Gameplay
 {
     public class LoseGameState : IGameState
     {
@@ -11,6 +13,8 @@
         
         public void Enter()
         {
+            GP_Game.GameplayStop();
+            
             _pauseService.SetPause(true);
         }
 

@@ -1,4 +1,6 @@
-﻿namespace TowerMergeTD.Game.Gameplay
+﻿using GamePush;
+
+namespace TowerMergeTD.Game.Gameplay
 {
     public class BootState : IGameState
     {
@@ -13,6 +15,8 @@
         
         public void Enter()
         {
+            GP_Game.GameplayStart();
+            
             if(_levelConfig.IsTutorial)
                 _gameStateMachine.EnterIn<TutorialState>();
             else

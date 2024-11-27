@@ -1,3 +1,4 @@
+using GamePush;
 using R3;
 using TowerMergeTD.Game.UI;
 using TowerMergeTD.Game.UI.Root;
@@ -17,6 +18,8 @@ namespace TowerMergeTD.MainMenu.Root
         public Observable<MainMenuExitParams> Run(DiContainer mainMenuContainer, MainMenuEnterParams mainMenuEnterParams)
         {
             mainMenuContainer.UnbindAll();
+            
+            GP_Game.GameReady();
             
             var uiRoot = mainMenuContainer.Resolve<UIRootView>();
             var uiMainMenuRoot = Instantiate(_uiMainMenuRootPrefab);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GamePush;
 using R3;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ namespace TowerMergeTD.Game.Gameplay
         
         public void SetPause(bool isPaused)
         {
+            if(isPaused)
+                GP_Game.Pause();
+            else
+                GP_Game.Resume();
+            
             _isPaused.Value = isPaused;
             
             Time.timeScale = isPaused ? 0f : 1f;
