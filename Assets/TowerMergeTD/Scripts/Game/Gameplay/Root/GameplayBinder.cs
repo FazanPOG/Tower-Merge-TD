@@ -174,8 +174,9 @@ namespace TowerMergeTD.Gameplay.Root
             void bindRewardCalculatorService()
             {
                 var gameStateProvider = _container.Resolve<IGameStateProvider>();
+                var waveSpawnServices = _container.Resolve<IWaveSpawnerService[]>();
                 
-                RewardCalculatorService service = new RewardCalculatorService(scoreService, _currentLevelIndex, _level.LevelConfig, gameStateProvider);
+                RewardCalculatorService service = new RewardCalculatorService(scoreService, _currentLevelIndex, _level.LevelConfig, gameStateProvider, waveSpawnServices);
                 _container.Bind<IRewardCalculatorService>().To<RewardCalculatorService>().FromInstance(service).AsSingle().NonLazy();
             }
         }

@@ -39,6 +39,11 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_8_KEY] = "Merge towers",
                 [LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_9_KEY] = "Combine identical towers to get a stronger version of them!",
                 [LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_10_KEY] = "The training is complete, have a good game!",
+                [LocalizationKeys.FREE_KEY] = "FREE",
+                [LocalizationKeys.GUN_KEY] = "Gun tower",
+                [LocalizationKeys.ROCKET_KEY] = "Rocket tower",
+                [LocalizationKeys.LASER_KEY] = "Laser tower",
+                [LocalizationKeys.SNIPER_KEY] = "Sniper tower",
             };
         }
         

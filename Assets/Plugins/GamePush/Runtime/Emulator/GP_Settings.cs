@@ -47,6 +47,7 @@ namespace GamePush
             {
                 return platformSettings.Language;
             }
+            
             Console.Log("PLATFORM LANGUAGE: ", "DEFAULT - ENGLISH");
             return Language.English;
         }

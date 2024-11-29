@@ -26,7 +26,7 @@ namespace GamePush
         [Header("System")]
         [SerializeField] public bool IsDev = true;
         [SerializeField] public bool IsAllowedOrigin = true;
-        [SerializeField] public List<PlatformSettings> Settings = new();
+        [SerializeField] public List<PlatformSettings> Settings = new List<PlatformSettings>();
 
         public PlatformSettings GetPlatformSettings()
         {

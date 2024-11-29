@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee1e085edab4841bcf9d9aff753bc2a, type: 3}
+  m_Name: Shop Item (100 coins for 5 gems)
+  m_EditorClassIdentifier: 
+  _itemPriceType: 2
+  _itemType: 1
+  _itemPrice: 5
+  _towerToOpen: 0
+  _currencyValue: 100
+  _itemIcon: {fileID: 21300000, guid: d24a42966072d4321a4ba18cf42f9dc7, type: 3}
+  _currencyIcon: {fileID: 21300000, guid: 612dacdc864ed4a199529ea37fb07d1b, type: 3}

@@ -125,7 +125,6 @@ namespace TowerMergeTD.GameRoot
                 {
                     _rootContainer.Bind<ILocalizationAsset>().FromInstance(asset).AsSingle().NonLazy();
                     isLocalizationLoaded = true;
-                    Debug.Log($"Asset: {asset}");
                 });
                 yield return new WaitUntil(() => isLocalizationLoaded);
             }

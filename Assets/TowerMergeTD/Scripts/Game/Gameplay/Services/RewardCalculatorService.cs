@@ -1,32 +1,39 @@
 ﻿using System;
+using System.Linq;
 using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
 {
     public class RewardCalculatorService : IRewardCalculatorService
     {
+        private const int BASE_COIN_REWARD = 25;
+        
         private readonly IScoreService _scoreService;
         private readonly int _currentLevelIndex;
         private readonly LevelConfig _levelConfig;
         private readonly IGameStateProvider _gameStateProvider;
+        private readonly IWaveSpawnerService[] _waveSpawnerServices;
 
         public RewardCalculatorService(
             IScoreService scoreService, 
             int currentLevelIndex, 
             LevelConfig levelConfig, 
-            IGameStateProvider gameStateProvider)
+            IGameStateProvider gameStateProvider,
+            IWaveSpawnerService[] waveSpawnerServices)
         {
             _scoreService = scoreService;
             _currentLevelIndex = currentLevelIndex;
             _levelConfig = levelConfig;
             _gameStateProvider = gameStateProvider;
+            _waveSpawnerServices = waveSpawnerServices;
         }
         
-        //TODO
         public int CalculateCoinReward()
         {
-            int reward = 100;
-            //if replayed level than /2
+            int wavesCount = _waveSpawnerServices.First().WavesCount;
+            
+            int reward = BASE_COIN_REWARD * wavesCount;
+            
             return reward;
         }
 

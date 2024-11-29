@@ -1701,10 +1701,17 @@
                 <e p="Scenes.cs" t="Include" />
               </e>
               <e p="MainMenu" t="Include">
+                <e p="Configs" t="Include">
+                  <e p="ShopItemConfig.cs" t="Include" />
+                </e>
                 <e p="Root" t="Include">
                   <e p="MainMenuEnterParams.cs" t="Include" />
                   <e p="MainMenuEntryPoint.cs" t="Include" />
                   <e p="MainMenuExitParams.cs" t="Include" />
+                </e>
+                <e p="Shop" t="Include">
+                  <e p="ShopItemPriceType.cs" t="Include" />
+                  <e p="ShopItemType.cs" t="Include" />
                 </e>
               </e>
               <e p="State" t="Include">
@@ -1798,6 +1805,7 @@
                     <e p="PlayerCoinsViewAdapter.cs" t="Include" />
                     <e p="PlayerGemsViewAdapter.cs" t="Include" />
                     <e p="SettingsPopupViewAdapter.cs" t="Include" />
+                    <e p="ShopItemViewAdapter.cs" t="Include" />
                     <e p="ShopPopupViewAdapter.cs" t="Include" />
                   </e>
                   <e p="Root" t="Include">
@@ -1814,6 +1822,7 @@
                     <e p="SettingsPopupView.cs" t="Include" />
                     <e p="ShopCoinView.cs" t="Include" />
                     <e p="ShopGemView.cs" t="Include" />
+                    <e p="ShopItemView.cs" t="Include" />
                     <e p="ShopPopupView.cs" t="Include" />
                     <e p="ShopTowersView.cs" t="Include" />
                   </e>
