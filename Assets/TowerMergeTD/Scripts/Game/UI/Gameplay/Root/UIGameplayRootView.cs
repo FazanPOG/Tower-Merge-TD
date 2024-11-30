@@ -86,11 +86,12 @@ namespace TowerMergeTD.Gameplay.Root
             
             void bindTowerActions()
             {
+                var gameStateProxy = _container.Resolve<IGameStateProvider>().GameState;
                 var inputHandler = _container.Resolve<IInput>();
                 var towerFactory = _container.Resolve<TowerFactory>();
                 var mapCoordinator = _container.Resolve<MapCoordinator>();
-
-                TowerType[] types = _currentLevelConfig.TowerGenerationConfigs.Select(x => x.TowersType).ToArray();
+                
+                TowerType[] types = gameStateProxy.UnlockTowers.ToArray();
                 
                 new TowerActionsAdapter(types, _towerSellView, _towersListView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
             }

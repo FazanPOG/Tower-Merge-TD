@@ -32,6 +32,7 @@
         public const string LEVEL_1_TUTORIAL_TEXT_9_KEY = nameof(LEVEL_1_TUTORIAL_TEXT_9_KEY);
         public const string LEVEL_1_TUTORIAL_TEXT_10_KEY = nameof(LEVEL_1_TUTORIAL_TEXT_10_KEY);
         public const string FREE_KEY = nameof(FREE_KEY);
+        public const string SOLD_KEY = nameof(SOLD_KEY);
         public const string GUN_KEY = nameof(GUN_KEY);
         public const string ROCKET_KEY = nameof(ROCKET_KEY);
         public const string LASER_KEY = nameof(LASER_KEY);

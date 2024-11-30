@@ -1,4 +1,5 @@
 ﻿using TowerMergeTD.Game.Gameplay;
+using TowerMergeTD.Game.State;
 using UnityEngine;
 
 namespace TowerMergeTD.GameRoot
@@ -7,9 +8,12 @@ namespace TowerMergeTD.GameRoot
     public class ProjectConfig : ScriptableObject
     {
         [SerializeField] private bool _isDevelopmentSettings;
+        [SerializeField] private TowerGenerationConfig[] _towerGenerations;
         [SerializeField] private Level[] _levels;
 
         public bool IsDevelopmentSettings => _isDevelopmentSettings;
+
+        public TowerGenerationConfig[] TowerGenerations => _towerGenerations;
         public Level[] Levels => _levels;
     }
 }

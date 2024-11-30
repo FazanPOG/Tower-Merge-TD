@@ -95,6 +95,7 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindFactories()
         {
+            var projectConfig = _container.Resolve<ProjectConfig>();
             var prefabReferences = _container.Resolve<PrefabReferencesConfig>();
             var pauseService = _container.Resolve<IPauseService>();
             var mapCoordinator = _container.Resolve<MapCoordinator>();
@@ -103,7 +104,7 @@ namespace TowerMergeTD.Gameplay.Root
             
             var towerFactory = new TowerFactory(
                 _container, 
-                _level.LevelConfig.TowerGenerationConfigs,
+                projectConfig.TowerGenerations,
                 prefabReferences,
                 mapCoordinator,
                 input,

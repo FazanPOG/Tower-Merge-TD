@@ -120,7 +120,7 @@ namespace TowerMergeTD.Game.UI
         {
             foreach (var shopItemView in _shopItemViews)
             {
-                new ShopItemViewAdapter(shopItemView, _playerCoinsProxy, _playerGemsProxy, _localizationAsset);
+                new ShopItemViewAdapter(shopItemView, _playerCoinsProxy, _playerGemsProxy, _gameStateProvider, _localizationAsset);
             }
         }
     }

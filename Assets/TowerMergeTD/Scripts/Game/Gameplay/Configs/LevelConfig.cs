@@ -40,10 +40,6 @@ namespace TowerMergeTD.Game.Gameplay
         [TabGroup("Configs", "Tile Set")]
         [HideLabel, InlineEditor(InlineEditorObjectFieldModes.Boxed)]
         [SerializeField] private TileSetConfig _tileSetConfig;
-
-        [TabGroup("Configs", "Tower Generation")]
-        [ListDrawerSettings(Expanded = true, ShowPaging = true)]
-        [SerializeField] private TowerGenerationConfig[] _towerGenerationConfigs;
         
         [TabGroup("Configs", "Waves")]
         [ListDrawerSettings(Expanded = true, ShowPaging = true)]
@@ -64,7 +60,6 @@ namespace TowerMergeTD.Game.Gameplay
         public int ScoreForThreeStars => scoreForThreeStars;
 
         public TileSetConfig TileSetConfig => _tileSetConfig;
-        public TowerGenerationConfig[] TowerGenerationConfigs => _towerGenerationConfigs;
         
         public WavesData[] WaveDatas => _waveDatas;
 

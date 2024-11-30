@@ -2,6 +2,7 @@
 using System.Linq;
 using R3;
 using Sirenix.Utilities;
+using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.GameRoot;
 using UnityEngine;
 
@@ -101,11 +102,13 @@ namespace TowerMergeTD.Game.State
         
         private GameStateProxy CreateGameStateFromSettings()
         {
-            List<LevelSaveData> datas = new List<LevelSaveData>();
+            List<LevelSaveData> levelSaveDatas = new List<LevelSaveData>();
+            List<TowerType> towerTypes = new List<TowerType>();
+            List<string> shopPurchasedItemIDs = new List<string>();
             
             for (int i = 0; i < _projectConfig.Levels.Length; i++)
             {
-                datas.Add(new LevelSaveData()
+                levelSaveDatas.Add(new LevelSaveData()
                 {
                     ID = i,
                     IsOpen = _projectConfig.Levels[i].LevelConfig.IsOpen,
@@ -113,11 +116,15 @@ namespace TowerMergeTD.Game.State
                 });
             }
             
+            towerTypes.Add(TowerType.Gun);
+            
             _gameStateOrigin = new GameState()
             {
-                LevelDatas = datas
+                LevelDatas = levelSaveDatas,
+                UnlockTowers = towerTypes,
+                ShopPurchasedItemIDs = shopPurchasedItemIDs
             };
-
+            
             return new GameStateProxy(_gameStateOrigin);
         }
     }

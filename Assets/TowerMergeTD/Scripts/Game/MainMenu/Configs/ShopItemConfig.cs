@@ -10,6 +10,9 @@ namespace TowerMergeTD.Game.MainMenu
         [Title("General Settings")]
         [EnumToggleButtons]
         
+        [SerializeField, LabelText("Can only be purchased once")]
+        private bool _isSinglePurchase;
+        
         [SerializeField, LabelText("Price Type")]
         private ShopItemPriceType _itemPriceType;
 
@@ -23,7 +26,7 @@ namespace TowerMergeTD.Game.MainMenu
         
         [ShowIf(nameof(_isTowerItem))]
         [SerializeField, LabelText("Tower to Unlock")]
-        private TowerType _towerToOpen;
+        private TowerType towerToUnlock;
 
         [ShowIf(nameof(_isCurrencyItem))]
         [SerializeField, LabelText("Currency Value"), MinValue(1)]
@@ -44,12 +47,16 @@ namespace TowerMergeTD.Game.MainMenu
         private bool _isTowerItem;
         private bool _isCurrencyItem;
         private bool _hasPrice;
+
+        public string ID => name;
+        
+        public bool IsSinglePurchase => _isSinglePurchase;
         
         public ShopItemPriceType ItemPriceType => _itemPriceType;
 
         public ShopItemType ItemType => _itemType;
         
-        public TowerType TowerToOpen => _towerToOpen;
+        public TowerType TowerToUnlock => towerToUnlock;
 
         public int CurrencyValue => _currencyValue;
 
@@ -96,7 +103,7 @@ namespace TowerMergeTD.Game.MainMenu
                 default:
                     _isTowerItem = false;
                     _isCurrencyItem = false;
-                    _towerToOpen = TowerType.None;
+                    towerToUnlock = TowerType.None;
                     break;
             }
         }

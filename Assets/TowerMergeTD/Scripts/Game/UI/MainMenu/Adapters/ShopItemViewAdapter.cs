@@ -2,6 +2,7 @@
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.MainMenu;
 using TowerMergeTD.Game.State;
+using UnityEngine;
 
 namespace TowerMergeTD.Game.UI
 {
@@ -12,14 +13,21 @@ namespace TowerMergeTD.Game.UI
         private readonly ShopItemConfig _itemConfig;
         private readonly PlayerCoinsProxy _playerCoins;
         private readonly PlayerGemsProxy _playerGems;
+        private readonly IGameStateProvider _gameStateProvider;
         private readonly ILocalizationAsset _localizationAsset;
 
-        public ShopItemViewAdapter(ShopItemView view, PlayerCoinsProxy playerCoins, PlayerGemsProxy playerGems, ILocalizationAsset localizationAsset)
+        public ShopItemViewAdapter(
+            ShopItemView view, 
+            PlayerCoinsProxy playerCoins, 
+            PlayerGemsProxy playerGems,
+            IGameStateProvider gameStateProvider,
+            ILocalizationAsset localizationAsset)
         {
             _view = view;
             _itemConfig = _view.ShopItemConfig;
             _playerCoins = playerCoins;
             _playerGems = playerGems;
+            _gameStateProvider = gameStateProvider;
             _localizationAsset = localizationAsset;
 
             UpdateView();
@@ -37,21 +45,77 @@ namespace TowerMergeTD.Game.UI
 
         private void Buy()
         {
+            switch (_itemConfig.ItemPriceType)
+            {
+                case ShopItemPriceType.Coin:
+                    _playerCoins.Coins.Value -= _itemConfig.ItemPrice;
+                    break;
+                
+                case ShopItemPriceType.Gem:
+                    _playerGems.Gems.Value -= _itemConfig.ItemPrice;
+                    break;
+                
+                case ShopItemPriceType.AD:
+                    Debug.LogError("Implement AD");
+                    break;
+            }
             
+            switch (_itemConfig.ItemType)
+            {
+                case ShopItemType.Coin:
+                    _playerCoins.Coins.Value += _itemConfig.CurrencyValue;
+                    break;
+                
+                case ShopItemType.Gem:
+                    _playerGems.Gems.Value += _itemConfig.CurrencyValue;
+                    break;
+                
+                case ShopItemType.Tower:
+                    _gameStateProvider.GameState.UnlockTowers.Add(_itemConfig.TowerToUnlock);
+                    break;
+                
+                default:
+                    throw new NotImplementedException($"Shop item type ({_itemConfig.ItemType}) not implemented");
+            }
+
+            if (_itemConfig.IsSinglePurchase)
+            {
+                _gameStateProvider.GameState.ShopPurchasedItemIDs.Add(_itemConfig.ID);
+                SetSoldOutView();
+            }
+            
+            _gameStateProvider.SaveGameState();
         }
 
         private void RedirectToCurrencyPurchase()
         {
-            throw new NotImplementedException();
+            Debug.Log($"Cant buy item: {_itemConfig.ItemType}");
         }
 
         private bool CanBuy()
         {
-            return true;
+            switch (_itemConfig.ItemPriceType)
+            {
+                case ShopItemPriceType.Coin:
+                    if (_playerCoins.Coins.Value >= _itemConfig.ItemPrice)
+                        return true;
+                    else
+                        return false;
+                
+                case ShopItemPriceType.Gem:
+                    if (_playerGems.Gems.Value >= _itemConfig.ItemPrice)
+                        return true;
+                    else
+                        return false;
+                
+                default:
+                    return true;
+            }
         }
 
         private void UpdateView()
         {
+            _view.SetBuyButtonInteractable(true);
             _view.SetItemSprite(_itemConfig.ItemIcon);
             
             switch (_itemConfig.ItemPriceType)
@@ -90,10 +154,21 @@ namespace TowerMergeTD.Game.UI
                     break;
                 
                 case ShopItemType.Tower:
-                    string text = GetTowerLocalizedText(_itemConfig.TowerToOpen);
+                    string text = GetTowerLocalizedText(_itemConfig.TowerToUnlock);
                     _view.SetValueText(text);
                     break;
             }
+            
+            if (_gameStateProvider.GameState.ShopPurchasedItemIDs.Contains(_itemConfig.ID))
+                SetSoldOutView();
+        }
+
+        private void SetSoldOutView()
+        {
+            _view.SetBuyButtonInteractable(false);
+            _view.SetCurrencyImageActiveState(false);
+            _view.SetPriceTextActiveState(true);
+            _view.SetPriceText(_localizationAsset.GetTranslation(LocalizationKeys.SOLD_KEY));
         }
 
         private string GetTowerLocalizedText(TowerType towerType)

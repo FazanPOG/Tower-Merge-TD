@@ -18,6 +18,7 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private Image _itemImage;
         [SerializeField] private Image _currencyImage;
         [SerializeField] private Sprite _adSprite;
+        [SerializeField] private Color _currencyImageADColor;
         [SerializeField] private Button _buyButton;
 
         public event Action OnBuyButtonClicked;
@@ -29,12 +30,23 @@ namespace TowerMergeTD.Game.UI
             _buyButton.onClick.AddListener(() => OnBuyButtonClicked?.Invoke());
         }
 
+        public void SetBuyButtonInteractable(bool canInteract) => _buyButton.interactable = canInteract;
         public void SetPriceText(string text) => _priceText.text = text;
         public void SetPriceTextActiveState(bool activeState) => _priceText.gameObject.SetActive(activeState);
         public void SetValueText(string text) => _valueText.text = text;
         public void SetItemSprite(Sprite sprite) => _itemImage.sprite = sprite;
-        public void SetCurrencySprite(Sprite sprite) => _currencyImage.sprite = sprite;
-        public void SetCurrencyAdSprite() => _currencyImage.sprite = _adSprite;
+
+        public void SetCurrencySprite(Sprite sprite)
+        {
+            _currencyImage.sprite = sprite;
+            _currencyImage.color = Color.white;
+        }
+
+        public void SetCurrencyAdSprite()
+        {
+            _currencyImage.sprite = _adSprite;
+            _currencyImage.color = _currencyImageADColor;
+        }
         public void SetCurrencyImageActiveState(bool activeState) => _currencyImage.gameObject.SetActive(activeState);
 
         private void OnDisable()

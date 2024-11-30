@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: ProjectConfig
   m_EditorClassIdentifier: 
   _isDevelopmentSettings: 1
+  _towerGenerations:
+  - {fileID: 11400000, guid: bec91e40839c1794583b56d150d62bae, type: 2}
+  - {fileID: 11400000, guid: 976945e9a8360a64589a9ea7b4298255, type: 2}
+  - {fileID: 11400000, guid: 51a39b6f4b31a614aa43a52f74f27411, type: 2}
+  - {fileID: 11400000, guid: 3dfaaa6836b703641806e01d675f4bcd, type: 2}
   _levels:
   - {fileID: 8274707344743691911, guid: e84a0b9a46a069f46b19bb3ef21e6047, type: 3}
   - {fileID: -1723646896124596986, guid: 74773ca4c8ba6284cab4cc67d68710f8, type: 3}

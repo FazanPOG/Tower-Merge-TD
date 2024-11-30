@@ -21932,7 +21932,7 @@ PrefabInstance:
     - target: {fileID: 5514784426536965563, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: _shopItemConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 4322b69acf692cb40a5ff1fb52ceceab, type: 2}
+      objectReference: {fileID: 11400000, guid: 2f756a1650a09ad43b60e04fb59bf9b5, type: 2}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
       value: ShopItem (2)
@@ -22641,7 +22641,7 @@ PrefabInstance:
     - target: {fileID: 5514784426536965563, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: _shopItemConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 4322b69acf692cb40a5ff1fb52ceceab, type: 2}
+      objectReference: {fileID: 11400000, guid: 26a0184d77eda2e48acaa1ce27a56716, type: 2}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
       value: ShopItem (3)
