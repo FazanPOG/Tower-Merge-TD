@@ -116,7 +116,16 @@ namespace TowerMergeTD.Game.UI
         private void UpdateView()
         {
             _view.SetBuyButtonInteractable(true);
-            _view.SetItemSprite(_itemConfig.ItemIcon);
+            _view.SetItemIconSprite(_itemConfig.ItemIcon);
+            _view.SetItemIconBackgroundColor(_itemConfig.ItemIconBackgroundColor);
+            _view.SetActiveBestLabel(_itemConfig.ShowBestLabel);
+            _view.SetActiveBonusText(_itemConfig.ShowBonusText);
+
+            if(_itemConfig.ShowBestLabel)
+                _view.SetBestLabelText(_localizationAsset.GetTranslation(LocalizationKeys.BEST_KEY));
+            
+            if(_itemConfig.ShowBonusText)
+                _view.SetBonusText($"{_localizationAsset.GetTranslation(LocalizationKeys.BONUS_KEY)} +{_itemConfig.BonusTextValue}%");
             
             switch (_itemConfig.ItemPriceType)
             {

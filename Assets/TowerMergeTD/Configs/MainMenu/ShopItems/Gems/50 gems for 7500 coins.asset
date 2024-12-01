@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee1e085edab4841bcf9d9aff753bc2a, type: 3}
+  m_Name: 50 gems for 7500 coins
+  m_EditorClassIdentifier: 
+  _isSinglePurchase: 0
+  _itemPriceType: 1
+  _itemType: 2
+  _itemPrice: 7500
+  towerToUnlock: 0
+  _currencyValue: 50
+  _showBestLabel: 0
+  _showBonusText: 0
+  _bonusTextValue: 0
+  _itemIcon: {fileID: 21300000, guid: db9845e7a983449a8861fc1c328f85d4, type: 3}
+  _itemIconBackgroundColor: {r: 1, g: 0.7490196, b: 0.40000004, a: 1}
+  _currencyIcon: {fileID: 21300000, guid: 34683b2e7d9bd4e80968441872416289, type: 3}

@@ -21,25 +21,23 @@
   <component name="ChangeListManager">
     <list default="true" id="894b49d9-1518-414d-8956-dd52cbe53e02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ProjectConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Laser tower for 75 gems).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Laser tower for 75 gems).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Sniper tower for 100 gems).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Sniper tower for 100 gems).asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (100 coins for 5 gems).asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (100 coins for 5 gems).asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (5 gems for AD).asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (5 gems for AD).asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (FREE 100 coins).asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (FREE 100 coins).asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Laser tower for 75 gems).asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Laser tower for 75 gems).asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Sniper tower for 100 gems).asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/Shop Item (Sniper tower for 100 gems).asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/ShopItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/ShopItem.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/ProjectConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/ProjectConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/LevelConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/LevelConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/GamePushLocalizationProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/GamePushLocalizationProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,15 +110,15 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" />
       </list>
     </option>
   </component>
@@ -227,6 +225,8 @@
       <workItem from="1732799447682" duration="3416000" />
       <workItem from="1732883224118" duration="7876000" />
       <workItem from="1732965677206" duration="6410000" />
+      <workItem from="1732988609151" duration="1099000" />
+      <workItem from="1733008973347" duration="2561000" />
     </task>
     <servers />
   </component>

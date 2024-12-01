@@ -40,6 +40,8 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_9_KEY] = "Объединяйте одинаковые башни, чтобы получить их усиленную версию!",
                 [LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_10_KEY] = "Обучение завершено, удачной игры!",
                 [LocalizationKeys.FREE_KEY] = "бесплатно",
+                [LocalizationKeys.BEST_KEY] = "выгодно",
+                [LocalizationKeys.BONUS_KEY] = "бонус",
                 [LocalizationKeys.SOLD_KEY] = "продано",
                 [LocalizationKeys.GUN_KEY] = "Пулеметная башня",
                 [LocalizationKeys.ROCKET_KEY] = "Ракетная башня",

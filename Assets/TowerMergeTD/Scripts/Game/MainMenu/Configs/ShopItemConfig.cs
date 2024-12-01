@@ -35,9 +35,21 @@ namespace TowerMergeTD.Game.MainMenu
         [Space]
         [Title("Shop Display Settings")]
 
+        [SerializeField, LabelText("Show best label")]
+        private bool _showBestLabel;
+        
+        [SerializeField, LabelText("Show bonus text")]
+        private bool _showBonusText;
+        
+        [SerializeField, LabelText("Bonus text value"), ShowIf(nameof(_showBonusText))]
+        private int _bonusTextValue;
+        
         [PreviewField(75)]
         [SerializeField, LabelText("Item Icon")]
         private Sprite _itemIcon;
+
+        [SerializeField, LabelText("Item Icon Background Color")]
+        private Color _itemIconBackgroundColor;
         
         [ShowIf(nameof(_hasPrice))]
         [PreviewField(75)]
@@ -62,7 +74,15 @@ namespace TowerMergeTD.Game.MainMenu
 
         public int ItemPrice => _itemPrice;
 
+        public bool ShowBestLabel => _showBestLabel;
+
+        public bool ShowBonusText => _showBonusText;
+
+        public int BonusTextValue => _bonusTextValue;
+        
         public Sprite ItemIcon => _itemIcon;
+
+        public Color ItemIconBackgroundColor => _itemIconBackgroundColor;
         
         public Sprite CurrencyIcon => _currencyIcon;
 
