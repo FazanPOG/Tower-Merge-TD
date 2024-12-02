@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 100 coins for AD
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 1
+  _cooldownTimeInSeconds: 120
   _itemPriceType: 4
   _itemType: 1
   _itemPrice: 0

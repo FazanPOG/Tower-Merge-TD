@@ -43,6 +43,7 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.BEST_KEY] = "выгодно",
                 [LocalizationKeys.BONUS_KEY] = "бонус",
                 [LocalizationKeys.SOLD_KEY] = "продано",
+                [LocalizationKeys.WAIT_AD_KEY] = "подождите",
                 [LocalizationKeys.GUN_KEY] = "Пулеметная башня",
                 [LocalizationKeys.ROCKET_KEY] = "Ракетная башня",
                 [LocalizationKeys.LASER_KEY] = "Лазерная башня",

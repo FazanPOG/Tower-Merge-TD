@@ -34,9 +34,9 @@ namespace TowerMergeTD.Game.UI
             _buyButton.onClick.AddListener(() => OnBuyButtonClicked?.Invoke());
         }
 
-        public void SetBuyButtonInteractable(bool canInteract) => _buyButton.interactable = canInteract;
-        public void SetPriceText(string text) => _priceText.text = text;
-        public void SetPriceTextActiveState(bool activeState) => _priceText.gameObject.SetActive(activeState);
+        public void SetButtonInteractable(bool canInteract) => _buyButton.interactable = canInteract;
+        public void SetButtonText(string text) => _priceText.text = text;
+        public void SetButtonTextActiveState(bool activeState) => _priceText.gameObject.SetActive(activeState);
         public void SetValueText(string text) => _valueText.text = text;
         public void SetItemIconSprite(Sprite sprite) => _itemImage.sprite = sprite;
 
@@ -47,19 +47,19 @@ namespace TowerMergeTD.Game.UI
         
         public void SetItemIconBackgroundColor(Color color) => _itemBackgroundImage.color = color;
 
-        public void SetCurrencySprite(Sprite sprite)
+        public void SetButtonSprite(Sprite sprite)
         {
             _currencyImage.sprite = sprite;
             _currencyImage.color = Color.white;
         }
 
-        public void SetCurrencyAdSprite()
+        public void SetButtonAdSprite()
         {
             _currencyImage.sprite = _adSprite;
             _currencyImage.color = _currencyImageADColor;
         }
 
-        public void SetCurrencyImageActiveState(bool activeState) => _currencyImage.gameObject.SetActive(activeState);
+        public void SetButtonImageActiveState(bool activeState) => _currencyImage.gameObject.SetActive(activeState);
 
         private void OnDisable()
         {

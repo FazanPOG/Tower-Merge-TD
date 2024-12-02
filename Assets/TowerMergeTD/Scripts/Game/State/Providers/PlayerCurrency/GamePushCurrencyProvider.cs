@@ -35,19 +35,22 @@ namespace TowerMergeTD.Game.State
                 Gems = new PlayerGemsProxy(gems);
             }
 
+            GP_Player.Sync();
             return Observable.Return(true);
         }
 
         public Observable<bool> SaveCoins()
         {
             GP_Player.Set(CURRENCY_COIN_KEY, Coins.Coins.CurrentValue);
-
+            GP_Player.Sync();
+            
             return Observable.Return(true);
         }
 
         public Observable<bool> SaveGems()
         {
             GP_Player.Set(CURRENCY_GEMS_KEY, Gems.Gems.CurrentValue);
+            GP_Player.Sync();
             
             return Observable.Return(true);
         }
@@ -55,6 +58,7 @@ namespace TowerMergeTD.Game.State
         public Observable<bool> ResetCurrency()
         {
             GP_Player.ResetPlayer();
+            GP_Player.Sync();
             
             SetGoldFromSettings();
             SetGemsFromSettings();

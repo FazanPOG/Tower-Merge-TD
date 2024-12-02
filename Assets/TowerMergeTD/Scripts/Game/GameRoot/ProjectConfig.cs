@@ -1,4 +1,6 @@
-﻿using TowerMergeTD.Game.Gameplay;
+﻿using GamePush;
+using Sirenix.OdinInspector;
+using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using UnityEngine;
 
@@ -8,11 +10,14 @@ namespace TowerMergeTD.GameRoot
     public class ProjectConfig : ScriptableObject
     {
         [SerializeField] private bool _isDevelopmentSettings;
+        [SerializeField, ShowIf(nameof(_isDevelopmentSettings))] private Language _language;
         [SerializeField] private TowerGenerationConfig[] _towerGenerations;
         [SerializeField] private Level[] _levels;
 
         public bool IsDevelopmentSettings => _isDevelopmentSettings;
 
+        public Language Language => _language;
+        
         public TowerGenerationConfig[] TowerGenerations => _towerGenerations;
         public Level[] Levels => _levels;
     }

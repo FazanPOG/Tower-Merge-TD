@@ -10,7 +10,7 @@ namespace TowerMergeTD.Game.State
         
         public PlayerCoinsProxy Coins { get; private set; }
         public PlayerGemsProxy Gems { get; private set;}
-        
+
         public Observable<bool> LoadCurrency()
         {
             if (PlayerPrefs.HasKey(CURRENCY_GOLD_KEY) == false)

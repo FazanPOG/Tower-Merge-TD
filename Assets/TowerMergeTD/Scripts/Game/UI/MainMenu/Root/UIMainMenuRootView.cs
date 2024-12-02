@@ -1,7 +1,8 @@
 using R3;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
-using TS.PageSlider;
+using TowerMergeTD.Utils;
 using UnityEngine;
 using Zenject;
 
@@ -36,18 +37,25 @@ namespace TowerMergeTD.Game.UI
         private ReactiveProperty<int> _exitSceneSignalBus;
         private ProjectConfig _projectConfig;
         private IGameStateProvider _gameStateProvider;
+        private ICurrencyProvider _currencyProvider;
         private PlayerCoinsProxy _playerCoinsProxy;
         private PlayerGemsProxy _playerGemsProxy;
         private ILocalizationAsset _localizationAsset;
+        private IADService _adService;
+        private ShopPopupViewAdapter _shopPopupViewAdapter;
+        private TimerService _timerService;
 
         public void Bind(ReactiveProperty<int> exitSceneSignalBus, DiContainer container)
         {
             _exitSceneSignalBus = exitSceneSignalBus;
             _projectConfig = container.Resolve<ProjectConfig>();
             _gameStateProvider = container.Resolve<IGameStateProvider>();
+            _currencyProvider = container.Resolve<ICurrencyProvider>();
             _playerCoinsProxy = container.Resolve<PlayerCoinsProxy>();
             _playerGemsProxy = container.Resolve<PlayerGemsProxy>();
             _localizationAsset = container.Resolve<ILocalizationAsset>();
+            _adService = container.Resolve<IADService>();
+            _timerService = container.Resolve<TimerService>();
             
             _gameStateProvider.SaveGameState();
             
@@ -65,8 +73,8 @@ namespace TowerMergeTD.Game.UI
             new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset);
             new LevelLockPopupViewAdapter(_levelLockPopupView);
             
-            var shopAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset);
-            BindPlayerCurrencies(shopAdapter);
+            _shopPopupViewAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset);
+            BindPlayerCurrencies();
             BindShopItems();
         }
 
@@ -110,17 +118,25 @@ namespace TowerMergeTD.Game.UI
             }
         }
 
-        private void BindPlayerCurrencies(ShopPopupViewAdapter shopAdapter)
+        private void BindPlayerCurrencies()
         {
-            new PlayerCoinsViewAdapter(_playerCoinsView, _playerCoinsProxy, _shopPopupView, shopAdapter);
-            new PlayerGemsViewAdapter(_playerGemsView, _playerGemsProxy, _shopPopupView, shopAdapter);
+            new PlayerCoinsViewAdapter(_playerCoinsView, _playerCoinsProxy, _shopPopupView, _shopPopupViewAdapter);
+            new PlayerGemsViewAdapter(_playerGemsView, _playerGemsProxy, _shopPopupView, _shopPopupViewAdapter);
         }
 
         private void BindShopItems()
         {
             foreach (var shopItemView in _shopItemViews)
             {
-                new ShopItemViewAdapter(shopItemView, _playerCoinsProxy, _playerGemsProxy, _gameStateProvider, _localizationAsset);
+                new ShopItemViewAdapter(
+                    shopItemView, 
+                    _shopPopupViewAdapter,
+                    _playerCoinsProxy, 
+                    _playerGemsProxy, 
+                    _gameStateProvider,
+                    _currencyProvider,
+                    _localizationAsset, 
+                    _adService);
             }
         }
     }

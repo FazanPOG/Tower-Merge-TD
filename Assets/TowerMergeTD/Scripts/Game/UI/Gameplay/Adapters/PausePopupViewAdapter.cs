@@ -1,4 +1,5 @@
 ﻿using R3;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Gameplay.Root;
@@ -15,6 +16,8 @@ namespace TowerMergeTD.Game.UI
         private readonly Button _pauseButton;
         private readonly ReactiveProperty<SceneEnterParams> _exitSceneSignalBus;
         private readonly IPauseService _pauseService;
+        private readonly bool _isDevelopment;
+        private readonly IADService _adService;
 
         public PausePopupViewAdapter
             (
@@ -23,7 +26,9 @@ namespace TowerMergeTD.Game.UI
             Button pauseButton, 
             ReactiveProperty<SceneEnterParams> exitSceneSignalBus, 
             IPauseService pauseService,
-            ILocalizationAsset localizationAsset
+            ILocalizationAsset localizationAsset,
+            bool isDevelopment,
+            IADService adService
             )
         {
             _view = view;
@@ -31,6 +36,8 @@ namespace TowerMergeTD.Game.UI
             _pauseButton = pauseButton;
             _exitSceneSignalBus = exitSceneSignalBus;
             _pauseService = pauseService;
+            _isDevelopment = isDevelopment;
+            _adService = adService;
 
             _view.SetPauseText(localizationAsset.GetTranslation(LocalizationKeys.PAUSE_KEY));
             _view.SetContinueText(localizationAsset.GetTranslation(LocalizationKeys.CONTINUE_KEY));
@@ -68,7 +75,17 @@ namespace TowerMergeTD.Game.UI
 
         private void HandleRestartButtonClicked()
         {
-            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
+            if (_adService.IsFullscreenAvailable)
+            {
+                if(_isDevelopment == false)
+                    _adService.OnFullscreenClose += (success) => _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
+                else
+                    _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
+            }
+            else
+            {
+                _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
+            }
         }
 
         private void HandleExitButtonClicked()

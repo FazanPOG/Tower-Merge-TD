@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using GamePush;
 using R3;
-using Sirenix.Utilities;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.GameRoot;
+using TowerMergeTD.Utils;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.State
@@ -13,14 +15,18 @@ namespace TowerMergeTD.Game.State
         private const string GAME_STATE_KEY = nameof(GAME_STATE_KEY);
         
         private readonly ProjectConfig _projectConfig;
-        
+        private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
+
         private GameState _gameStateOrigin;
         
         public GameStateProxy GameState { get; private set; }
 
-        public PlayerPrefsGameStateProvider(ProjectConfig projectConfig)
+        public PlayerPrefsGameStateProvider(ProjectConfig projectConfig, MonoBehaviourWrapper monoBehaviourWrapper)
         {
             _projectConfig = projectConfig;
+            _monoBehaviourWrapper = monoBehaviourWrapper;
+            
+            _monoBehaviourWrapper.OnDestroyed += OnDestroyed;
         }
 
         public Observable<GameStateProxy> LoadGameState()
@@ -70,6 +76,7 @@ namespace TowerMergeTD.Game.State
             PlayerPrefs.SetString(GAME_STATE_KEY, json);
             PlayerPrefs.Save();
 
+            GP_Logger.Log("Save game");
             return Observable.Return(true);
         }
 
@@ -99,7 +106,7 @@ namespace TowerMergeTD.Game.State
             _gameStateOrigin.LevelDatas.Remove(saveData);
             SaveGameState();
         }
-        
+
         private GameStateProxy CreateGameStateFromSettings()
         {
             List<LevelSaveData> levelSaveDatas = new List<LevelSaveData>();
@@ -126,6 +133,11 @@ namespace TowerMergeTD.Game.State
             };
             
             return new GameStateProxy(_gameStateOrigin);
+        }
+
+        private void OnDestroyed()
+        {
+            GameState.LastExitTime.Value = DateTime.Now;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Linq;
 using R3;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
@@ -72,6 +73,7 @@ namespace TowerMergeTD.Gameplay.Root
             var gameTimerService = _container.Resolve<IGameTimerService>();
             var gameSpeedService = _container.Resolve<IGameSpeedService>();
             var waveSpawnerServices = _container.Resolve<IWaveSpawnerService[]>();
+            var adService = _container.Resolve<IADService>();
 
             new PlayerBuildingCurrencyViewAdapter(_buildingCurrencyView, buildingCurrencyProxy);
             new PlayerHealthViewAdapter(_playerHealthView, playerHealthProxy);
@@ -98,7 +100,16 @@ namespace TowerMergeTD.Gameplay.Root
 
             void bindPausePopup()
             {
-                new PausePopupViewAdapter(_pausePopupView, _currentLevelIndex, _pauseButton, _exitSceneSignalBus, pauseService, _localizationAsset);
+                new PausePopupViewAdapter(
+                    _pausePopupView, 
+                    _currentLevelIndex, 
+                    _pauseButton, 
+                    _exitSceneSignalBus, 
+                    pauseService, 
+                    _localizationAsset, 
+                    _projectConfig.IsDevelopmentSettings, 
+                    adService
+                    );
             }
 
             void bindLoseGamePopup()
@@ -112,7 +123,7 @@ namespace TowerMergeTD.Gameplay.Root
                 bool isLastLevel = _currentLevelIndex + 1 == _projectConfig.Levels.Length;
                 var scoreService = _container.Resolve<IScoreService>();
                 var rewardCalculate = _container.Resolve<IRewardCalculatorService>();
-                
+
                 var levelCompletePopupAdapter = new LevelCompletePopupAdapter
                     (
                     _levelCompletePopupView, 
@@ -123,7 +134,9 @@ namespace TowerMergeTD.Gameplay.Root
                     scoreService,
                     rewardCalculate,
                     gameTimerService,
-                    _localizationAsset
+                    _localizationAsset,
+                    adService,
+                    _projectConfig.IsDevelopmentSettings
                     );
                 
                 gameStateService.Register(levelCompletePopupAdapter);

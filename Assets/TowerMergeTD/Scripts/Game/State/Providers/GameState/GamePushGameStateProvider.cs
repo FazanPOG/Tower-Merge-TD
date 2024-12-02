@@ -3,6 +3,7 @@ using System.Linq;
 using GamePush;
 using R3;
 using TowerMergeTD.GameRoot;
+using TowerMergeTD.Utils;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.State
@@ -12,14 +13,16 @@ namespace TowerMergeTD.Game.State
         private const string GAME_STATE_KEY = nameof(GAME_STATE_KEY);
         
         private readonly ProjectConfig _projectConfig;
-        
+
         private GameState _gameStateOrigin;
         
         public GameStateProxy GameState { get; private set; }
 
-        public GamePushGameStateProvider(ProjectConfig projectConfig)
+        public GamePushGameStateProvider(ProjectConfig projectConfig, MonoBehaviourWrapper monoBehaviourWrapper)
         {
             _projectConfig = projectConfig;
+            
+            monoBehaviourWrapper.OnDestroyed += OnDestroyed;
         }
 
         public Observable<GameStateProxy> LoadGameState()
@@ -54,10 +57,12 @@ namespace TowerMergeTD.Game.State
                 GameState = new GameStateProxy(_gameStateOrigin);
             }
             
+            GP_Player.Sync();
             return Observable.Return(GameState);
         }
 
         //TODO: string does not save
+
         public Observable<bool> SaveGameState()
         {
             _gameStateOrigin.LevelDatas.Sort();
@@ -104,7 +109,7 @@ namespace TowerMergeTD.Game.State
             _gameStateOrigin.LevelDatas.Remove(saveData);
             SaveGameState();
         }
-        
+
         private GameStateProxy CreateGameStateFromSettings()
         {
             List<LevelSaveData> datas = new List<LevelSaveData>();
@@ -125,6 +130,11 @@ namespace TowerMergeTD.Game.State
             };
 
             return new GameStateProxy(_gameStateOrigin);
+        }
+
+        private void OnDestroyed()
+        {
+            GameState.LastExitTime.Value = GP_Server.Time();
         }
     }
 }

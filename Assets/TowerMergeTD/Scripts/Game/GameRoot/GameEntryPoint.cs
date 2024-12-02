@@ -1,6 +1,7 @@
 using System.Collections;
 using GamePush;
 using R3;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI.Root;
 using TowerMergeTD.Gameplay.Root;
@@ -17,10 +18,10 @@ namespace TowerMergeTD.GameRoot
         private static GameEntryPoint _instance;
 
         private readonly DiContainer _rootContainer = new DiContainer();
+        private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
+        private readonly UIRootView _uiRootView;
+        private readonly ProjectConfig _projectConfig;
         
-        private MonoBehaviourWrapper _monoBehaviourWrapper;
-        private UIRootView _uiRootView;
-        private ProjectConfig _projectConfig;
         private DiContainer _cashedSceneContainer;
         private bool _isDataLoaded = false;
         
@@ -47,7 +48,11 @@ namespace TowerMergeTD.GameRoot
             _projectConfig = Resources.Load<ProjectConfig>("ProjectConfig");
             var prefabReferencesConfig = Resources.Load<PrefabReferencesConfig>("PrefabReferencesConfig");
             
-            var gameStateProvider = new PlayerPrefsGameStateProvider(_projectConfig);
+            APIBinder apiBinder = new APIBinder(_rootContainer);
+            apiBinder.Bind();
+            
+            var gameStateProvider = new PlayerPrefsGameStateProvider(_projectConfig, _monoBehaviourWrapper);
+            var timerService = new TimerService(_monoBehaviourWrapper);
             
             _rootContainer.Bind<IGameStateProvider>().To<PlayerPrefsGameStateProvider>().FromInstance(gameStateProvider).AsSingle().NonLazy();
             _rootContainer.Bind<ICurrencyProvider>().To<PlayerPrefsCurrencyProvider>().FromNew().AsSingle().NonLazy();
@@ -55,6 +60,7 @@ namespace TowerMergeTD.GameRoot
             _rootContainer.Bind<MonoBehaviourWrapper>().FromInstance(_monoBehaviourWrapper).AsSingle().NonLazy();
             _rootContainer.Bind<ProjectConfig>().FromInstance(_projectConfig).AsSingle().NonLazy();
             _rootContainer.Bind<PrefabReferencesConfig>().FromInstance(prefabReferencesConfig).AsSingle().NonLazy();
+            _rootContainer.Bind<TimerService>().FromInstance(timerService).AsSingle().NonLazy();
         }
         
         private void StartGame()
@@ -118,7 +124,7 @@ namespace TowerMergeTD.GameRoot
             }
             IEnumerator loadLocalization()
             {
-                ILocalizationProvider provider = new GamePushLocalizationProvider();
+                ILocalizationProvider provider = new GamePushLocalizationProvider(_projectConfig);
                 
                 bool isLocalizationLoaded = false;
                 provider.LoadLocalizationAsset().Subscribe(asset =>
@@ -137,8 +143,6 @@ namespace TowerMergeTD.GameRoot
             _cashedSceneContainer?.UnbindAll();
             
             _uiRootView.ShowLoadingScreen();
-
-            _monoBehaviourWrapper.ClearTickableList();
             
             yield return LoadScene(Scenes.Boot);
             yield return LoadScene(Scenes.MainMenu);
@@ -171,7 +175,6 @@ namespace TowerMergeTD.GameRoot
             _cashedSceneContainer?.UnbindAll();
             
             _uiRootView.ShowLoadingScreen();
-            _monoBehaviourWrapper.ClearTickableList();
             
             yield return LoadScene(Scenes.Boot);
             yield return LoadScene(Scenes.Gameplay);

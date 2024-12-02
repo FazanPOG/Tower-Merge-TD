@@ -1570,6 +1570,15 @@
         </e>
         <e p="TowerMergeTD" t="Include">
           <e p="Scripts" t="Include">
+            <e p="API" t="Include">
+              <e p="Root" t="Include">
+                <e p="APIBinder.cs" t="Include" />
+              </e>
+              <e p="Services" t="Include">
+                <e p="ADService.cs" t="Include" />
+                <e p="IADService.cs" t="Include" />
+              </e>
+            </e>
             <e p="Game" t="Include">
               <e p="Gameplay" t="Include">
                 <e p="CameraSystem" t="Include">
@@ -1840,6 +1849,7 @@
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="ScoreCalculator.cs" t="Include" />
+              <e p="TimerService.cs" t="Include" />
               <e p="WorldTextCreator.cs" t="Include" />
             </e>
           </e>

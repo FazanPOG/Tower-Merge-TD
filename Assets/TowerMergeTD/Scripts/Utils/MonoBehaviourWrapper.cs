@@ -1,34 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using Zenject;
 
 namespace TowerMergeTD.Utils
 {
     public class MonoBehaviourWrapper : MonoBehaviour
     {
-        private List<ITickable> _tickables = new List<ITickable>();
-        
-        public void AttachTickableList(List<ITickable> tickables)
-        {
-            _tickables = tickables;
-        }
-        
-        public void AddTickableToList(ITickable tickable)
-        {
-            _tickables.Add(tickable);
-        }
+        public event Action OnDestroyed;
 
-        public void ClearTickableList()
+        private void OnDestroy()
         {
-            _tickables.Clear();
-        }
-        
-        private void Update()
-        {
-            foreach (var tickable in _tickables)
-            {
-                tickable.Tick();
-            }
+            OnDestroyed?.Invoke();
         }
     }
 }

@@ -34,6 +34,7 @@
         public const string FREE_KEY = nameof(FREE_KEY);
         public const string SOLD_KEY = nameof(SOLD_KEY);
         public const string BEST_KEY = nameof(BEST_KEY);
+        public const string WAIT_AD_KEY = nameof(WAIT_AD_KEY);
         public const string BONUS_KEY = nameof(BONUS_KEY);
         public const string GUN_KEY = nameof(GUN_KEY);
         public const string ROCKET_KEY = nameof(ROCKET_KEY);

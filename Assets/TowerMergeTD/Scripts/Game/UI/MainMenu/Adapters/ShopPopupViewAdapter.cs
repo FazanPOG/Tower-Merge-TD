@@ -10,7 +10,7 @@ namespace TowerMergeTD.Game.UI
         private readonly ShopGemView _shopGemView;
 
         public ShopPopupViewAdapter(
-            ShopPopupView shopPopupView, 
+            ShopPopupView shopPopupView,
             ShopTowersView shopTowersView,
             ShopCoinView shopCoinView,
             ShopGemView shopGemView,
@@ -43,17 +43,6 @@ namespace TowerMergeTD.Game.UI
             _shopPopupView.Hide();
         }
 
-        private void ShowTowersShop()
-        {
-            _shopTowersView.Show();
-            _shopCoinView.Hide();
-            _shopGemView.Hide();
-            
-            _shopPopupView.SetActiveTowerView(true);
-            _shopPopupView.SetActiveCoinView(false);
-            _shopPopupView.SetActiveGemView(false);
-        }
-
         public void ShowCoinShop()
         {
             _shopCoinView.Show();
@@ -74,6 +63,17 @@ namespace TowerMergeTD.Game.UI
             _shopPopupView.SetActiveGemView(true);
             _shopPopupView.SetActiveCoinView(false);
             _shopPopupView.SetActiveTowerView(false);
+        }
+
+        private void ShowTowersShop()
+        {
+            _shopTowersView.Show();
+            _shopCoinView.Hide();
+            _shopGemView.Hide();
+            
+            _shopPopupView.SetActiveTowerView(true);
+            _shopPopupView.SetActiveCoinView(false);
+            _shopPopupView.SetActiveGemView(false);
         }
     }
 }

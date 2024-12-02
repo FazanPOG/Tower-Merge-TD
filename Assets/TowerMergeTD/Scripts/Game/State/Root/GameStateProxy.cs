@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using ObservableCollections;
 using R3;
 using TowerMergeTD.Game.Gameplay;
@@ -11,11 +12,14 @@ namespace TowerMergeTD.Game.State
         public ObservableList<TowerType> UnlockTowers { get; } = new ObservableList<TowerType>();
         public ObservableList<string> ShopPurchasedItemIDs { get; } = new ObservableList<string>();
 
+        public ReactiveProperty<DateTime> LastExitTime { get; } = new ReactiveProperty<DateTime>();
+
         public GameStateProxy(GameState gameState)
         {
             gameState.LevelDatas.ForEach(levelData => { LevelDatas.Add(new LevelSaveDataProxy(levelData)); });
             gameState.UnlockTowers.ForEach(unlockTower => { UnlockTowers.Add(unlockTower); });
             gameState.ShopPurchasedItemIDs.ForEach(id => { ShopPurchasedItemIDs.Add(id); });
+            LastExitTime.Value = gameState.LastExitTime;
             
             LevelDatas.ObserveAdd().Subscribe(e =>
             {
@@ -60,6 +64,8 @@ namespace TowerMergeTD.Game.State
                 var data = gameState.ShopPurchasedItemIDs.FirstOrDefault(x => x == removedData);
                 gameState.ShopPurchasedItemIDs.Remove(data);
             });
+
+            LastExitTime.Subscribe(newTime => gameState.LastExitTime = newTime);
         }
     }
 }

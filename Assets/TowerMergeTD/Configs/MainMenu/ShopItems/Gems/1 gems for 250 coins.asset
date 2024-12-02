@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 1 gems for 250 coins
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 0
+  _cooldownTimeInSeconds: 0
   _itemPriceType: 1
   _itemType: 2
   _itemPrice: 250
