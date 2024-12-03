@@ -1792,6 +1792,7 @@
                     <e p="UIGameplayRootView.cs" t="Include" />
                   </e>
                   <e p="Views" t="Include">
+                    <e p="AdConfirmationPopupView.cs" t="Include" />
                     <e p="GameSpeedView.cs" t="Include" />
                     <e p="GameTimerView.cs" t="Include" />
                     <e p="LevelCompletePopupView.cs" t="Include" />

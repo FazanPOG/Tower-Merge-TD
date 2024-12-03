@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 50 gems for 7500 coins
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 0
+  _cooldownTimeInSeconds: 0
   _itemPriceType: 1
   _itemType: 2
   _itemPrice: 7500
@@ -21,6 +23,6 @@ MonoBehaviour:
   _showBestLabel: 0
   _showBonusText: 0
   _bonusTextValue: 0
-  _itemIcon: {fileID: 21300000, guid: db9845e7a983449a8861fc1c328f85d4, type: 3}
+  _itemIcon: {fileID: 21300000, guid: 5a08440f4ac5dfe459467a8cac182de1, type: 3}
   _itemIconBackgroundColor: {r: 1, g: 0.7490196, b: 0.40000004, a: 1}
-  _currencyIcon: {fileID: 21300000, guid: 34683b2e7d9bd4e80968441872416289, type: 3}
+  _currencyIcon: {fileID: 21300000, guid: 4e70c1705445ed64cac199e60aec27dd, type: 3}

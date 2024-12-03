@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 5 gems for 1000 coins
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 0
+  _cooldownTimeInSeconds: 0
   _itemPriceType: 1
   _itemType: 2
   _itemPrice: 1000
@@ -21,6 +23,6 @@ MonoBehaviour:
   _showBestLabel: 0
   _showBonusText: 0
   _bonusTextValue: 0
-  _itemIcon: {fileID: 21300000, guid: 612dacdc864ed4a199529ea37fb07d1b, type: 3}
+  _itemIcon: {fileID: 21300000, guid: 0e669ba1cfd74eb40b11ef098df327a3, type: 3}
   _itemIconBackgroundColor: {r: 0.56078434, g: 0.6117647, b: 0.654902, a: 1}
-  _currencyIcon: {fileID: 21300000, guid: 34683b2e7d9bd4e80968441872416289, type: 3}
+  _currencyIcon: {fileID: 21300000, guid: 4e70c1705445ed64cac199e60aec27dd, type: 3}

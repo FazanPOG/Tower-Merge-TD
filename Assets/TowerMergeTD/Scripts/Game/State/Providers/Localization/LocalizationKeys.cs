@@ -35,6 +35,8 @@
         public const string SOLD_KEY = nameof(SOLD_KEY);
         public const string BEST_KEY = nameof(BEST_KEY);
         public const string WAIT_AD_KEY = nameof(WAIT_AD_KEY);
+        public const string CANCEL_KEY = nameof(CANCEL_KEY);
+        public const string CONFIRM_WATCH_AD_KEY = nameof(CONFIRM_WATCH_AD_KEY);
         public const string BONUS_KEY = nameof(BONUS_KEY);
         public const string GUN_KEY = nameof(GUN_KEY);
         public const string ROCKET_KEY = nameof(ROCKET_KEY);

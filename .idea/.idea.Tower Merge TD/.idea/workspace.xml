@@ -22,38 +22,164 @@
     <list default="true" id="894b49d9-1518-414d-8956-dd52cbe53e02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ProjectConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gem_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_gold_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_hammer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_hammer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_life.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_life.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_lock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_setting.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_shop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_shop.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_skull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_sword.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_sword.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_trophy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_large/itemicon_l_trophy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gem_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gift.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gift.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_gold_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_hammer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_hammer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_life.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_life.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_lock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_setting.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_shop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_shop.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_skull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_sword.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_sword.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_trophy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_middle/itemicon_m_trophy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gem_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_gold_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_hammer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_hammer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_life.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_life.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_lock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_setting.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_shop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_shop.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_skull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_sword.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_sword.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_trophy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/Icon_ItemIcons/Icon_ItemIcon_small/itemicon_s_trophy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/UI_Etc/Status_Icon_Coin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/UI_Etc/Status_Icon_Coin.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/UI_Etc/Status_Icon_Gem.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/UI_Etc/Status_Icon_Gem.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/UI_Etc/Status_Icon_Life.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Components/UI_Etc/Status_Icon_Life.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_coin_00_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_coin_00_n.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_coin_01_l.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_coin_01_l.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_coin_01_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_coin_01_s.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_lock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/icon_color_skull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/menu_icon_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/menu_icon_setting.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/menu_icon_shop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/menu_icon_shop.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/tabmenu_coin_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/tabmenu_coin_n.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/tabmenu_gem_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/tabmenu_gem_n.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/tabmenu_life_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/tabmenu_life_n.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/titleicon_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GUI-MonoRound/ResourceData/Sprites/Demo/Demo_Icons/titleicon_setting.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/100 coins for AD.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/100 coins for AD.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/100 coins for FREE.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/100 coins for FREE.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/1200 coins for 20 gems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/1200 coins for 20 gems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/12000 coins for 150 gems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/12000 coins for 150 gems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/2500 coins for 40 gems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/2500 coins for 40 gems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/500 coins for 10 gems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/500 coins for 10 gems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/5500 coins for 75 gems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Coins/5500 coins for 75 gems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/1 gems for 250 coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/1 gems for 250 coins.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/1 gems for FREE.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/1 gems for FREE.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/10 gems for 1750 coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/10 gems for 1750 coins.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/25 gems for 4000 coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/25 gems for 4000 coins.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/5 gems for 1000 coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/5 gems for 1000 coins.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/5 gems for AD.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/5 gems for AD.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/50 gems for 7500 coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Gems/50 gems for 7500 coins.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Laser tower for 75 gems).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Laser tower for 75 gems).asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Sniper tower for 100 gems).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Sniper tower for 100 gems).asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Enemies/DeathPopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Enemies/DeathPopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerBuidlingCurrencyView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerBuidlingCurrencyView.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerHealthView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Gameplay/PlayerHealthView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/PlayerCoinsView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/PlayerCoinsView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/PlayerGemsView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/PlayerGemsView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/ShopItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/MainMenu/ShopItem.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/GameplayUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/GameplayUI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/ProjectConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/ProjectConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/ADService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/ADService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/GamePushGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/GamePushGameStateProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/IGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/IGameStateProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/GamePushLocalizationProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/GamePushLocalizationProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerCurrency/GamePushCurrencyProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerCurrency/GamePushCurrencyProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerCurrency/PlayerPrefsCurrencyProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerCurrency/PlayerPrefsCurrencyProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LevelCompletePopupAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LevelCompletePopupAdapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PausePopupViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PausePopupViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerBuildingCurrencyViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerBuildingCurrencyViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerBuildingCurrencyView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerBuildingCurrencyView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerHealthView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerHealthView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopPopupViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopPopupViewAdapter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/MonoBehaviourWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/MonoBehaviourWrapper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,9 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PausePopupView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/LosePopupView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LosePopupViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/LevelCompletePopupView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelEntryViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/LocalizationAssets/RussianLocalizationAsset.cs" />
@@ -119,21 +242,24 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/MonoBehaviourWrapper.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/GamePushGameStateProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Utils/TimerService.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/IADService.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/ADService.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/LevelCompletePopupAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PausePopupViewAdapter.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerHealthView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/PlayerBuildingCurrencyView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Root/UIGameplayRootView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/AdConfirmationPopupView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerHealthViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerBuildingCurrencyViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/ADService.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" />
       </list>
     </option>
   </component>
@@ -243,6 +369,8 @@
       <workItem from="1732988609151" duration="1099000" />
       <workItem from="1733008973347" duration="2561000" />
       <workItem from="1733138424094" duration="14168000" />
+      <workItem from="1733223786570" duration="3389000" />
+      <workItem from="1733248450352" duration="5615000" />
     </task>
     <servers />
   </component>
@@ -280,10 +408,10 @@
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="92" y="92" width="1736" height="850" maximized="true" key="VCS.FileHistoryDialog/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731340411086" />
-    <state x="552" y="250" width="815" height="534" key="find.popup" timestamp="1733150275555">
+    <state x="552" y="250" width="839" height="534" key="find.popup" timestamp="1733258305967">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="552" y="250" width="815" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1733150275555" />
+    <state x="552" y="250" width="839" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1733258305967" />
     <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1732728525600">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 25 gems for 4000 coins
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 0
+  _cooldownTimeInSeconds: 0
   _itemPriceType: 1
   _itemType: 2
   _itemPrice: 4000
@@ -21,6 +23,6 @@ MonoBehaviour:
   _showBestLabel: 1
   _showBonusText: 1
   _bonusTextValue: 25
-  _itemIcon: {fileID: 21300000, guid: e515a6a7621c044fb943b528e39bf26f, type: 3}
+  _itemIcon: {fileID: 21300000, guid: 4af6a609ffc2cfe4e8c10986c61f7e47, type: 3}
   _itemIconBackgroundColor: {r: 0.8000001, g: 0.9294118, b: 0.59607846, a: 1}
-  _currencyIcon: {fileID: 21300000, guid: 34683b2e7d9bd4e80968441872416289, type: 3}
+  _currencyIcon: {fileID: 21300000, guid: 4e70c1705445ed64cac199e60aec27dd, type: 3}

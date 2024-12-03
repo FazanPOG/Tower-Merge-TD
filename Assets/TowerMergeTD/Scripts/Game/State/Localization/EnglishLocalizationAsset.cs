@@ -42,6 +42,8 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.FREE_KEY] = "FREE",
                 [LocalizationKeys.BEST_KEY] = "BEST",
                 [LocalizationKeys.BONUS_KEY] = "BONUS",
+                [LocalizationKeys.CANCEL_KEY] = "Cancel",
+                [LocalizationKeys.CONFIRM_WATCH_AD_KEY] = "Want to watch an ad?",
                 [LocalizationKeys.SOLD_KEY] = "SOLD OUT",
                 [LocalizationKeys.WAIT_AD_KEY] = "Ads will be back shortly!",
                 [LocalizationKeys.GUN_KEY] = "Gun tower",

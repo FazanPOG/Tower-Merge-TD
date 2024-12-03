@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 1200 coins for 20 gems
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 0
+  _cooldownTimeInSeconds: 0
   _itemPriceType: 2
   _itemType: 1
   _itemPrice: 20
@@ -21,6 +23,6 @@ MonoBehaviour:
   _showBestLabel: 1
   _showBonusText: 1
   _bonusTextValue: 15
-  _itemIcon: {fileID: 21300000, guid: 2b9e6e902a1d442d4aa4a148abdca4f2, type: 3}
-  _itemIconBackgroundColor: {r: 0.37647063, g: 0.79215693, b: 0.97647065, a: 1}
-  _currencyIcon: {fileID: 21300000, guid: 612dacdc864ed4a199529ea37fb07d1b, type: 3}
+  _itemIcon: {fileID: 21300000, guid: c7c94caba419a5d41973403b36a4e1fd, type: 3}
+  _itemIconBackgroundColor: {r: 0.56078434, g: 0.6117647, b: 0.654902, a: 1}
+  _currencyIcon: {fileID: 21300000, guid: 1e261052971ec3943b3a71bae9e0d021, type: 3}

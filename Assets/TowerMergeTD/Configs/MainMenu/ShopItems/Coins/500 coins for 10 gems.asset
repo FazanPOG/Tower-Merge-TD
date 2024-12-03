@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: 500 coins for 10 gems
   m_EditorClassIdentifier: 
   _isSinglePurchase: 0
+  _hasCooldownTimer: 0
+  _cooldownTimeInSeconds: 0
   _itemPriceType: 2
   _itemType: 1
   _itemPrice: 10
   towerToUnlock: 0
   _currencyValue: 500
-  _itemIcon: {fileID: 21300000, guid: d24a42966072d4321a4ba18cf42f9dc7, type: 3}
-  _itemIconBackgroundColor: {r: 0.8705883, g: 0.8980393, b: 0.9294118, a: 1}
-  _currencyIcon: {fileID: 21300000, guid: 612dacdc864ed4a199529ea37fb07d1b, type: 3}
+  _showBestLabel: 0
+  _showBonusText: 0
+  _bonusTextValue: 0
+  _itemIcon: {fileID: 21300000, guid: c7c94caba419a5d41973403b36a4e1fd, type: 3}
+  _itemIconBackgroundColor: {r: 0.56078434, g: 0.6117647, b: 0.654902, a: 1}
+  _currencyIcon: {fileID: 21300000, guid: 1e261052971ec3943b3a71bae9e0d021, type: 3}

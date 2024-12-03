@@ -3,6 +3,7 @@ using TowerMergeTD.API;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.MainMenu;
 using TowerMergeTD.Game.State;
+using UnityEngine;
 
 namespace TowerMergeTD.Game.UI
 {
@@ -80,6 +81,15 @@ namespace TowerMergeTD.Game.UI
             AddReward();
         }
 
+        private void ADService_OnRewardedReward(string rewardID)
+        {
+            if (rewardID == _itemConfig.ID)
+            {
+                AddReward();
+                SetADView(_adService.IsRewardedAvailable);
+            }
+        }
+
         private void AddReward()
         {
             switch (_itemConfig.ItemType)
@@ -104,29 +114,19 @@ namespace TowerMergeTD.Game.UI
             }
         }
 
-        private void ADService_OnRewardedReward(string rewardID)
-        {
-            if (rewardID == _itemConfig.ID)
-            {
-                AddReward();
-                SetADView(_adService.IsRewardedAvailable);
-            }
-        }
-
         private void SetADView(bool adAvailableState)
         {
+            _view.SetButtonTextActiveState(!adAvailableState);
+            _view.SetButtonInteractable(adAvailableState);
+
             if (adAvailableState)
             {
                 _view.SetButtonAdSprite();
-                _view.SetButtonTextActiveState(false);
-                _view.SetButtonInteractable(true);
             }
             else
             {
                 _view.SetButtonImageActiveState(false);
-                _view.SetButtonTextActiveState(true);
                 _view.SetButtonText(_localizationAsset.GetTranslation(LocalizationKeys.WAIT_AD_KEY));
-                _view.SetButtonInteractable(false);
             }
         }
         
@@ -199,8 +199,7 @@ namespace TowerMergeTD.Game.UI
                     break;
                 
                 case ShopItemPriceType.AD:
-                    _view.SetButtonTextActiveState(false);
-                    _view.SetButtonAdSprite();
+                    SetADView(_adService.IsRewardedAvailable);
                     break;
             }
 

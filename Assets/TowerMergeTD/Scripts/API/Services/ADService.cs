@@ -1,19 +1,22 @@
 ﻿using System;
 using GamePush;
+using TowerMergeTD.GameRoot;
 
 namespace TowerMergeTD.API
 {
     public class ADService : IADService
     {
-        public bool IsFullscreenAvailable => GP_Ads.IsFullscreenAvailable();
-        public bool IsPreloaderAvailable => GP_Ads.IsPreloaderAvailable();
-        public bool IsRewardedAvailable => GP_Ads.IsRewardedAvailable();
-        public bool IsStickyAvailable => GP_Ads.IsStickyAvailable();
-        public bool IsFullscreenPlaying => GP_Ads.IsFullscreenPlaying();
-        public bool IsPreloaderPlaying => GP_Ads.IsPreloaderPlaying();
-        public bool IsRewardPlaying => GP_Ads.IsRewardPlaying();
-        public bool IsStickyPlaying => GP_Ads.IsStickyPlaying();
-        public bool CanShowFullscreenBeforeGamePlay => GP_Ads.CanShowFullscreenBeforeGamePlay();
+        private readonly ProjectConfig _projectConfig;
+
+        public bool IsFullscreenAvailable => _projectConfig.IsDevelopmentSettings || GP_Ads.IsFullscreenAvailable();
+        public bool IsPreloaderAvailable => _projectConfig.IsDevelopmentSettings || GP_Ads.IsPreloaderAvailable();
+        public bool IsRewardedAvailable => _projectConfig.IsDevelopmentSettings || GP_Ads.IsRewardedAvailable();
+        public bool IsStickyAvailable => _projectConfig.IsDevelopmentSettings || GP_Ads.IsStickyAvailable();
+        public bool IsFullscreenPlaying => _projectConfig.IsDevelopmentSettings || GP_Ads.IsFullscreenPlaying();
+        public bool IsPreloaderPlaying => _projectConfig.IsDevelopmentSettings || GP_Ads.IsPreloaderPlaying();
+        public bool IsRewardPlaying => _projectConfig.IsDevelopmentSettings || GP_Ads.IsRewardPlaying();
+        public bool IsStickyPlaying => _projectConfig.IsDevelopmentSettings || GP_Ads.IsStickyPlaying();
+        public bool CanShowFullscreenBeforeGamePlay => _projectConfig.IsDevelopmentSettings || GP_Ads.CanShowFullscreenBeforeGamePlay();
 
         public event Action OnFullscreenStart;
         public event Action<bool> OnFullscreenClose;
@@ -21,8 +24,10 @@ namespace TowerMergeTD.API
         public event Action<string> OnRewardedReward;
         public event Action<bool> OnRewardedClose;
 
-        public ADService()
+        public ADService(ProjectConfig projectConfig)
         {
+            _projectConfig = projectConfig;
+            
             GP_Ads.ShowSticky();
         }
 

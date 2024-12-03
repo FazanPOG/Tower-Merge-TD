@@ -31,13 +31,13 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private PausePopupView _pausePopupView;
         [SerializeField] private LosePopupView _losePopupView;
         [SerializeField] private LevelCompletePopupView _levelCompletePopupView;
+        [SerializeField] private AdConfirmationPopupView _adConfirmationPopupView;
 
         private DiContainer _container;
         private ReactiveProperty<SceneEnterParams> _exitSceneSignalBus;
         private int _currentLevelIndex;
         private ProjectConfig _projectConfig;
         private LevelConfig _currentLevelConfig;
-        private ILocalizationAsset _localizationAsset;
 
         public void Bind(ReactiveProperty<SceneEnterParams> exitSceneSignalBus, DiContainer container, int currentLevelIndex)
         {
@@ -47,8 +47,7 @@ namespace TowerMergeTD.Gameplay.Root
             
             _projectConfig = _container.Resolve<ProjectConfig>();
             _currentLevelConfig = _projectConfig.Levels[_currentLevelIndex].LevelConfig;
-            _localizationAsset = _container.Resolve<ILocalizationAsset>();
-
+            
             if (_currentLevelConfig.IsTutorial)
                 BindTutorial();
             
@@ -66,6 +65,7 @@ namespace TowerMergeTD.Gameplay.Root
         
         private void BindAdapters()
         {
+            var localizationAsset = _container.Resolve<ILocalizationAsset>();
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
             var buildingCurrencyProxy = _container.Resolve<PlayerBuildingCurrencyProxy>();
             var pauseService = _container.Resolve<IPauseService>();
@@ -75,8 +75,23 @@ namespace TowerMergeTD.Gameplay.Root
             var waveSpawnerServices = _container.Resolve<IWaveSpawnerService[]>();
             var adService = _container.Resolve<IADService>();
 
-            new PlayerBuildingCurrencyViewAdapter(_buildingCurrencyView, buildingCurrencyProxy);
-            new PlayerHealthViewAdapter(_playerHealthView, playerHealthProxy);
+            new PlayerBuildingCurrencyViewAdapter(
+                _buildingCurrencyView, 
+                buildingCurrencyProxy,
+                _adConfirmationPopupView,
+                localizationAsset,
+                adService,
+                pauseService
+                );
+            
+            new PlayerHealthViewAdapter(
+                _playerHealthView, 
+                playerHealthProxy,
+                _adConfirmationPopupView,
+                localizationAsset,
+                adService,
+                pauseService);
+            
             new GameTimerViewAdapter(_gameTimerView, gameTimerService);
             new GameSpeedViewAdapter(gameSpeedService, _gameSpeedView);
             new WavesCounterViewAdapter(waveSpawnerServices, _wavesCounterView);
@@ -106,7 +121,7 @@ namespace TowerMergeTD.Gameplay.Root
                     _pauseButton, 
                     _exitSceneSignalBus, 
                     pauseService, 
-                    _localizationAsset, 
+                    localizationAsset, 
                     _projectConfig.IsDevelopmentSettings, 
                     adService
                     );
@@ -114,7 +129,7 @@ namespace TowerMergeTD.Gameplay.Root
 
             void bindLoseGamePopup()
             {
-                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, _localizationAsset);
+                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, localizationAsset);
                 gameStateService.Register(losePopupViewAdapter);
             }
 
@@ -134,7 +149,7 @@ namespace TowerMergeTD.Gameplay.Root
                     scoreService,
                     rewardCalculate,
                     gameTimerService,
-                    _localizationAsset,
+                    localizationAsset,
                     adService,
                     _projectConfig.IsDevelopmentSettings
                     );
