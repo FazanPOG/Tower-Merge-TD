@@ -11,5 +11,7 @@ namespace TowerMergeTD.Game.State
         public List<TowerType> UnlockTowers;
         public List<string> ShopPurchasedItemIDs;
         public DateTime LastExitTime;
+        public float MusicVolume;
+        public float SoundVolume;
     }
 }

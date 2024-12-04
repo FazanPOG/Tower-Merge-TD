@@ -25,6 +25,7 @@ MonoBehaviour:
     - de611da444854ca4af7072b83c13eb75
     - d49088911968c0942b429b159cba4e06
     - 7f82eab8a3a43934f90623bf74a51446
+    - 32dd13bf92dfba146816ae17c9bc9d14
     values:
     - colorIndex: 0
       iconNameOrGuid: SceneAsset Icon
@@ -48,3 +49,5 @@ MonoBehaviour:
       iconNameOrGuid: RawImage Icon
     - colorIndex: 0
       iconNameOrGuid: ScriptableObject Icon
+    - colorIndex: 0
+      iconNameOrGuid: AudioClip Icon

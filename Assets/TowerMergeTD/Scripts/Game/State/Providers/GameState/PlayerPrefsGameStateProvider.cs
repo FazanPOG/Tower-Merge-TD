@@ -76,7 +76,6 @@ namespace TowerMergeTD.Game.State
             PlayerPrefs.SetString(GAME_STATE_KEY, json);
             PlayerPrefs.Save();
 
-            GP_Logger.Log("Save game");
             return Observable.Return(true);
         }
 
@@ -129,7 +128,9 @@ namespace TowerMergeTD.Game.State
             {
                 LevelDatas = levelSaveDatas,
                 UnlockTowers = towerTypes,
-                ShopPurchasedItemIDs = shopPurchasedItemIDs
+                ShopPurchasedItemIDs = shopPurchasedItemIDs,
+                MusicVolume = 0.5f,
+                SoundVolume = 0.5f
             };
             
             return new GameStateProxy(_gameStateOrigin);

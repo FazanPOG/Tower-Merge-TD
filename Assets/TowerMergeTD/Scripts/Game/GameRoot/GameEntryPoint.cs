@@ -2,6 +2,7 @@ using System.Collections;
 using GamePush;
 using R3;
 using TowerMergeTD.API;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI.Root;
 using TowerMergeTD.Gameplay.Root;
@@ -48,6 +49,8 @@ namespace TowerMergeTD.GameRoot
             _projectConfig = Resources.Load<ProjectConfig>("ProjectConfig");
             var prefabReferencesConfig = Resources.Load<PrefabReferencesConfig>("PrefabReferencesConfig");
             
+            var audioClipsConfig = Resources.Load<AudioClipsConfig>("AudioClipsConfig");
+            
             APIBinder apiBinder = new APIBinder(_rootContainer);
             apiBinder.Bind();
             
@@ -60,6 +63,7 @@ namespace TowerMergeTD.GameRoot
             _rootContainer.Bind<MonoBehaviourWrapper>().FromInstance(_monoBehaviourWrapper).AsSingle().NonLazy();
             _rootContainer.Bind<ProjectConfig>().FromInstance(_projectConfig).AsSingle().NonLazy();
             _rootContainer.Bind<PrefabReferencesConfig>().FromInstance(prefabReferencesConfig).AsSingle().NonLazy();
+            _rootContainer.Bind<AudioClipsConfig>().FromInstance(audioClipsConfig).AsSingle().NonLazy();
             _rootContainer.Bind<TimerService>().FromInstance(timerService).AsSingle().NonLazy();
         }
         

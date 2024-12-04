@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiMainMenuRootPrefab: {fileID: -5336647694545396591, guid: 49631ff0eaeebe942bb36235f7c71c8d, type: 3}
+  _backgroundMusicPrefab: {fileID: -5074488142449842358, guid: cbc447c461384fe4ea134b6e3dc12836, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

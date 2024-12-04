@@ -11,8 +11,9 @@ namespace TowerMergeTD.Game.State
         public ObservableList<LevelSaveDataProxy> LevelDatas { get; } = new ObservableList<LevelSaveDataProxy>();
         public ObservableList<TowerType> UnlockTowers { get; } = new ObservableList<TowerType>();
         public ObservableList<string> ShopPurchasedItemIDs { get; } = new ObservableList<string>();
-
         public ReactiveProperty<DateTime> LastExitTime { get; } = new ReactiveProperty<DateTime>();
+        public ReactiveProperty<float> MusicVolume { get; } = new ReactiveProperty<float>();
+        public ReactiveProperty<float> SoundVolume { get; } = new ReactiveProperty<float>();
 
         public GameStateProxy(GameState gameState)
         {
@@ -20,6 +21,8 @@ namespace TowerMergeTD.Game.State
             gameState.UnlockTowers.ForEach(unlockTower => { UnlockTowers.Add(unlockTower); });
             gameState.ShopPurchasedItemIDs.ForEach(id => { ShopPurchasedItemIDs.Add(id); });
             LastExitTime.Value = gameState.LastExitTime;
+            MusicVolume.Value = gameState.MusicVolume;
+            SoundVolume.Value = gameState.SoundVolume;
             
             LevelDatas.ObserveAdd().Subscribe(e =>
             {
@@ -66,6 +69,8 @@ namespace TowerMergeTD.Game.State
             });
 
             LastExitTime.Subscribe(newTime => gameState.LastExitTime = newTime);
+            MusicVolume.Subscribe(newVolume => gameState.MusicVolume = newVolume);
+            SoundVolume.Subscribe(newVolume => gameState.SoundVolume = newVolume);
         }
     }
 }

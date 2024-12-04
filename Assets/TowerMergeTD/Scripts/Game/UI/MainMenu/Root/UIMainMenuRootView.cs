@@ -2,7 +2,6 @@ using R3;
 using TowerMergeTD.API;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
-using TowerMergeTD.Utils;
 using UnityEngine;
 using Zenject;
 
@@ -43,7 +42,6 @@ namespace TowerMergeTD.Game.UI
         private ILocalizationAsset _localizationAsset;
         private IADService _adService;
         private ShopPopupViewAdapter _shopPopupViewAdapter;
-        private TimerService _timerService;
 
         public void Bind(ReactiveProperty<int> exitSceneSignalBus, DiContainer container)
         {
@@ -55,7 +53,6 @@ namespace TowerMergeTD.Game.UI
             _playerGemsProxy = container.Resolve<PlayerGemsProxy>();
             _localizationAsset = container.Resolve<ILocalizationAsset>();
             _adService = container.Resolve<IADService>();
-            _timerService = container.Resolve<TimerService>();
             
             _gameStateProvider.SaveGameState();
             
@@ -70,7 +67,7 @@ namespace TowerMergeTD.Game.UI
 
             new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView, _localizationAsset);
             new LevelsPanelViewAdapter(_levelsPanelView);
-            new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset);
+            new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset, _gameStateProvider);
             new LevelLockPopupViewAdapter(_levelLockPopupView);
             
             _shopPopupViewAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset);
