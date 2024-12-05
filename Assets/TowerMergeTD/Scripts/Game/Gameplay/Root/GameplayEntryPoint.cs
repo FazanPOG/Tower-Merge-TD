@@ -14,12 +14,15 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private UIGameplayRootView _uiGameplayRootPrefab;
 
         private ReactiveProperty<SceneEnterParams> _exitSceneSignalSubj;
+        private DiContainer _gameplayContainer;
         private ProjectConfig _projectConfig;
         private GameStateMachine _gameStateMachine;
         
         public Observable<GameplayExitParams> Run(DiContainer gameplayContainer, GameplayEnterParams gameplayEnterParams)
         {
-            BindDependencies(gameplayContainer, gameplayEnterParams);
+            _gameplayContainer = gameplayContainer;
+            
+            BindDependencies(gameplayEnterParams);
             StartGameplay();
             
             GameplayExitParams exitParams = null;
@@ -43,13 +46,13 @@ namespace TowerMergeTD.Gameplay.Root
             return exitToMainMenuSceneSignal;
         }
 
-        private void BindDependencies(DiContainer gameplayContainer, GameplayEnterParams gameplayEnterParams)
+        private void BindDependencies(GameplayEnterParams gameplayEnterParams)
         {
-            gameplayContainer.UnbindAll();
+            _gameplayContainer.UnbindAll();
 
-            _projectConfig = gameplayContainer.Resolve<ProjectConfig>();
+            _projectConfig = _gameplayContainer.Resolve<ProjectConfig>();
             
-            var uiRoot = gameplayContainer.Resolve<UIRootView>();
+            var uiRoot = _gameplayContainer.Resolve<UIRootView>();
             var uiGameplayRoot = Instantiate(_uiGameplayRootPrefab);
             uiRoot.AttachSceneUI(uiGameplayRoot.gameObject);
 
@@ -58,13 +61,13 @@ namespace TowerMergeTD.Gameplay.Root
 
             _exitSceneSignalSubj = new ReactiveProperty<SceneEnterParams>();
             
-            var gameplayBinder = new GameplayBinder(gameplayContainer);
+            var gameplayBinder = new GameplayBinder(_gameplayContainer);
             _gameStateMachine = gameplayBinder.Bind(level, gameplayEnterParams.LevelIndex);
             
-            uiGameplayRoot.Bind(_exitSceneSignalSubj, gameplayContainer, gameplayEnterParams.LevelIndex);
+            uiGameplayRoot.Bind(_exitSceneSignalSubj, _gameplayContainer, gameplayEnterParams.LevelIndex);
             
             if(TryGetComponent(out GameplayDebug gameplayDebug))
-                gameplayDebug.Init(gameplayContainer);
+                gameplayDebug.Init(_gameplayContainer);
         }
 
         private void StartGameplay()

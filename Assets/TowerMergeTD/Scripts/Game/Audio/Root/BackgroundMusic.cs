@@ -12,14 +12,14 @@ namespace TowerMergeTD.Game.Audio
         private AudioSource _audioSource;
         private IDisposable _disposable;
         
-        public void Init(IGameStateProvider gameStateProvider, AudioClipsConfig clipsConfig)
+        public void Init(IGameStateProvider gameStateProvider, AudioClip clip)
         {
             if(_gameStateProvider != null)
                 return;
             
             _gameStateProvider = gameStateProvider;
             _audioSource = GetComponent<AudioSource>();
-            _audioSource.clip = clipsConfig.BackgroundMusic;
+            _audioSource.clip = clip;
             
             _disposable = _gameStateProvider.GameState.MusicVolume.Subscribe(newValue =>
             {

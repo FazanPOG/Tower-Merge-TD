@@ -21,6 +21,8 @@ namespace TowerMergeTD.GameRoot
         private readonly DiContainer _rootContainer = new DiContainer();
         private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
         private readonly UIRootView _uiRootView;
+        private readonly BackgroundMusic _backgroundMusic;
+        private readonly AudioPlayer _audioPlayer;
         private readonly ProjectConfig _projectConfig;
         
         private DiContainer _cashedSceneContainer;
@@ -54,6 +56,14 @@ namespace TowerMergeTD.GameRoot
             APIBinder apiBinder = new APIBinder(_rootContainer);
             apiBinder.Bind();
             
+            var backgroundMusic = Resources.Load<BackgroundMusic>("BackgroundMusic");
+            _backgroundMusic = Object.Instantiate(backgroundMusic);
+            Object.DontDestroyOnLoad(_backgroundMusic.gameObject);
+            
+            var audioPlayer = Resources.Load<AudioPlayer>("AudioPlayer");
+            _audioPlayer = Object.Instantiate(audioPlayer);
+            Object.DontDestroyOnLoad(_audioPlayer.gameObject);
+            
             var gameStateProvider = new PlayerPrefsGameStateProvider(_projectConfig, _monoBehaviourWrapper);
             var timerService = new TimerService(_monoBehaviourWrapper);
             
@@ -63,8 +73,10 @@ namespace TowerMergeTD.GameRoot
             _rootContainer.Bind<MonoBehaviourWrapper>().FromInstance(_monoBehaviourWrapper).AsSingle().NonLazy();
             _rootContainer.Bind<ProjectConfig>().FromInstance(_projectConfig).AsSingle().NonLazy();
             _rootContainer.Bind<PrefabReferencesConfig>().FromInstance(prefabReferencesConfig).AsSingle().NonLazy();
-            _rootContainer.Bind<AudioClipsConfig>().FromInstance(audioClipsConfig).AsSingle().NonLazy();
             _rootContainer.Bind<TimerService>().FromInstance(timerService).AsSingle().NonLazy();
+            _rootContainer.Bind<AudioClipsConfig>().FromInstance(audioClipsConfig).AsSingle().NonLazy();
+            _rootContainer.Bind<BackgroundMusic>().FromInstance(_backgroundMusic).AsSingle().NonLazy();
+            _rootContainer.Bind<AudioPlayer>().FromInstance(_audioPlayer).AsSingle().NonLazy();
         }
         
         private void StartGame()
@@ -158,6 +170,8 @@ namespace TowerMergeTD.GameRoot
             
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             var mainMenuContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
+
+            InitAudio();
             
             mainMenuEntryPoint.Run(mainMenuContainer, mainMenuEnterParams).Skip(1).Subscribe(mainMenuExitParams =>
             {
@@ -187,6 +201,8 @@ namespace TowerMergeTD.GameRoot
             var gameplayEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
             var gameplayContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
 
+            InitAudio();
+            
             gameplayEntryPoint.Run(gameplayContainer, gameplayEnterParams).Skip(1).Subscribe(gameplayExitParams =>
             {
                 var targetSceneName = gameplayExitParams.TargetSceneEnterParams.SceneName;
@@ -204,6 +220,15 @@ namespace TowerMergeTD.GameRoot
             _uiRootView.HideLoadingScreen();
         }
 
+        private void InitAudio()
+        {
+            var gameStateProvider = _rootContainer.Resolve<IGameStateProvider>();
+            var audioClipsConfig = _rootContainer.Resolve<AudioClipsConfig>();
+            
+            _backgroundMusic.Init(gameStateProvider, audioClipsConfig.BackgroundMusic);
+            _audioPlayer.Init(gameStateProvider, audioClipsConfig);
+        }
+        
         private IEnumerator LoadScene(string sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);

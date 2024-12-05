@@ -1,4 +1,5 @@
-﻿using TowerMergeTD.Game.State;
+﻿using TowerMergeTD.Game.Audio;
+using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.UI
 {
@@ -7,16 +8,19 @@ namespace TowerMergeTD.Game.UI
         private readonly SettingsPopupView _view;
         private readonly ILocalizationAsset _localizationAsset;
         private readonly IGameStateProvider _gameStateProvider;
+        private readonly AudioPlayer _audioPlayer;
 
         public SettingsPopupViewAdapter(
             SettingsPopupView view, 
             ILocalizationAsset localizationAsset,
-            IGameStateProvider gameStateProvider)
+            IGameStateProvider gameStateProvider,
+            AudioPlayer audioPlayer)
         {
             _view = view;
             _localizationAsset = localizationAsset;
             _gameStateProvider = gameStateProvider;
-                
+            _audioPlayer = audioPlayer;
+
             UpdateView();
             
             _view.OnCloseButtonClicked += HandleSettingCloseButtonClicked;
@@ -47,6 +51,7 @@ namespace TowerMergeTD.Game.UI
 
         private void HandleSettingCloseButtonClicked()
         {
+            _audioPlayer.Play(AudioType.Button);
             _view.Hide();
         }
     }

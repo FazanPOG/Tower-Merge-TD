@@ -1,9 +1,11 @@
 ﻿using System;
 using TowerMergeTD.API;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.MainMenu;
 using TowerMergeTD.Game.State;
 using UnityEngine;
+using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.UI
 {
@@ -18,6 +20,7 @@ namespace TowerMergeTD.Game.UI
         private readonly ICurrencyProvider _currencyProvider;
         private readonly ILocalizationAsset _localizationAsset;
         private readonly IADService _adService;
+        private readonly AudioPlayer _audioPlayer;
 
         public ShopItemViewAdapter(
             ShopItemView view,
@@ -27,7 +30,8 @@ namespace TowerMergeTD.Game.UI
             IGameStateProvider gameStateProvider,
             ICurrencyProvider currencyProvider,
             ILocalizationAsset localizationAsset,
-            IADService adService)
+            IADService adService,
+            AudioPlayer audioPlayer)
         {
             _view = view;
             _shopPopupViewAdapter = shopPopupViewAdapter;
@@ -38,6 +42,7 @@ namespace TowerMergeTD.Game.UI
             _currencyProvider = currencyProvider;
             _localizationAsset = localizationAsset;
             _adService = adService;
+            _audioPlayer = audioPlayer;
 
             UpdateView();
             
@@ -48,9 +53,14 @@ namespace TowerMergeTD.Game.UI
         private void OnBuyButtonClicked()
         {
             if (CanBuy())
+            {
+                _audioPlayer.Play(AudioType.Cash);
                 Buy();
+            }
             else
+            {
                 RedirectToCurrencyPurchase();
+            }
         }
 
         private void Buy()

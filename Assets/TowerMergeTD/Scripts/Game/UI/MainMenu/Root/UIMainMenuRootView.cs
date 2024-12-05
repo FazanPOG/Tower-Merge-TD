@@ -1,5 +1,6 @@
 using R3;
 using TowerMergeTD.API;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace TowerMergeTD.Game.UI
         private ILocalizationAsset _localizationAsset;
         private IADService _adService;
         private ShopPopupViewAdapter _shopPopupViewAdapter;
+        private AudioPlayer _audioPlayer;
 
         public void Bind(ReactiveProperty<int> exitSceneSignalBus, DiContainer container)
         {
@@ -53,6 +55,7 @@ namespace TowerMergeTD.Game.UI
             _playerGemsProxy = container.Resolve<PlayerGemsProxy>();
             _localizationAsset = container.Resolve<ILocalizationAsset>();
             _adService = container.Resolve<IADService>();
+            _audioPlayer = container.Resolve<AudioPlayer>();
             
             _gameStateProvider.SaveGameState();
             
@@ -65,12 +68,12 @@ namespace TowerMergeTD.Game.UI
         {
             BindLevelEntryViewAdapters();
 
-            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView, _localizationAsset);
-            new LevelsPanelViewAdapter(_levelsPanelView);
-            new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset, _gameStateProvider);
-            new LevelLockPopupViewAdapter(_levelLockPopupView);
+            new MainMenuPanelsViewAdapter(_mainMenuPanelView, _levelsPanelView, _settingsPopupView, _shopPopupView, _localizationAsset, _audioPlayer);
+            new LevelsPanelViewAdapter(_levelsPanelView, _audioPlayer);
+            new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset, _gameStateProvider, _audioPlayer);
+            new LevelLockPopupViewAdapter(_levelLockPopupView, _audioPlayer);
             
-            _shopPopupViewAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset);
+            _shopPopupViewAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset, _audioPlayer);
             BindPlayerCurrencies();
             BindShopItems();
         }
@@ -107,7 +110,8 @@ namespace TowerMergeTD.Game.UI
                         levelSaveDataProxy, 
                         levelConfig, 
                         HandleGoToGameplayButtonClicked,
-                        _localizationAsset
+                        _localizationAsset,
+                        _audioPlayer
                     );
 
                     createdLevelCounter++;
@@ -117,8 +121,8 @@ namespace TowerMergeTD.Game.UI
 
         private void BindPlayerCurrencies()
         {
-            new PlayerCoinsViewAdapter(_playerCoinsView, _playerCoinsProxy, _shopPopupView, _shopPopupViewAdapter);
-            new PlayerGemsViewAdapter(_playerGemsView, _playerGemsProxy, _shopPopupView, _shopPopupViewAdapter);
+            new PlayerCoinsViewAdapter(_playerCoinsView, _playerCoinsProxy, _shopPopupView, _shopPopupViewAdapter, _audioPlayer);
+            new PlayerGemsViewAdapter(_playerGemsView, _playerGemsProxy, _shopPopupView, _shopPopupViewAdapter, _audioPlayer);
         }
 
         private void BindShopItems()
@@ -133,7 +137,8 @@ namespace TowerMergeTD.Game.UI
                     _gameStateProvider,
                     _currencyProvider,
                     _localizationAsset, 
-                    _adService);
+                    _adService, 
+                    _audioPlayer);
             }
         }
     }

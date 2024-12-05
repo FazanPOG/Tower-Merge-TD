@@ -1,4 +1,5 @@
 ﻿using R3;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.UI
@@ -8,12 +9,19 @@ namespace TowerMergeTD.Game.UI
         private readonly PlayerGemsView _view;
         private readonly ShopPopupView _shopView;
         private readonly ShopPopupViewAdapter _shopAdapter;
+        private readonly AudioPlayer _audioPlayer;
 
-        public PlayerGemsViewAdapter(PlayerGemsView view, PlayerGemsProxy gemsProxy, ShopPopupView shopView, ShopPopupViewAdapter shopAdapter)
+        public PlayerGemsViewAdapter(
+        PlayerGemsView view, 
+        PlayerGemsProxy gemsProxy, 
+        ShopPopupView shopView, 
+        ShopPopupViewAdapter shopAdapter,
+        AudioPlayer audioPlayer)
         {
             _view = view;
             _shopView = shopView;
             _shopAdapter = shopAdapter;
+            _audioPlayer = audioPlayer;
 
             _view.OnAddButtonClicked += OnAddButtonClicked;
             gemsProxy.Gems.Subscribe(UpdateView);
@@ -21,6 +29,7 @@ namespace TowerMergeTD.Game.UI
 
         private void OnAddButtonClicked()
         {
+            _audioPlayer.Play(AudioType.Button);
             _shopView.Show();
             _shopAdapter.ShowGemShop();
         }

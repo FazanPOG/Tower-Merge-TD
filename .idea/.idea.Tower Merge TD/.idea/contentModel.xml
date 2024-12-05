@@ -1585,6 +1585,8 @@
                   <e p="AudioClipsConfig.cs" t="Include" />
                 </e>
                 <e p="Root" t="Include">
+                  <e p="AudioPlayer.cs" t="Include" />
+                  <e p="AudioType.cs" t="Include" />
                   <e p="BackgroundMusic.cs" t="Include" />
                 </e>
               </e>

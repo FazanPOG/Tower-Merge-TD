@@ -1,4 +1,5 @@
 using System;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 
@@ -14,6 +15,7 @@ namespace TowerMergeTD.Game.UI
         private readonly LevelConfig _levelConfig;
         private readonly Action<int> _goGameplayCallback;
         private readonly ILocalizationAsset _localizationAsset;
+        private readonly AudioPlayer _audioPlayer;
 
         public LevelEntryViewAdapter(
             int levelIndex,
@@ -23,7 +25,8 @@ namespace TowerMergeTD.Game.UI
             LevelSaveDataProxy levelSaveDataProxy, 
             LevelConfig levelConfig, 
             Action<int> goGameplayCallback,
-            ILocalizationAsset localizationAsset)
+            ILocalizationAsset localizationAsset,
+            AudioPlayer audioPlayer)
         {
             _levelIndex = levelIndex;
             _isDevelopmentSettings = isDevelopmentSettings;
@@ -33,6 +36,7 @@ namespace TowerMergeTD.Game.UI
             _levelConfig = levelConfig;
             _goGameplayCallback = goGameplayCallback;
             _localizationAsset = localizationAsset;
+            _audioPlayer = audioPlayer;
 
             Init();
         }
@@ -71,6 +75,7 @@ namespace TowerMergeTD.Game.UI
                 _levelLockPopupView.Show();
                 _levelLockPopupView.SetLevelNumberText($"{_localizationAsset.GetTranslation(LocalizationKeys.LEVEL_KEY)}: {_levelSaveDataProxy.ID + 1}");
                 _levelLockPopupView.SetDescriptionText(_localizationAsset.GetTranslation(LocalizationKeys.LEVEL_LOCK_DESCRIPTION_KEY));
+                _audioPlayer.Play(AudioType.Button);
             };
         }
 
@@ -79,8 +84,12 @@ namespace TowerMergeTD.Game.UI
             _levelEntryView.SetActiveDefaultStage(true);
             _levelEntryView.SetActiveLockStage(false);
             _levelEntryView.SetActiveCompleteStage(false);
-            
-            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelIndex);
+
+            _levelEntryView.OnButtonClicked += () =>
+            {
+                _audioPlayer.Play(AudioType.Button);
+                _goGameplayCallback.Invoke(_levelIndex);
+            };
         }
 
         private void CompleteStageView()
@@ -89,7 +98,11 @@ namespace TowerMergeTD.Game.UI
             _levelEntryView.SetActiveDefaultStage(false);
             _levelEntryView.SetActiveLockStage(false);
             
-            _levelEntryView.OnButtonClicked += () => _goGameplayCallback.Invoke(_levelIndex);
+            _levelEntryView.OnButtonClicked += () =>
+            {
+                _audioPlayer.Play(AudioType.Button);
+                _goGameplayCallback.Invoke(_levelIndex);
+            };
             
             if(_levelSaveDataProxy.Score < _levelConfig.ScoreForOneStar)
                 _levelEntryView.SetStars(0);

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: AudioClipsConfig
   m_EditorClassIdentifier: 
   _backgroundMusic: {fileID: 8300000, guid: 202e4f1ad5389254e9b084d7631229ac, type: 3}
+  _cashClip: {fileID: 8300000, guid: 7fc8831548a04564bbf51457b5536053, type: 3}
+  _buttonClip: {fileID: 8300000, guid: b0d0e433dc7be24439b772f9aed7db5e, type: 3}

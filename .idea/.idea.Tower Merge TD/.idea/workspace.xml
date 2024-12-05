@@ -22,17 +22,27 @@
     <list default="true" id="894b49d9-1518-414d-8956-dd52cbe53e02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/vFolders/vFolders Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/vFolders/vFolders Data.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/AudioClipsConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/AudioClipsConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectContext.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectContext.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Audio/BackgroundMusic.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Audio/BackgroundMusic.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/BackgroundMusic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/BackgroundMusic.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayEntryPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Root/MainMenuEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Root/MainMenuEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelEntryViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelEntryViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelLockPopupViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelLockPopupViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelsPanelViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelsPanelViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/MainMenuPanelsViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/MainMenuPanelsViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerCoinsViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerCoinsViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerGemsViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerGemsViewAdapter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/SettingsPopupViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/SettingsPopupViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopPopupViewAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopPopupViewAdapter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/SettingsPopupView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/SettingsPopupView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,21 +72,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/BootState.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/WinGameState.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/GameStateMachine/States/LoseGameState.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/PauseService.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Services/RewardCalculatorService.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Shop/ShopItemPriceType.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Shop/ShopItemType.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/GamePush/Runtime/Emulator/GP_PlatformSettings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/GamePush/Runtime/Emulator/GP_Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/GamePush/Runtime/Emulator/GP_PaymentsStub.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/LevelConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Configs/ShopItemConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Root/APIBinder.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopPopupViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Player/PlayerCoinsProxy.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Player/PlayerGemsProxy.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/PlayerCurrency/PlayerPrefsCurrencyProvider.cs" />
@@ -101,18 +101,28 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/PlayerBuildingCurrencyViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/ADService.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/ShopItemView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Root/GameStateProxy.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Views/SettingsPopupView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/SettingsPopupViewAdapter.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/BackgroundMusic.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Root/MainMenuEntryPoint.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/BackgroundMusic.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioType.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelEntryViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelLockPopupViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/LevelsPanelViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/MainMenuPanelsViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerCoinsViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/PlayerGemsViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/SettingsPopupViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Root/UIMainMenuRootView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopItemViewAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/BackgroundMusic.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayEntryPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Root/MainMenuEntryPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/ShopPopupViewAdapter.cs" />
       </list>
     </option>
   </component>
@@ -225,6 +235,7 @@
       <workItem from="1733223786570" duration="3389000" />
       <workItem from="1733248450352" duration="5615000" />
       <workItem from="1733309642862" duration="4795000" />
+      <workItem from="1733400299360" duration="6850000" />
     </task>
     <servers />
   </component>
@@ -262,10 +273,10 @@
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="92" y="92" width="1736" height="850" maximized="true" key="VCS.FileHistoryDialog/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731340411086" />
-    <state x="552" y="250" width="839" height="534" key="find.popup" timestamp="1733258305967">
+    <state x="552" y="250" width="839" height="534" key="find.popup" timestamp="1733408426594">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="552" y="250" width="839" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1733258305967" />
+    <state x="552" y="250" width="839" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1733408426594" />
     <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1732728525600">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
