@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using R3;
+using TowerMergeTD.Game.Audio;
 using UnityEngine;
+using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -13,9 +15,9 @@ namespace TowerMergeTD.Game.Gameplay
         
         private readonly ReactiveProperty<float> _health = new ReactiveProperty<float>();
         
-        private Collider2D _collider;
         private PlayerBuildingCurrencyProxy _playerBuildingCurrencyProxy;
         private EnemyConfig _config;
+        private AudioPlayer _audioPlayer;
 
         public event Action OnDied;
         
@@ -23,14 +25,18 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void Awake()
         {
-            _collider = GetComponent<CircleCollider2D>();
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         }
 
-        public void Init(PlayerBuildingCurrencyProxy playerBuildingCurrencyProxy, EnemyConfig config, List<Vector3> movePath)
+        public void Init(
+            PlayerBuildingCurrencyProxy playerBuildingCurrencyProxy, 
+            EnemyConfig config, 
+            List<Vector3> movePath,
+            AudioPlayer audioPlayer)
         {
             _playerBuildingCurrencyProxy = playerBuildingCurrencyProxy;
             _config = config;
+            _audioPlayer = audioPlayer;
             _health.Value = _config.Health;
             
             EnemyMovement movement = new EnemyMovement();
@@ -54,6 +60,8 @@ namespace TowerMergeTD.Game.Gameplay
         public void DestroySelf()
         {
             _playerBuildingCurrencyProxy.BuildingCurrency.Value += _config.BuildingCurrencyOnDeath;
+            _audioPlayer.Play(AudioType.EnemyDeathFirstSound);
+            _audioPlayer.Play(AudioType.EnemyDeathSecondSound);
             OnDied?.Invoke();
             Destroy(gameObject);
         }

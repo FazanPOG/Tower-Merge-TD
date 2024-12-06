@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using UnityEngine;
+using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -8,10 +10,14 @@ namespace TowerMergeTD.Game.Gameplay
     {
         [SerializeField] private SpriteRenderer _fireSpriteRenderer;
 
-        public override void Init(TowerDataProxy data, ITowerAttacker towerAttacker)
+        private AudioPlayer _audioPlayer;
+        
+        public override void Init(TowerDataProxy data, ITowerAttacker towerAttacker, AudioPlayer audioPlayer)
         {
-            base.Init(data, towerAttacker);
+            base.Init(data, towerAttacker, audioPlayer);
+            
             _fireSpriteRenderer.gameObject.SetActive(false);
+            _audioPlayer = audioPlayer;
         }
 
         protected override void TowerAttackerOnAttacked()
@@ -22,6 +28,7 @@ namespace TowerMergeTD.Game.Gameplay
         private IEnumerator ShowFireEffect()
         {
             _fireSpriteRenderer.gameObject.SetActive(true);
+            _audioPlayer.Play(AudioType.GunShot);
             yield return new WaitForSeconds(0.1f);
             _fireSpriteRenderer.gameObject.SetActive(false);
         }

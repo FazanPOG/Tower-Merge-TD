@@ -1,3 +1,4 @@
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace TowerMergeTD.Game.Gameplay
         private Transform _currentRotateTarget;
         private ITowerAttacker _towerAttacker;
 
-        public virtual void Init(TowerDataProxy data, ITowerAttacker towerAttacker)
+        public virtual void Init(TowerDataProxy data, ITowerAttacker towerAttacker, AudioPlayer audioPlayer)
         {
             _towerAttacker = towerAttacker;
             

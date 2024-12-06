@@ -129,8 +129,8 @@ namespace TowerMergeTD.Game.State
                 LevelDatas = levelSaveDatas,
                 UnlockTowers = towerTypes,
                 ShopPurchasedItemIDs = shopPurchasedItemIDs,
-                MusicVolume = 0.5f,
-                SoundVolume = 0.5f
+                MusicVolume = 0.3f,
+                SoundVolume = 0.3f
             };
             
             return new GameStateProxy(_gameStateOrigin);

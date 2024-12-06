@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly IInput _input;
         private readonly Transform _parent;
         private readonly IPauseService _pauseService;
+        private readonly AudioPlayer _audioPlayer;
         private readonly IGameSpeedService _gameSpeedService;
 
         public TowerFactory(
@@ -24,7 +26,8 @@ namespace TowerMergeTD.Game.Gameplay
             MapCoordinator mapCoordinator,
             IInput input,
             Transform parent,
-            IPauseService pauseService
+            IPauseService pauseService,
+            AudioPlayer audioPlayer
             )
         {
             _diContainer = diContainer;
@@ -34,6 +37,7 @@ namespace TowerMergeTD.Game.Gameplay
             _input = input;
             _parent = parent;
             _pauseService = pauseService;
+            _audioPlayer = audioPlayer;
         }
 
         public TowerObject Create(TowerType towerType, Vector2 spawnPosition, int towerLevel)
@@ -47,7 +51,7 @@ namespace TowerMergeTD.Game.Gameplay
 
             ITowerAttacker attacker = GetTowerAttacker(towerType, instance.CollisionHandler, towerLevel, instance.View);
             
-            instance.Init(_input, proxy, _mapCoordinator, attacker, _pauseService);
+            instance.Init(_input, proxy, _mapCoordinator, attacker, _pauseService, _audioPlayer);
             instance.name = $"{instance.Type} {towerLevel}";
             
             return instance;

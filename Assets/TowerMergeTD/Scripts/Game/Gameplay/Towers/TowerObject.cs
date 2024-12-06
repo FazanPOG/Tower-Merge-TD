@@ -1,5 +1,7 @@
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using UnityEngine;
+using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -16,6 +18,7 @@ namespace TowerMergeTD.Game.Gameplay
         private DragAndDrop _dragAndDrop;
         private ITowerAttacker _attacker;
         private IPauseService _pauseService;
+        private AudioPlayer _audioPlayer;
         private Vector3 _rotateTarget;
 
         public TowerType Type => _generation.TowersType;
@@ -49,12 +52,14 @@ namespace TowerMergeTD.Game.Gameplay
             TowerProxy proxy, 
             MapCoordinator mapCoordinator, 
             ITowerAttacker attacker,
-            IPauseService pauseService)
+            IPauseService pauseService,
+            AudioPlayer audioPlayer)
         {
             _towerProxy = proxy;
             _mapCoordinator = mapCoordinator;
             _attacker = attacker;
             _pauseService = pauseService;
+            _audioPlayer = audioPlayer;
             
             _dragAndDrop = _collisionHandler.gameObject.AddComponent<DragAndDrop>();
             _dragAndDrop.Init(input, transform, _mapCoordinator);
@@ -62,7 +67,7 @@ namespace TowerMergeTD.Game.Gameplay
             _dataProxy = _generation.GetTowerDataProxy(_towerProxy.Level.CurrentValue);
             _attacker.Init(_dataProxy.Damage, _dataProxy.AttackRange, _dataProxy.AttackCooldown, _dragAndDrop.IsDragging);
 
-            _view.Init(_dataProxy, _attacker);
+            _view.Init(_dataProxy, _attacker, _audioPlayer);
 
             _pauseService.Register(_dragAndDrop);
             
@@ -82,6 +87,8 @@ namespace TowerMergeTD.Game.Gameplay
             
             if(merged == false)
                 _dragAndDrop.ResetPosition();
+            else
+                _audioPlayer.Play(AudioType.MergeTowers);
         }
 
         private void UpdateModel()

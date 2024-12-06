@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using R3;
+using TowerMergeTD.Game.Audio;
 using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -8,7 +9,7 @@ namespace TowerMergeTD.Game.Gameplay
     public class TowerRegularAttacker : ITowerAttacker
     {
         private readonly TowerCollisionHandler _collisionHandler;
-        
+
         private float _initialDamage;
         private float _attackCooldown;
         private ReadOnlyReactiveProperty<bool> _isDragging;

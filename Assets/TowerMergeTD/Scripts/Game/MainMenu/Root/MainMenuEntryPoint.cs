@@ -1,5 +1,7 @@
 using GamePush;
 using R3;
+using TowerMergeTD.Game.Audio;
+using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
 using TowerMergeTD.Game.UI.Root;
 using TowerMergeTD.Gameplay.Root;
@@ -24,6 +26,7 @@ namespace TowerMergeTD.MainMenu.Root
             _mainMenuContainer.UnbindAll();
 
             BindUI();
+            InitAudio();
             
             GP_Game.GameReady();
             
@@ -48,6 +51,15 @@ namespace TowerMergeTD.MainMenu.Root
             var uiRoot = _mainMenuContainer.Resolve<UIRootView>();
             _uiMainMenuRoot = Instantiate(_uiMainMenuRootPrefab);
             uiRoot.AttachSceneUI(_uiMainMenuRoot.gameObject);
+        }
+        
+        private void InitAudio()
+        {
+            var gameStateProvider = _mainMenuContainer.Resolve<IGameStateProvider>();
+            var audioClipsConfig = _mainMenuContainer.Resolve<AudioClipsConfig>();
+            
+            _mainMenuContainer.Resolve<BackgroundMusic>().Init(gameStateProvider, audioClipsConfig.BackgroundMusic);
+            _mainMenuContainer.Resolve<AudioPlayer>().Init(gameStateProvider, audioClipsConfig);
         }
     }
 }

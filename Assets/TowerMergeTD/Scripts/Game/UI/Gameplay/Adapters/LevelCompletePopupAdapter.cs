@@ -1,6 +1,7 @@
 ﻿using System;
 using R3;
 using TowerMergeTD.API;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Gameplay.Root;
@@ -12,6 +13,7 @@ namespace TowerMergeTD.Game.UI
     public class LevelCompletePopupAdapter : IGameStateHandler
     {
         private readonly LevelCompletePopupView _view;
+        private readonly bool _isDevelopment;
         private readonly bool _isLastLevel;
         private readonly int _currentLevelIndex;
         private readonly ReactiveProperty<SceneEnterParams> _exitSceneSignalBus;
@@ -20,12 +22,13 @@ namespace TowerMergeTD.Game.UI
         private readonly IRewardCalculatorService _rewardCalculatorService;
         private readonly IGameTimerService _gameTimerService;
         private readonly IADService _adService;
-        private readonly bool _isDevelopment;
+        private readonly AudioPlayer _audioPlayer;
 
         public LevelCompletePopupAdapter(
             LevelCompletePopupView view,
-            bool isLastLevel,
-            int currentLevelIndex, 
+            bool isDevelopment,
+            bool isLastLevel, 
+            int currentLevelIndex,
             ReactiveProperty<SceneEnterParams> exitSceneSignalBus,
             LevelConfig levelConfig,
             IScoreService scoreService,
@@ -33,9 +36,10 @@ namespace TowerMergeTD.Game.UI
             IGameTimerService gameTimerService,
             ILocalizationAsset localizationAsset,
             IADService adService,
-            bool isDevelopment)
+            AudioPlayer audioPlayer)
         {
             _view = view;
+            _isDevelopment = isDevelopment;
             _isLastLevel = isLastLevel;
             _currentLevelIndex = currentLevelIndex;
             _exitSceneSignalBus = exitSceneSignalBus;
@@ -44,7 +48,7 @@ namespace TowerMergeTD.Game.UI
             _rewardCalculatorService = rewardCalculatorService;
             _gameTimerService = gameTimerService;
             _adService = adService;
-            _isDevelopment = isDevelopment;
+            _audioPlayer = audioPlayer;
 
             _view.SetCompleteText(localizationAsset.GetTranslation(LocalizationKeys.COMPLETE_KEY));
             _view.SetScoreText(localizationAsset.GetTranslation(LocalizationKeys.SCORE_KEY));
@@ -73,11 +77,14 @@ namespace TowerMergeTD.Game.UI
 
         private void HandleHomeButtonClicked()
         {
+            _audioPlayer.Play(AudioType.Button);
             _exitSceneSignalBus.OnNext(new MainMenuEnterParams("TEST"));
         } 
 
         private void HandleRestartButtonClicked()
         {
+            _audioPlayer.Play(AudioType.Button);
+            
             if (_adService.IsFullscreenAvailable)
             {
                 _adService.ShowFullscreen();
@@ -132,13 +139,22 @@ namespace TowerMergeTD.Game.UI
         {
             if(_scoreService.Score < _levelConfig.ScoreForOneStar)
                 throw new ArgumentException($"Win game, but score is less than required for 1 star: ({_levelConfig.ScoreForOneStar})");
-            
-            if(_scoreService.Score < _levelConfig.ScoreForTwoStars)
+
+            if (_scoreService.Score < _levelConfig.ScoreForTwoStars)
+            {
+                _audioPlayer.Play(AudioType.OneTwoStarsWin);
                 _view.SetStars(1);
-            else if(_scoreService.Score < _levelConfig.ScoreForThreeStars)
+            }
+            else if (_scoreService.Score < _levelConfig.ScoreForThreeStars)
+            {
+                _audioPlayer.Play(AudioType.OneTwoStarsWin);
                 _view.SetStars(2);
+            }
             else
+            {
+                _audioPlayer.Play(AudioType.ThreeStarsWin);
                 _view.SetStars(3);
+            }
         }
     }
 }

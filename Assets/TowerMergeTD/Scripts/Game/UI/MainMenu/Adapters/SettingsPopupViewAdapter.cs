@@ -1,5 +1,7 @@
 ﻿using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
+using UnityEngine;
+using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.UI
 {
@@ -45,6 +47,7 @@ namespace TowerMergeTD.Game.UI
 
         private void OnMusicSliderChanged(float newValue)
         {
+            Debug.Log("Music volume changed");
             _gameStateProvider.GameState.MusicVolume.Value = newValue;
             _gameStateProvider.SaveGameState();
         }

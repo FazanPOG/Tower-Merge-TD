@@ -15,9 +15,6 @@ namespace TowerMergeTD.Game.Audio
         
         public void Init(IGameStateProvider gameStateProvider, AudioClipsConfig clipsConfig)
         {
-            if(_gameStateProvider != null || _clipsConfig != null)
-                return;
-            
             _gameStateProvider = gameStateProvider;
             _clipsConfig = clipsConfig;
             
@@ -45,6 +42,50 @@ namespace TowerMergeTD.Game.Audio
                 
                 case AudioType.Button:
                     clip = _clipsConfig.ButtonClip;
+                    break;
+                
+                case AudioType.GameOver:
+                    clip = _clipsConfig.GameOver;
+                    break;
+                
+                case AudioType.OneTwoStarsWin:
+                    clip = _clipsConfig.OneTwoStarsWin;
+                    break;
+                
+                case AudioType.ThreeStarsWin:
+                    clip = _clipsConfig.ThreeStarsWin;
+                    break;
+                
+                case AudioType.EnemyDeathFirstSound:
+                    clip = _clipsConfig.EnemyDeath1;
+                    break;
+                
+                case AudioType.EnemyDeathSecondSound:
+                    clip = _clipsConfig.EnemyDeath2;
+                    break;
+                
+                case AudioType.PlaceTower:
+                    clip = _clipsConfig.PlaceTower;
+                    break;
+                
+                case AudioType.MergeTowers:
+                    clip = _clipsConfig.MergeTowers;
+                    break;
+                
+                case AudioType.GunShot:
+                    clip = _clipsConfig.GunShot;
+                    break;
+                
+                case AudioType.Laser:
+                    clip = _clipsConfig.Laser;
+                    break;
+                
+                case AudioType.SniperShot:
+                    clip = _clipsConfig.SniperShot;
+                    break;
+                
+                case AudioType.TankDeath:
+                    clip = _clipsConfig.TankDeath;
                     break;
                 
                 default:

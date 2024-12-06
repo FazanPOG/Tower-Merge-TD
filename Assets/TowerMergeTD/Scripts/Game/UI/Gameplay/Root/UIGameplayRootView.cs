@@ -1,6 +1,7 @@
 using System.Linq;
 using R3;
 using TowerMergeTD.API;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
@@ -38,6 +39,7 @@ namespace TowerMergeTD.Gameplay.Root
         private int _currentLevelIndex;
         private ProjectConfig _projectConfig;
         private LevelConfig _currentLevelConfig;
+        private bool _isTutorialLevel;
 
         public void Bind(ReactiveProperty<SceneEnterParams> exitSceneSignalBus, DiContainer container, int currentLevelIndex)
         {
@@ -47,8 +49,9 @@ namespace TowerMergeTD.Gameplay.Root
             
             _projectConfig = _container.Resolve<ProjectConfig>();
             _currentLevelConfig = _projectConfig.Levels[_currentLevelIndex].LevelConfig;
+            _isTutorialLevel = _currentLevelConfig.IsTutorial;
             
-            if (_currentLevelConfig.IsTutorial)
+            if (_isTutorialLevel)
                 BindTutorial();
             
             BindAdapters();
@@ -74,6 +77,7 @@ namespace TowerMergeTD.Gameplay.Root
             var gameSpeedService = _container.Resolve<IGameSpeedService>();
             var waveSpawnerServices = _container.Resolve<IWaveSpawnerService[]>();
             var adService = _container.Resolve<IADService>();
+            var audioPlayer = _container.Resolve<AudioPlayer>();
 
             new PlayerBuildingCurrencyViewAdapter(
                 _buildingCurrencyView, 
@@ -110,7 +114,17 @@ namespace TowerMergeTD.Gameplay.Root
                 
                 TowerType[] types = gameStateProxy.UnlockTowers.ToArray();
                 
-                new TowerActionsAdapter(types, _towerSellView, _towersListView, inputHandler, towerFactory, mapCoordinator, buildingCurrencyProxy, pauseService);
+                new TowerActionsAdapter(
+                    _isTutorialLevel,
+                    types, 
+                    _towerSellView, 
+                    _towersListView, 
+                    inputHandler, 
+                    towerFactory, 
+                    mapCoordinator, 
+                    buildingCurrencyProxy, 
+                    pauseService,
+                    audioPlayer);
             }
 
             void bindPausePopup()
@@ -129,7 +143,7 @@ namespace TowerMergeTD.Gameplay.Root
 
             void bindLoseGamePopup()
             {
-                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, localizationAsset);
+                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, localizationAsset, audioPlayer);
                 gameStateService.Register(losePopupViewAdapter);
             }
 
@@ -142,6 +156,7 @@ namespace TowerMergeTD.Gameplay.Root
                 var levelCompletePopupAdapter = new LevelCompletePopupAdapter
                     (
                     _levelCompletePopupView, 
+                    _projectConfig.IsDevelopmentSettings,
                     isLastLevel,
                     _currentLevelIndex,
                     _exitSceneSignalBus,
@@ -151,7 +166,7 @@ namespace TowerMergeTD.Gameplay.Root
                     gameTimerService,
                     localizationAsset,
                     adService,
-                    _projectConfig.IsDevelopmentSettings
+                    audioPlayer
                     );
                 
                 gameStateService.Register(levelCompletePopupAdapter);

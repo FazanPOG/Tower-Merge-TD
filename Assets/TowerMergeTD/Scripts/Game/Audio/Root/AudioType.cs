@@ -3,6 +3,17 @@
     public enum AudioType
     {
         Cash,
-        Button
+        Button,
+        OneTwoStarsWin,
+        ThreeStarsWin,
+        GameOver,
+        TankDeath,
+        EnemyDeathFirstSound,
+        EnemyDeathSecondSound,
+        PlaceTower,
+        MergeTowers,
+        GunShot,
+        SniperShot,
+        Laser,
     }
 }

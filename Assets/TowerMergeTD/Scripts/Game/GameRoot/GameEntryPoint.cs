@@ -171,8 +171,6 @@ namespace TowerMergeTD.GameRoot
             var mainMenuEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
             var mainMenuContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
 
-            InitAudio();
-            
             mainMenuEntryPoint.Run(mainMenuContainer, mainMenuEnterParams).Skip(1).Subscribe(mainMenuExitParams =>
             {
                 var targetSceneName = mainMenuExitParams.TargetSceneEnterParams.SceneName;
@@ -201,8 +199,6 @@ namespace TowerMergeTD.GameRoot
             var gameplayEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
             var gameplayContainer = _cashedSceneContainer = new DiContainer(_rootContainer);
 
-            InitAudio();
-            
             gameplayEntryPoint.Run(gameplayContainer, gameplayEnterParams).Skip(1).Subscribe(gameplayExitParams =>
             {
                 var targetSceneName = gameplayExitParams.TargetSceneEnterParams.SceneName;
@@ -220,15 +216,6 @@ namespace TowerMergeTD.GameRoot
             _uiRootView.HideLoadingScreen();
         }
 
-        private void InitAudio()
-        {
-            var gameStateProvider = _rootContainer.Resolve<IGameStateProvider>();
-            var audioClipsConfig = _rootContainer.Resolve<AudioClipsConfig>();
-            
-            _backgroundMusic.Init(gameStateProvider, audioClipsConfig.BackgroundMusic);
-            _audioPlayer.Init(gameStateProvider, audioClipsConfig);
-        }
-        
         private IEnumerator LoadScene(string sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);

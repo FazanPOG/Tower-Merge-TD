@@ -1,3 +1,4 @@
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using UnityEngine;
 
@@ -8,13 +9,14 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private Transform _towerTransform;
         [SerializeField] private GameObject _laser;
         [SerializeField] private SpriteRenderer _laserSpriteRenderer;
+        [SerializeField] private AudioSource _audioSource;
 
         private TowerLaserAttacker _towerAttacker;
         private float _attackRange;
         
-        public override void Init(TowerDataProxy data, ITowerAttacker towerAttacker)
+        public override void Init(TowerDataProxy data, ITowerAttacker towerAttacker, AudioPlayer audioPlayer)
         {
-            base.Init(data, towerAttacker);
+            base.Init(data, towerAttacker, audioPlayer);
 
             _attackRange = data.AttackRange;
             _towerAttacker = towerAttacker as TowerLaserAttacker;
@@ -22,6 +24,7 @@ namespace TowerMergeTD.Game.Gameplay
 
         protected override void TowerAttackerOnAttacked()
         {
+            _audioSource.Play();
             _laser.gameObject.SetActive(true);
         }
 
@@ -36,9 +39,12 @@ namespace TowerMergeTD.Game.Gameplay
                 
                 if (distance <= _attackRange)
                 {
-                    if(_laser.gameObject.activeSelf == false)
+                    if (_laser.gameObject.activeSelf == false)
+                    {
+                        _audioSource.Play();
                         _laser.gameObject.SetActive(true);
-                    
+                    }
+
                     _laserSpriteRenderer.size = new Vector2(_laserSpriteRenderer.size.x, distance / 3);
                     var scale = _laserSpriteRenderer.transform.localScale;
                     scale = new Vector3(scale.x, distance / 2.9f, scale.z);
@@ -46,11 +52,13 @@ namespace TowerMergeTD.Game.Gameplay
                 }
                 else
                 {
+                    _audioSource.Stop();
                     _laser.gameObject.SetActive(false);
                 }
             }
             else
             {
+                _audioSource.Stop();
                 _laser.gameObject.SetActive(false);
             }
         }

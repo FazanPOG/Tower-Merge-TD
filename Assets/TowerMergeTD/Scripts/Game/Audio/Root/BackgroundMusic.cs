@@ -11,13 +11,12 @@ namespace TowerMergeTD.Game.Audio
         private IGameStateProvider _gameStateProvider;
         private AudioSource _audioSource;
         private IDisposable _disposable;
+        private bool _isPlaying;
         
         public void Init(IGameStateProvider gameStateProvider, AudioClip clip)
         {
-            if(_gameStateProvider != null)
-                return;
-            
             _gameStateProvider = gameStateProvider;
+            
             _audioSource = GetComponent<AudioSource>();
             _audioSource.clip = clip;
             
@@ -27,7 +26,12 @@ namespace TowerMergeTD.Game.Audio
             });
 
             _audioSource.loop = true;
-            _audioSource.Play();
+
+            if (_isPlaying == false)
+            {
+                _audioSource.Play();
+                _isPlaying = true;
+            }
         }
 
         private void OnDestroy()

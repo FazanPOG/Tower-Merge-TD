@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.GameRoot;
@@ -101,6 +102,7 @@ namespace TowerMergeTD.Gameplay.Root
             var mapCoordinator = _container.Resolve<MapCoordinator>();
             var input = _container.Resolve<IInput>();
             var playerBuildingCurrency = _container.Resolve<PlayerBuildingCurrencyProxy>();
+            var audioPlayer = _container.Resolve<AudioPlayer>();
             
             var towerFactory = new TowerFactory(
                 _container, 
@@ -109,11 +111,12 @@ namespace TowerMergeTD.Gameplay.Root
                 mapCoordinator,
                 input,
                 _level.TowersParent,
-                pauseService);
+                pauseService,
+                audioPlayer);
             
             _container.Bind<TowerFactory>().FromInstance(towerFactory).AsSingle().NonLazy();
             
-            var enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, playerBuildingCurrency, _level.EnemiesParent);
+            var enemyFactory = new EnemyFactory(_container, prefabReferences.EnemyPrefab, playerBuildingCurrency, _level.EnemiesParent, audioPlayer);
             _container.Bind<EnemyFactory>().FromInstance(enemyFactory).AsSingle().NonLazy();
             
             MergeHandler.Init(towerFactory);

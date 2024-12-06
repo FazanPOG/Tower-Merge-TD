@@ -13,12 +13,6 @@ namespace TowerMergeTD.Game.MainMenu
         [SerializeField, LabelText("Can only be purchased once")]
         private bool _isSinglePurchase;
         
-        [SerializeField, LabelText("Has a timer for recharging"), ShowIf(nameof(_showTimerSetting))]
-        private bool _hasCooldownTimer;
-        
-        [SerializeField, LabelText("Cooldown time in seconds"), ShowIf(nameof(_hasCooldownTimer))]
-        private int _cooldownTimeInSeconds;
-        
         [SerializeField, LabelText("Price Type")]
         private ShopItemPriceType _itemPriceType;
 
@@ -65,15 +59,10 @@ namespace TowerMergeTD.Game.MainMenu
         private bool _isTowerItem;
         private bool _isCurrencyItem;
         private bool _hasPrice;
-        private bool _showTimerSetting;
 
         public string ID => name;
         
         public bool IsSinglePurchase => _isSinglePurchase;
-
-        public bool HasCooldownTimer => _hasCooldownTimer;
-
-        public int CooldownTimeInSeconds => _cooldownTimeInSeconds;
         
         public ShopItemPriceType ItemPriceType => _itemPriceType;
 
@@ -99,8 +88,6 @@ namespace TowerMergeTD.Game.MainMenu
 
         private void OnValidate()
         {
-            _showTimerSetting = !_isSinglePurchase;
-
             switch (_itemPriceType)
             {
                 case ShopItemPriceType.Coin:

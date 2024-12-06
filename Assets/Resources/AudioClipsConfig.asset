@@ -15,3 +15,14 @@ MonoBehaviour:
   _backgroundMusic: {fileID: 8300000, guid: 202e4f1ad5389254e9b084d7631229ac, type: 3}
   _cashClip: {fileID: 8300000, guid: 7fc8831548a04564bbf51457b5536053, type: 3}
   _buttonClip: {fileID: 8300000, guid: b0d0e433dc7be24439b772f9aed7db5e, type: 3}
+  _12StarsWin: {fileID: 8300000, guid: daade6d6a258ddc4da63b69be13366fc, type: 3}
+  _3StarsWin: {fileID: 8300000, guid: 50573c019513e634c9057298bd256637, type: 3}
+  _enemyDeath1: {fileID: 8300000, guid: f91342dcbba57ff409589c3349bd18cc, type: 3}
+  _enemyDeath2: {fileID: 8300000, guid: ff3de10d1d1a43c4f839662d1ecc2b23, type: 3}
+  _tankDeath: {fileID: 8300000, guid: 30084f39b0897034eb85b8340fa08017, type: 3}
+  _gameOver: {fileID: 8300000, guid: c5582f87e6709ec43a8ae1934c43d751, type: 3}
+  _placeTower: {fileID: 8300000, guid: 02f68602ac9c59d4abfdd14d5b0206e5, type: 3}
+  _mergeTowers: {fileID: 8300000, guid: 3cb1b84e11c2bf84fb34becb7180e278, type: 3}
+  _gunShot: {fileID: 8300000, guid: 933d7ee1091beec4db1349e9a4be062f, type: 3}
+  _laser: {fileID: 8300000, guid: eb17232f38c53d849a7a9676bdabb698, type: 3}
+  _sniperShot: {fileID: 8300000, guid: 6924d88a20e2cea4492f3488191fb74c, type: 3}

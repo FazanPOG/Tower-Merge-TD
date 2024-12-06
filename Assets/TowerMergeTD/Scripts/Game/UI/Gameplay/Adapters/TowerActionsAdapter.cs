@@ -1,11 +1,14 @@
-﻿using TowerMergeTD.Game.Gameplay;
+﻿using TowerMergeTD.Game.Audio;
+using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using UnityEngine;
+using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.UI
 {
     public class TowerActionsAdapter : IPauseHandler
     {
+        private readonly bool _isTutorialLevel;
         private readonly TowerType[] _levelTowerTypes;
         private readonly TowerSellView _towerSellView;
         private readonly TowersListView _towersListView;
@@ -14,12 +17,14 @@ namespace TowerMergeTD.Game.UI
         private readonly MapCoordinator _mapCoordinator;
         private readonly PlayerBuildingCurrencyProxy _buildingCurrencyProxy;
         private readonly IPauseService _pauseService;
+        private readonly AudioPlayer _audioPlayer;
 
         private Vector2 _currentPosition;
         private TowerObject _currentClickedTower;
         private bool _canInteract;
 
         public TowerActionsAdapter(
+            bool isTutorialLevel,
             TowerType[] levelTowerTypes,
             TowerSellView towerSellView,
             TowersListView towersListView,
@@ -27,8 +32,10 @@ namespace TowerMergeTD.Game.UI
             TowerFactory towerFactory, 
             MapCoordinator mapCoordinator, 
             PlayerBuildingCurrencyProxy buildingCurrencyProxy,
-            IPauseService pauseService)
+            IPauseService pauseService,
+            AudioPlayer audioPlayer)
         {
+            _isTutorialLevel = isTutorialLevel;
             _levelTowerTypes = levelTowerTypes;
             _towerSellView = towerSellView;
             _towersListView = towersListView;
@@ -37,6 +44,7 @@ namespace TowerMergeTD.Game.UI
             _mapCoordinator = mapCoordinator;
             _buildingCurrencyProxy = buildingCurrencyProxy;
             _pauseService = pauseService;
+            _audioPlayer = audioPlayer;
 
             _canInteract = true;
             
@@ -51,14 +59,22 @@ namespace TowerMergeTD.Game.UI
             _towersListView.OnCreateTowerButtonClicked += CreateTower;
             
             _towersListView.LockAllButtons();
-            
-            foreach (var towerType in _levelTowerTypes)
+
+            if (_isTutorialLevel)
             {
-                if (_towersListView.HasCreateButton(towerType))
-                    _towersListView.SetTowerCreateButtonActiveState(towerType, true);
-                else
-                    Debug.LogError($"Create tower button with type {towerType} does not implemented");
+                _towersListView.SetTowerCreateButtonActiveState(TowerType.Gun, true);
             }
+            else
+            {
+                foreach (var towerType in _levelTowerTypes)
+                {
+                    if (_towersListView.HasCreateButton(towerType))
+                        _towersListView.SetTowerCreateButtonActiveState(towerType, true);
+                    else
+                        Debug.LogError($"Create tower button with type {towerType} does not implemented");
+                }
+            }
+            
             
             _towerSellView.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);
@@ -113,6 +129,7 @@ namespace TowerMergeTD.Game.UI
             
             if (cost <= _buildingCurrencyProxy.BuildingCurrency.CurrentValue)
             {
+                _audioPlayer.Play(AudioType.PlaceTower);
                 _towerFactory.Create(towerType, _currentPosition, 1);
                 _buildingCurrencyProxy.BuildingCurrency.Value -= cost;
             }
