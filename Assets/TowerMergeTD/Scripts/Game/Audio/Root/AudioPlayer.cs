@@ -88,6 +88,10 @@ namespace TowerMergeTD.Game.Audio
                     clip = _clipsConfig.TankDeath;
                     break;
                 
+                case AudioType.Explosion:
+                    clip = _clipsConfig.Explosion;
+                    break;
+                
                 default:
                     throw new NotImplementedException($"Audio type not implemented: {type}");
             }

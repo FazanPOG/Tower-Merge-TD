@@ -2,7 +2,7 @@
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    [CreateAssetMenu(menuName = "Configs/Wave", order = 0)]
+    [CreateAssetMenu(menuName = "Configs/Game/Gameplay/Wave", order = 0)]
     public class WaveConfig : ScriptableObject
     {
         [SerializeField, Range(0, 10)] private float _delayBetweenEnemies;

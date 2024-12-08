@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace TowerMergeTD.Game.State
 {
-    [CreateAssetMenu(menuName = "Configs/Map/TileSetConfig")]
+    [CreateAssetMenu(menuName = "Configs/Game/Gameplay/TileSetConfig")]
     public class TileSetConfig : ScriptableObject
     {
         [ListDrawerSettings(ShowIndexLabels = true)]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    [CreateAssetMenu(menuName = "Configs/Enemy", order = 1)]
+    [CreateAssetMenu(menuName = "Configs/Game/Gameplay/Enemy", order = 1)]
     public class EnemyConfig : ScriptableObject
     {
         [BoxGroup("Settings")] [Range(1, 5000)]

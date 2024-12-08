@@ -32,7 +32,8 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private ShopTowersView _shopTowersView;
         [SerializeField] private ShopCoinView _shopCoinView;
         [SerializeField] private ShopGemView _shopGemView;
-        [SerializeField] private ShopItemView[] _shopItemViews;
+        
+        private ShopItemView[] _shopItemViews;
         
         private ReactiveProperty<int> _exitSceneSignalBus;
         private ProjectConfig _projectConfig;
@@ -56,6 +57,8 @@ namespace TowerMergeTD.Game.UI
             _localizationAsset = container.Resolve<ILocalizationAsset>();
             _adService = container.Resolve<IADService>();
             _audioPlayer = container.Resolve<AudioPlayer>();
+
+            _shopItemViews = GetComponentsInChildren<ShopItemView>(true);
             
             _gameStateProvider.SaveGameState();
             

@@ -7,6 +7,7 @@ using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
 using TowerMergeTD.GameRoot;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -26,7 +27,8 @@ namespace TowerMergeTD.Gameplay.Root
         [SerializeField] private TowerSellView _towerSellView;
         [SerializeField] private TowersListView _towersListView;
         [SerializeField] private GameTimerView _gameTimerView;
-        [SerializeField] private TutorialView tutorialViewPrefab;
+        [FormerlySerializedAs("tutorialViewPrefab")] 
+        [SerializeField] private TutorialView _tutorialViewPrefab;
 
         [Header("Popups")]
         [SerializeField] private PausePopupView _pausePopupView;
@@ -59,7 +61,7 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindTutorial()
         {
-            var tutorialTextView = Instantiate(tutorialViewPrefab, _otherObjectsParent);
+            var tutorialTextView = Instantiate(_tutorialViewPrefab, _otherObjectsParent);
             
             _container.Bind<TutorialView>().FromInstance(tutorialTextView).AsSingle().NonLazy();
             _container.Bind<TowersListView>().FromInstance(_towersListView).AsSingle().NonLazy();
@@ -70,6 +72,7 @@ namespace TowerMergeTD.Gameplay.Root
         {
             var localizationAsset = _container.Resolve<ILocalizationAsset>();
             var playerHealthProxy = _container.Resolve<PlayerHealthProxy>();
+            var playerCoinsProxy = _container.Resolve<PlayerCoinsProxy>();
             var buildingCurrencyProxy = _container.Resolve<PlayerBuildingCurrencyProxy>();
             var pauseService = _container.Resolve<IPauseService>();
             var gameStateService = _container.Resolve<IGameStateService>();
@@ -111,10 +114,10 @@ namespace TowerMergeTD.Gameplay.Root
                 var inputHandler = _container.Resolve<IInput>();
                 var towerFactory = _container.Resolve<TowerFactory>();
                 var mapCoordinator = _container.Resolve<MapCoordinator>();
-                
+
                 TowerType[] types = gameStateProxy.UnlockTowers.ToArray();
-                
-                new TowerActionsAdapter(
+
+                var towerActionsAdapter = new TowerActionsAdapter(
                     _isTutorialLevel,
                     types, 
                     _towerSellView, 
@@ -125,6 +128,8 @@ namespace TowerMergeTD.Gameplay.Root
                     buildingCurrencyProxy, 
                     pauseService,
                     audioPlayer);
+
+                _container.Bind<TowerActionsAdapter>().FromInstance(towerActionsAdapter).AsCached().NonLazy();
             }
 
             void bindPausePopup()
@@ -143,7 +148,7 @@ namespace TowerMergeTD.Gameplay.Root
 
             void bindLoseGamePopup()
             {
-                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, localizationAsset, audioPlayer);
+                var losePopupViewAdapter = new LosePopupViewAdapter(_losePopupView, _currentLevelIndex, _exitSceneSignalBus, localizationAsset, audioPlayer, playerCoinsProxy);
                 gameStateService.Register(losePopupViewAdapter);
             }
 

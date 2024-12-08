@@ -1,4 +1,8 @@
-﻿using TowerMergeTD.Game.Audio;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Sirenix.Utilities;
+using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 using UnityEngine;
@@ -9,7 +13,7 @@ namespace TowerMergeTD.Game.UI
     public class TowerActionsAdapter : IPauseHandler
     {
         private readonly bool _isTutorialLevel;
-        private readonly TowerType[] _levelTowerTypes;
+        private readonly TowerType[] _unlockedTowerTypes;
         private readonly TowerSellView _towerSellView;
         private readonly TowersListView _towersListView;
         private readonly IInput _input;
@@ -19,13 +23,17 @@ namespace TowerMergeTD.Game.UI
         private readonly IPauseService _pauseService;
         private readonly AudioPlayer _audioPlayer;
 
+        private Dictionary<TowerType, TowerCreateButtonViewAdapter> _typeAdapterMap = new Dictionary<TowerType, TowerCreateButtonViewAdapter>();
+        private Dictionary<TowerType, TowerCreateButtonView> _typeViewMap = new Dictionary<TowerType, TowerCreateButtonView>();
         private Vector2 _currentPosition;
         private TowerObject _currentClickedTower;
         private bool _canInteract;
 
+        public IReadOnlyDictionary<TowerType, TowerCreateButtonView> TypeViewMap => _typeViewMap;
+
         public TowerActionsAdapter(
             bool isTutorialLevel,
-            TowerType[] levelTowerTypes,
+            TowerType[] unlockedTowerTypes,
             TowerSellView towerSellView,
             TowersListView towersListView,
             IInput input, 
@@ -36,7 +44,7 @@ namespace TowerMergeTD.Game.UI
             AudioPlayer audioPlayer)
         {
             _isTutorialLevel = isTutorialLevel;
-            _levelTowerTypes = levelTowerTypes;
+            _unlockedTowerTypes = unlockedTowerTypes;
             _towerSellView = towerSellView;
             _towersListView = towersListView;
             _input = input;
@@ -47,34 +55,46 @@ namespace TowerMergeTD.Game.UI
             _audioPlayer = audioPlayer;
 
             _canInteract = true;
-            
-            _towersListView.InitButtons();
+
+            InitCreateTowerButtons();
             Register();
         }
 
+        private void InitCreateTowerButtons()
+        {
+            for (int i = 0; i < _towersListView.TowerButtons.Count; i++)
+            {
+                var data = _towersListView.TowerSpritesConfig.TowerSprites[i];
+                var view = _towersListView.TowerButtons[i];
+                var towerType = data.TowerType;
+                
+                var adapter = new TowerCreateButtonViewAdapter(view, towerType, _towerFactory, data.TowerSprite, CreateTower);
+                
+                if(towerType == TowerType.None)
+                    continue;
+                
+                _typeAdapterMap.Add(towerType, adapter);
+                _typeViewMap.Add(towerType, view);
+            }
+        }
+        
         private void Register()
         {
             _input.OnClicked += OnClicked;
             _input.OnDragWithThreshold += OnDrag;
-            _towersListView.OnCreateTowerButtonClicked += CreateTower;
-            
-            _towersListView.LockAllButtons();
+
+            _typeAdapterMap.ForEach(x => x.Value.SetLockState());
 
             if (_isTutorialLevel)
             {
-                _towersListView.SetTowerCreateButtonActiveState(TowerType.Gun, true);
+                var adapter = _typeAdapterMap.First(x => x.Key == TowerType.Gun).Value;
+                adapter.SetUnlockState();
             }
             else
             {
-                foreach (var towerType in _levelTowerTypes)
-                {
-                    if (_towersListView.HasCreateButton(towerType))
-                        _towersListView.SetTowerCreateButtonActiveState(towerType, true);
-                    else
-                        Debug.LogError($"Create tower button with type {towerType} does not implemented");
-                }
+                foreach (var towerType in _unlockedTowerTypes)
+                    _typeAdapterMap[towerType].SetUnlockState();
             }
-            
             
             _towerSellView.OnSellTowerButtonClicked += SellTower;
             _pauseService.Register(this);

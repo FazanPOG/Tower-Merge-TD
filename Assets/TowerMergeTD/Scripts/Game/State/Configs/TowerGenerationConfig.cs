@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.State
 {
-    [CreateAssetMenu(menuName = "Configs/TowerGenerationConfig", order = 0)]
+    [CreateAssetMenu(menuName = "Configs/Game/State/TowerGenerationConfig", order = 0)]
     public class TowerGenerationConfig : ScriptableObject
     {
         [SerializeField] private TowerType _towersType;

@@ -15,5 +15,6 @@
         GunShot,
         SniperShot,
         Laser,
+        Explosion,
     }
 }

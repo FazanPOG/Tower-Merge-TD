@@ -2,7 +2,7 @@
 
 namespace TowerMergeTD.Game.Audio
 {
-    [CreateAssetMenu(menuName = "Configs/Audio/Clips")]
+    [CreateAssetMenu(menuName = "Configs/Game/Audio/Clips")]
     public class AudioClipsConfig : ScriptableObject
     {
         [Header("Music")]
@@ -24,6 +24,7 @@ namespace TowerMergeTD.Game.Audio
         [SerializeField] private AudioClip _gunShot;
         [SerializeField] private AudioClip _laser;
         [SerializeField] private AudioClip _sniperShot;
+        [SerializeField] private AudioClip _explosion;
 
         public AudioClip BackgroundMusic => _backgroundMusic;
 
@@ -51,5 +52,7 @@ namespace TowerMergeTD.Game.Audio
         public AudioClip Laser => _laser;
         
         public AudioClip SniperShot => _sniperShot;
+
+        public AudioClip Explosion => _explosion;
     }
 }

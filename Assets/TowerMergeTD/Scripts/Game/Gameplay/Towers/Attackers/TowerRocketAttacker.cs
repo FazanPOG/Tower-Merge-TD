@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using R3;
+using TowerMergeTD.Game.Audio;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,6 +12,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly TowerCollisionHandler _collisionHandler;
         private readonly Rocket _rocketPrefab;
         private readonly RocketTowerObjectView _rocketTowerObjectView;
+        private readonly AudioPlayer _audioPlayer;
 
         private float _initialDamage;
         private float _attackCooldown;
@@ -25,11 +27,13 @@ namespace TowerMergeTD.Game.Gameplay
         public TowerRocketAttacker(
             TowerCollisionHandler collisionHandler, 
             Rocket rocketPrefab,
-            RocketTowerObjectView rocketTowerObjectView)
+            RocketTowerObjectView rocketTowerObjectView,
+            AudioPlayer audioPlayer)
         {
             _collisionHandler = collisionHandler;
             _rocketPrefab = rocketPrefab;
             _rocketTowerObjectView = rocketTowerObjectView;
+            _audioPlayer = audioPlayer;
         }
 
         public void Init(float initialDamage, float attackRange, float attackCooldown, ReadOnlyReactiveProperty<bool> isDragging)
@@ -85,7 +89,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             Rocket rocket = Object.Instantiate(_rocketPrefab);
             rocket.transform.position = _rocketTowerObjectView.RocketSpawnTransform.position;
-            rocket.Init(_initialDamage, transform);
+            rocket.Init(_initialDamage, transform, _audioPlayer);
             
             _lastAttackTime = Time.time;
             

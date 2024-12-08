@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595dcbb877d040f190dc5b266bc874f7, type: 3}
   m_Name: AudioClipsConfig
   m_EditorClassIdentifier: 
-  _backgroundMusic: {fileID: 8300000, guid: 202e4f1ad5389254e9b084d7631229ac, type: 3}
+  _backgroundMusic: {fileID: 8300000, guid: ea5e2228ee8441646b8820391dd3f890, type: 3}
   _cashClip: {fileID: 8300000, guid: 7fc8831548a04564bbf51457b5536053, type: 3}
   _buttonClip: {fileID: 8300000, guid: b0d0e433dc7be24439b772f9aed7db5e, type: 3}
   _12StarsWin: {fileID: 8300000, guid: daade6d6a258ddc4da63b69be13366fc, type: 3}
@@ -26,3 +26,4 @@ MonoBehaviour:
   _gunShot: {fileID: 8300000, guid: 933d7ee1091beec4db1349e9a4be062f, type: 3}
   _laser: {fileID: 8300000, guid: eb17232f38c53d849a7a9676bdabb698, type: 3}
   _sniperShot: {fileID: 8300000, guid: 6924d88a20e2cea4492f3488191fb74c, type: 3}
+  _explosion: {fileID: 8300000, guid: 0adc45b02a9fbff4b94c6af706d870fb, type: 3}

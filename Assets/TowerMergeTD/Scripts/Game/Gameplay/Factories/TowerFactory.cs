@@ -111,9 +111,9 @@ namespace TowerMergeTD.Game.Gameplay
                 
                 case TowerType.Rocket:
                     if(towerLevel < 3)
-                        return new TowerRocketAttacker(collisionHandler, _prefabReferences.SmallRocket, towerObjectView.As<RocketTowerObjectView>());
+                        return new TowerRocketAttacker(collisionHandler, _prefabReferences.SmallRocket, towerObjectView.As<RocketTowerObjectView>(), _audioPlayer);
                     else
-                        return new TowerRocketAttacker(collisionHandler, _prefabReferences.BigRocket, towerObjectView.As<RocketTowerObjectView>());
+                        return new TowerRocketAttacker(collisionHandler, _prefabReferences.BigRocket, towerObjectView.As<RocketTowerObjectView>(), _audioPlayer);
                 
                 case TowerType.Laser:
                     return new TowerLaserAttacker(collisionHandler);

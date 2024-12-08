@@ -21,6 +21,7 @@ namespace TowerMergeTD.Game.Gameplay
         private IInput _input;
         private IWaveSpawnerService[] _waveSpawnServices;
         private TowersListView _towersListView;
+        private TowerActionsAdapter _towerActionsAdapter;
         private TutorialView _tutorialView;
         private ILocalizationAsset _localizationAsset;
 
@@ -41,8 +42,9 @@ namespace TowerMergeTD.Game.Gameplay
             _towersListView = diContainer.Resolve<TowersListView>();
             _tutorialView = diContainer.Resolve<TutorialView>();
             _localizationAsset = diContainer.Resolve<ILocalizationAsset>();
+            _towerActionsAdapter = diContainer.Resolve<TowerActionsAdapter>();
             diContainer.Resolve<TowerSellView>().CanEnabled = false;
-
+            
             _tutorialView.Init();
             _tutorialView.SetActiveHandImage(false);
 
@@ -95,7 +97,8 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void BindAction4()
         {
-            var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, TowerType.Gun);
+            var gunTowerCreateButton = _towerActionsAdapter.TypeViewMap[TowerType.Gun];
+            var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, gunTowerCreateButton);
             TutorialActions.Enqueue(clickAction);
             string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_2_KEY);
             TutorialTexts.Enqueue(text);
@@ -165,7 +168,8 @@ namespace TowerMergeTD.Game.Gameplay
         
         private void BindAction11()
         {
-            var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, TowerType.Gun);
+            var gunTowerCreateButton = _towerActionsAdapter.TypeViewMap[TowerType.Gun];
+            var clickAction = new CreateTowerTutorialAction(_monoBehaviourWrapper, _towersListView, gunTowerCreateButton);
             TutorialActions.Enqueue(clickAction);
             string text = _localizationAsset.GetTranslation(LocalizationKeys.LEVEL_1_TUTORIAL_TEXT_7_KEY);
             TutorialTexts.Enqueue(text);

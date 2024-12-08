@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
-    [CreateAssetMenu(menuName = "Configs/GameConfig", order = 0)]
+    [CreateAssetMenu(menuName = "Configs/Game/Gameplay/GameConfig", order = 0)]
     public class LevelConfig : ScriptableObject
     {
         [ToggleLeft]
@@ -42,7 +42,7 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private TileSetConfig _tileSetConfig;
         
         [TabGroup("Configs", "Waves")]
-        [ListDrawerSettings(Expanded = true, ShowPaging = true)]
+        [ListDrawerSettings(ShowPaging = true)]
         [Tooltip("Каждая WavesData представляет собой отдельный путь. Заполняйте массивы 'Waves' для настройки волн врагов по каждому пути. " +
                  "Количество WavesData ОБЯЗАТЕЛЬНО должно быть равно количетсву путей." +
                  "Количество Waves ДОЛЖНО быть одиннаковым")]

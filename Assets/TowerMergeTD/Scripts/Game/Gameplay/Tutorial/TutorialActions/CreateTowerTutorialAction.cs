@@ -9,20 +9,23 @@ namespace TowerMergeTD.Game.Gameplay
 {
     public class CreateTowerTutorialAction : ITutorialAction
     {
-        private readonly TowersListView _towersListView;
-        private readonly TowerType _towerType;
         private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
+        private readonly TowersListView _towersListView;
+        private readonly TowerCreateButtonView _towersCreateButtonView;
         private readonly ReactiveProperty<bool> _isComplete = new ReactiveProperty<bool>();
 
         private Coroutine _coroutine;
         
         public ReadOnlyReactiveProperty<bool> IsComplete => _isComplete;
 
-        public CreateTowerTutorialAction(MonoBehaviourWrapper monoBehaviourWrapper, TowersListView towersListView, TowerType towerType)
+        public CreateTowerTutorialAction(
+            MonoBehaviourWrapper monoBehaviourWrapper, 
+            TowersListView towersListView, 
+            TowerCreateButtonView towersCreateButtonView)
         {
-            _towersListView = towersListView;
-            _towerType = towerType;
             _monoBehaviourWrapper = monoBehaviourWrapper;
+            _towersListView = towersListView;
+            _towersCreateButtonView = towersCreateButtonView;
         }
 
         public void StartAction()
@@ -35,11 +38,7 @@ namespace TowerMergeTD.Game.Gameplay
         {
             yield return new WaitUntil(() => _towersListView.gameObject.activeSelf);
 
-            _towersListView.OnCreateTowerButtonClicked += (type) =>
-            {
-                if(_towerType == type)
-                    IsCompleted();
-            };
+            _towersCreateButtonView.OnButtonClicked += IsCompleted;
         }
         
         private void IsCompleted()
@@ -47,6 +46,7 @@ namespace TowerMergeTD.Game.Gameplay
             _towersListView.CanDisable = true;
             _towersListView.Hide();
             _isComplete.Value = true;
+            _towersCreateButtonView.OnButtonClicked -= IsCompleted;
         }
         
         public void Dispose()

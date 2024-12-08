@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TowerMergeTD.Game.MainMenu
 {
-    [CreateAssetMenu(menuName = "Configs/ShopItem")]
+    [CreateAssetMenu(menuName = "Configs/Game/MainMenu/ShopItem")]
     public class ShopItemConfig : ScriptableObject
     {
         [Title("General Settings")]
