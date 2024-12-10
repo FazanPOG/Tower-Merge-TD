@@ -25,6 +25,7 @@ namespace TowerMergeTD.Game.Audio
         [SerializeField] private AudioClip _laser;
         [SerializeField] private AudioClip _sniperShot;
         [SerializeField] private AudioClip _explosion;
+        [SerializeField] private AudioClip _electric;
 
         public AudioClip BackgroundMusic => _backgroundMusic;
 
@@ -54,5 +55,7 @@ namespace TowerMergeTD.Game.Audio
         public AudioClip SniperShot => _sniperShot;
 
         public AudioClip Explosion => _explosion;
+
+        public AudioClip Electric => _electric;
     }
 }

@@ -37,7 +37,9 @@ namespace TowerMergeTD.Game.Gameplay
                     Explode();
             }
             else
+            {
                 Explode();
+            }
         }
 
         private void Explode()

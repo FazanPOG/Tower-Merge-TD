@@ -50,6 +50,7 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.ROCKET_KEY] = "Ракетная башня",
                 [LocalizationKeys.LASER_KEY] = "Лазерная башня",
                 [LocalizationKeys.SNIPER_KEY] = "Снайперская башня",
+                [LocalizationKeys.ELECTRIC_KEY] = "Электрическая башня",
             };
         }
         

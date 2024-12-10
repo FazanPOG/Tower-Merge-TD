@@ -16,5 +16,6 @@
         SniperShot,
         Laser,
         Explosion,
+        Electric,
     }
 }

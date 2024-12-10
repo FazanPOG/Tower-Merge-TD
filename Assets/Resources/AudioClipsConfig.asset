@@ -27,3 +27,4 @@ MonoBehaviour:
   _laser: {fileID: 8300000, guid: eb17232f38c53d849a7a9676bdabb698, type: 3}
   _sniperShot: {fileID: 8300000, guid: 6924d88a20e2cea4492f3488191fb74c, type: 3}
   _explosion: {fileID: 8300000, guid: 0adc45b02a9fbff4b94c6af706d870fb, type: 3}
+  _electric: {fileID: 8300000, guid: a79ceff328aa2ee40812744c3b0ca7d2, type: 3}

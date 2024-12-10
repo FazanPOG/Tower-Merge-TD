@@ -7,5 +7,6 @@
         Rocket = 2,
         Laser = 3,
         Sniper = 4,
+        Electric = 5,
     }
 }

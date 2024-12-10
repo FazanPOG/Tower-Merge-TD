@@ -78,7 +78,7 @@ namespace TowerMergeTD.Game.Gameplay
             var towerGeneration = _generations.FirstOrDefault(x => x.TowersType == towerType);
             
             if(towerGeneration == null)
-                throw new MissingReferenceException($"Missing tower type on level: {towerType}");
+                throw new MissingReferenceException($"Missing tower type in ProjectConfig: {towerType}");
 
             return towerGeneration;
         }
@@ -120,6 +120,9 @@ namespace TowerMergeTD.Game.Gameplay
                 
                 case TowerType.Sniper:
                     return new TowerSniperAttacker(collisionHandler);
+                
+                case TowerType.Electric:
+                    return new TowerElectricAttacker(collisionHandler, _prefabReferences.Lightning, towerObjectView.As<ElectricTowerObjectView>(), _audioPlayer);
                     
                 default:
                     throw new MissingReferenceException($"Missing tower type: {towerType}");

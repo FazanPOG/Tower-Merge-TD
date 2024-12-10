@@ -42,5 +42,6 @@
         public const string ROCKET_KEY = nameof(ROCKET_KEY);
         public const string LASER_KEY = nameof(LASER_KEY);
         public const string SNIPER_KEY = nameof(SNIPER_KEY);
+        public const string ELECTRIC_KEY = nameof(ELECTRIC_KEY);
     }
 }
