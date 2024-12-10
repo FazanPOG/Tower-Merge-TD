@@ -124,6 +124,9 @@ namespace TowerMergeTD.Game.Gameplay
                 case TowerType.Electric:
                     return new TowerElectricAttacker(collisionHandler, _prefabReferences.Lightning, towerObjectView.As<ElectricTowerObjectView>(), _audioPlayer);
                     
+                case TowerType.Impact:
+                    return new TowerImpactAttacker(collisionHandler);
+                
                 default:
                     throw new MissingReferenceException($"Missing tower type: {towerType}");
             }

@@ -51,6 +51,7 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.LASER_KEY] = "Laser tower",
                 [LocalizationKeys.SNIPER_KEY] = "Sniper tower",
                 [LocalizationKeys.ELECTRIC_KEY] = "Electric tower",
+                [LocalizationKeys.IMPACT_KEY] = "Impact tower",
             };
         }
         

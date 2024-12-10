@@ -43,5 +43,6 @@
         public const string LASER_KEY = nameof(LASER_KEY);
         public const string SNIPER_KEY = nameof(SNIPER_KEY);
         public const string ELECTRIC_KEY = nameof(ELECTRIC_KEY);
+        public const string IMPACT_KEY = nameof(IMPACT_KEY);
     }
 }

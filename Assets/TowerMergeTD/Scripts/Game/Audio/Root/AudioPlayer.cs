@@ -96,6 +96,10 @@ namespace TowerMergeTD.Game.Audio
                     clip = _clipsConfig.Electric;
                     break;
                 
+                case AudioType.Impact:
+                    clip = _clipsConfig.Impact;
+                    break;
+                
                 default:
                     throw new NotImplementedException($"Audio type not implemented: {type}");
             }

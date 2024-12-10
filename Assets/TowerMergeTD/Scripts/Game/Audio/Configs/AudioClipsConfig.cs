@@ -26,36 +26,24 @@ namespace TowerMergeTD.Game.Audio
         [SerializeField] private AudioClip _sniperShot;
         [SerializeField] private AudioClip _explosion;
         [SerializeField] private AudioClip _electric;
+        [SerializeField] private AudioClip _impact;
 
         public AudioClip BackgroundMusic => _backgroundMusic;
-
         public AudioClip CashClip => _cashClip;
-
         public AudioClip ButtonClip => _buttonClip;
-
         public AudioClip OneTwoStarsWin => _12StarsWin;
         public AudioClip ThreeStarsWin => _3StarsWin;
-
         public AudioClip EnemyDeath1 => _enemyDeath1;
-
         public AudioClip EnemyDeath2 => _enemyDeath2;
-
         public AudioClip TankDeath => _tankDeath;
-
         public AudioClip GameOver => _gameOver;
-
         public AudioClip PlaceTower => _placeTower;
-
         public AudioClip MergeTowers => _mergeTowers;
-
         public AudioClip GunShot => _gunShot;
-
         public AudioClip Laser => _laser;
-        
         public AudioClip SniperShot => _sniperShot;
-
         public AudioClip Explosion => _explosion;
-
         public AudioClip Electric => _electric;
+        public AudioClip Impact => _impact;
     }
 }

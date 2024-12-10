@@ -17,5 +17,6 @@
         Laser,
         Explosion,
         Electric,
+        Impact,
     }
 }

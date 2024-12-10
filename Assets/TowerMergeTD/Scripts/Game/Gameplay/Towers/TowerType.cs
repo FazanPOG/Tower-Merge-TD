@@ -8,5 +8,6 @@
         Laser = 3,
         Sniper = 4,
         Electric = 5,
+        Impact = 6,
     }
 }
