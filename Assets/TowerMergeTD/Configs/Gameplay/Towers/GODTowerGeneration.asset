@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c99b454087a4c6e96bc9de39f6fbc5e, type: 3}
+  m_Name: GODTowerGeneration
+  m_EditorClassIdentifier: 
+  _towersType: 8
+  _createCost: 1
+  _generation:
+  - AttackRange: 5
+    AttackCooldown: 0.1
+    Damage: 100
+    Level: 1
+    Sprite: {fileID: 21300000, guid: 7632af646cdadd04eab09692b630f60c, type: 3}

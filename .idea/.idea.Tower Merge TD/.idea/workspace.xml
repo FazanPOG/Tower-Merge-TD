@@ -20,16 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b49d9-1518-414d-8956-dd52cbe53e02" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/AudioClipsConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/AudioClipsConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/PrefabReferencesConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PrefabReferencesConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ProjectConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Audio/Clips/Gameplay/GunShot.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Audio/Clips/Gameplay/GunShot.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/UI/Gameplay/TowerSpritesConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/UI/Gameplay/TowerSpritesConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/UI/Root/MainMenuUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" afterDir="false" />
@@ -105,17 +101,17 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/PrefabReferencesConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Attackers/Rocket.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Attackers/Lightning.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerType.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Attackers/TowerRegularAttacker.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Attackers/TowerImpactAttacker.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioType.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Views/ImpactTowerObjectView.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerType.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Factories/TowerFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/Localization/LocalizationKeys.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/RussianLocalizationAsset.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Localization/EnglishLocalizationAsset.cs" />
       </list>
     </option>
   </component>
@@ -233,6 +229,7 @@
       <workItem from="1733661529988" duration="14087000" />
       <workItem from="1733833584584" duration="4659000" />
       <workItem from="1733856284220" duration="3011000" />
+      <workItem from="1733924632786" duration="2889000" />
     </task>
     <servers />
   </component>

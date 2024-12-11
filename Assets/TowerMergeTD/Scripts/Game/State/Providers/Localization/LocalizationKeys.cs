@@ -44,5 +44,7 @@
         public const string SNIPER_KEY = nameof(SNIPER_KEY);
         public const string ELECTRIC_KEY = nameof(ELECTRIC_KEY);
         public const string IMPACT_KEY = nameof(IMPACT_KEY);
+        public const string RAPID_KEY = nameof(RAPID_KEY);
+        public const string GOD_KEY = nameof(GOD_KEY);
     }
 }

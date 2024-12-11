@@ -19,6 +19,8 @@ MonoBehaviour:
   - {fileID: 89100193100193579, guid: 1858a37b23493b64baac7790f0f87ffe, type: 3}
   - {fileID: 89100193100193579, guid: 473583ce49211d740ab1910c2cb767f5, type: 3}
   - {fileID: 89100193100193579, guid: ac10cf6b05b953d4e96140c4d7eb145e, type: 3}
+  - {fileID: 89100193100193579, guid: c5a57519164bd144080f4edbb37ba178, type: 3}
+  - {fileID: 89100193100193579, guid: ef68692dc5c06fb459a150b7c23c241c, type: 3}
   _smallRocket: {fileID: 5716763079115186679, guid: 75d3463c6c63a2b4caaff2f288a54f1b, type: 3}
   _bigRocket: {fileID: 4272366120053060530, guid: 172698dad582db4428aa4908e194651d, type: 3}
   _lightning: {fileID: 6353742328557060024, guid: 6f0f529236d969b47a7df1de405c83dc, type: 3}

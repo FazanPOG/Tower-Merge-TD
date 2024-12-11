@@ -9,5 +9,7 @@
         Sniper = 4,
         Electric = 5,
         Impact = 6,
+        Rapid = 7,
+        GOD = 8,
     }
 }

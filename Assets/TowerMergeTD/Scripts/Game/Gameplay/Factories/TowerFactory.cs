@@ -127,6 +127,12 @@ namespace TowerMergeTD.Game.Gameplay
                 case TowerType.Impact:
                     return new TowerImpactAttacker(collisionHandler);
                 
+                case TowerType.Rapid:
+                    return new TowerRegularAttacker(collisionHandler);
+                
+                case TowerType.GOD:
+                    return new TowerRegularAttacker(collisionHandler);
+                
                 default:
                     throw new MissingReferenceException($"Missing tower type: {towerType}");
             }
