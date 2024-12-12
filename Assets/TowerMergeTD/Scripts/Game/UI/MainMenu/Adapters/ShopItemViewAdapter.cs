@@ -11,6 +11,7 @@ namespace TowerMergeTD.Game.UI
     public class ShopItemViewAdapter
     {
         private readonly ShopItemView _view;
+        private readonly TowerInfoPopupView _towerInfoPopup;
         private readonly ShopPopupViewAdapter _shopPopupViewAdapter;
         private readonly ShopItemConfig _itemConfig;
         private readonly PlayerCoinsProxy _playerCoins;
@@ -23,6 +24,7 @@ namespace TowerMergeTD.Game.UI
 
         public ShopItemViewAdapter(
             ShopItemView view,
+            TowerInfoPopupView towerInfoPopup,
             ShopPopupViewAdapter shopPopupViewAdapter,
             PlayerCoinsProxy playerCoins, 
             PlayerGemsProxy playerGems,
@@ -33,6 +35,7 @@ namespace TowerMergeTD.Game.UI
             AudioPlayer audioPlayer)
         {
             _view = view;
+            _towerInfoPopup = towerInfoPopup;
             _shopPopupViewAdapter = shopPopupViewAdapter;
             _itemConfig = _view.ShopItemConfig;
             _playerCoins = playerCoins;
@@ -46,7 +49,16 @@ namespace TowerMergeTD.Game.UI
             UpdateView();
             
             _view.OnBuyButtonClicked += OnBuyButtonClicked;
+            _view.OnInfoButtonClicked += OnInfoButtonClicked;
             _adService.OnRewardedReward += ADService_OnRewardedReward;
+        }
+
+        private void OnInfoButtonClicked()
+        {
+            _towerInfoPopup.Show();
+            _towerInfoPopup.SetTitleText(GetTowerLocalizedText(_itemConfig.TowerToUnlock));
+            _towerInfoPopup.SetInfoText(GetTowerInfoText(_itemConfig.TowerToUnlock));
+            _audioPlayer.Play(AudioType.Button);
         }
 
         private void OnBuyButtonClicked()
@@ -177,6 +189,7 @@ namespace TowerMergeTD.Game.UI
         private void UpdateView()
         {
             _view.SetButtonInteractable(true);
+            _view.SetInfoButtonActiveState(false);
             _view.SetItemIconSprite(_itemConfig.ItemIcon);
             _view.SetItemIconBackgroundColor(_itemConfig.ItemIconBackgroundColor);
             _view.SetActiveBestLabel(_itemConfig.ShowBestLabel);
@@ -225,6 +238,7 @@ namespace TowerMergeTD.Game.UI
                 case ShopItemType.Tower:
                     string text = GetTowerLocalizedText(_itemConfig.TowerToUnlock);
                     _view.SetValueText(text);
+                    _view.SetInfoButtonActiveState(true);
                     break;
             }
             
@@ -243,6 +257,12 @@ namespace TowerMergeTD.Game.UI
         private string GetTowerLocalizedText(TowerType towerType)
         {
             string key = $"{towerType.ToString().ToUpper()}_KEY";
+            return _localizationAsset.GetTranslation(key);
+        }
+        
+        private string GetTowerInfoText(TowerType towerType)
+        {
+            string key = $"{towerType.ToString().ToUpper()}_INFO_KEY";
             return _localizationAsset.GetTranslation(key);
         }
     }

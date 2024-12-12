@@ -24,16 +24,20 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private TextMeshProUGUI _bestLabelText;
         [SerializeField] private TextMeshProUGUI _bonusText;
         [SerializeField] private Button _buyButton;
+        [SerializeField] private Button _infoButton;
 
         public event Action OnBuyButtonClicked;
+        public event Action OnInfoButtonClicked;
 
         public ShopItemConfig ShopItemConfig => _shopItemConfig;
         
         private void OnEnable()
         {
             _buyButton.onClick.AddListener(() => OnBuyButtonClicked?.Invoke());
+            _infoButton.onClick.AddListener(() => OnInfoButtonClicked?.Invoke());
         }
 
+        public void SetInfoButtonActiveState(bool activeState) => _infoButton.gameObject.SetActive(activeState);
         public void SetButtonInteractable(bool canInteract) => _buyButton.interactable = canInteract;
         public void SetButtonText(string text) => _priceText.text = text;
         public void SetButtonTextActiveState(bool activeState) => _priceText.gameObject.SetActive(activeState);
@@ -64,6 +68,7 @@ namespace TowerMergeTD.Game.UI
         private void OnDisable()
         {
             _buyButton.onClick.RemoveAllListeners();
+            _infoButton.onClick.RemoveAllListeners();
         }
     }
 }

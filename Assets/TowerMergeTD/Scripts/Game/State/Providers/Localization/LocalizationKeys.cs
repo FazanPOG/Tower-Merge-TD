@@ -46,5 +46,12 @@
         public const string IMPACT_KEY = nameof(IMPACT_KEY);
         public const string RAPID_KEY = nameof(RAPID_KEY);
         public const string GOD_KEY = nameof(GOD_KEY);
+        public const string ROCKET_INFO_KEY = nameof(ROCKET_INFO_KEY);
+        public const string LASER_INFO_KEY = nameof(LASER_INFO_KEY);
+        public const string SNIPER_INFO_KEY = nameof(SNIPER_INFO_KEY);
+        public const string ELECTRIC_INFO_KEY = nameof(ELECTRIC_INFO_KEY);
+        public const string IMPACT_INFO_KEY = nameof(IMPACT_INFO_KEY);
+        public const string RAPID_INFO_KEY = nameof(RAPID_INFO_KEY);
+        public const string GOD_INFO_KEY = nameof(GOD_INFO_KEY);
     }
 }

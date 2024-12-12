@@ -53,7 +53,14 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.ELECTRIC_KEY] = "Electric tower",
                 [LocalizationKeys.IMPACT_KEY] = "Impact tower",
                 [LocalizationKeys.RAPID_KEY] = "Rapid tower",
-                [LocalizationKeys.GOD_KEY] = "Destroyer",
+                [LocalizationKeys.GOD_KEY] = "Divine tower",
+                [LocalizationKeys.ROCKET_INFO_KEY] = "Fires rockets that hit multiple enemies at once, dealing area damage.",
+                [LocalizationKeys.LASER_INFO_KEY] = "Gradually increases damage when continuously attacking the same target.",
+                [LocalizationKeys.RAPID_INFO_KEY] = "Extremely low damage but compensates with very high attack speed.",
+                [LocalizationKeys.GOD_INFO_KEY] = "??? This tower seems to hide its true power...",
+                [LocalizationKeys.SNIPER_INFO_KEY] = "Boasts massive range and damage but has slow reload time. Can pierce through multiple enemies.",
+                [LocalizationKeys.ELECTRIC_INFO_KEY] = "Shoots lightning that jumps from one enemy to another, hitting a chain of targets.",
+                [LocalizationKeys.IMPACT_INFO_KEY] = "Hits all enemies around it, dealing decent area damage.",
             };
         }
         

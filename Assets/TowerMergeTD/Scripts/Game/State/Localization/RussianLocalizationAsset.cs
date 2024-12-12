@@ -54,6 +54,13 @@ namespace TowerMergeTD.Game.State
                 [LocalizationKeys.IMPACT_KEY] = "Ударная башня",
                 [LocalizationKeys.RAPID_KEY] = "Пулеметная башня",
                 [LocalizationKeys.GOD_KEY] = "Разрушитель",
+                [LocalizationKeys.ROCKET_INFO_KEY] = "Стреляет ракетами, которые поражают нескольких врагов одновременно, нанося урон по области.",
+                [LocalizationKeys.LASER_INFO_KEY] = "Постепенно увеличивает урон при непрерывной атаке одной цели.",
+                [LocalizationKeys.RAPID_INFO_KEY] = "Невероятно низкий урон, но компенсирует это высокой скорострельностью.",
+                [LocalizationKeys.GOD_INFO_KEY] = "??? Кажется, эта башня скрывает свою истинную мощь...",
+                [LocalizationKeys.SNIPER_INFO_KEY] = "Имеет огромную дальность и урон, но медленную перезарядку. Простреливает несколько врагов насквозь.",
+                [LocalizationKeys.ELECTRIC_INFO_KEY] = "Стреляет молнией, которая отскакивает от одного врага к другому, поражая цепочку целей.",
+                [LocalizationKeys.IMPACT_INFO_KEY] = "Бьёт всех врагов в радиусе вокруг себя, нанося неплохой урон по площади.",
             };
         }
         

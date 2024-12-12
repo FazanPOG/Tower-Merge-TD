@@ -1922,6 +1922,7 @@
                     <e p="SettingsPopupViewAdapter.cs" t="Include" />
                     <e p="ShopItemViewAdapter.cs" t="Include" />
                     <e p="ShopPopupViewAdapter.cs" t="Include" />
+                    <e p="TowerInfoPopupViewAdapter.cs" t="Include" />
                   </e>
                   <e p="Root" t="Include">
                     <e p="UIMainMenuRootView.cs" t="Include" />
@@ -1940,6 +1941,7 @@
                     <e p="ShopItemView.cs" t="Include" />
                     <e p="ShopPopupView.cs" t="Include" />
                     <e p="ShopTowersView.cs" t="Include" />
+                    <e p="TowerInfoPopupView.cs" t="Include" />
                   </e>
                 </e>
                 <e p="Root" t="Include">

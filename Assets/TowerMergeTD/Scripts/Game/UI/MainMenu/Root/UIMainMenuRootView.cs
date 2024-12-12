@@ -28,6 +28,7 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private SettingsPopupView _settingsPopupView;
         [SerializeField] private LevelLockPopupView _levelLockPopupView;
         [SerializeField] private ShopPopupView _shopPopupView;
+        [SerializeField] private TowerInfoPopupView _towerInfoPopupView;
         [Header("Shop")]
         [SerializeField] private ShopTowersView _shopTowersView;
         [SerializeField] private ShopCoinView _shopCoinView;
@@ -75,6 +76,7 @@ namespace TowerMergeTD.Game.UI
             new LevelsPanelViewAdapter(_levelsPanelView, _audioPlayer);
             new SettingsPopupViewAdapter(_settingsPopupView, _localizationAsset, _gameStateProvider, _audioPlayer);
             new LevelLockPopupViewAdapter(_levelLockPopupView, _audioPlayer);
+            new TowerInfoPopupViewAdapter(_towerInfoPopupView, _audioPlayer);
             
             _shopPopupViewAdapter = new ShopPopupViewAdapter(_shopPopupView, _shopTowersView, _shopCoinView, _shopGemView, _localizationAsset, _audioPlayer);
             BindPlayerCurrencies();
@@ -133,7 +135,8 @@ namespace TowerMergeTD.Game.UI
             foreach (var shopItemView in _shopItemViews)
             {
                 new ShopItemViewAdapter(
-                    shopItemView, 
+                    shopItemView,
+                    _towerInfoPopupView,
                     _shopPopupViewAdapter,
                     _playerCoinsProxy, 
                     _playerGemsProxy, 
