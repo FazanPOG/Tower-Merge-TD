@@ -65,7 +65,7 @@ namespace TowerMergeTD.Game.Gameplay
         {
             if (_isDragging)
             {
-                transform.position = Vector2.Lerp(transform.position, _targetPosition, MOVE_SPEED * Time.deltaTime);
+                transform.position = Vector2.Lerp(transform.position, _targetPosition, MOVE_SPEED * Time.unscaledDeltaTime);
                 ClampCameraPosition();
             }
         }
@@ -81,7 +81,7 @@ namespace TowerMergeTD.Game.Gameplay
             {
                 float speed = 150f;
                 Vector2 direction = input.normalized;
-                Vector2 offset = -direction * speed * Time.deltaTime;
+                Vector2 offset = -direction * speed * Time.unscaledDeltaTime;
 
                 var target = new Vector2(transform.position.x + offset.x, transform.position.y + offset.y);
                 _targetPosition = target;
