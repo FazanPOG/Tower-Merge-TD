@@ -19,4 +19,4 @@ MonoBehaviour:
     AttackCooldown: 0.1
     Damage: 100
     Level: 1
-    Sprite: {fileID: 21300000, guid: 7632af646cdadd04eab09692b630f60c, type: 3}
+    Sprite: {fileID: 21300000, guid: f1c834ff5e9b48340a92376b364b576c, type: 3}

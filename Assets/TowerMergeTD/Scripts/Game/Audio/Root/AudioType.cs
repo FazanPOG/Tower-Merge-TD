@@ -3,6 +3,7 @@
     public enum AudioType
     {
         Cash,
+        Coins,
         Button,
         OneTwoStarsWin,
         ThreeStarsWin,

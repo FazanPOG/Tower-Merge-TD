@@ -18,9 +18,9 @@ MonoBehaviour:
   _itemPrice: 100
   towerToUnlock: 8
   _currencyValue: 100
-  _showBestLabel: 0
+  _showBestLabel: 1
   _showBonusText: 0
   _bonusTextValue: 0
-  _itemIcon: {fileID: 21300000, guid: 7632af646cdadd04eab09692b630f60c, type: 3}
+  _itemIcon: {fileID: 21300000, guid: 5e568b646f77ee84f94d31b8d2577db6, type: 3}
   _itemIconBackgroundColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   _currencyIcon: {fileID: 21300000, guid: 1e261052971ec3943b3a71bae9e0d021, type: 3}

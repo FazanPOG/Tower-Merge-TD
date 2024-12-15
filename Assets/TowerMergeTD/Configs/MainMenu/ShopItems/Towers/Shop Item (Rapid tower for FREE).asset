@@ -21,6 +21,6 @@ MonoBehaviour:
   _showBestLabel: 0
   _showBonusText: 0
   _bonusTextValue: 0
-  _itemIcon: {fileID: 21300000, guid: 255e9c398e51d8c448ba342ea1e8a7c2, type: 3}
+  _itemIcon: {fileID: 21300000, guid: 1eaf11d59d09c0e49b7039ee5d2fe072, type: 3}
   _itemIconBackgroundColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   _currencyIcon: {fileID: 21300000, guid: 1e261052971ec3943b3a71bae9e0d021, type: 3}

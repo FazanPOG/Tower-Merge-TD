@@ -22,10 +22,10 @@ MonoBehaviour:
   - _towerType: 4
     _towerSprite: {fileID: 21300000, guid: 65ab461a149c2c849a2379c6dbf44dad, type: 3}
   - _towerType: 5
-    _towerSprite: {fileID: 21300000, guid: 9187532408e27c64083cbf9c7945fe61, type: 3}
+    _towerSprite: {fileID: 21300000, guid: 88db882a35d508f44a24cd9cde1bfad7, type: 3}
   - _towerType: 6
-    _towerSprite: {fileID: 21300000, guid: e6f7db85477d22b4385828fb0fcbb73d, type: 3}
+    _towerSprite: {fileID: 21300000, guid: ff48c72a35f837043b20a5101159519d, type: 3}
   - _towerType: 7
-    _towerSprite: {fileID: 21300000, guid: 255e9c398e51d8c448ba342ea1e8a7c2, type: 3}
+    _towerSprite: {fileID: 21300000, guid: 1eaf11d59d09c0e49b7039ee5d2fe072, type: 3}
   - _towerType: 8
-    _towerSprite: {fileID: 21300000, guid: 7632af646cdadd04eab09692b630f60c, type: 3}
+    _towerSprite: {fileID: 21300000, guid: f1c834ff5e9b48340a92376b364b576c, type: 3}

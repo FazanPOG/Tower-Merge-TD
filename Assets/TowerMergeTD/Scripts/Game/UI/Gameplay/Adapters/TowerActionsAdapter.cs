@@ -167,6 +167,7 @@ namespace TowerMergeTD.Game.UI
             _buildingCurrencyProxy.BuildingCurrency.Value += sellPrice;
             _currentClickedTower.DestroySelf();
             _towerSellView.Hide();
+            _audioPlayer.Play(AudioType.Coins, 2f);
 
             int calculateSellPrice()
             {

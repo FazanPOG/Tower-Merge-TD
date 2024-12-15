@@ -27,6 +27,7 @@ namespace TowerMergeTD.Game.Audio
         [SerializeField] private AudioClip _explosion;
         [SerializeField] private AudioClip _electric;
         [SerializeField] private AudioClip _impact;
+        [SerializeField] private AudioClip _coins;
 
         public AudioClip BackgroundMusic => _backgroundMusic;
         public AudioClip CashClip => _cashClip;
@@ -45,5 +46,7 @@ namespace TowerMergeTD.Game.Audio
         public AudioClip Explosion => _explosion;
         public AudioClip Electric => _electric;
         public AudioClip Impact => _impact;
+
+        public AudioClip Coins => _coins;
     }
 }

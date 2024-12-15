@@ -40,6 +40,10 @@ namespace TowerMergeTD.Game.Audio
                     clip = _clipsConfig.CashClip;
                     break;
                 
+                case AudioType.Coins:
+                    clip = _clipsConfig.Coins;
+                    break;
+                
                 case AudioType.Button:
                     clip = _clipsConfig.ButtonClip;
                     break;

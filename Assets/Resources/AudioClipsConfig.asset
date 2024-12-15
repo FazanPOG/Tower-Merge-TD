@@ -29,3 +29,4 @@ MonoBehaviour:
   _explosion: {fileID: 8300000, guid: 0adc45b02a9fbff4b94c6af706d870fb, type: 3}
   _electric: {fileID: 8300000, guid: a79ceff328aa2ee40812744c3b0ca7d2, type: 3}
   _impact: {fileID: 8300000, guid: 329a17bce010270409739560b31ee9d5, type: 3}
+  _coins: {fileID: 8300000, guid: 090b6339f32dd8f4484b70e0a825aa97, type: 3}
