@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
@@ -7,6 +8,7 @@ using TowerMergeTD.GameRoot;
 using TowerMergeTD.Utils;
 using UnityEngine;
 using Zenject;
+using DeviceType = TowerMergeTD.API.DeviceType;
 
 namespace TowerMergeTD.Gameplay.Root
 {
@@ -79,8 +81,18 @@ namespace TowerMergeTD.Gameplay.Root
 
         private void BindInput()
         {
-            //TODO: change input depending on device
-            _container.BindInterfacesTo<DesktopInput>().FromNew().AsSingle().WithArguments(_mainCamera).NonLazy();
+            DeviceType deviceType = _container.Resolve<IDeviceProvider>().GetCurrentDevice();
+            
+            switch (deviceType)
+            {
+                case DeviceType.Mobile:
+                    _container.BindInterfacesTo<MobileInput>().FromNew().AsSingle().WithArguments(_mainCamera).NonLazy();
+                    break;
+                
+                case DeviceType.Desktop:
+                    _container.BindInterfacesTo<DesktopInput>().FromNew().AsSingle().WithArguments(_mainCamera).NonLazy();
+                    break;
+            }
         }
 
         private void BindMap()

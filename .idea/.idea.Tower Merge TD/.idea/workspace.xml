@@ -20,27 +20,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b49d9-1518-414d-8956-dd52cbe53e02" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower Merge TD/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/AudioClipsConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/AudioClipsConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/ElectricTowerGeneration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/ElectricTowerGeneration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/GODTowerGeneration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/GODTowerGeneration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/ImpactTowerGeneration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/ImpactTowerGeneration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/RapidTowerGeneration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/Towers/RapidTowerGeneration.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Electric tower for FREE).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Electric tower for FREE).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (GOD tower for FREE).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (GOD tower for FREE).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Impact tower for FREE).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Impact tower for FREE).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Rapid tower for FREE).asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/MainMenu/ShopItems/Towers/Shop Item (Rapid tower for FREE).asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/UI/Gameplay/TowerSpritesConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/UI/Gameplay/TowerSpritesConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Audio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/ElectricTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/ElectricTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/GODTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/GODTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/ImpactTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/ImpactTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/RapidTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Towers/RapidTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/TowerActionsAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/TowerActionsAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GamePush/InitScene/AwaitInit.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/GamePush/InitScene/AwaitInit.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/GamePush/Resources/GP_PlatformSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/GamePush/Resources/GP_PlatformSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/AddressablesInspectors.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/AddressablesInspectors.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflectionValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Internal/OdinAddressableReflectionValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Sirenix.OdinInspector.Modules.Unity.Addressables.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Sirenix.OdinInspector.Modules.Unity.Addressables.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetLabelReferenceValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetLabelReferenceValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetReferenceValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/AssetReferenceValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckDuplicateBundleDependenciesValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckDuplicateBundleDependenciesValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckResourcesToAddressableDuplicateDependenciesValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/CheckResourcesToAddressableDuplicateDependenciesValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/DisallowAddressableSubAssetFieldAttributeValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/DisallowAddressableSubAssetFieldAttributeValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/MissingAddressableGroupReferenceValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/Validators/MissingAddressableGroupReferenceValidator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/manifest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables/manifest.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/TileSet/TileSet.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Configs/Gameplay/TileSet/TileSet.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/TowerPlaces/TowerPlaceDesert.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/TowerPlaces/TowerPlaceDesert.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_107.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_107.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_108.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_108.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_111.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_111.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_112.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_112.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_15.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_15.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_16.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_16.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_38.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_38.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_39.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_39.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_42.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_42.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_43.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_43.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_62.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_62.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_65.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_65.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_66.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_66.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_84.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_84.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_85.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_85.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_88.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_88.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_89.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Images/TileMap/KenneyTileMap/Tiles/towerDefense_tilesheet_89.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Levels/Forest/Level 1 (Tutorial).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Levels/Forest/Level 1 (Tutorial).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Levels/Forest/Level 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Prefabs/Levels/Forest/Level 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scenes/LevelCreator.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scenes/LevelCreator.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Map/MapCoordinator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Map/MapCoordinator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,17 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Views/TowerObjectView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Views/GunTowerObjectView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/TowerObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Towers/Views/LaserTowerObjectView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/MainMenu/Root/MainMenuEntryPoint.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/BackgroundMusic.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Providers/GameState/PlayerPrefsGameStateProvider.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/MainMenu/Adapters/SettingsPopupViewAdapter.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Views/TowerSpawnButtonView.cs" />
-        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/TowerSpritesConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/WaveConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/LevelConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Configs/EnemyConfig.cs" />
@@ -122,6 +167,17 @@
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Configs/AudioClipsConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Audio/Root/AudioPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/UI/Gameplay/Adapters/TowerActionsAdapter.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Services/IDeviceData.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Data/DeviceType.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Data/IDeviceData.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Data/DeviceData.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Data/GamePushDeviceData.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Data/GamePushDeviceProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Providers/IDeviceProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/GameRoot/GameEntryPoint.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/State/Map/MapCoordinator.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/Game/Gameplay/Root/GameplayBinder.cs" />
+        <option value="$PROJECT_DIR$/Assets/TowerMergeTD/Scripts/API/Providers/GamePushDeviceProvider.cs" />
       </list>
     </option>
   </component>
@@ -243,6 +299,7 @@
       <workItem from="1733998786156" duration="5589000" />
       <workItem from="1734011243806" duration="183000" />
       <workItem from="1734259956719" duration="2099000" />
+      <workItem from="1734349293630" duration="4968000" />
     </task>
     <servers />
   </component>
@@ -280,10 +337,10 @@
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
     <state x="92" y="92" width="1736" height="850" maximized="true" key="VCS.FileHistoryDialog/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1731340411086" />
-    <state x="552" y="250" width="839" height="534" key="find.popup" timestamp="1734264557150">
+    <state x="552" y="250" width="839" height="534" key="find.popup" timestamp="1734356980779">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>
-    <state x="552" y="250" width="839" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1734264557150" />
+    <state x="552" y="250" width="839" height="534" key="find.popup/3840.148.1366.722/1920.0.1920.1040/0.0.1920.1034@0.0.1920.1034" timestamp="1734356980779" />
     <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1732728525600">
       <screen x="0" y="0" width="1920" height="1034" />
     </state>

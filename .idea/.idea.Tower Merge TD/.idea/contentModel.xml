@@ -10,6 +10,9 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="AddressableAssetsData" t="Include">
+          <e p="link.xml" t="Include" />
+        </e>
         <e p="Packages" t="Include">
           <e p="Microsoft.Bcl.AsyncInterfaces.6.0.0" t="Include">
             <e p="lib" t="Include">
@@ -661,23 +664,6 @@
                 </e>
               </e>
               <e p="Modules" t="Include">
-                <e p="Unity.Addressables" t="Include">
-                  <e p="AddressablesInspectors.cs" t="Include" />
-                  <e p="Internal" t="Include">
-                    <e p="OdinAddressableReflection.cs" t="Include" />
-                    <e p="OdinAddressableReflectionValidator.cs" t="Include" />
-                  </e>
-                  <e p="manifest.txt" t="Include" />
-                  <e p="Sirenix.OdinInspector.Modules.Unity.Addressables.asmdef" t="Include" />
-                  <e p="Validators" t="Include">
-                    <e p="AssetLabelReferenceValidator.cs" t="Include" />
-                    <e p="AssetReferenceValidator.cs" t="Include" />
-                    <e p="CheckDuplicateBundleDependenciesValidator.cs" t="Include" />
-                    <e p="CheckResourcesToAddressableDuplicateDependenciesValidator.cs" t="Include" />
-                    <e p="DisallowAddressableSubAssetFieldAttributeValidator.cs" t="Include" />
-                    <e p="MissingAddressableGroupReferenceValidator.cs" t="Include" />
-                  </e>
-                </e>
                 <e p="Unity.Mathematics" t="Include">
                   <e p="manifest.txt" t="Include" />
                   <e p="MathematicsDrawers.cs" t="Include" />
@@ -1656,6 +1642,11 @@
         <e p="TowerMergeTD" t="Include">
           <e p="Scripts" t="Include">
             <e p="API" t="Include">
+              <e p="Providers" t="Include">
+                <e p="DeviceType.cs" t="Include" />
+                <e p="GamePushDeviceProvider.cs" t="Include" />
+                <e p="IDeviceProvider.cs" t="Include" />
+              </e>
               <e p="Root" t="Include">
                 <e p="APIBinder.cs" t="Include" />
               </e>
@@ -2001,7 +1992,6 @@
       <e p="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj" t="IncludeRecursive" />
       <e p="PunDemos.DemoHubEditor.csproj" t="IncludeRecursive" />
       <e p="PunDemos.DemoSlotcarEditor.csproj" t="IncludeRecursive" />
-      <e p="Sirenix.OdinInspector.Modules.Unity.Addressables.csproj" t="IncludeRecursive" />
       <e p="Sirenix.OdinInspector.Modules.UnityMathematics.csproj" t="IncludeRecursive" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
       <e p="ToonyColorsPro.Demo.Editor.csproj" t="IncludeRecursive" />

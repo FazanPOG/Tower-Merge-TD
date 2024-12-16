@@ -77,6 +77,7 @@ namespace TowerMergeTD.GameRoot
             _rootContainer.Bind<AudioClipsConfig>().FromInstance(audioClipsConfig).AsSingle().NonLazy();
             _rootContainer.Bind<BackgroundMusic>().FromInstance(_backgroundMusic).AsSingle().NonLazy();
             _rootContainer.Bind<AudioPlayer>().FromInstance(_audioPlayer).AsSingle().NonLazy();
+            _rootContainer.Bind<IDeviceProvider>().To<GamePushDeviceProvider>().FromNew().AsSingle().NonLazy();
         }
         
         private void StartGame()

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ModestTree;
 using TowerMergeTD.Game.Gameplay;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -35,6 +36,9 @@ namespace TowerMergeTD.Game.State
                 }
             }
 
+            if(towerPlaceTiles.IsEmpty())
+                throw new MissingReferenceException($"Tower place tiles not found, check {nameof(TileSetConfig)}");
+            
             return towerPlaceTiles;
         }
 
