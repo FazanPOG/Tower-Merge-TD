@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de010e109f024a7c8e898571e6247ad1, type: 3}
-  m_Name: Fast
+  m_Name: Plane 2
   m_EditorClassIdentifier: 
-  _health: 75
-  _damage: 1
-  _moveSpeed: 1.5
-  _buildingCurrencyOnDeath: 1
-  _sprite: {fileID: 21300000, guid: 91285c9daa73d2842a1ed334f5dc14de, type: 3}
+  _health: 180
+  _damage: 2
+  _moveSpeed: 2.5
+  _buildingCurrencyOnDeath: 3
+  _sprite: {fileID: 21300000, guid: 5d2248114abdd554c95a5f77f17eac69, type: 3}

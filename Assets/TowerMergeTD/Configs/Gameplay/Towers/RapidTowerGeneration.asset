@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: RapidTowerGeneration
   m_EditorClassIdentifier: 
   _towersType: 7
-  _createCost: 1
+  _createCost: 12
   _generation:
-  - AttackRange: 3
-    AttackCooldown: 0.1
-    Damage: 1
+  - AttackRange: 2
+    AttackCooldown: 0.25
+    Damage: 8
     Level: 1
     Sprite: {fileID: 21300000, guid: 1eaf11d59d09c0e49b7039ee5d2fe072, type: 3}
-  - AttackRange: 3
-    AttackCooldown: 0.1
-    Damage: 1
+  - AttackRange: 2.2
+    AttackCooldown: 0.2
+    Damage: 12
     Level: 2
     Sprite: {fileID: 21300000, guid: 125f24e3214d5ba40bbd7d27609a65da, type: 3}

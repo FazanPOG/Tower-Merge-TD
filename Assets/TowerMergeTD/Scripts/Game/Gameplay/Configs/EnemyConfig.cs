@@ -12,7 +12,7 @@ namespace TowerMergeTD.Game.Gameplay
         [BoxGroup("Settings")] [Range(1, 25)]
         [SerializeField] private int _damage = 1;
 
-        [BoxGroup("Settings")] [Range(1, 20)]
+        [BoxGroup("Settings")] [Range(0.1f, 20)]
         [SerializeField] private float _moveSpeed = 1f;
         
         [BoxGroup("Settings")] [Range(1, 50)]

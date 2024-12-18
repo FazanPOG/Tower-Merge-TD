@@ -90,7 +90,7 @@ namespace TowerMergeTD.Game.UI
                 
                 case ShopItemPriceType.AD:
                     _adService.ShowRewarded(_itemConfig.ID);
-                    return;
+                    break;
             }
 
             if (_itemConfig.IsSinglePurchase)

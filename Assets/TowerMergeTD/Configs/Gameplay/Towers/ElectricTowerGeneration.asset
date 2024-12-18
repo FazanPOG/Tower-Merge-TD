@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: ElectricTowerGeneration
   m_EditorClassIdentifier: 
   _towersType: 5
-  _createCost: 10
+  _createCost: 15
   _generation:
-  - AttackRange: 5
-    AttackCooldown: 3
-    Damage: 15
+  - AttackRange: 2.5
+    AttackCooldown: 1.2
+    Damage: 20
     Level: 1
     Sprite: {fileID: 21300000, guid: 88db882a35d508f44a24cd9cde1bfad7, type: 3}
-  - AttackRange: 5
-    AttackCooldown: 3
-    Damage: 15
+  - AttackRange: 2.7
+    AttackCooldown: 31
+    Damage: 26
     Level: 2
     Sprite: {fileID: 21300000, guid: de87e19d9d05f2747940bae743eed5b5, type: 3}
-  - AttackRange: 5
-    AttackCooldown: 3
-    Damage: 15
+  - AttackRange: 3
+    AttackCooldown: 0.9
+    Damage: 32
     Level: 3
     Sprite: {fileID: 21300000, guid: bc174e25be1b5904a803c5e3a4f8b689, type: 3}

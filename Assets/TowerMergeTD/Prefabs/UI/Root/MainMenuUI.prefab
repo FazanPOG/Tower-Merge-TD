@@ -2146,11 +2146,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7137582213995534246}
+  - {fileID: 1814556259558579342}
+  - {fileID: 6644984758256092591}
+  - {fileID: 5756520017395911922}
   - {fileID: 3204582096828332047}
   - {fileID: 8519412535081635866}
-  - {fileID: 5756520017395911922}
-  - {fileID: 6644984758256092591}
-  - {fileID: 1814556259558579342}
   - {fileID: 9022843789656111600}
   m_Father: {fileID: 8402963159117889473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12809,7 +12809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem (5)
+      value: ShopItem (Rapid tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13141,7 +13141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem
+      value: ShopItem (Laser tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13917,7 +13917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem (3)
+      value: ShopItem (Electric tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14801,7 +14801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem (4)
+      value: ShopItem (Impact tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14995,7 +14995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem (2)
+      value: ShopItem (Rocket tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15327,7 +15327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem (1)
+      value: ShopItem (Sniper tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15853,7 +15853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951511481558588776, guid: e592baebdd501424788f6a4ef3f94ee5, type: 3}
       propertyPath: m_Name
-      value: ShopItem (6)
+      value: ShopItem (GOD tower)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

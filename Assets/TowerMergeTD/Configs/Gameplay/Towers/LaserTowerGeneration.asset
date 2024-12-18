@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: LaserTowerGeneration
   m_EditorClassIdentifier: 
   _towersType: 3
-  _createCost: 10
+  _createCost: 25
   _generation:
-  - AttackRange: 3
-    AttackCooldown: 1
-    Damage: 20
+  - AttackRange: 2.5
+    AttackCooldown: 0.5
+    Damage: 10
     Level: 1
     Sprite: {fileID: 21300000, guid: 3a652135f396c4247a6858480cf25352, type: 3}
   - AttackRange: 3
-    AttackCooldown: 1
-    Damage: 20
+    AttackCooldown: 0.4
+    Damage: 14
     Level: 2
     Sprite: {fileID: 21300000, guid: 16042bfb79eb413428e0faa57a34f515, type: 3}
-  - AttackRange: 3
-    AttackCooldown: 1
-    Damage: 20
+  - AttackRange: 3.5
+    AttackCooldown: 0.3
+    Damage: 18
     Level: 3
     Sprite: {fileID: 21300000, guid: 7dff5068bfcd9e1478cdbf08b508e613, type: 3}

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ee1e085edab4841bcf9d9aff753bc2a, type: 3}
-  m_Name: Shop Item (Rocket tower for 50 coins)
+  m_Name: Shop Item (Impact tower for 4000 coins)
   m_EditorClassIdentifier: 
   _isSinglePurchase: 1
   _itemPriceType: 1
   _itemType: 3
-  _itemPrice: 50
-  towerToUnlock: 2
+  _itemPrice: 4000
+  towerToUnlock: 6
   _currencyValue: 100
-  _showBestLabel: 1
+  _showBestLabel: 0
   _showBonusText: 0
   _bonusTextValue: 0
-  _itemIcon: {fileID: 21300000, guid: 31d72fe717cd5594fac0caf92b4325cf, type: 3}
+  _itemIcon: {fileID: 21300000, guid: ff48c72a35f837043b20a5101159519d, type: 3}
   _itemIconBackgroundColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   _currencyIcon: {fileID: 21300000, guid: 4e70c1705445ed64cac199e60aec27dd, type: 3}

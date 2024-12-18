@@ -43,3 +43,19 @@ MonoBehaviour:
     IsAdblockEnabled: 1
     CanReview: 0
     IsAlreadyReviewed: 0
+  - Platform: 3
+    IsSupportsShare: 1
+    IsSupportsNativeShare: 1
+    IsSupportsNativeInvite: 0
+    IsSupportsNativePosts: 1
+    IsSupportsNativeCommunityJoin: 1
+    CanJoinCommunity: 1
+    IsPaymentsAvailable: 1
+    IsSubscriptionsAvailable: 1
+    IsFullscreenAvailable: 1
+    IsRewardedAvailable: 1
+    IsStickyAvailable: 1
+    IsPreloaderAvailable: 1
+    IsAdblockEnabled: 1
+    CanReview: 0
+    IsAlreadyReviewed: 0
