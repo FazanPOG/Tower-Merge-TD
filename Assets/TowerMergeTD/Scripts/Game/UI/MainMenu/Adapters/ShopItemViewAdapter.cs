@@ -8,7 +8,7 @@ using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.UI
 {
-    public class ShopItemViewAdapter
+    public class ShopItemViewAdapter : IDisposable
     {
         private readonly ShopItemView _view;
         private readonly TowerInfoPopupView _towerInfoPopup;
@@ -53,6 +53,11 @@ namespace TowerMergeTD.Game.UI
             _adService.OnRewardedReward += ADService_OnRewardedReward;
         }
 
+        public void Dispose()
+        {
+            _adService.OnRewardedReward -= ADService_OnRewardedReward;
+        }
+
         private void OnInfoButtonClicked()
         {
             _towerInfoPopup.Show();
@@ -80,11 +85,13 @@ namespace TowerMergeTD.Game.UI
             {
                 case ShopItemPriceType.Coin:
                     _playerCoins.Coins.Value -= _itemConfig.ItemPrice;
+                    AddReward();
                     _currencyProvider.SaveCoins();
                     break;
                 
                 case ShopItemPriceType.Gem:
                     _playerGems.Gems.Value -= _itemConfig.ItemPrice;
+                    AddReward();
                     _currencyProvider.SaveGems();
                     break;
                 
@@ -98,8 +105,6 @@ namespace TowerMergeTD.Game.UI
                 _gameStateProvider.GameState.ShopPurchasedItemIDs.Add(_itemConfig.ID);
                 SetSoldOutView();
             }
-            
-            AddReward();
         }
 
         private void ADService_OnRewardedReward(string rewardID)
@@ -150,7 +155,7 @@ namespace TowerMergeTD.Game.UI
                 _view.SetButtonText(_localizationAsset.GetTranslation(LocalizationKeys.WAIT_AD_KEY));
             }
         }
-        
+
         private void RedirectToCurrencyPurchase()
         {
             switch (_itemConfig.ItemPriceType)
@@ -259,7 +264,7 @@ namespace TowerMergeTD.Game.UI
             string key = $"{towerType.ToString().ToUpper()}_KEY";
             return _localizationAsset.GetTranslation(key);
         }
-        
+
         private string GetTowerInfoText(TowerType towerType)
         {
             string key = $"{towerType.ToString().ToUpper()}_INFO_KEY";

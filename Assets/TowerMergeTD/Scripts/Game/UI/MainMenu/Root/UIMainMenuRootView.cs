@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using R3;
 using TowerMergeTD.API;
 using TowerMergeTD.Game.Audio;
@@ -46,6 +48,7 @@ namespace TowerMergeTD.Game.UI
         private IADService _adService;
         private ShopPopupViewAdapter _shopPopupViewAdapter;
         private AudioPlayer _audioPlayer;
+        private List<IDisposable> _disposables = new List<IDisposable>();
 
         public void Bind(ReactiveProperty<int> exitSceneSignalBus, DiContainer container)
         {
@@ -134,7 +137,7 @@ namespace TowerMergeTD.Game.UI
         {
             foreach (var shopItemView in _shopItemViews)
             {
-                new ShopItemViewAdapter(
+                var shopItemViewAdapter = new ShopItemViewAdapter(
                     shopItemView,
                     _towerInfoPopupView,
                     _shopPopupViewAdapter,
@@ -145,7 +148,15 @@ namespace TowerMergeTD.Game.UI
                     _localizationAsset, 
                     _adService, 
                     _audioPlayer);
+                
+                _disposables.Add(shopItemViewAdapter);
             }
+        }
+
+        private void OnDisable()
+        {
+            foreach (var disposable in _disposables)
+                disposable.Dispose();
         }
     }
 }

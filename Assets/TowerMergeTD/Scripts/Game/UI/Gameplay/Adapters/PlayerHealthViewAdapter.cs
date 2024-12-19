@@ -6,7 +6,7 @@ using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.UI
 {
-    public class PlayerHealthViewAdapter
+    public class PlayerHealthViewAdapter : IDisposable
     {
         private const int AD_REWARD_VALUE = 10;
         private const string REWARDED_KEY = "Health";
@@ -18,6 +18,8 @@ namespace TowerMergeTD.Game.UI
         private readonly IADService _adService;
         private readonly IPauseService _pauseService;
 
+        private IDisposable _disposable;
+        
         public PlayerHealthViewAdapter(
             PlayerHealthView view, 
             PlayerHealthProxy playerHealthProxy, 
@@ -33,17 +35,24 @@ namespace TowerMergeTD.Game.UI
             _adService = adService;
             _pauseService = pauseService;
 
-            _playerHealthProxy.Health.Subscribe(UpdateView);
+            _disposable = _playerHealthProxy.Health.Subscribe(UpdateView);
             _view.OnPlusButtonClicked += OnPlusButtonClicked;
             _adService.OnRewardedReward += OnRewardedReward;
         }
 
+        public void Dispose()
+        {
+            _disposable.Dispose();
+            _adService.OnRewardedReward -= OnRewardedReward;
+        }
+        
         private void OnRewardedReward(string rewardKey)
         {
             if (rewardKey == REWARDED_KEY)
+            {
                 _playerHealthProxy.Health.Value += AD_REWARD_VALUE;
-
-            CloseConfirmationPopup();
+                CloseConfirmationPopup();
+            }
         }
 
         private void OnPlusButtonClicked()

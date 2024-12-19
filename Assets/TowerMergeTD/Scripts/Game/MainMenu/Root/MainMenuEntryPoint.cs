@@ -1,5 +1,6 @@
 using GamePush;
 using R3;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Game.UI;
@@ -28,7 +29,7 @@ namespace TowerMergeTD.MainMenu.Root
             BindUI();
             InitAudio();
             
-            GP_Game.GameReady();
+            mainMenuContainer.Resolve<IAPIEnvironmentService>().GameLoadingAndReady();
             
             var exitSceneSignal = new ReactiveProperty<int>();
             _uiMainMenuRoot.Bind(exitSceneSignal, _mainMenuContainer);

@@ -1,4 +1,5 @@
 ﻿using GamePush;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.Gameplay
@@ -11,6 +12,7 @@ namespace TowerMergeTD.Game.Gameplay
         private readonly IRewardCalculatorService _rewardCalculatorService;
         private readonly IGameStateProvider _gameStateProvider;
         private readonly ICurrencyProvider _currencyProvider;
+        private readonly IAPIEnvironmentService _apiEnvironmentService;
 
         public WinGameState(
             int currentLevelIndex, 
@@ -18,7 +20,8 @@ namespace TowerMergeTD.Game.Gameplay
             IScoreService scoreService, 
             IRewardCalculatorService rewardCalculatorService,
             IGameStateProvider gameStateProvider,
-            ICurrencyProvider currencyProvider)
+            ICurrencyProvider currencyProvider,
+            IAPIEnvironmentService apiEnvironmentService)
         {
             _currentLevelIndex = currentLevelIndex;
             _pauseService = pauseService;
@@ -26,11 +29,12 @@ namespace TowerMergeTD.Game.Gameplay
             _rewardCalculatorService = rewardCalculatorService;
             _gameStateProvider = gameStateProvider;
             _currencyProvider = currencyProvider;
+            _apiEnvironmentService = apiEnvironmentService;
         }
         
         public void Enter()
         {
-            GP_Game.GameplayStop();
+            _apiEnvironmentService.GameplayStop();
             
             _pauseService.SetPause(true);
             _scoreService.CalculateScore();

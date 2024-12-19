@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TowerMergeTD.API;
 using TowerMergeTD.Game.State;
 using TowerMergeTD.Utils;
 using Zenject;
@@ -19,7 +20,6 @@ namespace TowerMergeTD.Game.Gameplay
             int currentLevelIndex,
             ITutorialBinder tutorialBinder)
         {
-            var monoBehaviourWrapper = container.Resolve<MonoBehaviourWrapper>();
             var waveSpawnerServices = container.Resolve<IWaveSpawnerService[]>();
             var pauseService = container.Resolve<IPauseService>();
             var gameStateService = container.Resolve<IGameStateService>();
@@ -29,14 +29,15 @@ namespace TowerMergeTD.Game.Gameplay
             var rewardCalculatorService = container.Resolve<IRewardCalculatorService>();
             var gameStateProvider = container.Resolve<IGameStateProvider>();
             var currencyProvider = container.Resolve<ICurrencyProvider>();
-
+            var apiEnvironmentService = container.Resolve<IAPIEnvironmentService>();
+            
             _gameStatesMap = new Dictionary<Type, IGameState>()
             {
-                [typeof(BootState)] = new BootState(this, levelConfig),
+                [typeof(BootState)] = new BootState(this, levelConfig, apiEnvironmentService),
                 [typeof(TutorialState)] = new TutorialState(container, this, currentLevelIndex, tutorialBinder),
                 [typeof(GameplayState)] = new GameplayState(this, playerHealthProxy, waveSpawnerServices, pauseService, gameTimerService),
-                [typeof(WinGameState)] = new WinGameState(currentLevelIndex, pauseService, scoreService, rewardCalculatorService, gameStateProvider, currencyProvider),
-                [typeof(LoseGameState)] = new LoseGameState(pauseService),
+                [typeof(WinGameState)] = new WinGameState(currentLevelIndex, pauseService, scoreService, rewardCalculatorService, gameStateProvider, currencyProvider, apiEnvironmentService),
+                [typeof(LoseGameState)] = new LoseGameState(pauseService, apiEnvironmentService),
                 [typeof(NoneState)] = new NoneState(),
             };
             

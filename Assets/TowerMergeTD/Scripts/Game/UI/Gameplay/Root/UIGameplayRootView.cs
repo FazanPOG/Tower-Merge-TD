@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using R3;
 using TowerMergeTD.API;
@@ -42,7 +44,8 @@ namespace TowerMergeTD.Gameplay.Root
         private ProjectConfig _projectConfig;
         private LevelConfig _currentLevelConfig;
         private bool _isTutorialLevel;
-
+        private List<IDisposable> _disposables = new List<IDisposable>();
+        
         public void Bind(ReactiveProperty<SceneEnterParams> exitSceneSignalBus, DiContainer container, int currentLevelIndex)
         {
             _exitSceneSignalBus = exitSceneSignalBus;
@@ -82,7 +85,7 @@ namespace TowerMergeTD.Gameplay.Root
             var adService = _container.Resolve<IADService>();
             var audioPlayer = _container.Resolve<AudioPlayer>();
 
-            new PlayerBuildingCurrencyViewAdapter(
+            var buildingCurrencyViewAdapter = new PlayerBuildingCurrencyViewAdapter(
                 _buildingCurrencyView, 
                 buildingCurrencyProxy,
                 _adConfirmationPopupView,
@@ -91,13 +94,16 @@ namespace TowerMergeTD.Gameplay.Root
                 pauseService
                 );
             
-            new PlayerHealthViewAdapter(
+            var healthViewAdapter = new PlayerHealthViewAdapter(
                 _playerHealthView, 
                 playerHealthProxy,
                 _adConfirmationPopupView,
                 localizationAsset,
                 adService,
                 pauseService);
+            
+            _disposables.Add(buildingCurrencyViewAdapter);
+            _disposables.Add(healthViewAdapter);
             
             new GameTimerViewAdapter(_gameTimerView, gameTimerService);
             new GameSpeedViewAdapter(gameSpeedService, _gameSpeedView);
@@ -176,6 +182,12 @@ namespace TowerMergeTD.Gameplay.Root
                 
                 gameStateService.Register(levelCompletePopupAdapter);
             }
+        }
+
+        private void OnDisable()
+        {
+            foreach (var disposable in _disposables)
+                disposable.Dispose();
         }
     }
 }

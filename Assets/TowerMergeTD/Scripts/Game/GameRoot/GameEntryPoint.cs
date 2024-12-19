@@ -77,7 +77,7 @@ namespace TowerMergeTD.GameRoot
             _rootContainer.Bind<AudioClipsConfig>().FromInstance(audioClipsConfig).AsSingle().NonLazy();
             _rootContainer.Bind<BackgroundMusic>().FromInstance(_backgroundMusic).AsSingle().NonLazy();
             _rootContainer.Bind<AudioPlayer>().FromInstance(_audioPlayer).AsSingle().NonLazy();
-            _rootContainer.Bind<IDeviceProvider>().To<GamePushDeviceProvider>().FromNew().AsSingle().NonLazy();
+            
         }
         
         private void StartGame()
@@ -120,7 +120,9 @@ namespace TowerMergeTD.GameRoot
 
             IEnumerator waitAPILoad()
             {
-                yield return new WaitUntil(() => GP_Init.isReady);
+                var apiEnvironment = _rootContainer.Resolve<IAPIEnvironmentService>();
+                Debug.Log("wait api");
+                yield return new WaitUntil(() => apiEnvironment.IsReady);
             }
             IEnumerator loadPlayerCurrency()
             {
@@ -141,7 +143,7 @@ namespace TowerMergeTD.GameRoot
             }
             IEnumerator loadLocalization()
             {
-                ILocalizationProvider provider = new GamePushLocalizationProvider(_projectConfig);
+                ILocalizationProvider provider = new YandexGamesLocalizationProvider(_projectConfig);
                 
                 bool isLocalizationLoaded = false;
                 provider.LoadLocalizationAsset().Subscribe(asset =>

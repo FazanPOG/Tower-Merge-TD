@@ -13,7 +13,9 @@ namespace TowerMergeTD.API
         
         public void Bind()
         {
-            _container.Bind<IADService>().To<ADService>().FromNew().AsSingle().NonLazy();
+            _container.Bind<IAPIEnvironmentService>().To<YandexGamesEnvironmentService>().FromNew().AsSingle().NonLazy();
+            _container.Bind<IADService>().To<YandexGamesADService>().FromNew().AsSingle().NonLazy();
+            _container.Bind<IDeviceProvider>().To<YandexGamesDeviceProvider>().FromNew().AsSingle().NonLazy();
         }
     }
 }

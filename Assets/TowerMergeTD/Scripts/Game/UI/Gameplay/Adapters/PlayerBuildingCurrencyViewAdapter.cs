@@ -1,11 +1,12 @@
-﻿using R3;
+﻿using System;
+using R3;
 using TowerMergeTD.API;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.State;
 
 namespace TowerMergeTD.Game.UI
 {
-    public class PlayerBuildingCurrencyViewAdapter
+    public class PlayerBuildingCurrencyViewAdapter : IDisposable
     {
         private const int AD_REWARD_VALUE = 25;
         private const string REWARDED_KEY = "BuildingCurrency";
@@ -16,7 +17,8 @@ namespace TowerMergeTD.Game.UI
         private readonly ILocalizationAsset _localizationAsset;
         private readonly IADService _adService;
         private readonly IPauseService _pauseService;
-
+        private readonly IDisposable _disposable;
+        
         public PlayerBuildingCurrencyViewAdapter(
             PlayerBuildingCurrencyView view, 
             PlayerBuildingCurrencyProxy playerBuildingCurrencyProxy, 
@@ -32,17 +34,24 @@ namespace TowerMergeTD.Game.UI
             _adService = adService;
             _pauseService = pauseService;
 
-            _playerBuildingCurrencyProxy.BuildingCurrency.Subscribe(UpdateView);
+            _disposable = _playerBuildingCurrencyProxy.BuildingCurrency.Subscribe(UpdateView);
             _view.OnPlusButtonClicked += OnPlusButtonClicked;
             _adService.OnRewardedReward += OnRewardedReward;
         }
 
+        public void Dispose()
+        {
+            _disposable.Dispose();
+            _adService.OnRewardedReward -= OnRewardedReward;
+        }
+        
         private void OnRewardedReward(string rewardKey)
         {
             if (rewardKey == REWARDED_KEY)
+            {
                 _playerBuildingCurrencyProxy.BuildingCurrency.Value += AD_REWARD_VALUE;
-            
-            CloseConfirmationPopup();
+                CloseConfirmationPopup();
+            }
         }
 
         private void OnPlusButtonClicked()
