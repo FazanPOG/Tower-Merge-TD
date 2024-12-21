@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79943d46b204fba993eb210a1350975, type: 3}
+  m_Name: Level 6
+  m_EditorClassIdentifier: 
+  _isOpen: 1
+  _isTutorial: 0
+  _initialHealth: 14
+  _initialBuildingCurrency: 15
+  scoreForOneStar: 100
+  scoreForTwoStars: 500
+  scoreForThreeStars: 1000
+  _tileSetConfig: {fileID: 11400000, guid: cf31c41e8f729004bb1e405f4d42723e, type: 2}
+  _waveDatas:
+  - _waves:
+    - {fileID: 11400000, guid: 722c6157453ffad4ca0371515fc6d6ee, type: 2}
+    - {fileID: 11400000, guid: 89c25b17ff353634babaea1b57f8e5b9, type: 2}
+    - {fileID: 11400000, guid: 1593be452b1ac3349ba2ede8e22c088b, type: 2}
+    - {fileID: 11400000, guid: 2334b6bd4ecfff8489de760e811d02ab, type: 2}

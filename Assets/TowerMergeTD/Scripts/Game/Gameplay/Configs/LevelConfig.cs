@@ -74,7 +74,7 @@ namespace TowerMergeTD.Game.Gameplay
                     continue;
                 }
 
-                if (waveData.Waves.Length != previousCount)
+                if (waveData.Waves != null && waveData.Waves.Length != previousCount)
                     Debug.LogError($"The number of WaveConfig in each WaveData MUST be the same!");
             }
         }

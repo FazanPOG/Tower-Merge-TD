@@ -23,9 +23,9 @@ namespace TowerMergeTD.Game.Gameplay
             float score = 0;
             
             score += (_healthProxy.Health.CurrentValue * HEALTH_WEIGHT) + (_buildingCurrencyProxy.BuildingCurrency.CurrentValue * BUILDING_CURRENCY_WEIGHT);
-            score *= 100f;
+            score *= 50f;
             
-            Score = (int)Math.Round(score/100) * 100;
+            Score = (int)Math.Round(score/100) * 50;
         }
     }
 }

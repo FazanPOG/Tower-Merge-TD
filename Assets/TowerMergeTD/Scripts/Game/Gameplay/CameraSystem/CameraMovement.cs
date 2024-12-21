@@ -60,9 +60,11 @@ namespace TowerMergeTD.Game.Gameplay
             _camera.orthographicSize = Mathf.SmoothDamp(_camera.orthographicSize, _zoom, ref _velocity, _smoothTime);
         }
 
-
         private void LateUpdate()
         {
+            if(_isEnabled == false)
+                return;
+            
             if (_isDragging)
             {
                 transform.position = Vector2.Lerp(transform.position, _targetPosition, MOVE_SPEED * Time.unscaledDeltaTime);
@@ -72,11 +74,17 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void StartDrag()
         {
+            if(_isEnabled == false)
+                return;
+            
             _isDragging = !_mapCoordinator.HasTowerInCell(_input.GetInputWorldPosition(), out TowerObject _);
         }
-        
+
         private void UpdateDrag(Vector2 input)
         {
+            if(_isEnabled == false)
+                return;
+            
             if (_isDragging)
             {
                 float speed = 150f;
@@ -87,7 +95,7 @@ namespace TowerMergeTD.Game.Gameplay
                 _targetPosition = target;
             }
         }
-        
+
 
         private void ClampCameraPosition()
         {

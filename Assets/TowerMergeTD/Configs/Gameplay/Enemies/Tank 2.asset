@@ -16,4 +16,4 @@ MonoBehaviour:
   _damage: 4
   _moveSpeed: 0.4
   _buildingCurrencyOnDeath: 6
-  _sprite: {fileID: 21300000, guid: 682e0764dd68d324fa585684e10674ab, type: 3}
+  _sprite: {fileID: 21300000, guid: 002d1bb266080fd4cba8197c8bf546bf, type: 3}
