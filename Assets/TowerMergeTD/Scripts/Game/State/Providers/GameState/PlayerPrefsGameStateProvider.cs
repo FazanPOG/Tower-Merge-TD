@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GamePush;
 using R3;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.GameRoot;
@@ -34,8 +33,6 @@ namespace TowerMergeTD.Game.State
             if (PlayerPrefs.HasKey(GAME_STATE_KEY) == false)
             {
                 GameState = CreateGameStateFromSettings();
-                Debug.Log($"Game State created from settings: {JsonUtility.ToJson(_gameStateOrigin, true)}");
-
                 SaveGameState();
             }
             else
@@ -56,14 +53,11 @@ namespace TowerMergeTD.Game.State
                 {
                     for (int i = _gameStateOrigin.LevelDatas.Count - 1; i >= _projectConfig.Levels.Length; i--)
                     {
-                        Debug.Log($"RemoveData: {_gameStateOrigin.LevelDatas[i].ID}");
                         RemoveLevelSaveDataFromOrigin(_gameStateOrigin.LevelDatas[i]);
                     }
                 }
 
                 GameState = new GameStateProxy(_gameStateOrigin);
-                
-                Debug.Log($"Game State loaded: {JsonUtility.ToJson(_gameStateOrigin, true)}");
             }
             
             return Observable.Return(GameState);
@@ -114,12 +108,13 @@ namespace TowerMergeTD.Game.State
             
             for (int i = 0; i < _projectConfig.Levels.Length; i++)
             {
-                levelSaveDatas.Add(new LevelSaveData()
-                {
-                    ID = i,
-                    IsOpen = _projectConfig.Levels[i].LevelConfig.IsOpen,
-                    Score = 0
-                });
+                LevelSaveData levelSaveData;
+                if(i == 0)
+                    levelSaveData = CreateLevelSaveData(i, true);
+                else
+                    levelSaveData = CreateLevelSaveData(i, false);    
+                
+                levelSaveDatas.Add(levelSaveData);
             }
             
             towerTypes.Add(TowerType.Gun);
@@ -136,6 +131,16 @@ namespace TowerMergeTD.Game.State
             return new GameStateProxy(_gameStateOrigin);
         }
 
+        private LevelSaveData CreateLevelSaveData(int id, bool isOpen)
+        {
+            return new LevelSaveData()
+            {
+                ID = id,
+                IsOpen = isOpen,
+                Score = 0,
+            };
+        }
+        
         private void OnDestroyed()
         {
             GameState.LastExitTime.Value = DateTime.Now;

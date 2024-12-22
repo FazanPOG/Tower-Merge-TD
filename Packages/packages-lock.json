@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.agava.yandexgames": {
+      "version": "https://github.com/forcepusher/com.agava.yandexgames.git#16.1.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3bdb25b6765d133a66c5032258d772a5ac5d58b8"
+    },
     "com.cysharp.r3": {
       "version": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
       "depth": 0,

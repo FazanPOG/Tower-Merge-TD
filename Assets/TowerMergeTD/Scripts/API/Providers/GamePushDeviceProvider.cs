@@ -1,5 +1,5 @@
 ﻿using System;
-using GamePush;
+//using GamePush;
 
 namespace TowerMergeTD.API
 {
@@ -10,10 +10,10 @@ namespace TowerMergeTD.API
             //TODO: config GP_PlatformSetting does not work
             return DeviceType.Desktop;
             
-            if (GP_Device.IsDesktop())
+            //if (GP_Device.IsDesktop())
                 return DeviceType.Desktop;
             
-            if(GP_Device.IsMobile())
+            //if(GP_Device.IsMobile())
                 return DeviceType.Mobile;
             
             throw new Exception($"Device does not support");

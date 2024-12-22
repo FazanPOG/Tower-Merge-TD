@@ -1,5 +1,4 @@
 using System.Collections;
-using GamePush;
 using R3;
 using TowerMergeTD.API;
 using TowerMergeTD.Game.Audio;
@@ -121,7 +120,6 @@ namespace TowerMergeTD.GameRoot
             IEnumerator waitAPILoad()
             {
                 var apiEnvironment = _rootContainer.Resolve<IAPIEnvironmentService>();
-                Debug.Log("wait api");
                 yield return new WaitUntil(() => apiEnvironment.IsReady);
             }
             IEnumerator loadPlayerCurrency()

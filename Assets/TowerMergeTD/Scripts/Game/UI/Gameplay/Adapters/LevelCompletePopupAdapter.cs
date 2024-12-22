@@ -85,6 +85,12 @@ namespace TowerMergeTD.Game.UI
         {
             _audioPlayer.Play(AudioType.Button);
             
+            _adService.ShowFullscreen();
+            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
+            
+            return;
+            
+            //TODO: delete if work
             if (_adService.IsFullscreenAvailable)
             {
                 _adService.ShowFullscreen();
@@ -102,6 +108,11 @@ namespace TowerMergeTD.Game.UI
 
         private void HandleNextButtonClicked()
         {
+            _adService.ShowFullscreen();
+            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex + 1));
+            
+            return;
+            
             if (_adService.IsFullscreenAvailable)
             {
                 _adService.ShowFullscreen();

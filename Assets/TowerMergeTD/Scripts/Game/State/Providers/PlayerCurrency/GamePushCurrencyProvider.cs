@@ -1,4 +1,4 @@
-﻿using GamePush;
+﻿//using GamePush;
 using R3;
 
 namespace TowerMergeTD.Game.State
@@ -13,6 +13,7 @@ namespace TowerMergeTD.Game.State
         
         public Observable<bool> LoadCurrency()
         {
+            /*
             if (string.IsNullOrEmpty(GP_Player.GetString(CURRENCY_COIN_KEY)))
             {
                 SetGoldFromSettings();
@@ -36,29 +37,30 @@ namespace TowerMergeTD.Game.State
             }
 
             GP_Player.Sync();
+            */
             return Observable.Return(true);
         }
 
         public Observable<bool> SaveCoins()
         {
-            GP_Player.Set(CURRENCY_COIN_KEY, Coins.Coins.CurrentValue);
-            GP_Player.Sync();
+            //GP_Player.Set(CURRENCY_COIN_KEY, Coins.Coins.CurrentValue);
+            //GP_Player.Sync();
             
             return Observable.Return(true);
         }
 
         public Observable<bool> SaveGems()
         {
-            GP_Player.Set(CURRENCY_GEMS_KEY, Gems.Gems.CurrentValue);
-            GP_Player.Sync();
+            //GP_Player.Set(CURRENCY_GEMS_KEY, Gems.Gems.CurrentValue);
+            //GP_Player.Sync();
             
             return Observable.Return(true);
         }
 
         public Observable<bool> ResetCurrency()
         {
-            GP_Player.ResetPlayer();
-            GP_Player.Sync();
+            //GP_Player.ResetPlayer();
+            //GP_Player.Sync();
             
             SetGoldFromSettings();
             SetGemsFromSettings();

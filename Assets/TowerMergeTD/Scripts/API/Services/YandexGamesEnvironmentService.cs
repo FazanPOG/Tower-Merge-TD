@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Agava.YandexGames;
 using TowerMergeTD.Utils;
 using UnityEngine;
 using YG;
@@ -22,12 +23,12 @@ namespace TowerMergeTD.API
 
         public void GameplayStart()
         {
-            YandexGame.GameplayStart();
+            //YandexGame.GameplayStart();
         }
 
         public void GameplayStop()
         {
-            YandexGame.GameplayStop();
+            //YandexGame
         }
 
         public void SetPaused(bool isPaused)

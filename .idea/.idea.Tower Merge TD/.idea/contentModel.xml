@@ -453,93 +453,6 @@
           </e>
         </e>
         <e p="Plugins" t="Include">
-          <e p="GamePush" t="Include">
-            <e p="Data" t="Include">
-              <e p="ConfigData.cs" t="Include" />
-              <e p="EditorSaves.json" t="Include" />
-              <e p="GamePush.Data.asmdef" t="Include" />
-              <e p="ModulesData" t="Include">
-                <e p="PlatformModuleData.cs" t="Include" />
-              </e>
-              <e p="PluginData.cs" t="Include" />
-              <e p="ProjectData.cs" t="Include" />
-              <e p="SavedDataSO.cs" t="Include" />
-              <e p="SavedProjectData.cs" t="Include" />
-            </e>
-            <e p="Editor" t="Include">
-              <e p="Emulator" t="Include">
-                <e p="GP_EmulatorEditor.cs" t="Include" />
-                <e p="GP_SettingsProvider.cs" t="Include" />
-                <e p="GP_SettingsWrap.cs" t="Include" />
-              </e>
-              <e p="GamePush.Editor.asmdef" t="Include" />
-              <e p="GP_SetUpWindow.cs" t="Include" />
-            </e>
-            <e p="InitScene" t="Include">
-              <e p="Init.cs" t="Include" />
-            </e>
-            <e p="JS" t="Include">
-              <e p="jsAnchor.txt" t="Include" />
-            </e>
-            <e p="Runtime" t="Include">
-              <e p="Emulator" t="Include">
-                <e p="GP_Activator.cs" t="Include" />
-                <e p="GP_PaymentsStub.cs" t="Include" />
-                <e p="GP_PlatformSettings.cs" t="Include" />
-                <e p="GP_Settings.cs" t="Include" />
-              </e>
-              <e p="GamePush.Runtime.asmdef" t="Include" />
-              <e p="Modules" t="Include">
-                <e p="Base" t="Include">
-                  <e p="GP_Module.cs" t="Include" />
-                  <e p="IGP_Module.cs" t="Include" />
-                  <e p="ModuleData.cs" t="Include" />
-                </e>
-                <e p="GP_Achievements.cs" t="Include" />
-                <e p="GP_Ads.cs" t="Include" />
-                <e p="GP_Analytics.cs" t="Include" />
-                <e p="GP_App.cs" t="Include" />
-                <e p="GP_AvatarGenerator.cs" t="Include" />
-                <e p="GP_Channels.cs" t="Include" />
-                <e p="GP_Custom.cs" t="Include" />
-                <e p="GP_Device.cs" t="Include" />
-                <e p="GP_Documents.cs" t="Include" />
-                <e p="GP_Events.cs" t="Include" />
-                <e p="GP_Experiments.cs" t="Include" />
-                <e p="GP_Files.cs" t="Include" />
-                <e p="GP_Fullscreen.cs" t="Include" />
-                <e p="GP_Game.cs" t="Include" />
-                <e p="GP_GamesCollections.cs" t="Include" />
-                <e p="GP_Images.cs" t="Include" />
-                <e p="GP_Init.cs" t="Include" />
-                <e p="GP_Language.cs" t="Include" />
-                <e p="GP_Leaderboard.cs" t="Include" />
-                <e p="GP_LeaderboardScoped.cs" t="Include" />
-                <e p="GP_Payments.cs" t="Include" />
-                <e p="GP_Platform.cs" t="Include" />
-                <e p="GP_Player.cs" t="Include" />
-                <e p="GP_Players.cs" t="Include" />
-                <e p="GP_Rewards.cs" t="Include" />
-                <e p="GP_Schedulers.cs" t="Include" />
-                <e p="GP_Segments.cs" t="Include" />
-                <e p="GP_Server.cs" t="Include" />
-                <e p="GP_Socials.cs" t="Include" />
-                <e p="GP_Storage.cs" t="Include" />
-                <e p="GP_System.cs" t="Include" />
-                <e p="GP_Triggers.cs" t="Include" />
-                <e p="GP_Uniques.cs" t="Include" />
-                <e p="GP_Variables.cs" t="Include" />
-              </e>
-              <e p="Utilities" t="Include">
-                <e p="GP_Console.cs" t="Include" />
-                <e p="GP_ConsoleController.cs" t="Include" />
-                <e p="GP_Data.cs" t="Include" />
-                <e p="GP_Initialization.cs" t="Include" />
-                <e p="GP_Logger.cs" t="Include" />
-                <e p="GP_Utility.cs" t="Include" />
-              </e>
-            </e>
-          </e>
           <e p="PageSlider" t="Include">
             <e p="Demo" t="Include">
               <e p="PageSliderDemo.cs" t="Include" />
@@ -686,162 +599,6 @@
             <e p="VFoldersPalette.cs" t="Include" />
             <e p="VFoldersPaletteEditor.cs" t="Include" />
             <e p="VFoldersPaletteWindow.cs" t="Include" />
-          </e>
-          <e p="YandexGame" t="Include">
-            <e p="DebuggingMode" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="DebuggingModeYG.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Example" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="DebugViewing.cs" t="Include" />
-                <e p="GetPlayerData.cs" t="Include" />
-                <e p="InitExample.cs" t="Include" />
-                <e p="LanguageExample.cs" t="Include" />
-                <e p="NewResultLBExample.cs" t="Include" />
-                <e p="OpenAuthorizationDialog.cs" t="Include" />
-                <e p="ReceivingPurchaseExample.cs" t="Include" />
-                <e p="RewardedAd.cs" t="Include" />
-                <e p="SaverTest.cs" t="Include" />
-                <e p="SwitchSceneTest.cs" t="Include" />
-                <e p="YandexMetricaExample.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Fonts" t="Include">
-              <e p="LICENSE.txt" t="Include" />
-            </e>
-            <e p="LICENSE.txt" t="Include" />
-            <e p="ReadMe.txt" t="Include" />
-            <e p="ScriptsYG" t="Include">
-              <e p="ActivityOnAuthorizationYG.cs" t="Include" />
-              <e p="AdNotificationYG.cs" t="Include" />
-              <e p="Authorization" t="Include">
-                <e p="Auth_yg.cs" t="Include" />
-                <e p="Editor" t="Include">
-                  <e p="Auth_build.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Editor" t="Include">
-                <e p="CreateYandexGameEditor.cs" t="Include" />
-                <e p="DocumentationEditor.cs" t="Include" />
-                <e p="PostProcessBuild" t="Include">
-                  <e p="ArchivingBuild.cs" t="Include" />
-                  <e p="BuildLog.cs" t="Include" />
-                  <e p="ModifyIndexFile" t="Include">
-                    <e p="AdWhenLoadingGame.cs" t="Include" />
-                    <e p="BackgroundFormat.cs" t="Include" />
-                    <e p="LogoFormat.cs" t="Include" />
-                    <e p="MetricaCounterID.cs" t="Include" />
-                    <e p="ModifyBuildManager.cs" t="Include" />
-                    <e p="PixelRatioMobile.cs" t="Include" />
-                    <e p="SaveQuitGame.cs" t="Include" />
-                  </e>
-                  <e p="PostProcessBuild.cs" t="Include" />
-                </e>
-                <e p="Utils" t="Include">
-                  <e p="DefineSymbols.cs" t="Include" />
-                  <e p="PackageDownloader.cs" t="Include" />
-                </e>
-              </e>
-              <e p="EnvironmentData" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="EnvirData_build.cs" t="Include" />
-                </e>
-                <e p="EnvirData_yg.cs" t="Include" />
-              </e>
-              <e p="ForVisualScriptYG.cs" t="Include" />
-              <e p="GameReadyAPI" t="Include">
-                <e p="GRA_yg.cs" t="Include" />
-              </e>
-              <e p="GetPlayerYG.cs" t="Include" />
-              <e p="GraphicSettingsYG.cs" t="Include" />
-              <e p="ImageLoadYG.cs" t="Include" />
-              <e p="InfoYG" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="InfoYGEditor.cs" t="Include" />
-                </e>
-                <e p="InfoYG.cs" t="Include" />
-              </e>
-              <e p="Initialization" t="Include">
-                <e p="InitYGAttribute.cs" t="Include" />
-              </e>
-              <e p="Inside" t="Include">
-                <e p="CallingAnEvent.cs" t="Include" />
-                <e p="ConfigYG.cs" t="Include" />
-              </e>
-              <e p="Language" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="AutoLocalizationMasseWindow.cs" t="Include" />
-                  <e p="CSVFileEditorWindow.cs" t="Include" />
-                  <e p="CSVManager.cs" t="Include" />
-                  <e p="FontMasseInstallEditorWindow.cs" t="Include" />
-                  <e p="LanguageYGEditor.cs" t="Include" />
-                  <e p="TranslationTableEditorWindow.cs" t="Include" />
-                </e>
-                <e p="Lang_yg.cs" t="Include" />
-                <e p="LanguageYG.cs" t="Include" />
-                <e p="LangYGAdditionalText.cs" t="Include" />
-                <e p="UtilsLang.cs" t="Include" />
-              </e>
-              <e p="Leaderboards" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="Leaderboards_build.cs" t="Include" />
-                </e>
-                <e p="InternalScripts" t="Include">
-                  <e p="Leaderboards_yg.cs" t="Include" />
-                  <e p="UtilsLB.cs" t="Include" />
-                </e>
-                <e p="LBPlayerDataYG.cs" t="Include" />
-                <e p="LeaderboardYG.cs" t="Include" />
-              </e>
-              <e p="LocalStorage" t="Include">
-                <e p="LocalStorage_yg.cs" t="Include" />
-              </e>
-              <e p="Payments" t="Include">
-                <e p="ConsumePurchasesYG.cs" t="Include" />
-                <e p="Editor" t="Include">
-                  <e p="Payments_build.cs" t="Include" />
-                </e>
-                <e p="InternalScripts" t="Include">
-                  <e p="Payments_yg.cs" t="Include" />
-                  <e p="UtilsPayments.cs" t="Include" />
-                </e>
-                <e p="PaymentsCatalogYG.cs" t="Include" />
-                <e p="PurchaseYG.cs" t="Include" />
-              </e>
-              <e p="PromptYG.cs" t="Include" />
-              <e p="ReviewYG.cs" t="Include" />
-              <e p="Storage" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="CloudStorage_build.cs" t="Include" />
-                </e>
-                <e p="Storage_yg.cs" t="Include" />
-              </e>
-              <e p="TimerBeforeAdsYG.cs" t="Include" />
-              <e p="UnityToolbag-main" t="Include">
-                <e p="ConditionallyVisiblePropertyDrawer" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="ConditionallyVisiblePropertyDrawer.cs" t="Include" />
-                  </e>
-                  <e p="Runtime" t="Include">
-                    <e p="ConditionallyVisibleAttribute.cs" t="Include" />
-                  </e>
-                </e>
-                <e p="LICENSE.txt" t="Include" />
-                <e p="Notices.txt" t="Include" />
-              </e>
-              <e p="ViewingAdsYG.cs" t="Include" />
-              <e p="YandexGame.cs" t="Include" />
-              <e p="YandexMetrica" t="Include">
-                <e p="JsonUtils.cs" t="Include" />
-                <e p="YandexMetrica.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Third-Party Notices.txt" t="Include" />
-            <e p="WorkingData" t="Include">
-              <e p="SavesYG.cs" t="Include" />
-            </e>
           </e>
           <e p="Zenject" t="Include">
             <e p="LICENSE.txt" t="Include" />
@@ -1806,6 +1563,7 @@
               </e>
               <e p="Root" t="Include">
                 <e p="APIBinder.cs" t="Include" />
+                <e p="Language.cs" t="Include" />
               </e>
               <e p="Services" t="Include">
                 <e p="GamePushADService.cs" t="Include" />
@@ -2006,6 +1764,7 @@
                     <e p="GamePushGameStateProvider.cs" t="Include" />
                     <e p="IGameStateProvider.cs" t="Include" />
                     <e p="PlayerPrefsGameStateProvider.cs" t="Include" />
+                    <e p="YandexGamesGameStateProvider.cs" t="Include" />
                   </e>
                   <e p="Localization" t="Include">
                     <e p="GamePushLocalizationProvider.cs" t="Include" />
@@ -2116,33 +1875,165 @@
           </e>
         </e>
         <e p="WebGLTemplates" t="Include">
-          <e p="GamePush" t="Include">
-            <e p="TemplateData" t="Include">
-              <e p="gp_bundle" t="Include">
-                <e p="6690.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
-                <e p="7896.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
-                <e p="8881.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
-                <e p="external-sdk.js.LICENSE.txt" t="Include" />
-                <e p="gamepush-module.js.LICENSE.txt" t="Include" />
-                <e p="gamepush.js.LICENSE.txt" t="Include" />
-                <e p="messenger.js.LICENSE.txt" t="Include" />
-                <e p="Utils" t="Include">
-                  <e p="centrifuge.protobuf.ceb1e043ab66dfaf9217.js.LICENSE.txt" t="Include" />
-                </e>
-              </e>
-            </e>
-          </e>
           <e p="LICENSE.txt" t="Include" />
           <e p="Notices.txt" t="Include" />
+        </e>
+        <e p="YandexGame" t="Include">
+          <e p="DebuggingMode" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="DebuggingModeYG.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Example" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="DebugViewing.cs" t="Include" />
+              <e p="GetPlayerData.cs" t="Include" />
+              <e p="InitExample.cs" t="Include" />
+              <e p="LanguageExample.cs" t="Include" />
+              <e p="NewResultLBExample.cs" t="Include" />
+              <e p="OpenAuthorizationDialog.cs" t="Include" />
+              <e p="ReceivingPurchaseExample.cs" t="Include" />
+              <e p="RewardedAd.cs" t="Include" />
+              <e p="SaverTest.cs" t="Include" />
+              <e p="SwitchSceneTest.cs" t="Include" />
+              <e p="YandexMetricaExample.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Fonts" t="Include">
+            <e p="LICENSE.txt" t="Include" />
+          </e>
+          <e p="ReadMe.txt" t="Include" />
+          <e p="ScriptsYG" t="Include">
+            <e p="ActivityOnAuthorizationYG.cs" t="Include" />
+            <e p="AdNotificationYG.cs" t="Include" />
+            <e p="Authorization" t="Include">
+              <e p="Auth_yg.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="Auth_build.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Editor" t="Include">
+              <e p="CreateYandexGameEditor.cs" t="Include" />
+              <e p="DocumentationEditor.cs" t="Include" />
+              <e p="PostProcessBuild" t="Include">
+                <e p="ArchivingBuild.cs" t="Include" />
+                <e p="BuildLog.cs" t="Include" />
+                <e p="ModifyIndexFile" t="Include">
+                  <e p="AdWhenLoadingGame.cs" t="Include" />
+                  <e p="BackgroundFormat.cs" t="Include" />
+                  <e p="BuildLogYG.txt" t="Include" />
+                  <e p="LoadGameRun.cs" t="Include" />
+                  <e p="LogoFormat.cs" t="Include" />
+                  <e p="MetricaCounterID.cs" t="Include" />
+                  <e p="ModifyBuildManager.cs" t="Include" />
+                  <e p="PixelRatioMobile.cs" t="Include" />
+                  <e p="SaveQuitGame.cs" t="Include" />
+                </e>
+                <e p="PostProcessBuild.cs" t="Include" />
+              </e>
+              <e p="Utils" t="Include">
+                <e p="DefineSymbols.cs" t="Include" />
+                <e p="PackageDownloader.cs" t="Include" />
+              </e>
+            </e>
+            <e p="EnvironmentData" t="Include">
+              <e p="Editor" t="Include">
+                <e p="EnvirData_build.cs" t="Include" />
+              </e>
+              <e p="EnvirData_yg.cs" t="Include" />
+            </e>
+            <e p="ForVisualScriptYG.cs" t="Include" />
+            <e p="GameReadyAPI" t="Include">
+              <e p="GRA_yg.cs" t="Include" />
+            </e>
+            <e p="GetPlayerYG.cs" t="Include" />
+            <e p="GraphicSettingsYG.cs" t="Include" />
+            <e p="ImageLoadYG.cs" t="Include" />
+            <e p="InfoYG" t="Include">
+              <e p="Editor" t="Include">
+                <e p="InfoYGEditor.cs" t="Include" />
+              </e>
+              <e p="InfoYG.cs" t="Include" />
+            </e>
+            <e p="Initialization" t="Include">
+              <e p="InitYGAttribute.cs" t="Include" />
+            </e>
+            <e p="Inside" t="Include">
+              <e p="CallingAnEvent.cs" t="Include" />
+              <e p="ConfigYG.cs" t="Include" />
+            </e>
+            <e p="Language" t="Include">
+              <e p="Editor" t="Include">
+                <e p="AutoLocalizationMasseWindow.cs" t="Include" />
+                <e p="CSVFileEditorWindow.cs" t="Include" />
+                <e p="CSVManager.cs" t="Include" />
+                <e p="FontMasseInstallEditorWindow.cs" t="Include" />
+                <e p="LanguageYGEditor.cs" t="Include" />
+                <e p="TranslationTableEditorWindow.cs" t="Include" />
+              </e>
+              <e p="Lang_yg.cs" t="Include" />
+              <e p="LanguageYG.cs" t="Include" />
+              <e p="LangYGAdditionalText.cs" t="Include" />
+              <e p="UtilsLang.cs" t="Include" />
+            </e>
+            <e p="Leaderboard" t="Include">
+              <e p="LBPlayerDataYG.cs" t="Include" />
+              <e p="LeaderboardYG.cs" t="Include" />
+              <e p="UtilsLB.cs" t="Include" />
+            </e>
+            <e p="LocalStorage" t="Include">
+              <e p="LocalStorage_yg.cs" t="Include" />
+            </e>
+            <e p="Payments" t="Include">
+              <e p="ConsumePurchasesYG.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="Payments_build.cs" t="Include" />
+              </e>
+              <e p="InternalScripts" t="Include">
+                <e p="Payments_yg.cs" t="Include" />
+                <e p="UtilsPayments.cs" t="Include" />
+              </e>
+              <e p="PaymentsCatalogYG.cs" t="Include" />
+              <e p="PurchaseYG.cs" t="Include" />
+            </e>
+            <e p="PromptYG.cs" t="Include" />
+            <e p="ReviewYG.cs" t="Include" />
+            <e p="Storage" t="Include">
+              <e p="Editor" t="Include">
+                <e p="CloudStorage_build.cs" t="Include" />
+              </e>
+              <e p="Storage_yg.cs" t="Include" />
+            </e>
+            <e p="TimerBeforeAdsYG.cs" t="Include" />
+            <e p="UnityToolbag-main" t="Include">
+              <e p="ConditionallyVisiblePropertyDrawer" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="ConditionallyVisiblePropertyDrawer.cs" t="Include" />
+                </e>
+                <e p="Runtime" t="Include">
+                  <e p="ConditionallyVisibleAttribute.cs" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+              <e p="Notices.txt" t="Include" />
+            </e>
+            <e p="ViewingAdsYG.cs" t="Include" />
+            <e p="YandexGame.cs" t="Include" />
+            <e p="YandexMetrica" t="Include">
+              <e p="JsonUtils.cs" t="Include" />
+              <e p="YandexMetrica.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Third-Party Notices.txt" t="Include" />
+          <e p="WorkingData" t="Include">
+            <e p="SavesYG.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="CFXR.WelcomeScreen.csproj" t="IncludeRecursive" />
       <e p="CFXRDemo.csproj" t="IncludeRecursive" />
       <e p="CFXREditor.csproj" t="IncludeRecursive" />
       <e p="CFXRRuntime.csproj" t="IncludeRecursive" />
-      <e p="GamePush.csproj" t="IncludeRecursive" />
-      <e p="GamePush.Data.csproj" t="IncludeRecursive" />
-      <e p="GamePush.Editor.csproj" t="IncludeRecursive" />
       <e p="KinoBloom.Runtime.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

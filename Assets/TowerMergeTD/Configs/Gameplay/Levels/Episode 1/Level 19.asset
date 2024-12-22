@@ -18,7 +18,7 @@ MonoBehaviour:
   _initialBuildingCurrency: 10
   scoreForOneStar: 100
   scoreForTwoStars: 500
-  scoreForThreeStars: 1000
+  scoreForThreeStars: 750
   _tileSetConfig: {fileID: 11400000, guid: cf31c41e8f729004bb1e405f4d42723e, type: 2}
   _waveDatas:
   - _waves:

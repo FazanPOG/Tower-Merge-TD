@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GamePush;
+//using GamePush;
 using R3;
 using TowerMergeTD.GameRoot;
 using TowerMergeTD.Utils;
@@ -27,6 +27,7 @@ namespace TowerMergeTD.Game.State
 
         public Observable<GameStateProxy> LoadGameState()
         {
+            /*
             if (string.IsNullOrEmpty(GP_Player.GetString(GAME_STATE_KEY)))
             {
                 GameState = CreateGameStateFromSettings();
@@ -58,6 +59,7 @@ namespace TowerMergeTD.Game.State
             }
             
             GP_Player.Sync();
+            */
             return Observable.Return(GameState);
         }
 
@@ -65,6 +67,7 @@ namespace TowerMergeTD.Game.State
 
         public Observable<bool> SaveGameState()
         {
+            /*
             _gameStateOrigin.LevelDatas.Sort();
             var json = JsonUtility.ToJson(_gameStateOrigin, true);
             Debug.Log("SaveGameState");
@@ -77,13 +80,13 @@ namespace TowerMergeTD.Game.State
             
             Debug.Log(GP_Player.GetString(GAME_STATE_KEY));
             Debug.Log(GP_Player.GetString("test123"));
-
+            */
             return Observable.Return(true);
         }
 
         public Observable<bool> ResetGameState()
         {
-            GP_Player.ResetPlayer();
+            //GP_Player.ResetPlayer();
             
             GameState = CreateGameStateFromSettings();
             SaveGameState();
@@ -134,7 +137,7 @@ namespace TowerMergeTD.Game.State
 
         private void OnDestroyed()
         {
-            GameState.LastExitTime.Value = GP_Server.Time();
+            //GameState.LastExitTime.Value = GP_Server.Time();
         }
     }
 }

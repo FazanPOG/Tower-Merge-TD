@@ -4,6 +4,7 @@ using TowerMergeTD.Game.Audio;
 using TowerMergeTD.Game.Gameplay;
 using TowerMergeTD.Game.MainMenu;
 using TowerMergeTD.Game.State;
+using UnityEngine;
 using AudioType = TowerMergeTD.Game.Audio.AudioType;
 
 namespace TowerMergeTD.Game.UI
@@ -86,17 +87,19 @@ namespace TowerMergeTD.Game.UI
                 case ShopItemPriceType.Coin:
                     _playerCoins.Coins.Value -= _itemConfig.ItemPrice;
                     AddReward();
-                    _currencyProvider.SaveCoins();
                     break;
                 
                 case ShopItemPriceType.Gem:
                     _playerGems.Gems.Value -= _itemConfig.ItemPrice;
                     AddReward();
-                    _currencyProvider.SaveGems();
                     break;
                 
                 case ShopItemPriceType.AD:
                     _adService.ShowRewarded(_itemConfig.ID);
+                    break;
+                
+                default:
+                    AddReward();
                     break;
             }
 
@@ -105,6 +108,10 @@ namespace TowerMergeTD.Game.UI
                 _gameStateProvider.GameState.ShopPurchasedItemIDs.Add(_itemConfig.ID);
                 SetSoldOutView();
             }
+
+            _gameStateProvider.SaveGameState();
+            _currencyProvider.SaveCoins();
+            _currencyProvider.SaveGems();
         }
 
         private void ADService_OnRewardedReward(string rewardID)
@@ -112,7 +119,11 @@ namespace TowerMergeTD.Game.UI
             if (rewardID == _itemConfig.ID)
             {
                 AddReward();
-                SetADView(_adService.IsRewardedAvailable);
+                
+                if(_itemConfig.IsSinglePurchase)
+                    SetSoldOutView();
+                else
+                    SetADView(_adService.IsRewardedAvailable);
             }
         }
 

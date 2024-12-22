@@ -1,6 +1,6 @@
-﻿using GamePush;
-using TowerMergeTD.API;
+﻿using TowerMergeTD.API;
 using TowerMergeTD.Game.State;
+using UnityEngine;
 
 namespace TowerMergeTD.Game.Gameplay
 {
@@ -41,6 +41,7 @@ namespace TowerMergeTD.Game.Gameplay
             
             SaveLevelScore();
             SaveReward();
+            UnlockNextLevel();
         }
 
         private void SaveLevelScore()
@@ -72,6 +73,28 @@ namespace TowerMergeTD.Game.Gameplay
             
             _currencyProvider.SaveCoins();
             _currencyProvider.SaveGems();
+        }
+
+        private void UnlockNextLevel()
+        {
+            int nextLevelIndex = _currentLevelIndex + 1;
+            
+            if(nextLevelIndex + 1 >= _gameStateProvider.GameState.LevelDatas.Count)
+                return;
+            
+            LevelSaveData newNextLevelData = new LevelSaveData()
+            {
+                ID = nextLevelIndex,
+                IsOpen = true,
+                Score = 0,
+            };
+
+            var previousNextLevelSaveData = _gameStateProvider.GameState.LevelDatas[_currentLevelIndex];
+            _gameStateProvider.GameState.LevelDatas.Remove(previousNextLevelSaveData);
+            _gameStateProvider.GameState.LevelDatas.Add(new LevelSaveDataProxy(newNextLevelData));
+            _gameStateProvider.SaveGameState();
+            
+            Debug.Log($"Prev lvl save id: {previousNextLevelSaveData.ID} ; new id: {newNextLevelData.ID}");
         }
         
         public void Exit() { }

@@ -75,6 +75,12 @@ namespace TowerMergeTD.Game.UI
 
         private void HandleRestartButtonClicked()
         {
+            _adService.ShowFullscreen();
+            _exitSceneSignalBus.OnNext(new GameplayEnterParams(_currentLevelIndex));
+            
+            return;
+            
+            //TODO: delete if work
             if (_adService.IsFullscreenAvailable)
             {
                 if(_isDevelopment == false)

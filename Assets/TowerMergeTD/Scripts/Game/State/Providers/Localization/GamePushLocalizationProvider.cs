@@ -1,4 +1,4 @@
-﻿using GamePush;
+﻿//using GamePush;
 using R3;
 using TowerMergeTD.GameRoot;
 
@@ -15,6 +15,7 @@ namespace TowerMergeTD.Game.State
     
         public Observable<ILocalizationAsset> LoadLocalizationAsset()
         {
+            /*
             ILocalizationAsset localizationAsset;
             Language currentLanguage;
 
@@ -42,6 +43,8 @@ namespace TowerMergeTD.Game.State
             }
             
             return Observable.Return(localizationAsset);
+            */
+            return null;
         }
     }
 }

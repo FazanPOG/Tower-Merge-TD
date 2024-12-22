@@ -45,11 +45,7 @@ namespace TowerMergeTD.Game.UI
         {
             _levelEntryView.SetLevelText($"{_levelIndex + 1}");
 
-            bool isOpen;
-            if (_isDevelopmentSettings)
-                isOpen = _levelConfig.IsOpen;
-            else
-                isOpen = _levelSaveDataProxy.IsOpen;    
+            bool isOpen = IsLevelOpen();
             
             if (isOpen == false)
             {
@@ -64,6 +60,17 @@ namespace TowerMergeTD.Game.UI
             }
         }
 
+        private bool IsLevelOpen()
+        {
+            bool isOpen;
+            if (_isDevelopmentSettings)
+                isOpen = _levelConfig.IsOpen;
+            else
+                isOpen = _levelSaveDataProxy.IsOpen;
+
+            return isOpen;
+        }
+        
         private void LockStageView()
         {
             _levelEntryView.SetActiveLockStage(true);

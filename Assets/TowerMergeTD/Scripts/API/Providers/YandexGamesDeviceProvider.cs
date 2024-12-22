@@ -28,7 +28,7 @@ namespace TowerMergeTD.API
                     return DeviceType.Mobile;
             }
 
-            throw new Exception($"Device does not support: {YandexGame.EnvironmentData.deviceType}");
+            throw new Exception($"Device does not support: {YandexGame.EnvironmentData.language}");
         }
     }
 }

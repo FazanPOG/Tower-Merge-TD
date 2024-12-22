@@ -1,6 +1,6 @@
 ﻿using System;
-using GamePush;
 using R3;
+using TowerMergeTD.API;
 using TowerMergeTD.GameRoot;
 using YG;
 
@@ -24,7 +24,7 @@ namespace TowerMergeTD.Game.State
                 currentLanguage = ConvertToISOFormatLanguage(_projectConfig.Language);
             else
                 currentLanguage = YandexGame.EnvironmentData.language;
-
+            
             switch (currentLanguage)
             {
                 case "ru":

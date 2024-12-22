@@ -10,7 +10,6 @@ namespace TowerMergeTD.Game.Gameplay
         [SerializeField] private TowerGenerationConfig _generation;
         [SerializeField] private TowerCollisionHandler _collisionHandler;
         [SerializeField] private TowerObjectView _view;
-        [SerializeField, TextArea(0, 10)] private string DEBUG_STRING;
 
         private TowerDataProxy _dataProxy;
         private TowerProxy _towerProxy;
@@ -25,27 +24,6 @@ namespace TowerMergeTD.Game.Gameplay
         public int Level => _towerProxy.Level.Value;
         public TowerCollisionHandler CollisionHandler => _collisionHandler;
         public TowerObjectView View => _view;
-
-        private void Update()
-        {
-            UpdateDebug();
-        }
-
-        private void UpdateDebug()
-        {
-            DEBUG_STRING = "";
-
-            if (_generation == null) return;
-
-            DEBUG_STRING += $"Type: {_generation.TowersType} \n";
-            
-            if (_dataProxy == null) return;
-            
-            DEBUG_STRING += $"Level: {_dataProxy.Level} \n" +
-                            $"Damage: {_dataProxy.Damage} \n" +
-                            $"Attack range: {_dataProxy.AttackRange} \n" +
-                            $"Attack cooldown: {_dataProxy.AttackCooldown} \n";
-        }
         
         public void Init(
             IInput input, 

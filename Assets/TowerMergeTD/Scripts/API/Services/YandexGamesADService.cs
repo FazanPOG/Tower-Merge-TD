@@ -1,12 +1,16 @@
 ﻿using System;
-using TowerMergeTD.GameRoot;
+using System.Collections;
+using TowerMergeTD.Utils;
+using UnityEngine;
 using YG;
 
 namespace TowerMergeTD.API
 {
     public class YandexGamesADService : IADService
     {
-        private readonly ProjectConfig _projectConfig;
+        private readonly MonoBehaviourWrapper _monoBehaviourWrapper;
+        private bool _isFullscreenAvailable;
+
         public bool IsFullscreenAvailable => true;
         public bool IsRewardedAvailable => true;
         
@@ -15,12 +19,15 @@ namespace TowerMergeTD.API
 
         private string _currentRewardID;
 
-        public YandexGamesADService(ProjectConfig projectConfig)
+        public YandexGamesADService(MonoBehaviourWrapper monoBehaviourWrapper)
         {
-            _projectConfig = projectConfig;
+            _monoBehaviourWrapper = monoBehaviourWrapper;
+            
+            _isFullscreenAvailable = false;
+            //_monoBehaviourWrapper.StartCoroutine(FullScreenAdCooldown());
             
             YandexGame.RewardVideoEvent += RewardVideoEvent;
-            YandexGame.CloseFullAdEvent += () => { OnFullscreenClose?.Invoke(true); };
+            YandexGame.CloseFullAdEvent += OnFullscreenCloseInvoke;
         }
 
         private void RewardVideoEvent(int _)
@@ -32,15 +39,28 @@ namespace TowerMergeTD.API
             _currentRewardID = String.Empty;
         }
 
+        private void OnFullscreenCloseInvoke() => OnFullscreenClose?.Invoke(true);
+
         public void ShowFullscreen()
         {
             YandexGame.FullscreenShow();
+            _isFullscreenAvailable = false;
+            //_monoBehaviourWrapper.StartCoroutine(FullScreenAdCooldown());
         }
 
         public void ShowRewarded(string rewardID)
         {
             _currentRewardID = rewardID;
             YandexGame.RewVideoShow(0);
+        }
+
+        private IEnumerator FullScreenAdCooldown()
+        {
+            Debug.Log("FullScreenAdCooldown");
+            //yield return new WaitForSecondsRealtime(YandexGame.Instance.infoYG.fullscreenAdInterval);
+            yield return new WaitForSecondsRealtime(5f);
+            Debug.Log("CAN SHOW FULLSCREEN AD");
+            _isFullscreenAvailable = true;
         }
     }
 }
