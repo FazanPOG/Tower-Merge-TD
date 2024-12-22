@@ -11,6 +11,9 @@ namespace TowerMergeTD.Game.Gameplay
         private const float MAX_CAMERA_SIZE = 5f;
         private const float MIN_CAMERA_SIZE = 3f;
 
+        [SerializeField] [Range(0.1f, 1f)] private float _visibleWidthPercentage = 1f;
+        [SerializeField] private bool _disableUpdate;
+        
         private Camera _camera;
         private Tilemap _tilemap;
         private IInput _input;
@@ -41,8 +44,8 @@ namespace TowerMergeTD.Game.Gameplay
 
             _input.OnDragStarted += StartDrag;
             _input.OnDragWithThreshold += UpdateDrag;
-            _input.OnZoomIn += HandleZoom;
-            _input.OnZoomOut += HandleZoom;
+            //_input.OnZoomIn += HandleZoom;
+            //_input.OnZoomOut += HandleZoom;
         }
 
         public void HandlePause(bool isPaused)
@@ -62,14 +65,19 @@ namespace TowerMergeTD.Game.Gameplay
 
         private void LateUpdate()
         {
+            if(_disableUpdate)
+                return;
+            
             if(_isEnabled == false)
                 return;
             
             if (_isDragging)
             {
                 transform.position = Vector2.Lerp(transform.position, _targetPosition, MOVE_SPEED * Time.unscaledDeltaTime);
-                ClampCameraPosition();
             }
+            
+            AdjustCameraSize();
+            ClampCamera();
         }
 
         private void StartDrag()
@@ -96,18 +104,6 @@ namespace TowerMergeTD.Game.Gameplay
             }
         }
 
-
-        private void ClampCameraPosition()
-        {
-            float halfHeight = _camera.orthographicSize;
-            float halfWidth = halfHeight * _camera.aspect;
-            
-            float clampedX = Mathf.Clamp(transform.position.x, _minBounds.x + halfWidth, _maxBounds.x - halfWidth);
-            float clampedY = Mathf.Clamp(transform.position.y, _minBounds.y + halfHeight, _maxBounds.y - halfHeight);
-
-            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
-        }
-
         private void CalculateTilemapBounds()
         {
             BoundsInt bounds = _tilemap.cellBounds;
@@ -125,6 +121,36 @@ namespace TowerMergeTD.Game.Gameplay
 
             _minBounds = _tilemap.CellToWorld(min);
             _maxBounds = _tilemap.CellToWorld(max) + _tilemap.cellSize;
+        }
+
+        private void AdjustCameraSize()
+        {
+            float tilemapWidth = _maxBounds.x - _minBounds.x;
+            float targetWidth = tilemapWidth * _visibleWidthPercentage;
+            float screenAspect = (float)Screen.width / Screen.height;
+
+            _camera.orthographicSize = targetWidth / (2f * screenAspect);
+
+            // Проверка, чтобы размер камеры не был больше высоты уровня
+            float maxCameraHeight = (_maxBounds.y - _minBounds.y) / 2f;
+            _camera.orthographicSize = Mathf.Min(_camera.orthographicSize, maxCameraHeight);
+        }
+
+        private void ClampCamera()
+        {
+            float cameraHeight = _camera.orthographicSize;
+            float cameraWidth = cameraHeight * _camera.aspect;
+
+            float minX = _minBounds.x + cameraWidth;
+            float maxX = _maxBounds.x - cameraWidth;
+            float minY = _minBounds.y + cameraHeight;
+            float maxY = _maxBounds.y - cameraHeight;
+
+            Vector3 clampedPosition = transform.position;
+            clampedPosition.x = Mathf.Clamp(transform.position.x, minX, maxX);
+            clampedPosition.y = Mathf.Clamp(transform.position.y, minY, maxY);
+
+            transform.position = clampedPosition;
         }
     }
 }
