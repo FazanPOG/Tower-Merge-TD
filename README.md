@@ -33,7 +33,7 @@ This game was developed using cutting-edge tools and design patterns to ensure p
 
 ## 📸 **Screenshots**
 
-![Screenshot 1](https://imgur.com/a/eChPQUz)
+![Screenshot 1](https://i.imgur.com/vbZ3YoO.png)
 
 ---
 
