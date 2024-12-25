@@ -1,13 +1,13 @@
-# 🛡️ **Merge Tower Defense** 🛡️
+# 🛡️ **Tower Merge TD** 🛡️
 
-Welcome to **Merge Tower Defense**, an exciting 2D tower defense game with engaging merge mechanics! Defend your territory, strategize your upgrades, and merge units to strengthen your defenses.
+Welcome to **Tower Merge TD**, an exciting 2D tower defense game with engaging merge mechanics! Defend your territory, strategize your upgrades, and merge units to strengthen your defenses.
 
 ---
 
 ## 🎮 **Game Overview**
 
 - **Genre:** 2D Tower Defense with Merge Mechanics  
-- **Platform:** [Yandex Games](under moderation)  
+- **Platform:** Yandex Games (under moderation)
 
 Merge Tower Defense offers a unique blend of strategic tower defense gameplay and the addictive merge mechanic. Build, upgrade, and merge your way to victory!
 
@@ -35,7 +35,3 @@ This game was developed using cutting-edge tools and design patterns to ensure p
 
 ![Screenshot 1](https://i.imgur.com/vbZ3YoO.png)
 
----
-
-Thank you for checking out Merge Tower Defense! Let the merging and defending begin! 🚀
- 
