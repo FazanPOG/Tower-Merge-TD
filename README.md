@@ -21,6 +21,7 @@ This game was developed using cutting-edge tools and design patterns to ensure p
   - Zenject
   - R3
   - Unity Input System
+
 - **Design Patterns:**
   - EntryPoint
   - StateMachine
@@ -29,6 +30,9 @@ This game was developed using cutting-edge tools and design patterns to ensure p
   - MVA (Model-View-Adapter)
   - DIContainer
 
+- **SDKs:**
+   - YandexGameSDK
+   - GamePushSDK
 ---
 
 ## 📸 **Screenshots**
