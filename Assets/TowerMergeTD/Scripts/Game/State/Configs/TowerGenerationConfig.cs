@@ -17,10 +17,21 @@ namespace TowerMergeTD.Game.State
         public TowerType TowersType => _towersType;
         public int CreateCost => _createCost;
         
+        public void Initialize()
+        {
+            if (_dataMap.Count == 0)
+            {
+                foreach (var data in _generation)
+                {
+                    _dataMap[data] = new TowerDataProxy(data);
+                }
+            }
+        }
+        
         public TowerDataProxy GetTowerDataProxy(int towerLevel)
         {
-            var towerDataProxy = _dataMap.First(tower => tower.Key.Level == towerLevel).Value;
-            
+            var towerDataProxy = _dataMap.FirstOrDefault(tower => tower.Key.Level == towerLevel).Value;
+
             if(towerDataProxy == null)
                 throw new MissingComponentException($"Tower with level ({towerLevel}) does not exist");
 
@@ -28,18 +39,5 @@ namespace TowerMergeTD.Game.State
         }
 
         public bool IsLastInGeneration(int level) => level >= _generation.Length;
-
-        private void OnValidate()
-        {
-            for (int i = 1; i < _generation.Length + 1; i++)
-            {
-                var data = _generation[i - 1];
-                data.Level = i;
-                _dataMap[data] = new TowerDataProxy(data);
-                
-                if (_createCost < 0)
-                    _createCost = 0;
-            }
-        }
     }
 }

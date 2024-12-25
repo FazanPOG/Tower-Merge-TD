@@ -13,6 +13,8 @@ namespace TowerMergeTD.Game.UI
         [SerializeField] private GameObject _hand;
         [SerializeField] private Animator _animator;
 
+        private int _currentWidth;
+        private int _currentHeight;
         private Camera _mainCamera;
         private Canvas _handParentCanvas;
         private RectTransform _handRectTransform;
@@ -22,6 +24,10 @@ namespace TowerMergeTD.Game.UI
             _mainCamera = Camera.main;
             _handParentCanvas = _hand.transform.GetComponentInParent<Canvas>();
             _handRectTransform = _hand.GetComponent<RectTransform>();
+            _currentWidth = Screen.width;
+            _currentHeight = Screen.height;
+            
+            _hand.gameObject.SetActive(false);
         }
 
         public void PlayClickAnimation()
@@ -44,8 +50,11 @@ namespace TowerMergeTD.Game.UI
         
         public void SetTutorialText(string text) => _tutorialText.text = text;
 
-        public void SetActiveHandImage(bool activeState) => _hand.gameObject.SetActive(activeState);
-        
+        public void SetActiveHandImage(bool activeState)
+        {
+            //_hand.gameObject.SetActive(activeState);
+        }
+
         public void UpdateHandImagePosition(Vector2 worldPosition)
         {
             Vector2 canvasPosition = WorldToCanvasPosition(worldPosition);

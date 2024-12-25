@@ -44,8 +44,7 @@ namespace TowerMergeTD.Game.Gameplay
         {
             var prefab = GetTowerPrefab(towerType);
 
-            var instance = Object.Instantiate(prefab, _parent);
-            //var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(prefab, _parent);
+            var instance = _diContainer.InstantiatePrefabForComponent<TowerObject>(prefab, _parent);
             instance.transform.position = spawnPosition;
             
             TowerProxy proxy = new TowerProxy(CreateTowerModel(towerType, instance, towerLevel, spawnPosition));

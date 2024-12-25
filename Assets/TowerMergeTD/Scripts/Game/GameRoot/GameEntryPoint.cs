@@ -48,6 +48,9 @@ namespace TowerMergeTD.GameRoot
             Object.DontDestroyOnLoad(_uiRootView.gameObject);
 
             _projectConfig = Resources.Load<ProjectConfig>("ProjectConfig");
+            foreach (var towerGeneration in _projectConfig.TowerGenerations)
+                towerGeneration.Initialize();
+            
             var prefabReferencesConfig = Resources.Load<PrefabReferencesConfig>("PrefabReferencesConfig");
             
             var audioClipsConfig = Resources.Load<AudioClipsConfig>("AudioClipsConfig");

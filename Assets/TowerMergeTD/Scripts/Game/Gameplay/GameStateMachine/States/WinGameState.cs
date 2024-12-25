@@ -93,8 +93,6 @@ namespace TowerMergeTD.Game.Gameplay
             _gameStateProvider.GameState.LevelDatas.Remove(previousNextLevelSaveData);
             _gameStateProvider.GameState.LevelDatas.Add(new LevelSaveDataProxy(newNextLevelData));
             _gameStateProvider.SaveGameState();
-            
-            Debug.Log($"Prev lvl save id: {previousNextLevelSaveData.ID} ; new id: {newNextLevelData.ID}");
         }
         
         public void Exit() { }
